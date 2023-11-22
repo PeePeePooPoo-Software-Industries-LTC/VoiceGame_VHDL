@@ -1,1 +1,6 @@
+db/
+incremental_db/
+*/db/
+*/incremental_db/
+*.bak
 *.flock
