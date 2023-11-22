@@ -1107,3 +1107,5 @@ set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to HEX1
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to KEY
 set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to SW
 set_global_assignment -name VHDL_FILE Main.vhd
+set_global_assignment -name QIP_FILE ClockedAudioInput.qip
+set_global_assignment -name SIP_FILE ClockedAudioInput.sip
