@@ -1,0 +1,21 @@
+# system info unsaved on 2023.11.22.11:14:36
+system_info:
+name,value
+DEVICE,EP4CE115F29C7
+DEVICE_FAMILY,Cyclone IV E
+GENERATION_ID,1700648075
+#
+#
+# Files generated for unsaved on 2023.11.22.11:14:36
+files:
+filepath,kind,attributes,module,is_top
+simulation/unsaved.vhd,VHDL,,unsaved,true
+simulation/submodules/altera_reset_controller.v,VERILOG,,altera_reset_controller,false
+simulation/submodules/altera_reset_synchronizer.v,VERILOG,,altera_reset_controller,false
+simulation/submodules/altera_reset_controller.sdc,SDC,,altera_reset_controller,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+unsaved.audio_0,unsaved_audio_0
+unsaved.rst_controller,altera_reset_controller

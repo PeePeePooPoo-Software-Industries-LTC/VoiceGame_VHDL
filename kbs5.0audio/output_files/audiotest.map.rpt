@@ -1,0 +1,1035 @@
+Analysis & Synthesis report for audiotest
+Wed Nov 22 12:07:20 2023
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis IP Cores Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Source assignments for unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram
+ 13. Source assignments for unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram
+ 14. Source assignments for unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram
+ 15. Source assignments for unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram
+ 16. Source assignments for altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 17. Source assignments for altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
+ 18. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer
+ 19. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_audio_bit_counter:Audio_Out_Bit_Counter
+ 20. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO
+ 21. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO
+ 22. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO
+ 23. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO
+ 24. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer
+ 25. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO
+ 26. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO
+ 27. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO
+ 28. Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO
+ 29. Parameter Settings for User Entity Instance: altera_reset_controller:rst_controller
+ 30. Parameter Settings for User Entity Instance: altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 31. Parameter Settings for User Entity Instance: altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1
+ 32. scfifo Parameter Settings by Entity Instance
+ 33. Port Connectivity Checks: "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+ 34. Port Connectivity Checks: "altera_reset_controller:rst_controller"
+ 35. Port Connectivity Checks: "unsaved_audio_0:audio_0"
+ 36. Post-Synthesis Netlist Statistics for Top Partition
+ 37. Elapsed Time Per Partition
+ 38. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Nov 22 12:07:20 2023       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                      ; audiotest                                   ;
+; Top-level Entity Name              ; unsaved                                     ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 0                                           ;
+;     Total combinational functions  ; 0                                           ;
+;     Dedicated logic registers      ; 0                                           ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 2                                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; unsaved            ; audiotest          ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                            ;
++------------------------------------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                                 ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                        ; Library ;
++------------------------------------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------+---------+
+; audiotest/synthesis/submodules/altera_reset_controller.v         ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_controller.v         ; unsaved ;
+; audiotest/synthesis/submodules/altera_reset_synchronizer.v       ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_synchronizer.v       ; unsaved ;
+; audiotest/synthesis/submodules/altera_up_audio_bit_counter.v     ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_bit_counter.v     ; unsaved ;
+; audiotest/synthesis/submodules/altera_up_audio_in_deserializer.v ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_in_deserializer.v ; unsaved ;
+; audiotest/synthesis/submodules/altera_up_audio_out_serializer.v  ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_out_serializer.v  ; unsaved ;
+; audiotest/synthesis/submodules/altera_up_clock_edge.v            ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_clock_edge.v            ; unsaved ;
+; audiotest/synthesis/submodules/altera_up_sync_fifo.v             ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_sync_fifo.v             ; unsaved ;
+; audiotest/synthesis/submodules/unsaved_audio_0.v                 ; yes             ; User Verilog HDL File        ; C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/unsaved_audio_0.v                 ; unsaved ;
+; c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/unsaved.v       ; yes             ; Auto-Found Verilog HDL File  ; c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/unsaved.v                                          ; unsaved ;
+; scfifo.tdf                                                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/scfifo.tdf                                   ;         ;
+; a_regfifo.inc                                                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_regfifo.inc                                ;         ;
+; a_dpfifo.inc                                                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_dpfifo.inc                                 ;         ;
+; a_i2fifo.inc                                                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_i2fifo.inc                                 ;         ;
+; a_fffifo.inc                                                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_fffifo.inc                                 ;         ;
+; a_f2fifo.inc                                                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_f2fifo.inc                                 ;         ;
+; aglobal181.inc                                                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc                               ;         ;
+; db/scfifo_p441.tdf                                               ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/kbs5.0audio/db/scfifo_p441.tdf                                               ;         ;
+; db/a_dpfifo_cs31.tdf                                             ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf                                             ;         ;
+; db/altsyncram_btb1.tdf                                           ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf                                           ;         ;
+; db/cmpr_ks8.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/kbs5.0audio/db/cmpr_ks8.tdf                                                  ;         ;
+; db/cntr_v9b.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/kbs5.0audio/db/cntr_v9b.tdf                                                  ;         ;
+; db/cntr_ca7.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/kbs5.0audio/db/cntr_ca7.tdf                                                  ;         ;
+; db/cntr_0ab.tdf                                                  ; yes             ; Auto-Generated Megafunction  ; C:/intelFPGA_lite/18.1/kbs5.0audio/db/cntr_0ab.tdf                                                  ;         ;
++------------------------------------------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+;                                             ;         ;
+; Total combinational functions               ; 0       ;
+; Logic element usage by number of LUT inputs ;         ;
+;     -- 4 input functions                    ; 0       ;
+;     -- 3 input functions                    ; 0       ;
+;     -- <=2 input functions                  ; 0       ;
+;                                             ;         ;
+; Logic elements by mode                      ;         ;
+;     -- normal mode                          ; 0       ;
+;     -- arithmetic mode                      ; 0       ;
+;                                             ;         ;
+; Total registers                             ; 0       ;
+;     -- Dedicated logic registers            ; 0       ;
+;     -- I/O registers                        ; 0       ;
+;                                             ;         ;
+; I/O pins                                    ; 2       ;
+;                                             ;         ;
+; Embedded Multiplier 9-bit elements          ; 0       ;
+;                                             ;         ;
+; Maximum fan-out node                        ; clk_clk ;
+; Maximum fan-out                             ; 1       ;
+; Total fan-out                               ; 2       ;
+; Average fan-out                             ; 0.50    ;
++---------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+; |unsaved                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 2    ; 0            ; |unsaved            ; unsaved     ; unsaved      ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                        ;
++--------+-------------------------+---------+--------------+--------------+-------------------------------------------------+-------------------------------------------------+
+; Vendor ; IP Core Name            ; Version ; Release Date ; License Type ; Entity Instance                                 ; IP Include File                                 ;
++--------+-------------------------+---------+--------------+--------------+-------------------------------------------------+-------------------------------------------------+
+; N/A    ; Qsys                    ; 18.1    ; N/A          ; N/A          ; |unsaved                                        ; C:/intelFPGA_lite/18.1/kbs5.0audio/unsaved.qsys ;
+; Altera ; altera_reset_controller ; 18.1    ; N/A          ; N/A          ; |unsaved|altera_reset_controller:rst_controller ; unsaved.qsys                                    ;
++--------+-------------------------+---------+--------------+--------------+-------------------------------------------------+-------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                                                                                                   ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; Register name                                                                                                                                                                                                                               ; Reason for Removal                     ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|empty_dff                                     ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|empty_dff                                    ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:DAC_Left_Right_Clock_Edges|cur_test_clk                                                                                                                                                        ; Stuck at GND due to stuck port data_in ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:ADC_Left_Right_Clock_Edges|cur_test_clk                                                                                                                                                        ; Stuck at GND due to stuck port data_in ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:Bit_Clock_Edges|cur_test_clk                                                                                                                                                                   ; Stuck at GND due to stuck port data_in ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|empty_dff                                      ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|empty_dff                                     ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:DAC_Left_Right_Clock_Edges|last_test_clk                                                                                                                                                       ; Stuck at GND due to stuck port data_in ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:ADC_Left_Right_Clock_Edges|last_test_clk                                                                                                                                                       ; Stuck at GND due to stuck port data_in ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:Bit_Clock_Edges|last_test_clk                                                                                                                                                                  ; Stuck at GND due to stuck port data_in ;
+; altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain[0,1]                                                                                                                  ; Lost fanout                            ;
+; altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out                                                                                                                   ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|clear_read_fifos                                                                                                                                                                                                    ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|done_adc_channel_sync                                                                                                                                                                                               ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|clear_write_fifos                                                                                                                                                                                                   ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|done_dac_channel_sync                                                                                                                                                                                               ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|left_channel_was_read                                                                                                                                           ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|full_dff                                      ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|low_addressa[0..6]                            ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|rd_ptr_lsb                                    ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff                                ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_1_dff                                ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_2_dff                                ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_0ab:wr_ptr|counter_reg_bit[0..6]         ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[0..6]  ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[0..5]     ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|full_dff                                       ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|low_addressa[0..6]                             ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|rd_ptr_lsb                                     ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff                                 ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_1_dff                                 ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_2_dff                                 ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_0ab:wr_ptr|counter_reg_bit[0..6]          ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[0..6]   ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[0..5]      ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[0..15]                                                                                                                                      ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|full_dff                                     ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|low_addressa[0..6]                           ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|rd_ptr_lsb                                   ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff                               ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_1_dff                               ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_2_dff                               ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_0ab:wr_ptr|counter_reg_bit[0..6]        ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[0..6] ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[0..5]    ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|full_dff                                      ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|low_addressa[0..6]                            ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|rd_ptr_lsb                                    ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff                                ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_1_dff                                ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_2_dff                                ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_0ab:wr_ptr|counter_reg_bit[0..6]         ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[0..6]  ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[0..5]     ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_audio_bit_counter:Audio_Out_Bit_Counter|counting                                                                                                    ; Lost fanout                            ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_audio_bit_counter:Audio_Out_Bit_Counter|bit_counter[0..4]                                                                                           ; Lost fanout                            ;
+; Total Number of Removed Registers = 168                                                                                                                                                                                                     ;                                        ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                                                                                                                                                                                                                                                                    ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                                                                                                                                           ; Reason for Removal        ; Registers Removed due to This Register                                                                                                                                                                                                   ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; unsaved_audio_0:audio_0|altera_up_clock_edge:DAC_Left_Right_Clock_Edges|cur_test_clk                                                                                                                    ; Stuck at GND              ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|empty_dff,                                 ;
+;                                                                                                                                                                                                         ; due to stuck port data_in ; unsaved_audio_0:audio_0|clear_write_fifos,                                                                                                                                                                                               ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|done_dac_channel_sync,                                                                                                                                                                                           ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|left_channel_was_read,                                                                                                                                       ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff,                            ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_1_dff,                            ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|rd_ptr_lsb,                                 ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_1_dff,                             ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_2_dff,                             ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[6],  ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[5],     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[4],     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[3],     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[2],     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[1],     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[0]      ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:Bit_Clock_Edges|cur_test_clk                                                                                                                               ; Stuck at GND              ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[0],                                                                                                                                      ;
+;                                                                                                                                                                                                         ; due to stuck port data_in ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[1],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[2],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[3],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[4],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[5],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[6],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[7],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[8],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[9],                                                                                                                                      ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[10],                                                                                                                                     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[11],                                                                                                                                     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[12],                                                                                                                                     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[13],                                                                                                                                     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|data_in_shift_reg[14],                                                                                                                                     ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_audio_bit_counter:Audio_Out_Bit_Counter|counting                                                                                                 ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:DAC_Left_Right_Clock_Edges|last_test_clk                                                                                                                   ; Stuck at GND              ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|rd_ptr_lsb,                                ;
+;                                                                                                                                                                                                         ; due to stuck port data_in ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_2_dff,                            ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[6], ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[5], ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[3], ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[5],    ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[4],    ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[3],    ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[2],    ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[1],    ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb|counter_reg_bit[0]     ;
+; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|empty_dff ; Lost Fanouts              ; altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1|altera_reset_synchronizer_int_chain_out,                                                                                                               ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|clear_read_fifos,                                                                                                                                                                                                ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|done_adc_channel_sync                                                                                                                                                                                            ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:ADC_Left_Right_Clock_Edges|last_test_clk                                                                                                                   ; Stuck at GND              ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff,                            ;
+;                                                                                                                                                                                                         ; due to stuck port data_in ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[3], ;
+;                                                                                                                                                                                                         ;                           ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_audio_bit_counter:Audio_Out_Bit_Counter|bit_counter[3]                                                                                           ;
+; unsaved_audio_0:audio_0|altera_up_clock_edge:ADC_Left_Right_Clock_Edges|cur_test_clk                                                                                                                    ; Stuck at GND              ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff,                           ;
+;                                                                                                                                                                                                         ; due to stuck port data_in ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter|counter_reg_bit[3] ;
+; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|empty_dff  ; Lost Fanouts              ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|usedw_is_0_dff                              ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                                                                                             ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                                                                                              ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                                                                                              ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                                                                                               ;
++---------------------------------+--------------------+------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                                                                                            ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                                                                                             ;
++---------------------------------+--------------------+------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                                                                                                                             ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                                                                                                                              ;
++---------------------------------+--------------------+------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Source assignments for altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1 ;
++-------------------+-------+------+-----------------------------------------------------------------------+
+; Assignment        ; Value ; From ; To                                                                    ;
++-------------------+-------+------+-----------------------------------------------------------------------+
+; PRESERVE_REGISTER ; on    ; -    ; altera_reset_synchronizer_int_chain[1]                                ;
+; PRESERVE_REGISTER ; on    ; -    ; altera_reset_synchronizer_int_chain[0]                                ;
++-------------------+-------+------+-----------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Source assignments for altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1 ;
++-------------------+-------+------+---------------------------------------------------------------------------+
+; Assignment        ; Value ; From ; To                                                                        ;
++-------------------+-------+------+---------------------------------------------------------------------------+
+; PRESERVE_REGISTER ; on    ; -    ; altera_reset_synchronizer_int_chain[0]                                    ;
+; PRESERVE_REGISTER ; on    ; -    ; altera_reset_synchronizer_int_chain[1]                                    ;
++-------------------+-------+------+---------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer ;
++------------------+-------+-------------------------------------------------------------------------------------------------+
+; Parameter Name   ; Value ; Type                                                                                            ;
++------------------+-------+-------------------------------------------------------------------------------------------------+
+; DW               ; 15    ; Signed Integer                                                                                  ;
+; BIT_COUNTER_INIT ; 01111 ; Unsigned Binary                                                                                 ;
++------------------+-------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_audio_bit_counter:Audio_Out_Bit_Counter ;
++------------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name   ; Value ; Type                                                                                                                                              ;
++------------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; BIT_COUNTER_INIT ; 01111 ; Unsigned Binary                                                                                                                                   ;
++------------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                                                             ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; DW             ; 15    ; Signed Integer                                                                                                                                   ;
+; DATA_DEPTH     ; 128   ; Signed Integer                                                                                                                                   ;
+; AW             ; 6     ; Signed Integer                                                                                                                                   ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO ;
++-------------------------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name          ; Value        ; Type                                                                                                                                              ;
++-------------------------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; AUTO_CARRY_CHAINS       ; ON           ; AUTO_CARRY                                                                                                                                        ;
+; IGNORE_CARRY_BUFFERS    ; OFF          ; IGNORE_CARRY                                                                                                                                      ;
+; AUTO_CASCADE_CHAINS     ; ON           ; AUTO_CASCADE                                                                                                                                      ;
+; IGNORE_CASCADE_BUFFERS  ; OFF          ; IGNORE_CASCADE                                                                                                                                    ;
+; lpm_width               ; 16           ; Signed Integer                                                                                                                                    ;
+; LPM_NUMWORDS            ; 128          ; Signed Integer                                                                                                                                    ;
+; LPM_WIDTHU              ; 7            ; Signed Integer                                                                                                                                    ;
+; LPM_SHOWAHEAD           ; ON           ; Untyped                                                                                                                                           ;
+; UNDERFLOW_CHECKING      ; OFF          ; Untyped                                                                                                                                           ;
+; OVERFLOW_CHECKING       ; OFF          ; Untyped                                                                                                                                           ;
+; ALLOW_RWCYCLE_WHEN_FULL ; OFF          ; Untyped                                                                                                                                           ;
+; ADD_RAM_OUTPUT_REGISTER ; OFF          ; Untyped                                                                                                                                           ;
+; ALMOST_FULL_VALUE       ; 0            ; Untyped                                                                                                                                           ;
+; ALMOST_EMPTY_VALUE      ; 0            ; Untyped                                                                                                                                           ;
+; ENABLE_ECC              ; FALSE        ; Untyped                                                                                                                                           ;
+; USE_EAB                 ; ON           ; Untyped                                                                                                                                           ;
+; MAXIMIZE_SPEED          ; 5            ; Untyped                                                                                                                                           ;
+; DEVICE_FAMILY           ; Cyclone IV E ; Untyped                                                                                                                                           ;
+; OPTIMIZE_FOR_SPEED      ; 5            ; Untyped                                                                                                                                           ;
+; CBXI_PARAMETER          ; scfifo_p441  ; Untyped                                                                                                                                           ;
++-------------------------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO ;
++----------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                                                              ;
++----------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; DW             ; 15    ; Signed Integer                                                                                                                                    ;
+; DATA_DEPTH     ; 128   ; Signed Integer                                                                                                                                    ;
+; AW             ; 6     ; Signed Integer                                                                                                                                    ;
++----------------+-------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO ;
++-------------------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name          ; Value        ; Type                                                                                                                                               ;
++-------------------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+; AUTO_CARRY_CHAINS       ; ON           ; AUTO_CARRY                                                                                                                                         ;
+; IGNORE_CARRY_BUFFERS    ; OFF          ; IGNORE_CARRY                                                                                                                                       ;
+; AUTO_CASCADE_CHAINS     ; ON           ; AUTO_CASCADE                                                                                                                                       ;
+; IGNORE_CASCADE_BUFFERS  ; OFF          ; IGNORE_CASCADE                                                                                                                                     ;
+; lpm_width               ; 16           ; Signed Integer                                                                                                                                     ;
+; LPM_NUMWORDS            ; 128          ; Signed Integer                                                                                                                                     ;
+; LPM_WIDTHU              ; 7            ; Signed Integer                                                                                                                                     ;
+; LPM_SHOWAHEAD           ; ON           ; Untyped                                                                                                                                            ;
+; UNDERFLOW_CHECKING      ; OFF          ; Untyped                                                                                                                                            ;
+; OVERFLOW_CHECKING       ; OFF          ; Untyped                                                                                                                                            ;
+; ALLOW_RWCYCLE_WHEN_FULL ; OFF          ; Untyped                                                                                                                                            ;
+; ADD_RAM_OUTPUT_REGISTER ; OFF          ; Untyped                                                                                                                                            ;
+; ALMOST_FULL_VALUE       ; 0            ; Untyped                                                                                                                                            ;
+; ALMOST_EMPTY_VALUE      ; 0            ; Untyped                                                                                                                                            ;
+; ENABLE_ECC              ; FALSE        ; Untyped                                                                                                                                            ;
+; USE_EAB                 ; ON           ; Untyped                                                                                                                                            ;
+; MAXIMIZE_SPEED          ; 5            ; Untyped                                                                                                                                            ;
+; DEVICE_FAMILY           ; Cyclone IV E ; Untyped                                                                                                                                            ;
+; OPTIMIZE_FOR_SPEED      ; 5            ; Untyped                                                                                                                                            ;
+; CBXI_PARAMETER          ; scfifo_p441  ; Untyped                                                                                                                                            ;
++-------------------------+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                            ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; DW             ; 15    ; Signed Integer                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO ;
++----------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                                                            ;
++----------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; DW             ; 15    ; Signed Integer                                                                                                                                  ;
+; DATA_DEPTH     ; 128   ; Signed Integer                                                                                                                                  ;
+; AW             ; 6     ; Signed Integer                                                                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO ;
++-------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name          ; Value        ; Type                                                                                                                                             ;
++-------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; AUTO_CARRY_CHAINS       ; ON           ; AUTO_CARRY                                                                                                                                       ;
+; IGNORE_CARRY_BUFFERS    ; OFF          ; IGNORE_CARRY                                                                                                                                     ;
+; AUTO_CASCADE_CHAINS     ; ON           ; AUTO_CASCADE                                                                                                                                     ;
+; IGNORE_CASCADE_BUFFERS  ; OFF          ; IGNORE_CASCADE                                                                                                                                   ;
+; lpm_width               ; 16           ; Signed Integer                                                                                                                                   ;
+; LPM_NUMWORDS            ; 128          ; Signed Integer                                                                                                                                   ;
+; LPM_WIDTHU              ; 7            ; Signed Integer                                                                                                                                   ;
+; LPM_SHOWAHEAD           ; ON           ; Untyped                                                                                                                                          ;
+; UNDERFLOW_CHECKING      ; OFF          ; Untyped                                                                                                                                          ;
+; OVERFLOW_CHECKING       ; OFF          ; Untyped                                                                                                                                          ;
+; ALLOW_RWCYCLE_WHEN_FULL ; OFF          ; Untyped                                                                                                                                          ;
+; ADD_RAM_OUTPUT_REGISTER ; OFF          ; Untyped                                                                                                                                          ;
+; ALMOST_FULL_VALUE       ; 0            ; Untyped                                                                                                                                          ;
+; ALMOST_EMPTY_VALUE      ; 0            ; Untyped                                                                                                                                          ;
+; ENABLE_ECC              ; FALSE        ; Untyped                                                                                                                                          ;
+; USE_EAB                 ; ON           ; Untyped                                                                                                                                          ;
+; MAXIMIZE_SPEED          ; 5            ; Untyped                                                                                                                                          ;
+; DEVICE_FAMILY           ; Cyclone IV E ; Untyped                                                                                                                                          ;
+; OPTIMIZE_FOR_SPEED      ; 5            ; Untyped                                                                                                                                          ;
+; CBXI_PARAMETER          ; scfifo_p441  ; Untyped                                                                                                                                          ;
++-------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                                                             ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; DW             ; 15    ; Signed Integer                                                                                                                                   ;
+; DATA_DEPTH     ; 128   ; Signed Integer                                                                                                                                   ;
+; AW             ; 6     ; Signed Integer                                                                                                                                   ;
++----------------+-------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO ;
++-------------------------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Name          ; Value        ; Type                                                                                                                                              ;
++-------------------------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+; AUTO_CARRY_CHAINS       ; ON           ; AUTO_CARRY                                                                                                                                        ;
+; IGNORE_CARRY_BUFFERS    ; OFF          ; IGNORE_CARRY                                                                                                                                      ;
+; AUTO_CASCADE_CHAINS     ; ON           ; AUTO_CASCADE                                                                                                                                      ;
+; IGNORE_CASCADE_BUFFERS  ; OFF          ; IGNORE_CASCADE                                                                                                                                    ;
+; lpm_width               ; 16           ; Signed Integer                                                                                                                                    ;
+; LPM_NUMWORDS            ; 128          ; Signed Integer                                                                                                                                    ;
+; LPM_WIDTHU              ; 7            ; Signed Integer                                                                                                                                    ;
+; LPM_SHOWAHEAD           ; ON           ; Untyped                                                                                                                                           ;
+; UNDERFLOW_CHECKING      ; OFF          ; Untyped                                                                                                                                           ;
+; OVERFLOW_CHECKING       ; OFF          ; Untyped                                                                                                                                           ;
+; ALLOW_RWCYCLE_WHEN_FULL ; OFF          ; Untyped                                                                                                                                           ;
+; ADD_RAM_OUTPUT_REGISTER ; OFF          ; Untyped                                                                                                                                           ;
+; ALMOST_FULL_VALUE       ; 0            ; Untyped                                                                                                                                           ;
+; ALMOST_EMPTY_VALUE      ; 0            ; Untyped                                                                                                                                           ;
+; ENABLE_ECC              ; FALSE        ; Untyped                                                                                                                                           ;
+; USE_EAB                 ; ON           ; Untyped                                                                                                                                           ;
+; MAXIMIZE_SPEED          ; 5            ; Untyped                                                                                                                                           ;
+; DEVICE_FAMILY           ; Cyclone IV E ; Untyped                                                                                                                                           ;
+; OPTIMIZE_FOR_SPEED      ; 5            ; Untyped                                                                                                                                           ;
+; CBXI_PARAMETER          ; scfifo_p441  ; Untyped                                                                                                                                           ;
++-------------------------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: altera_reset_controller:rst_controller ;
++---------------------------+----------+----------------------------------------------+
+; Parameter Name            ; Value    ; Type                                         ;
++---------------------------+----------+----------------------------------------------+
+; NUM_RESET_INPUTS          ; 1        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN0     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN1     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN2     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN3     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN4     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN5     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN6     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN7     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN8     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN9     ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN10    ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN11    ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN12    ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN13    ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN14    ; 0        ; Signed Integer                               ;
+; USE_RESET_REQUEST_IN15    ; 0        ; Signed Integer                               ;
+; OUTPUT_RESET_SYNC_EDGES   ; deassert ; String                                       ;
+; SYNC_DEPTH                ; 2        ; Signed Integer                               ;
+; RESET_REQUEST_PRESENT     ; 0        ; Signed Integer                               ;
+; RESET_REQ_WAIT_TIME       ; 1        ; Signed Integer                               ;
+; MIN_RST_ASSERTION_TIME    ; 3        ; Signed Integer                               ;
+; RESET_REQ_EARLY_DSRT_TIME ; 1        ; Signed Integer                               ;
+; ADAPT_RESET_REQUEST       ; 0        ; Signed Integer                               ;
++---------------------------+----------+----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1 ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+; ASYNC_RESET    ; 1     ; Unsigned Binary                                                                                       ;
+; DEPTH          ; 2     ; Signed Integer                                                                                        ;
++----------------+-------+-------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1 ;
++----------------+-------+-----------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                      ;
++----------------+-------+-----------------------------------------------------------------------------------------------------------+
+; ASYNC_RESET    ; 0     ; Signed Integer                                                                                            ;
+; DEPTH          ; 2     ; Signed Integer                                                                                            ;
++----------------+-------+-----------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; scfifo Parameter Settings by Entity Instance                                                                                                                                ;
++----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; Name                       ; Value                                                                                                                                          ;
++----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+; Number of entity instances ; 4                                                                                                                                              ;
+; Entity Instance            ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO  ;
+;     -- FIFO Type           ; Single Clock                                                                                                                                   ;
+;     -- lpm_width           ; 16                                                                                                                                             ;
+;     -- LPM_NUMWORDS        ; 128                                                                                                                                            ;
+;     -- LPM_SHOWAHEAD       ; ON                                                                                                                                             ;
+;     -- USE_EAB             ; ON                                                                                                                                             ;
+; Entity Instance            ; unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO ;
+;     -- FIFO Type           ; Single Clock                                                                                                                                   ;
+;     -- lpm_width           ; 16                                                                                                                                             ;
+;     -- LPM_NUMWORDS        ; 128                                                                                                                                            ;
+;     -- LPM_SHOWAHEAD       ; ON                                                                                                                                             ;
+;     -- USE_EAB             ; ON                                                                                                                                             ;
+; Entity Instance            ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO   ;
+;     -- FIFO Type           ; Single Clock                                                                                                                                   ;
+;     -- lpm_width           ; 16                                                                                                                                             ;
+;     -- LPM_NUMWORDS        ; 128                                                                                                                                            ;
+;     -- LPM_SHOWAHEAD       ; ON                                                                                                                                             ;
+;     -- USE_EAB             ; ON                                                                                                                                             ;
+; Entity Instance            ; unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO  ;
+;     -- FIFO Type           ; Single Clock                                                                                                                                   ;
+;     -- lpm_width           ; 16                                                                                                                                             ;
+;     -- LPM_NUMWORDS        ; 128                                                                                                                                            ;
+;     -- LPM_SHOWAHEAD       ; ON                                                                                                                                             ;
+;     -- USE_EAB             ; ON                                                                                                                                             ;
++----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1" ;
++----------+-------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                             ;
++----------+-------+----------+-------------------------------------------------------------------------------------+
+; reset_in ; Input ; Info     ; Stuck at GND                                                                        ;
++----------+-------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "altera_reset_controller:rst_controller" ;
++----------------+--------+----------+-------------------------------+
+; Port           ; Type   ; Severity ; Details                       ;
++----------------+--------+----------+-------------------------------+
+; reset_req      ; Output ; Info     ; Explicitly unconnected        ;
+; reset_req_in0  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in1      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in1  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in2      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in2  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in3      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in3  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in4      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in4  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in5      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in5  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in6      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in6  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in7      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in7  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in8      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in8  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in9      ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in9  ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in10     ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in10 ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in11     ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in11 ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in12     ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in12 ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in13     ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in13 ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in14     ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in14 ; Input  ; Info     ; Stuck at GND                  ;
+; reset_in15     ; Input  ; Info     ; Stuck at GND                  ;
+; reset_req_in15 ; Input  ; Info     ; Stuck at GND                  ;
++----------------+--------+----------+-------------------------------+
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "unsaved_audio_0:audio_0"      ;
++-------------+--------+----------+------------------------+
+; Port        ; Type   ; Severity ; Details                ;
++-------------+--------+----------+------------------------+
+; address     ; Input  ; Info     ; Explicitly unconnected ;
+; chipselect  ; Input  ; Info     ; Explicitly unconnected ;
+; read        ; Input  ; Info     ; Explicitly unconnected ;
+; write       ; Input  ; Info     ; Explicitly unconnected ;
+; writedata   ; Input  ; Info     ; Explicitly unconnected ;
+; readdata    ; Output ; Info     ; Explicitly unconnected ;
+; irq         ; Output ; Info     ; Explicitly unconnected ;
+; AUD_ADCDAT  ; Input  ; Info     ; Explicitly unconnected ;
+; AUD_ADCLRCK ; Input  ; Info     ; Explicitly unconnected ;
+; AUD_BCLK    ; Input  ; Info     ; Explicitly unconnected ;
+; AUD_DACDAT  ; Output ; Info     ; Explicitly unconnected ;
+; AUD_DACLRCK ; Input  ; Info     ; Explicitly unconnected ;
++-------------+--------+----------+------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 2                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Wed Nov 22 12:07:00 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off audiotest -c audiotest
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12248): Elaborating Platform Designer system entity "unsaved.qsys"
+Info (12250): 2023.11.22.12:07:12 Progress: Loading kbs5.0audio/unsaved.qsys
+Info (12250): 2023.11.22.12:07:13 Progress: Reading input file
+Info (12250): 2023.11.22.12:07:13 Progress: Adding audio_0 [altera_up_avalon_audio 18.0]
+Info (12250): 2023.11.22.12:07:14 Progress: Parameterizing module audio_0
+Info (12250): 2023.11.22.12:07:14 Progress: Adding clk_0 [clock_source 18.1]
+Info (12250): 2023.11.22.12:07:14 Progress: Parameterizing module clk_0
+Info (12250): 2023.11.22.12:07:14 Progress: Building connections
+Info (12250): 2023.11.22.12:07:14 Progress: Parameterizing connections
+Info (12250): 2023.11.22.12:07:14 Progress: Validating
+Info (12250): 2023.11.22.12:07:15 Progress: Done reading input file
+Warning (12251): Unsaved.audio_0: audio_0.external_interface must be exported, or connected to a matching conduit.
+Warning (12251): Unsaved.audio_0: Interrupt sender audio_0.interrupt is not connected to an interrupt receiver
+Warning (12251): Unsaved.audio_0: audio_0.avalon_audio_slave must be connected to an Avalon-MM master
+Info (12250): Unsaved: Generating unsaved "unsaved" for QUARTUS_SYNTH
+Info (12250): Audio_0: Starting Generation of Audio Controller
+Info (12250): Audio_0: "unsaved" instantiated altera_up_avalon_audio "audio_0"
+Info (12250): Rst_controller: "unsaved" instantiated altera_reset_controller "rst_controller"
+Info (12250): Unsaved: Done "unsaved" with 3 modules, 10 files
+Info (12249): Finished elaborating Platform Designer system entity "unsaved.qsys"
+Info (12021): Found 2 design units, including 1 entities, in source file audiotest/synthesis/unsaved.vhd
+    Info (12022): Found design unit 1: unsaved1-rtl File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/unsaved.vhd Line: 17
+    Info (12023): Found entity 1: unsaved1 File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/unsaved.vhd Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/altera_reset_controller.v
+    Info (12023): Found entity 1: altera_reset_controller File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_controller.v Line: 42
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/altera_reset_synchronizer.v
+    Info (12023): Found entity 1: altera_reset_synchronizer File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_synchronizer.v Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/altera_up_audio_bit_counter.v
+    Info (12023): Found entity 1: altera_up_audio_bit_counter File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_bit_counter.v Line: 30
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/altera_up_audio_in_deserializer.v
+    Info (12023): Found entity 1: altera_up_audio_in_deserializer File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_in_deserializer.v Line: 28
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/altera_up_audio_out_serializer.v
+    Info (12023): Found entity 1: altera_up_audio_out_serializer File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_out_serializer.v Line: 28
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/altera_up_clock_edge.v
+    Info (12023): Found entity 1: altera_up_clock_edge File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_clock_edge.v Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/altera_up_sync_fifo.v
+    Info (12023): Found entity 1: altera_up_sync_fifo File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_sync_fifo.v Line: 28
+Info (12021): Found 1 design units, including 1 entities, in source file audiotest/synthesis/submodules/unsaved_audio_0.v
+    Info (12023): Found entity 1: unsaved_audio_0 File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/unsaved_audio_0.v Line: 30
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/altera_reset_controller.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_controller.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/altera_reset_controller.v
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/altera_reset_synchronizer.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_synchronizer.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/altera_reset_synchronizer.v
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/altera_up_audio_bit_counter.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_bit_counter.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/altera_up_audio_bit_counter.v
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/altera_up_audio_in_deserializer.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_in_deserializer.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/altera_up_audio_in_deserializer.v
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/altera_up_audio_out_serializer.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_out_serializer.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/altera_up_audio_out_serializer.v
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/altera_up_clock_edge.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_clock_edge.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/altera_up_clock_edge.v
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/altera_up_sync_fifo.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_sync_fifo.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/altera_up_sync_fifo.v
+Info (15248): File "c:/intelfpga_lite/18.1/kbs5.0audio/db/ip/unsaved/submodules/unsaved_audio_0.v" is a duplicate of already analyzed file "C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/unsaved_audio_0.v" (same filename, same library name and same md5 digest). Skipping analysis of this file.
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/unsaved/submodules/unsaved_audio_0.v
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/unsaved/unsaved.v
+    Info (12023): Found entity 1: unsaved File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/ip/unsaved/unsaved.v Line: 6
+Info (12127): Elaborating entity "unsaved" for the top level hierarchy
+Info (12128): Elaborating entity "unsaved_audio_0" for hierarchy "unsaved_audio_0:audio_0" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/ip/unsaved/unsaved.v Line: 28
+Info (12128): Elaborating entity "altera_up_clock_edge" for hierarchy "unsaved_audio_0:audio_0|altera_up_clock_edge:Bit_Clock_Edges" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/unsaved_audio_0.v Line: 274
+Info (12128): Elaborating entity "altera_up_audio_in_deserializer" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/unsaved_audio_0.v Line: 329
+Info (12128): Elaborating entity "altera_up_audio_bit_counter" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_audio_bit_counter:Audio_Out_Bit_Counter" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_in_deserializer.v Line: 179
+Info (12128): Elaborating entity "altera_up_sync_fifo" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_audio_in_deserializer.v Line: 201
+Info (12128): Elaborating entity "scfifo" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_sync_fifo.v Line: 138
+Info (12130): Elaborated megafunction instantiation "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_sync_fifo.v Line: 138
+Info (12133): Instantiated megafunction "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO" with the following parameter: File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_up_sync_fifo.v Line: 138
+    Info (12134): Parameter "add_ram_output_register" = "OFF"
+    Info (12134): Parameter "intended_device_family" = "Cyclone II"
+    Info (12134): Parameter "lpm_numwords" = "128"
+    Info (12134): Parameter "lpm_showahead" = "ON"
+    Info (12134): Parameter "lpm_type" = "scfifo"
+    Info (12134): Parameter "lpm_width" = "16"
+    Info (12134): Parameter "lpm_widthu" = "7"
+    Info (12134): Parameter "overflow_checking" = "OFF"
+    Info (12134): Parameter "underflow_checking" = "OFF"
+    Info (12134): Parameter "use_eab" = "ON"
+Info (12021): Found 1 design units, including 1 entities, in source file db/scfifo_p441.tdf
+    Info (12023): Found entity 1: scfifo_p441 File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/scfifo_p441.tdf Line: 24
+Info (12128): Elaborating entity "scfifo_p441" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/scfifo.tdf Line: 299
+Info (12021): Found 1 design units, including 1 entities, in source file db/a_dpfifo_cs31.tdf
+    Info (12023): Found entity 1: a_dpfifo_cs31 File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf Line: 32
+Info (12128): Elaborating entity "a_dpfifo_cs31" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/scfifo_p441.tdf Line: 37
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_btb1.tdf
+    Info (12023): Found entity 1: altsyncram_btb1 File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_btb1" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf Line: 45
+Info (12021): Found 1 design units, including 1 entities, in source file db/cmpr_ks8.tdf
+    Info (12023): Found entity 1: cmpr_ks8 File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/cmpr_ks8.tdf Line: 22
+Info (12128): Elaborating entity "cmpr_ks8" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cmpr_ks8:almost_full_comparer" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf Line: 54
+Info (12128): Elaborating entity "cmpr_ks8" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cmpr_ks8:three_comparison" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf Line: 55
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_v9b.tdf
+    Info (12023): Found entity 1: cntr_v9b File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/cntr_v9b.tdf Line: 25
+Info (12128): Elaborating entity "cntr_v9b" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_v9b:rd_ptr_msb" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf Line: 56
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_ca7.tdf
+    Info (12023): Found entity 1: cntr_ca7 File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/cntr_ca7.tdf Line: 25
+Info (12128): Elaborating entity "cntr_ca7" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_ca7:usedw_counter" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf Line: 57
+Info (12021): Found 1 design units, including 1 entities, in source file db/cntr_0ab.tdf
+    Info (12023): Found entity 1: cntr_0ab File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/cntr_0ab.tdf Line: 25
+Info (12128): Elaborating entity "cntr_0ab" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|cntr_0ab:wr_ptr" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/a_dpfifo_cs31.tdf Line: 58
+Info (12128): Elaborating entity "altera_up_audio_out_serializer" for hierarchy "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/unsaved_audio_0.v Line: 357
+Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "altera_reset_controller:rst_controller" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/ip/unsaved/unsaved.v Line: 91
+Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_controller.v Line: 208
+Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1" File: C:/intelFPGA_lite/18.1/kbs5.0audio/audiotest/synthesis/submodules/altera_reset_controller.v Line: 220
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[0]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 37
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[1]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 67
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[2]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 97
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[3]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 127
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[4]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 157
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[5]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 187
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[6]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 217
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[7]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 247
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[8]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 277
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[9]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 307
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[10]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 337
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[11]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 367
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[12]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 397
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[13]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 427
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[14]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 457
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[15]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 487
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[0]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 37
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[1]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 67
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[2]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 97
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[3]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 127
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[4]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 157
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[5]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 187
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[6]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 217
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[7]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 247
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[8]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 277
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[9]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 307
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[10]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 337
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[11]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 367
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[12]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 397
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[13]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 427
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[14]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 457
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_out_serializer:Audio_Out_Serializer|altera_up_sync_fifo:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[15]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 487
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[0]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 37
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[1]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 67
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[2]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 97
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[3]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 127
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[4]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 157
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[5]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 187
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[6]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 217
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[7]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 247
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[8]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 277
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[9]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 307
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[10]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 337
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[11]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 367
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[12]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 397
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[13]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 427
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[14]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 457
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[15]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 487
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[0]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 37
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[1]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 67
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[2]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 97
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[3]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 127
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[4]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 157
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[5]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 187
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[6]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 217
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[7]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 247
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[8]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 277
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[9]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 307
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[10]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 337
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[11]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 367
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[12]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 397
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[13]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 427
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[14]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 457
+        Warning (14320): Synthesized away node "unsaved_audio_0:audio_0|altera_up_audio_in_deserializer:Audio_In_Deserializer|altera_up_sync_fifo:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_p441:auto_generated|a_dpfifo_cs31:dpfifo|altsyncram_btb1:FIFOram|q_b[15]" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/altsyncram_btb1.tdf Line: 487
+Info (17049): 162 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk_clk" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/ip/unsaved/unsaved.v Line: 7
+    Warning (15610): No output dependent on input pin "reset_reset_n" File: C:/intelFPGA_lite/18.1/kbs5.0audio/db/ip/unsaved/unsaved.v Line: 9
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 73 warnings
+    Info: Peak virtual memory: 4820 megabytes
+    Info: Processing ended: Wed Nov 22 12:07:20 2023
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:13
+
+

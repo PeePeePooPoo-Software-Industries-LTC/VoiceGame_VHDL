@@ -1,0 +1,138 @@
+Flow report for audiotest
+Wed Nov 22 12:14:28 2023
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Flow Summary                                                                     ;
++------------------------------------+---------------------------------------------+
+; Flow Status                        ; Successful - Wed Nov 22 12:14:28 2023       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                      ; audiotest                                   ;
+; Top-level Entity Name              ; unsaved                                     ;
+; Family                             ; Cyclone IV E                                ;
+; Device                             ; EP4CE115F29C7                               ;
+; Timing Models                      ; Final                                       ;
+; Total logic elements               ; 0 / 114,480 ( 0 % )                         ;
+;     Total combinational functions  ; 0 / 114,480 ( 0 % )                         ;
+;     Dedicated logic registers      ; 0 / 114,480 ( 0 % )                         ;
+; Total registers                    ; 0                                           ;
+; Total pins                         ; 2 / 529 ( < 1 % )                           ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                               ;
++------------------------------------+---------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 11/22/2023 12:07:00 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; audiotest           ;
++-------------------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                           ;
++-------------------------------------+-----------------------------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                                     ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+-----------------------------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 10995770589191.170065122011472                            ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                        ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                         ; --            ; --          ; --         ;
+; MISC_FILE                           ; audiotest/synthesis/../unsaved.cmp                        ; --            ; --          ; --         ;
+; MISC_FILE                           ; audiotest/synthesis/../../unsaved.qsys                    ; --            ; --          ; --         ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                                      ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                    ; --            ; unsaved     ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                    ; --            ; unsaved     ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                    ; --            ; unsaved     ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                       ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                     ; --            ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                              ; --            ; --          ; --         ;
+; SLD_FILE                            ; audiotest/synthesis/unsaved.debuginfo                     ; --            ; --          ; --         ;
+; SLD_INFO                            ; QSYS_NAME unsaved HAS_SOPCINFO 1 GENERATION_ID 1700648079 ; --            ; unsaved     ; --         ;
+; SOPCINFO_FILE                       ; audiotest/synthesis/../../unsaved.sopcinfo                ; --            ; --          ; --         ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                        ; --            ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; unsaved                                                   ; audiotest     ; --          ; --         ;
++-------------------------------------+-----------------------------------------------------------+---------------+-------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:20     ; 1.0                     ; 4820 MB             ; 00:00:13                           ;
+; Fitter               ; 00:00:09     ; 1.0                     ; 5976 MB             ; 00:00:10                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 4681 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4885 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4633 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4637 MB             ; 00:00:01                           ;
+; Total                ; 00:00:38     ; --                      ; --                  ; 00:00:30                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; LAPTOP-83PA39KR  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; LAPTOP-83PA39KR  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; LAPTOP-83PA39KR  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; LAPTOP-83PA39KR  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; LAPTOP-83PA39KR  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; LAPTOP-83PA39KR  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off audiotest -c audiotest
+quartus_fit --read_settings_files=off --write_settings_files=off audiotest -c audiotest
+quartus_asm --read_settings_files=off --write_settings_files=off audiotest -c audiotest
+quartus_sta audiotest -c audiotest
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off audiotest -c audiotest --vector_source=C:/intelFPGA_lite/18.1/kbs5.0audio/Waveform.vwf --testbench_file=C:/intelFPGA_lite/18.1/kbs5.0audio/simulation/qsim/Waveform.vwf.vt
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=C:/intelFPGA_lite/18.1/kbs5.0audio/simulation/qsim/ audiotest -c audiotest
+
+
+
