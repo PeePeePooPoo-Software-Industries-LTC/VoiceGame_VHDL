@@ -21,7 +21,6 @@
 module Core_onchip_memory2_0 (
                                // inputs:
                                 address,
-                                byteenable,
                                 chipselect,
                                 clk,
                                 clken,
@@ -39,9 +38,8 @@ module Core_onchip_memory2_0 (
   parameter INIT_FILE = "Core_onchip_memory2_0.hex";
 
 
-  output  [ 31: 0] readdata;
+  output  [  7: 0] readdata;
   input   [ 18: 0] address;
-  input   [  3: 0] byteenable;
   input            chipselect;
   input            clk;
   input            clken;
@@ -49,18 +47,17 @@ module Core_onchip_memory2_0 (
   input            reset;
   input            reset_req;
   input            write;
-  input   [ 31: 0] writedata;
+  input   [  7: 0] writedata;
 
 
 wire             clocken0;
-wire    [ 31: 0] readdata;
+wire    [  7: 0] readdata;
 wire             wren;
   assign wren = chipselect & write;
   assign clocken0 = clken & ~reset_req;
   altsyncram the_altsyncram
     (
       .address_a (address),
-      .byteena_a (byteenable),
       .clock0 (clk),
       .clocken0 (clocken0),
       .data_a (writedata),
@@ -71,15 +68,14 @@ wire             wren;
   defparam the_altsyncram.byte_size = 8,
            the_altsyncram.init_file = INIT_FILE,
            the_altsyncram.lpm_type = "altsyncram",
-           the_altsyncram.maximum_depth = 524288,
-           the_altsyncram.numwords_a = 524288,
+           the_altsyncram.maximum_depth = 400000,
+           the_altsyncram.numwords_a = 400000,
            the_altsyncram.operation_mode = "SINGLE_PORT",
            the_altsyncram.outdata_reg_a = "UNREGISTERED",
            the_altsyncram.ram_block_type = "AUTO",
            the_altsyncram.read_during_write_mode_mixed_ports = "DONT_CARE",
            the_altsyncram.read_during_write_mode_port_a = "DONT_CARE",
-           the_altsyncram.width_a = 32,
-           the_altsyncram.width_byteena_a = 4,
+           the_altsyncram.width_a = 8,
            the_altsyncram.widthad_a = 19;
 
   //s1, which is an e_avalon_slave
