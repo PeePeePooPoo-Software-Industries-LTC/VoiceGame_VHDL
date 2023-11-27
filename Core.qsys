@@ -9,15 +9,36 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element clk_0
+   element alt_vip_cti_0
    {
       datum _sortIndex
       {
-         value = "0";
+         value = "8";
          type = "int";
       }
    }
-   element clk_1
+   element audio_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element audio_0.avalon_audio_slave
+   {
+      datum baseAddress
+      {
+         value = "1052800";
+         type = "String";
+      }
+   }
+   element audio_pll_0
    {
       datum _sortIndex
       {
@@ -25,20 +46,12 @@
          type = "int";
       }
    }
-   element i2c_0
+   element clk_0
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "0";
          type = "int";
-      }
-   }
-   element i2c_0.csr
-   {
-      datum baseAddress
-      {
-         value = "1052736";
-         type = "String";
       }
    }
    element jtag_uart_0
@@ -53,7 +66,7 @@
    {
       datum baseAddress
       {
-         value = "1052800";
+         value = "1052816";
          type = "String";
       }
    }
@@ -89,11 +102,19 @@
          type = "String";
       }
    }
+   element video_pll_0
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
    element video_vga_controller_0
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "4";
          type = "int";
       }
    }
@@ -118,40 +139,72 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
- <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
- <interface name="clk_25" internal="clk_1.clk_in" type="clock" dir="end" />
  <interface
-   name="i2c_serial"
-   internal="i2c_0.i2c_serial"
+   name="alt_vip_cti_0_clocked_video"
+   internal="alt_vip_cti_0.clocked_video"
    type="conduit"
    dir="end" />
+ <interface
+   name="audio_0_external_interface"
+   internal="audio_0.external_interface"
+   type="conduit"
+   dir="end" />
+ <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface
    name="vga_external_interface"
    internal="video_vga_controller_0.external_interface"
    type="conduit"
    dir="end" />
- <interface
-   name="vga_sink"
-   internal="video_vga_controller_0.avalon_vga_sink"
-   type="avalon_streaming"
-   dir="end" />
+ <module name="alt_vip_cti_0" kind="alt_vip_cti" version="14.0" enabled="1">
+  <parameter name="ACCEPT_COLOURS_IN_SEQ" value="0" />
+  <parameter name="ADD_DATA_ENABLE_SIGNAL" value="0" />
+  <parameter name="BPS" value="10" />
+  <parameter name="CLOCKS_ARE_SAME" value="0" />
+  <parameter name="COLOUR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="FAMILY" value="Cyclone IV E" />
+  <parameter name="FIFO_DEPTH" value="640" />
+  <parameter name="GENERATE_ANC" value="0" />
+  <parameter name="GENERATE_SYNC" value="0" />
+  <parameter name="H_ACTIVE_PIXELS_F0" value="640" />
+  <parameter name="INTERLACED" value="0" />
+  <parameter name="NUMBER_OF_COLOUR_PLANES" value="3" />
+  <parameter name="STD_WIDTH" value="1" />
+  <parameter name="SYNC_TO" value="0" />
+  <parameter name="USE_CONTROL" value="0" />
+  <parameter name="USE_EMBEDDED_SYNCS" value="0" />
+  <parameter name="USE_STD" value="0" />
+  <parameter name="V_ACTIVE_LINES_F0" value="480" />
+  <parameter name="V_ACTIVE_LINES_F1" value="480" />
+ </module>
+ <module
+   name="audio_0"
+   kind="altera_up_avalon_audio"
+   version="18.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="12288000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="audio_in" value="true" />
+  <parameter name="audio_out" value="true" />
+  <parameter name="avalon_bus_type" value="Memory Mapped" />
+  <parameter name="dw" value="16" />
+ </module>
+ <module
+   name="audio_pll_0"
+   kind="altera_up_avalon_audio_pll"
+   version="18.0"
+   enabled="1">
+  <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="audio_clk_freq" value="12.288" />
+  <parameter name="device_family" value="Cyclone IV E" />
+  <parameter name="gui_refclk" value="50.0" />
+ </module>
  <module name="clk_0" kind="clock_source" version="18.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
- </module>
- <module name="clk_1" kind="clock_source" version="18.1" enabled="1">
-  <parameter name="clockFrequency" value="25000000" />
-  <parameter name="clockFrequencyKnown" value="true" />
-  <parameter name="inputClockFrequency" value="0" />
-  <parameter name="resetSynchronousEdges" value="NONE" />
- </module>
- <module name="i2c_0" kind="altera_avalon_i2c" version="18.1" enabled="1">
-  <parameter name="FIFO_DEPTH" value="4" />
-  <parameter name="USE_AV_ST" value="0" />
-  <parameter name="clockRate" value="50000000" />
  </module>
  <module
    name="jtag_uart_0"
@@ -196,7 +249,7 @@
   <parameter name="dataAddrWidth" value="21" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x80000' end='0xE1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x100800' end='0x101000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='i2c_0.csr' start='0x101040' end='0x101080' type='altera_avalon_i2c.csr' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x101080' end='0x101088' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x80000' end='0xE1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x100800' end='0x101000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='audio_0.avalon_audio_slave' start='0x101080' end='0x101090' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x101090' end='0x101098' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -235,7 +288,7 @@
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Fast" />
   <parameter name="instAddrWidth" value="21" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x80000' end='0xE1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x100800' end='0x101000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='i2c_0.csr' start='0x101040' end='0x101080' type='altera_avalon_i2c.csr' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x80000' end='0xE1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x100800' end='0x101000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -387,6 +440,22 @@
   <parameter name="writable" value="true" />
  </module>
  <module
+   name="video_pll_0"
+   kind="altera_up_avalon_video_pll"
+   version="18.0"
+   enabled="1">
+  <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="camera">5MP Digital Camera (THDB_D5M)</parameter>
+  <parameter name="device_family" value="Cyclone IV E" />
+  <parameter name="gui_refclk" value="50.0" />
+  <parameter name="gui_resolution" value="VGA 640x480" />
+  <parameter name="lcd">7" LCD on VEEK-MT and MTL/MTL2 Modules</parameter>
+  <parameter name="lcd_clk_en" value="false" />
+  <parameter name="vga_clk_en" value="true" />
+  <parameter name="video_in_clk_en" value="false" />
+ </module>
+ <module
    name="video_vga_controller_0"
    kind="altera_up_avalon_video_vga_controller"
    version="18.0"
@@ -402,7 +471,7 @@
    kind="avalon"
    version="18.1"
    start="nios2_gen2_0.data_master"
-   end="jtag_uart_0.avalon_jtag_slave">
+   end="audio_0.avalon_audio_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00101080" />
   <parameter name="defaultConnection" value="false" />
@@ -411,9 +480,9 @@
    kind="avalon"
    version="18.1"
    start="nios2_gen2_0.data_master"
-   end="i2c_0.csr">
+   end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00101040" />
+  <parameter name="baseAddress" value="0x00101090" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -438,15 +507,6 @@
    kind="avalon"
    version="18.1"
    start="nios2_gen2_0.instruction_master"
-   end="i2c_0.csr">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00101040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2_0.instruction_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00100800" />
@@ -461,24 +521,48 @@
   <parameter name="baseAddress" value="0x00080000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="alt_vip_cti_0.dout"
+   end="video_vga_controller_0.avalon_vga_sink" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="audio_pll_0.audio_clk"
+   end="audio_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="nios2_gen2_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="jtag_uart_0.clk" />
  <connection
    kind="clock"
    version="18.1"
-   start="clk_1.clk"
-   end="video_vga_controller_0.clk" />
+   start="clk_0.clk"
+   end="onchip_memory2_0.clk1" />
  <connection
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="onchip_memory2_0.clk1" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="i2c_0.clock" />
+   end="audio_pll_0.ref_clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="video_pll_0.ref_clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="video_pll_0.vga_clk"
+   end="video_vga_controller_0.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="video_pll_0.vga_clk"
+   end="alt_vip_cti_0.is_clk_rst" />
  <connection
    kind="interrupt"
    version="18.1"
    start="nios2_gen2_0.irq"
-   end="i2c_0.interrupt_sender">
+   end="audio_0.interrupt">
   <parameter name="irqNumber" value="0" />
  </connection>
  <connection
@@ -492,16 +576,6 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="clk_1.clk_in_reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="video_vga_controller_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
    end="jtag_uart_0.reset" />
  <connection
    kind="reset"
@@ -516,8 +590,13 @@
  <connection
    kind="reset"
    version="18.1"
-   start="clk_0.clk_reset"
-   end="i2c_0.reset_sink" />
+   start="nios2_gen2_0.debug_reset_request"
+   end="audio_pll_0.ref_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="nios2_gen2_0.debug_reset_request"
+   end="video_pll_0.ref_reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -532,17 +611,22 @@
    kind="reset"
    version="18.1"
    start="nios2_gen2_0.debug_reset_request"
-   end="video_vga_controller_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="nios2_gen2_0.debug_reset_request"
    end="onchip_memory2_0.reset1" />
  <connection
    kind="reset"
    version="18.1"
-   start="nios2_gen2_0.debug_reset_request"
-   end="i2c_0.reset_sink" />
+   start="video_pll_0.reset_source"
+   end="alt_vip_cti_0.is_clk_rst_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="audio_pll_0.reset_source"
+   end="audio_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="video_pll_0.reset_source"
+   end="video_vga_controller_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
