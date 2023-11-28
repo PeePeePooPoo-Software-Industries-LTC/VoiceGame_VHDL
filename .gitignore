@@ -1,5 +1,5 @@
 *.flock
 *.bkp
-db
-output_files
-incremental_db
+db/
+output_files/
+incremental_db/
