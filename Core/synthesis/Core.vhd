@@ -8,57 +8,94 @@ use IEEE.numeric_std.all;
 
 entity Core is
 	port (
-		clk_clk                      : in  std_logic                     := '0';             --                    clk.clk
-		clk_25_clk                   : in  std_logic                     := '0';             --                 clk_25.clk
-		i2c_serial_sda_in            : in  std_logic                     := '0';             --             i2c_serial.sda_in
-		i2c_serial_scl_in            : in  std_logic                     := '0';             --                       .scl_in
-		i2c_serial_sda_oe            : out std_logic;                                        --                       .sda_oe
-		i2c_serial_scl_oe            : out std_logic;                                        --                       .scl_oe
-		reset_reset_n                : in  std_logic                     := '0';             --                  reset.reset_n
-		vga_external_interface_CLK   : out std_logic;                                        -- vga_external_interface.CLK
-		vga_external_interface_HS    : out std_logic;                                        --                       .HS
-		vga_external_interface_VS    : out std_logic;                                        --                       .VS
-		vga_external_interface_BLANK : out std_logic;                                        --                       .BLANK
-		vga_external_interface_SYNC  : out std_logic;                                        --                       .SYNC
-		vga_external_interface_R     : out std_logic_vector(7 downto 0);                     --                       .R
-		vga_external_interface_G     : out std_logic_vector(7 downto 0);                     --                       .G
-		vga_external_interface_B     : out std_logic_vector(7 downto 0);                     --                       .B
-		vga_sink_data                : in  std_logic_vector(29 downto 0) := (others => '0'); --               vga_sink.data
-		vga_sink_startofpacket       : in  std_logic                     := '0';             --                       .startofpacket
-		vga_sink_endofpacket         : in  std_logic                     := '0';             --                       .endofpacket
-		vga_sink_valid               : in  std_logic                     := '0';             --                       .valid
-		vga_sink_ready               : out std_logic                                         --                       .ready
+		audio_external_interface_ADCDAT     : in  std_logic                     := '0';             -- audio_external_interface.ADCDAT
+		audio_external_interface_ADCLRCK    : in  std_logic                     := '0';             --                         .ADCLRCK
+		audio_external_interface_BCLK       : in  std_logic                     := '0';             --                         .BCLK
+		audio_external_interface_DACDAT     : out std_logic;                                        --                         .DACDAT
+		audio_external_interface_DACLRCK    : in  std_logic                     := '0';             --                         .DACLRCK
+		clk_clk                             : in  std_logic                     := '0';             --                      clk.clk
+		clocked_video_conduit_vid_clk       : in  std_logic                     := '0';             --    clocked_video_conduit.vid_clk
+		clocked_video_conduit_vid_data      : in  std_logic_vector(29 downto 0) := (others => '0'); --                         .vid_data
+		clocked_video_conduit_overflow      : out std_logic;                                        --                         .overflow
+		clocked_video_conduit_vid_datavalid : in  std_logic                     := '0';             --                         .vid_datavalid
+		clocked_video_conduit_vid_locked    : in  std_logic                     := '0';             --                         .vid_locked
+		reset_reset_n                       : in  std_logic                     := '0';             --                    reset.reset_n
+		vga_external_interface_CLK          : out std_logic;                                        --   vga_external_interface.CLK
+		vga_external_interface_HS           : out std_logic;                                        --                         .HS
+		vga_external_interface_VS           : out std_logic;                                        --                         .VS
+		vga_external_interface_BLANK        : out std_logic;                                        --                         .BLANK
+		vga_external_interface_SYNC         : out std_logic;                                        --                         .SYNC
+		vga_external_interface_R            : out std_logic_vector(7 downto 0);                     --                         .R
+		vga_external_interface_G            : out std_logic_vector(7 downto 0);                     --                         .G
+		vga_external_interface_B            : out std_logic_vector(7 downto 0)                      --                         .B
 	);
 end entity Core;
 
 architecture rtl of Core is
-	component altera_avalon_i2c is
+	component alt_vipcti131_Vid2IS is
 		generic (
-			USE_AV_ST       : integer := 0;
-			FIFO_DEPTH      : integer := 4;
-			FIFO_DEPTH_LOG2 : integer := 2
+			BPS                           : integer := 8;
+			NUMBER_OF_COLOUR_PLANES       : integer := 3;
+			COLOUR_PLANES_ARE_IN_PARALLEL : integer := 1;
+			SYNC_TO                       : integer := 0;
+			USE_EMBEDDED_SYNCS            : integer := 0;
+			ADD_DATA_ENABLE_SIGNAL        : integer := 0;
+			ACCEPT_COLOURS_IN_SEQ         : integer := 0;
+			USE_STD                       : integer := 0;
+			STD_WIDTH                     : integer := 1;
+			GENERATE_ANC                  : integer := 0;
+			INTERLACED                    : integer := 0;
+			H_ACTIVE_PIXELS_F0            : integer := 1920;
+			V_ACTIVE_LINES_F0             : integer := 1080;
+			V_ACTIVE_LINES_F1             : integer := 480;
+			FIFO_DEPTH                    : integer := 1920;
+			CLOCKS_ARE_SAME               : integer := 0;
+			USE_CONTROL                   : integer := 0;
+			GENERATE_SYNC                 : integer := 0
 		);
 		port (
-			clk       : in  std_logic                     := 'X';             -- clk
-			rst_n     : in  std_logic                     := 'X';             -- reset_n
-			intr      : out std_logic;                                        -- irq
-			addr      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- address
-			read      : in  std_logic                     := 'X';             -- read
-			write     : in  std_logic                     := 'X';             -- write
-			writedata : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			readdata  : out std_logic_vector(31 downto 0);                    -- readdata
-			sda_in    : in  std_logic                     := 'X';             -- sda_in
-			scl_in    : in  std_logic                     := 'X';             -- scl_in
-			sda_oe    : out std_logic;                                        -- sda_oe
-			scl_oe    : out std_logic;                                        -- scl_oe
-			src_data  : out std_logic_vector(7 downto 0);                     -- data
-			src_valid : out std_logic;                                        -- valid
-			src_ready : in  std_logic                     := 'X';             -- ready
-			snk_data  : in  std_logic_vector(15 downto 0) := (others => 'X'); -- data
-			snk_valid : in  std_logic                     := 'X';             -- valid
-			snk_ready : out std_logic                                         -- ready
+			is_clk        : in  std_logic                     := 'X';             -- clk
+			rst           : in  std_logic                     := 'X';             -- reset
+			is_data       : out std_logic_vector(29 downto 0);                    -- data
+			is_valid      : out std_logic;                                        -- valid
+			is_ready      : in  std_logic                     := 'X';             -- ready
+			is_sop        : out std_logic;                                        -- startofpacket
+			is_eop        : out std_logic;                                        -- endofpacket
+			vid_clk       : in  std_logic                     := 'X';             -- export
+			vid_data      : in  std_logic_vector(29 downto 0) := (others => 'X'); -- export
+			overflow      : out std_logic;                                        -- export
+			vid_datavalid : in  std_logic                     := 'X';             -- export
+			vid_locked    : in  std_logic                     := 'X'              -- export
 		);
-	end component altera_avalon_i2c;
+	end component alt_vipcti131_Vid2IS;
+
+	component Core_audio_0 is
+		port (
+			clk         : in  std_logic                     := 'X';             -- clk
+			reset       : in  std_logic                     := 'X';             -- reset
+			address     : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			chipselect  : in  std_logic                     := 'X';             -- chipselect
+			read        : in  std_logic                     := 'X';             -- read
+			write       : in  std_logic                     := 'X';             -- write
+			writedata   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			readdata    : out std_logic_vector(31 downto 0);                    -- readdata
+			irq         : out std_logic;                                        -- irq
+			AUD_ADCDAT  : in  std_logic                     := 'X';             -- export
+			AUD_ADCLRCK : in  std_logic                     := 'X';             -- export
+			AUD_BCLK    : in  std_logic                     := 'X';             -- export
+			AUD_DACDAT  : out std_logic;                                        -- export
+			AUD_DACLRCK : in  std_logic                     := 'X'              -- export
+		);
+	end component Core_audio_0;
+
+	component Core_audio_pll_0 is
+		port (
+			ref_clk_clk        : in  std_logic := 'X'; -- clk
+			ref_reset_reset    : in  std_logic := 'X'; -- reset
+			audio_clk_clk      : out std_logic;        -- clk
+			reset_source_reset : out std_logic         -- reset
+		);
+	end component Core_audio_pll_0;
 
 	component Core_jtag_uart_0 is
 		port (
@@ -123,6 +160,50 @@ architecture rtl of Core is
 		);
 	end component Core_onchip_memory2_0;
 
+	component Core_st_adapter_0 is
+		generic (
+			inBitsPerSymbol : integer := 8;
+			inUsePackets    : integer := 0;
+			inDataWidth     : integer := 8;
+			inChannelWidth  : integer := 3;
+			inErrorWidth    : integer := 2;
+			inUseEmptyPort  : integer := 0;
+			inUseValid      : integer := 1;
+			inUseReady      : integer := 1;
+			inReadyLatency  : integer := 0;
+			outDataWidth    : integer := 32;
+			outChannelWidth : integer := 3;
+			outErrorWidth   : integer := 2;
+			outUseEmptyPort : integer := 0;
+			outUseValid     : integer := 1;
+			outUseReady     : integer := 1;
+			outReadyLatency : integer := 0
+		);
+		port (
+			in_clk_0_clk        : in  std_logic                     := 'X';             -- clk
+			in_rst_0_reset      : in  std_logic                     := 'X';             -- reset
+			in_0_data           : in  std_logic_vector(29 downto 0) := (others => 'X'); -- data
+			in_0_valid          : in  std_logic                     := 'X';             -- valid
+			in_0_ready          : out std_logic;                                        -- ready
+			in_0_startofpacket  : in  std_logic                     := 'X';             -- startofpacket
+			in_0_endofpacket    : in  std_logic                     := 'X';             -- endofpacket
+			out_0_data          : out std_logic_vector(29 downto 0);                    -- data
+			out_0_valid         : out std_logic;                                        -- valid
+			out_0_ready         : in  std_logic                     := 'X';             -- ready
+			out_0_startofpacket : out std_logic;                                        -- startofpacket
+			out_0_endofpacket   : out std_logic                                         -- endofpacket
+		);
+	end component Core_st_adapter_0;
+
+	component Core_video_pll_0 is
+		port (
+			ref_clk_clk        : in  std_logic := 'X'; -- clk
+			ref_reset_reset    : in  std_logic := 'X'; -- reset
+			vga_clk_clk        : out std_logic;        -- clk
+			reset_source_reset : out std_logic         -- reset
+		);
+	end component Core_video_pll_0;
+
 	component Core_video_vga_controller_0 is
 		port (
 			clk           : in  std_logic                     := 'X';             -- clk
@@ -145,7 +226,9 @@ architecture rtl of Core is
 
 	component Core_mm_interconnect_0 is
 		port (
+			audio_pll_0_audio_clk_clk                      : in  std_logic                     := 'X';             -- clk
 			clk_0_clk_clk                                  : in  std_logic                     := 'X';             -- clk
+			audio_0_reset_reset_bridge_in_reset_reset      : in  std_logic                     := 'X';             -- reset
 			nios2_gen2_0_reset_reset_bridge_in_reset_reset : in  std_logic                     := 'X';             -- reset
 			nios2_gen2_0_data_master_address               : in  std_logic_vector(20 downto 0) := (others => 'X'); -- address
 			nios2_gen2_0_data_master_waitrequest           : out std_logic;                                        -- waitrequest
@@ -161,11 +244,12 @@ architecture rtl of Core is
 			nios2_gen2_0_instruction_master_read           : in  std_logic                     := 'X';             -- read
 			nios2_gen2_0_instruction_master_readdata       : out std_logic_vector(31 downto 0);                    -- readdata
 			nios2_gen2_0_instruction_master_readdatavalid  : out std_logic;                                        -- readdatavalid
-			i2c_0_csr_address                              : out std_logic_vector(3 downto 0);                     -- address
-			i2c_0_csr_write                                : out std_logic;                                        -- write
-			i2c_0_csr_read                                 : out std_logic;                                        -- read
-			i2c_0_csr_readdata                             : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			i2c_0_csr_writedata                            : out std_logic_vector(31 downto 0);                    -- writedata
+			audio_0_avalon_audio_slave_address             : out std_logic_vector(1 downto 0);                     -- address
+			audio_0_avalon_audio_slave_write               : out std_logic;                                        -- write
+			audio_0_avalon_audio_slave_read                : out std_logic;                                        -- read
+			audio_0_avalon_audio_slave_readdata            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			audio_0_avalon_audio_slave_writedata           : out std_logic_vector(31 downto 0);                    -- writedata
+			audio_0_avalon_audio_slave_chipselect          : out std_logic;                                        -- chipselect
 			jtag_uart_0_avalon_jtag_slave_address          : out std_logic_vector(0 downto 0);                     -- address
 			jtag_uart_0_avalon_jtag_slave_write            : out std_logic;                                        -- write
 			jtag_uart_0_avalon_jtag_slave_read             : out std_logic;                                        -- read
@@ -200,7 +284,87 @@ architecture rtl of Core is
 		);
 	end component Core_irq_mapper;
 
+	component altera_irq_clock_crosser is
+		generic (
+			IRQ_WIDTH : integer := 1
+		);
+		port (
+			receiver_clk   : in  std_logic                    := 'X';             -- clk
+			sender_clk     : in  std_logic                    := 'X';             -- clk
+			receiver_reset : in  std_logic                    := 'X';             -- reset
+			sender_reset   : in  std_logic                    := 'X';             -- reset
+			receiver_irq   : in  std_logic_vector(0 downto 0) := (others => 'X'); -- irq
+			sender_irq     : out std_logic_vector(0 downto 0)                     -- irq
+		);
+	end component altera_irq_clock_crosser;
+
 	component core_rst_controller is
+		generic (
+			NUM_RESET_INPUTS          : integer := 6;
+			OUTPUT_RESET_SYNC_EDGES   : string  := "deassert";
+			SYNC_DEPTH                : integer := 2;
+			RESET_REQUEST_PRESENT     : integer := 0;
+			RESET_REQ_WAIT_TIME       : integer := 1;
+			MIN_RST_ASSERTION_TIME    : integer := 3;
+			RESET_REQ_EARLY_DSRT_TIME : integer := 1;
+			USE_RESET_REQUEST_IN0     : integer := 0;
+			USE_RESET_REQUEST_IN1     : integer := 0;
+			USE_RESET_REQUEST_IN2     : integer := 0;
+			USE_RESET_REQUEST_IN3     : integer := 0;
+			USE_RESET_REQUEST_IN4     : integer := 0;
+			USE_RESET_REQUEST_IN5     : integer := 0;
+			USE_RESET_REQUEST_IN6     : integer := 0;
+			USE_RESET_REQUEST_IN7     : integer := 0;
+			USE_RESET_REQUEST_IN8     : integer := 0;
+			USE_RESET_REQUEST_IN9     : integer := 0;
+			USE_RESET_REQUEST_IN10    : integer := 0;
+			USE_RESET_REQUEST_IN11    : integer := 0;
+			USE_RESET_REQUEST_IN12    : integer := 0;
+			USE_RESET_REQUEST_IN13    : integer := 0;
+			USE_RESET_REQUEST_IN14    : integer := 0;
+			USE_RESET_REQUEST_IN15    : integer := 0;
+			ADAPT_RESET_REQUEST       : integer := 0
+		);
+		port (
+			reset_in0      : in  std_logic := 'X'; -- reset_in0.reset
+			clk            : in  std_logic := 'X'; --       clk.clk
+			reset_out      : out std_logic;        -- reset_out.reset
+			reset_in1      : in  std_logic := 'X';
+			reset_in10     : in  std_logic := 'X';
+			reset_in11     : in  std_logic := 'X';
+			reset_in12     : in  std_logic := 'X';
+			reset_in13     : in  std_logic := 'X';
+			reset_in14     : in  std_logic := 'X';
+			reset_in15     : in  std_logic := 'X';
+			reset_in2      : in  std_logic := 'X';
+			reset_in3      : in  std_logic := 'X';
+			reset_in4      : in  std_logic := 'X';
+			reset_in5      : in  std_logic := 'X';
+			reset_in6      : in  std_logic := 'X';
+			reset_in7      : in  std_logic := 'X';
+			reset_in8      : in  std_logic := 'X';
+			reset_in9      : in  std_logic := 'X';
+			reset_req      : out std_logic;
+			reset_req_in0  : in  std_logic := 'X';
+			reset_req_in1  : in  std_logic := 'X';
+			reset_req_in10 : in  std_logic := 'X';
+			reset_req_in11 : in  std_logic := 'X';
+			reset_req_in12 : in  std_logic := 'X';
+			reset_req_in13 : in  std_logic := 'X';
+			reset_req_in14 : in  std_logic := 'X';
+			reset_req_in15 : in  std_logic := 'X';
+			reset_req_in2  : in  std_logic := 'X';
+			reset_req_in3  : in  std_logic := 'X';
+			reset_req_in4  : in  std_logic := 'X';
+			reset_req_in5  : in  std_logic := 'X';
+			reset_req_in6  : in  std_logic := 'X';
+			reset_req_in7  : in  std_logic := 'X';
+			reset_req_in8  : in  std_logic := 'X';
+			reset_req_in9  : in  std_logic := 'X'
+		);
+	end component core_rst_controller;
+
+	component core_rst_controller_002 is
 		generic (
 			NUM_RESET_INPUTS          : integer := 6;
 			OUTPUT_RESET_SYNC_EDGES   : string  := "deassert";
@@ -264,74 +428,21 @@ architecture rtl of Core is
 			reset_req_in8  : in  std_logic := 'X';
 			reset_req_in9  : in  std_logic := 'X'
 		);
-	end component core_rst_controller;
+	end component core_rst_controller_002;
 
-	component core_rst_controller_001 is
-		generic (
-			NUM_RESET_INPUTS          : integer := 6;
-			OUTPUT_RESET_SYNC_EDGES   : string  := "deassert";
-			SYNC_DEPTH                : integer := 2;
-			RESET_REQUEST_PRESENT     : integer := 0;
-			RESET_REQ_WAIT_TIME       : integer := 1;
-			MIN_RST_ASSERTION_TIME    : integer := 3;
-			RESET_REQ_EARLY_DSRT_TIME : integer := 1;
-			USE_RESET_REQUEST_IN0     : integer := 0;
-			USE_RESET_REQUEST_IN1     : integer := 0;
-			USE_RESET_REQUEST_IN2     : integer := 0;
-			USE_RESET_REQUEST_IN3     : integer := 0;
-			USE_RESET_REQUEST_IN4     : integer := 0;
-			USE_RESET_REQUEST_IN5     : integer := 0;
-			USE_RESET_REQUEST_IN6     : integer := 0;
-			USE_RESET_REQUEST_IN7     : integer := 0;
-			USE_RESET_REQUEST_IN8     : integer := 0;
-			USE_RESET_REQUEST_IN9     : integer := 0;
-			USE_RESET_REQUEST_IN10    : integer := 0;
-			USE_RESET_REQUEST_IN11    : integer := 0;
-			USE_RESET_REQUEST_IN12    : integer := 0;
-			USE_RESET_REQUEST_IN13    : integer := 0;
-			USE_RESET_REQUEST_IN14    : integer := 0;
-			USE_RESET_REQUEST_IN15    : integer := 0;
-			ADAPT_RESET_REQUEST       : integer := 0
-		);
-		port (
-			reset_in0      : in  std_logic := 'X'; -- reset_in0.reset
-			reset_in1      : in  std_logic := 'X'; -- reset_in1.reset
-			clk            : in  std_logic := 'X'; --       clk.clk
-			reset_out      : out std_logic;        -- reset_out.reset
-			reset_in10     : in  std_logic := 'X';
-			reset_in11     : in  std_logic := 'X';
-			reset_in12     : in  std_logic := 'X';
-			reset_in13     : in  std_logic := 'X';
-			reset_in14     : in  std_logic := 'X';
-			reset_in15     : in  std_logic := 'X';
-			reset_in2      : in  std_logic := 'X';
-			reset_in3      : in  std_logic := 'X';
-			reset_in4      : in  std_logic := 'X';
-			reset_in5      : in  std_logic := 'X';
-			reset_in6      : in  std_logic := 'X';
-			reset_in7      : in  std_logic := 'X';
-			reset_in8      : in  std_logic := 'X';
-			reset_in9      : in  std_logic := 'X';
-			reset_req      : out std_logic;
-			reset_req_in0  : in  std_logic := 'X';
-			reset_req_in1  : in  std_logic := 'X';
-			reset_req_in10 : in  std_logic := 'X';
-			reset_req_in11 : in  std_logic := 'X';
-			reset_req_in12 : in  std_logic := 'X';
-			reset_req_in13 : in  std_logic := 'X';
-			reset_req_in14 : in  std_logic := 'X';
-			reset_req_in15 : in  std_logic := 'X';
-			reset_req_in2  : in  std_logic := 'X';
-			reset_req_in3  : in  std_logic := 'X';
-			reset_req_in4  : in  std_logic := 'X';
-			reset_req_in5  : in  std_logic := 'X';
-			reset_req_in6  : in  std_logic := 'X';
-			reset_req_in7  : in  std_logic := 'X';
-			reset_req_in8  : in  std_logic := 'X';
-			reset_req_in9  : in  std_logic := 'X'
-		);
-	end component core_rst_controller_001;
-
+	signal alt_vip_cti_0_dout_valid                                        : std_logic;                     -- alt_vip_cti_0:is_valid -> st_adapter_0:in_0_valid
+	signal alt_vip_cti_0_dout_data                                         : std_logic_vector(29 downto 0); -- alt_vip_cti_0:is_data -> st_adapter_0:in_0_data
+	signal alt_vip_cti_0_dout_ready                                        : std_logic;                     -- st_adapter_0:in_0_ready -> alt_vip_cti_0:is_ready
+	signal alt_vip_cti_0_dout_startofpacket                                : std_logic;                     -- alt_vip_cti_0:is_sop -> st_adapter_0:in_0_startofpacket
+	signal alt_vip_cti_0_dout_endofpacket                                  : std_logic;                     -- alt_vip_cti_0:is_eop -> st_adapter_0:in_0_endofpacket
+	signal st_adapter_0_out_0_valid                                        : std_logic;                     -- st_adapter_0:out_0_valid -> video_vga_controller_0:valid
+	signal st_adapter_0_out_0_data                                         : std_logic_vector(29 downto 0); -- st_adapter_0:out_0_data -> video_vga_controller_0:data
+	signal st_adapter_0_out_0_ready                                        : std_logic;                     -- video_vga_controller_0:ready -> st_adapter_0:out_0_ready
+	signal st_adapter_0_out_0_startofpacket                                : std_logic;                     -- st_adapter_0:out_0_startofpacket -> video_vga_controller_0:startofpacket
+	signal st_adapter_0_out_0_endofpacket                                  : std_logic;                     -- st_adapter_0:out_0_endofpacket -> video_vga_controller_0:endofpacket
+	signal audio_pll_0_audio_clk_clk                                       : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio_0:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:audio_pll_0_audio_clk_clk, rst_controller_001:clk]
+	signal video_pll_0_vga_clk_clk                                         : std_logic;                     -- video_pll_0:vga_clk_clk -> [alt_vip_cti_0:is_clk, rst_controller:clk, st_adapter_0:in_clk_0_clk, video_vga_controller_0:clk]
+	signal nios2_gen2_0_debug_reset_request_reset                          : std_logic;                     -- nios2_gen2_0:debug_reset_request -> [audio_pll_0:ref_reset_reset, rst_controller_002:reset_in1, video_pll_0:ref_reset_reset]
 	signal nios2_gen2_0_data_master_readdata                               : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
 	signal nios2_gen2_0_data_master_waitrequest                            : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
 	signal nios2_gen2_0_data_master_debugaccess                            : std_logic;                     -- nios2_gen2_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_0_data_master_debugaccess
@@ -346,6 +457,12 @@ architecture rtl of Core is
 	signal nios2_gen2_0_instruction_master_address                         : std_logic_vector(20 downto 0); -- nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
 	signal nios2_gen2_0_instruction_master_read                            : std_logic;                     -- nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
 	signal nios2_gen2_0_instruction_master_readdatavalid                   : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_instruction_master_readdatavalid -> nios2_gen2_0:i_readdatavalid
+	signal mm_interconnect_0_audio_0_avalon_audio_slave_chipselect         : std_logic;                     -- mm_interconnect_0:audio_0_avalon_audio_slave_chipselect -> audio_0:chipselect
+	signal mm_interconnect_0_audio_0_avalon_audio_slave_readdata           : std_logic_vector(31 downto 0); -- audio_0:readdata -> mm_interconnect_0:audio_0_avalon_audio_slave_readdata
+	signal mm_interconnect_0_audio_0_avalon_audio_slave_address            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:audio_0_avalon_audio_slave_address -> audio_0:address
+	signal mm_interconnect_0_audio_0_avalon_audio_slave_read               : std_logic;                     -- mm_interconnect_0:audio_0_avalon_audio_slave_read -> audio_0:read
+	signal mm_interconnect_0_audio_0_avalon_audio_slave_write              : std_logic;                     -- mm_interconnect_0:audio_0_avalon_audio_slave_write -> audio_0:write
+	signal mm_interconnect_0_audio_0_avalon_audio_slave_writedata          : std_logic_vector(31 downto 0); -- mm_interconnect_0:audio_0_avalon_audio_slave_writedata -> audio_0:writedata
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect      : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata        : std_logic_vector(31 downto 0); -- jtag_uart_0:av_readdata -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_readdata
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest     : std_logic;                     -- jtag_uart_0:av_waitrequest -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_waitrequest
@@ -353,11 +470,6 @@ architecture rtl of Core is
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read            : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_read -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:in
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write           : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:in
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata       : std_logic_vector(31 downto 0); -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
-	signal mm_interconnect_0_i2c_0_csr_readdata                            : std_logic_vector(31 downto 0); -- i2c_0:readdata -> mm_interconnect_0:i2c_0_csr_readdata
-	signal mm_interconnect_0_i2c_0_csr_address                             : std_logic_vector(3 downto 0);  -- mm_interconnect_0:i2c_0_csr_address -> i2c_0:addr
-	signal mm_interconnect_0_i2c_0_csr_read                                : std_logic;                     -- mm_interconnect_0:i2c_0_csr_read -> i2c_0:read
-	signal mm_interconnect_0_i2c_0_csr_write                               : std_logic;                     -- mm_interconnect_0:i2c_0_csr_write -> i2c_0:write
-	signal mm_interconnect_0_i2c_0_csr_writedata                           : std_logic_vector(31 downto 0); -- mm_interconnect_0:i2c_0_csr_writedata -> i2c_0:writedata
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata         : std_logic_vector(31 downto 0); -- nios2_gen2_0:debug_mem_slave_readdata -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_readdata
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_waitrequest      : std_logic;                     -- nios2_gen2_0:debug_mem_slave_waitrequest -> mm_interconnect_0:nios2_gen2_0_debug_mem_slave_waitrequest
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_debugaccess      : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_debugaccess -> nios2_gen2_0:debug_mem_slave_debugaccess
@@ -372,51 +484,89 @@ architecture rtl of Core is
 	signal mm_interconnect_0_onchip_memory2_0_s1_write                     : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	signal mm_interconnect_0_onchip_memory2_0_s1_writedata                 : std_logic_vector(7 downto 0);  -- mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	signal mm_interconnect_0_onchip_memory2_0_s1_clken                     : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
-	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- i2c_0:intr -> irq_mapper:receiver0_irq
 	signal irq_mapper_receiver1_irq                                        : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver1_irq
 	signal nios2_gen2_0_irq_irq                                            : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
-	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [irq_mapper:reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_reset_out_reset:in, rst_translator:in_reset]
-	signal rst_controller_reset_out_reset_req                              : std_logic;                     -- rst_controller:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
-	signal nios2_gen2_0_debug_reset_request_reset                          : std_logic;                     -- nios2_gen2_0:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1]
-	signal rst_controller_001_reset_out_reset                              : std_logic;                     -- rst_controller_001:reset_out -> video_vga_controller_0:reset
-	signal reset_reset_n_ports_inv                                         : std_logic;                     -- reset_reset_n:inv -> [rst_controller:reset_in0, rst_controller_001:reset_in0]
+	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
+	signal irq_synchronizer_receiver_irq                                   : std_logic_vector(0 downto 0);  -- audio_0:irq -> irq_synchronizer:receiver_irq
+	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [alt_vip_cti_0:rst, st_adapter_0:in_rst_0_reset, video_vga_controller_0:reset]
+	signal video_pll_0_reset_source_reset                                  : std_logic;                     -- video_pll_0:reset_source_reset -> rst_controller:reset_in0
+	signal rst_controller_001_reset_out_reset                              : std_logic;                     -- rst_controller_001:reset_out -> [audio_0:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:audio_0_reset_reset_bridge_in_reset_reset]
+	signal audio_pll_0_reset_source_reset                                  : std_logic;                     -- audio_pll_0:reset_source_reset -> rst_controller_001:reset_in0
+	signal rst_controller_002_reset_out_reset                              : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_002_reset_out_reset:in, rst_translator:in_reset]
+	signal rst_controller_002_reset_out_reset_req                          : std_logic;                     -- rst_controller_002:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
+	signal reset_reset_n_ports_inv                                         : std_logic;                     -- reset_reset_n:inv -> rst_controller_002:reset_in0
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
-	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> [i2c_0:rst_n, jtag_uart_0:rst_n, nios2_gen2_0:reset_n]
+	signal rst_controller_002_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> [jtag_uart_0:rst_n, nios2_gen2_0:reset_n]
 
 begin
 
-	i2c_0 : component altera_avalon_i2c
+	alt_vip_cti_0 : component alt_vipcti131_Vid2IS
 		generic map (
-			USE_AV_ST       => 0,
-			FIFO_DEPTH      => 4,
-			FIFO_DEPTH_LOG2 => 2
+			BPS                           => 10,
+			NUMBER_OF_COLOUR_PLANES       => 3,
+			COLOUR_PLANES_ARE_IN_PARALLEL => 1,
+			SYNC_TO                       => 0,
+			USE_EMBEDDED_SYNCS            => 1,
+			ADD_DATA_ENABLE_SIGNAL        => 0,
+			ACCEPT_COLOURS_IN_SEQ         => 0,
+			USE_STD                       => 0,
+			STD_WIDTH                     => 1,
+			GENERATE_ANC                  => 0,
+			INTERLACED                    => 0,
+			H_ACTIVE_PIXELS_F0            => 640,
+			V_ACTIVE_LINES_F0             => 480,
+			V_ACTIVE_LINES_F1             => 480,
+			FIFO_DEPTH                    => 640,
+			CLOCKS_ARE_SAME               => 0,
+			USE_CONTROL                   => 0,
+			GENERATE_SYNC                 => 0
 		)
 		port map (
-			clk       => clk_clk,                                  --            clock.clk
-			rst_n     => rst_controller_reset_out_reset_ports_inv, --       reset_sink.reset_n
-			intr      => irq_mapper_receiver0_irq,                 -- interrupt_sender.irq
-			addr      => mm_interconnect_0_i2c_0_csr_address,      --              csr.address
-			read      => mm_interconnect_0_i2c_0_csr_read,         --                 .read
-			write     => mm_interconnect_0_i2c_0_csr_write,        --                 .write
-			writedata => mm_interconnect_0_i2c_0_csr_writedata,    --                 .writedata
-			readdata  => mm_interconnect_0_i2c_0_csr_readdata,     --                 .readdata
-			sda_in    => i2c_serial_sda_in,                        --       i2c_serial.sda_in
-			scl_in    => i2c_serial_scl_in,                        --                 .scl_in
-			sda_oe    => i2c_serial_sda_oe,                        --                 .sda_oe
-			scl_oe    => i2c_serial_scl_oe,                        --                 .scl_oe
-			src_data  => open,                                     --      (terminated)
-			src_valid => open,                                     --      (terminated)
-			src_ready => '0',                                      --      (terminated)
-			snk_data  => "0000000000000000",                       --      (terminated)
-			snk_valid => '0',                                      --      (terminated)
-			snk_ready => open                                      --      (terminated)
+			is_clk        => video_pll_0_vga_clk_clk,             --       is_clk_rst.clk
+			rst           => rst_controller_reset_out_reset,      -- is_clk_rst_reset.reset
+			is_data       => alt_vip_cti_0_dout_data,             --             dout.data
+			is_valid      => alt_vip_cti_0_dout_valid,            --                 .valid
+			is_ready      => alt_vip_cti_0_dout_ready,            --                 .ready
+			is_sop        => alt_vip_cti_0_dout_startofpacket,    --                 .startofpacket
+			is_eop        => alt_vip_cti_0_dout_endofpacket,      --                 .endofpacket
+			vid_clk       => clocked_video_conduit_vid_clk,       --    clocked_video.export
+			vid_data      => clocked_video_conduit_vid_data,      --                 .export
+			overflow      => clocked_video_conduit_overflow,      --                 .export
+			vid_datavalid => clocked_video_conduit_vid_datavalid, --                 .export
+			vid_locked    => clocked_video_conduit_vid_locked     --                 .export
+		);
+
+	audio_0 : component Core_audio_0
+		port map (
+			clk         => audio_pll_0_audio_clk_clk,                               --                clk.clk
+			reset       => rst_controller_001_reset_out_reset,                      --              reset.reset
+			address     => mm_interconnect_0_audio_0_avalon_audio_slave_address,    -- avalon_audio_slave.address
+			chipselect  => mm_interconnect_0_audio_0_avalon_audio_slave_chipselect, --                   .chipselect
+			read        => mm_interconnect_0_audio_0_avalon_audio_slave_read,       --                   .read
+			write       => mm_interconnect_0_audio_0_avalon_audio_slave_write,      --                   .write
+			writedata   => mm_interconnect_0_audio_0_avalon_audio_slave_writedata,  --                   .writedata
+			readdata    => mm_interconnect_0_audio_0_avalon_audio_slave_readdata,   --                   .readdata
+			irq         => irq_synchronizer_receiver_irq(0),                        --          interrupt.irq
+			AUD_ADCDAT  => audio_external_interface_ADCDAT,                         -- external_interface.export
+			AUD_ADCLRCK => audio_external_interface_ADCLRCK,                        --                   .export
+			AUD_BCLK    => audio_external_interface_BCLK,                           --                   .export
+			AUD_DACDAT  => audio_external_interface_DACDAT,                         --                   .export
+			AUD_DACLRCK => audio_external_interface_DACLRCK                         --                   .export
+		);
+
+	audio_pll_0 : component Core_audio_pll_0
+		port map (
+			ref_clk_clk        => clk_clk,                                --      ref_clk.clk
+			ref_reset_reset    => nios2_gen2_0_debug_reset_request_reset, --    ref_reset.reset
+			audio_clk_clk      => audio_pll_0_audio_clk_clk,              --    audio_clk.clk
+			reset_source_reset => audio_pll_0_reset_source_reset          -- reset_source.reset
 		);
 
 	jtag_uart_0 : component Core_jtag_uart_0
 		port map (
 			clk            => clk_clk,                                                         --               clk.clk
-			rst_n          => rst_controller_reset_out_reset_ports_inv,                        --             reset.reset_n
+			rst_n          => rst_controller_002_reset_out_reset_ports_inv,                    --             reset.reset_n
 			av_chipselect  => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect,      -- avalon_jtag_slave.chipselect
 			av_address     => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address(0),      --                  .address
 			av_read_n      => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv,  --                  .read_n
@@ -430,8 +580,8 @@ begin
 	nios2_gen2_0 : component Core_nios2_gen2_0
 		port map (
 			clk                                 => clk_clk,                                                    --                       clk.clk
-			reset_n                             => rst_controller_reset_out_reset_ports_inv,                   --                     reset.reset_n
-			reset_req                           => rst_controller_reset_out_reset_req,                         --                          .reset_req
+			reset_n                             => rst_controller_002_reset_out_reset_ports_inv,               --                     reset.reset_n
+			reset_req                           => rst_controller_002_reset_out_reset_req,                     --                          .reset_req
 			d_address                           => nios2_gen2_0_data_master_address,                           --               data_master.address
 			d_byteenable                        => nios2_gen2_0_data_master_byteenable,                        --                          .byteenable
 			d_read                              => nios2_gen2_0_data_master_read,                              --                          .read
@@ -468,34 +618,78 @@ begin
 			write      => mm_interconnect_0_onchip_memory2_0_s1_write,      --       .write
 			readdata   => mm_interconnect_0_onchip_memory2_0_s1_readdata,   --       .readdata
 			writedata  => mm_interconnect_0_onchip_memory2_0_s1_writedata,  --       .writedata
-			reset      => rst_controller_reset_out_reset,                   -- reset1.reset
-			reset_req  => rst_controller_reset_out_reset_req,               --       .reset_req
+			reset      => rst_controller_002_reset_out_reset,               -- reset1.reset
+			reset_req  => rst_controller_002_reset_out_reset_req,           --       .reset_req
 			freeze     => '0'                                               -- (terminated)
+		);
+
+	st_adapter_0 : component Core_st_adapter_0
+		generic map (
+			inBitsPerSymbol => 10,
+			inUsePackets    => 1,
+			inDataWidth     => 30,
+			inChannelWidth  => 0,
+			inErrorWidth    => 0,
+			inUseEmptyPort  => 0,
+			inUseValid      => 1,
+			inUseReady      => 1,
+			inReadyLatency  => 1,
+			outDataWidth    => 30,
+			outChannelWidth => 0,
+			outErrorWidth   => 0,
+			outUseEmptyPort => 0,
+			outUseValid     => 1,
+			outUseReady     => 1,
+			outReadyLatency => 0
+		)
+		port map (
+			in_clk_0_clk        => video_pll_0_vga_clk_clk,          -- in_clk_0.clk
+			in_rst_0_reset      => rst_controller_reset_out_reset,   -- in_rst_0.reset
+			in_0_data           => alt_vip_cti_0_dout_data,          --     in_0.data
+			in_0_valid          => alt_vip_cti_0_dout_valid,         --         .valid
+			in_0_ready          => alt_vip_cti_0_dout_ready,         --         .ready
+			in_0_startofpacket  => alt_vip_cti_0_dout_startofpacket, --         .startofpacket
+			in_0_endofpacket    => alt_vip_cti_0_dout_endofpacket,   --         .endofpacket
+			out_0_data          => st_adapter_0_out_0_data,          --    out_0.data
+			out_0_valid         => st_adapter_0_out_0_valid,         --         .valid
+			out_0_ready         => st_adapter_0_out_0_ready,         --         .ready
+			out_0_startofpacket => st_adapter_0_out_0_startofpacket, --         .startofpacket
+			out_0_endofpacket   => st_adapter_0_out_0_endofpacket    --         .endofpacket
+		);
+
+	video_pll_0 : component Core_video_pll_0
+		port map (
+			ref_clk_clk        => clk_clk,                                --      ref_clk.clk
+			ref_reset_reset    => nios2_gen2_0_debug_reset_request_reset, --    ref_reset.reset
+			vga_clk_clk        => video_pll_0_vga_clk_clk,                --      vga_clk.clk
+			reset_source_reset => video_pll_0_reset_source_reset          -- reset_source.reset
 		);
 
 	video_vga_controller_0 : component Core_video_vga_controller_0
 		port map (
-			clk           => clk_25_clk,                         --                clk.clk
-			reset         => rst_controller_001_reset_out_reset, --              reset.reset
-			data          => vga_sink_data,                      --    avalon_vga_sink.data
-			startofpacket => vga_sink_startofpacket,             --                   .startofpacket
-			endofpacket   => vga_sink_endofpacket,               --                   .endofpacket
-			valid         => vga_sink_valid,                     --                   .valid
-			ready         => vga_sink_ready,                     --                   .ready
-			VGA_CLK       => vga_external_interface_CLK,         -- external_interface.export
-			VGA_HS        => vga_external_interface_HS,          --                   .export
-			VGA_VS        => vga_external_interface_VS,          --                   .export
-			VGA_BLANK     => vga_external_interface_BLANK,       --                   .export
-			VGA_SYNC      => vga_external_interface_SYNC,        --                   .export
-			VGA_R         => vga_external_interface_R,           --                   .export
-			VGA_G         => vga_external_interface_G,           --                   .export
-			VGA_B         => vga_external_interface_B            --                   .export
+			clk           => video_pll_0_vga_clk_clk,          --                clk.clk
+			reset         => rst_controller_reset_out_reset,   --              reset.reset
+			data          => st_adapter_0_out_0_data,          --    avalon_vga_sink.data
+			startofpacket => st_adapter_0_out_0_startofpacket, --                   .startofpacket
+			endofpacket   => st_adapter_0_out_0_endofpacket,   --                   .endofpacket
+			valid         => st_adapter_0_out_0_valid,         --                   .valid
+			ready         => st_adapter_0_out_0_ready,         --                   .ready
+			VGA_CLK       => vga_external_interface_CLK,       -- external_interface.export
+			VGA_HS        => vga_external_interface_HS,        --                   .export
+			VGA_VS        => vga_external_interface_VS,        --                   .export
+			VGA_BLANK     => vga_external_interface_BLANK,     --                   .export
+			VGA_SYNC      => vga_external_interface_SYNC,      --                   .export
+			VGA_R         => vga_external_interface_R,         --                   .export
+			VGA_G         => vga_external_interface_G,         --                   .export
+			VGA_B         => vga_external_interface_B          --                   .export
 		);
 
 	mm_interconnect_0 : component Core_mm_interconnect_0
 		port map (
+			audio_pll_0_audio_clk_clk                      => audio_pll_0_audio_clk_clk,                                   --                    audio_pll_0_audio_clk.clk
 			clk_0_clk_clk                                  => clk_clk,                                                     --                                clk_0_clk.clk
-			nios2_gen2_0_reset_reset_bridge_in_reset_reset => rst_controller_reset_out_reset,                              -- nios2_gen2_0_reset_reset_bridge_in_reset.reset
+			audio_0_reset_reset_bridge_in_reset_reset      => rst_controller_001_reset_out_reset,                          --      audio_0_reset_reset_bridge_in_reset.reset
+			nios2_gen2_0_reset_reset_bridge_in_reset_reset => rst_controller_002_reset_out_reset,                          -- nios2_gen2_0_reset_reset_bridge_in_reset.reset
 			nios2_gen2_0_data_master_address               => nios2_gen2_0_data_master_address,                            --                 nios2_gen2_0_data_master.address
 			nios2_gen2_0_data_master_waitrequest           => nios2_gen2_0_data_master_waitrequest,                        --                                         .waitrequest
 			nios2_gen2_0_data_master_byteenable            => nios2_gen2_0_data_master_byteenable,                         --                                         .byteenable
@@ -510,11 +704,12 @@ begin
 			nios2_gen2_0_instruction_master_read           => nios2_gen2_0_instruction_master_read,                        --                                         .read
 			nios2_gen2_0_instruction_master_readdata       => nios2_gen2_0_instruction_master_readdata,                    --                                         .readdata
 			nios2_gen2_0_instruction_master_readdatavalid  => nios2_gen2_0_instruction_master_readdatavalid,               --                                         .readdatavalid
-			i2c_0_csr_address                              => mm_interconnect_0_i2c_0_csr_address,                         --                                i2c_0_csr.address
-			i2c_0_csr_write                                => mm_interconnect_0_i2c_0_csr_write,                           --                                         .write
-			i2c_0_csr_read                                 => mm_interconnect_0_i2c_0_csr_read,                            --                                         .read
-			i2c_0_csr_readdata                             => mm_interconnect_0_i2c_0_csr_readdata,                        --                                         .readdata
-			i2c_0_csr_writedata                            => mm_interconnect_0_i2c_0_csr_writedata,                       --                                         .writedata
+			audio_0_avalon_audio_slave_address             => mm_interconnect_0_audio_0_avalon_audio_slave_address,        --               audio_0_avalon_audio_slave.address
+			audio_0_avalon_audio_slave_write               => mm_interconnect_0_audio_0_avalon_audio_slave_write,          --                                         .write
+			audio_0_avalon_audio_slave_read                => mm_interconnect_0_audio_0_avalon_audio_slave_read,           --                                         .read
+			audio_0_avalon_audio_slave_readdata            => mm_interconnect_0_audio_0_avalon_audio_slave_readdata,       --                                         .readdata
+			audio_0_avalon_audio_slave_writedata           => mm_interconnect_0_audio_0_avalon_audio_slave_writedata,      --                                         .writedata
+			audio_0_avalon_audio_slave_chipselect          => mm_interconnect_0_audio_0_avalon_audio_slave_chipselect,     --                                         .chipselect
 			jtag_uart_0_avalon_jtag_slave_address          => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address,     --            jtag_uart_0_avalon_jtag_slave.address
 			jtag_uart_0_avalon_jtag_slave_write            => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write,       --                                         .write
 			jtag_uart_0_avalon_jtag_slave_read             => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read,        --                                         .read
@@ -540,14 +735,157 @@ begin
 
 	irq_mapper : component Core_irq_mapper
 		port map (
-			clk           => clk_clk,                        --       clk.clk
-			reset         => rst_controller_reset_out_reset, -- clk_reset.reset
-			receiver0_irq => irq_mapper_receiver0_irq,       -- receiver0.irq
-			receiver1_irq => irq_mapper_receiver1_irq,       -- receiver1.irq
-			sender_irq    => nios2_gen2_0_irq_irq            --    sender.irq
+			clk           => clk_clk,                            --       clk.clk
+			reset         => rst_controller_002_reset_out_reset, -- clk_reset.reset
+			receiver0_irq => irq_mapper_receiver0_irq,           -- receiver0.irq
+			receiver1_irq => irq_mapper_receiver1_irq,           -- receiver1.irq
+			sender_irq    => nios2_gen2_0_irq_irq                --    sender.irq
+		);
+
+	irq_synchronizer : component altera_irq_clock_crosser
+		generic map (
+			IRQ_WIDTH => 1
+		)
+		port map (
+			receiver_clk   => audio_pll_0_audio_clk_clk,          --       receiver_clk.clk
+			sender_clk     => clk_clk,                            --         sender_clk.clk
+			receiver_reset => rst_controller_001_reset_out_reset, -- receiver_clk_reset.reset
+			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
+			receiver_irq   => irq_synchronizer_receiver_irq,      --           receiver.irq
+			sender_irq(0)  => irq_mapper_receiver0_irq            --             sender.irq
 		);
 
 	rst_controller : component core_rst_controller
+		generic map (
+			NUM_RESET_INPUTS          => 1,
+			OUTPUT_RESET_SYNC_EDGES   => "deassert",
+			SYNC_DEPTH                => 2,
+			RESET_REQUEST_PRESENT     => 0,
+			RESET_REQ_WAIT_TIME       => 1,
+			MIN_RST_ASSERTION_TIME    => 3,
+			RESET_REQ_EARLY_DSRT_TIME => 1,
+			USE_RESET_REQUEST_IN0     => 0,
+			USE_RESET_REQUEST_IN1     => 0,
+			USE_RESET_REQUEST_IN2     => 0,
+			USE_RESET_REQUEST_IN3     => 0,
+			USE_RESET_REQUEST_IN4     => 0,
+			USE_RESET_REQUEST_IN5     => 0,
+			USE_RESET_REQUEST_IN6     => 0,
+			USE_RESET_REQUEST_IN7     => 0,
+			USE_RESET_REQUEST_IN8     => 0,
+			USE_RESET_REQUEST_IN9     => 0,
+			USE_RESET_REQUEST_IN10    => 0,
+			USE_RESET_REQUEST_IN11    => 0,
+			USE_RESET_REQUEST_IN12    => 0,
+			USE_RESET_REQUEST_IN13    => 0,
+			USE_RESET_REQUEST_IN14    => 0,
+			USE_RESET_REQUEST_IN15    => 0,
+			ADAPT_RESET_REQUEST       => 0
+		)
+		port map (
+			reset_in0      => video_pll_0_reset_source_reset, -- reset_in0.reset
+			clk            => video_pll_0_vga_clk_clk,        --       clk.clk
+			reset_out      => rst_controller_reset_out_reset, -- reset_out.reset
+			reset_req      => open,                           -- (terminated)
+			reset_req_in0  => '0',                            -- (terminated)
+			reset_in1      => '0',                            -- (terminated)
+			reset_req_in1  => '0',                            -- (terminated)
+			reset_in2      => '0',                            -- (terminated)
+			reset_req_in2  => '0',                            -- (terminated)
+			reset_in3      => '0',                            -- (terminated)
+			reset_req_in3  => '0',                            -- (terminated)
+			reset_in4      => '0',                            -- (terminated)
+			reset_req_in4  => '0',                            -- (terminated)
+			reset_in5      => '0',                            -- (terminated)
+			reset_req_in5  => '0',                            -- (terminated)
+			reset_in6      => '0',                            -- (terminated)
+			reset_req_in6  => '0',                            -- (terminated)
+			reset_in7      => '0',                            -- (terminated)
+			reset_req_in7  => '0',                            -- (terminated)
+			reset_in8      => '0',                            -- (terminated)
+			reset_req_in8  => '0',                            -- (terminated)
+			reset_in9      => '0',                            -- (terminated)
+			reset_req_in9  => '0',                            -- (terminated)
+			reset_in10     => '0',                            -- (terminated)
+			reset_req_in10 => '0',                            -- (terminated)
+			reset_in11     => '0',                            -- (terminated)
+			reset_req_in11 => '0',                            -- (terminated)
+			reset_in12     => '0',                            -- (terminated)
+			reset_req_in12 => '0',                            -- (terminated)
+			reset_in13     => '0',                            -- (terminated)
+			reset_req_in13 => '0',                            -- (terminated)
+			reset_in14     => '0',                            -- (terminated)
+			reset_req_in14 => '0',                            -- (terminated)
+			reset_in15     => '0',                            -- (terminated)
+			reset_req_in15 => '0'                             -- (terminated)
+		);
+
+	rst_controller_001 : component core_rst_controller
+		generic map (
+			NUM_RESET_INPUTS          => 1,
+			OUTPUT_RESET_SYNC_EDGES   => "deassert",
+			SYNC_DEPTH                => 2,
+			RESET_REQUEST_PRESENT     => 0,
+			RESET_REQ_WAIT_TIME       => 1,
+			MIN_RST_ASSERTION_TIME    => 3,
+			RESET_REQ_EARLY_DSRT_TIME => 1,
+			USE_RESET_REQUEST_IN0     => 0,
+			USE_RESET_REQUEST_IN1     => 0,
+			USE_RESET_REQUEST_IN2     => 0,
+			USE_RESET_REQUEST_IN3     => 0,
+			USE_RESET_REQUEST_IN4     => 0,
+			USE_RESET_REQUEST_IN5     => 0,
+			USE_RESET_REQUEST_IN6     => 0,
+			USE_RESET_REQUEST_IN7     => 0,
+			USE_RESET_REQUEST_IN8     => 0,
+			USE_RESET_REQUEST_IN9     => 0,
+			USE_RESET_REQUEST_IN10    => 0,
+			USE_RESET_REQUEST_IN11    => 0,
+			USE_RESET_REQUEST_IN12    => 0,
+			USE_RESET_REQUEST_IN13    => 0,
+			USE_RESET_REQUEST_IN14    => 0,
+			USE_RESET_REQUEST_IN15    => 0,
+			ADAPT_RESET_REQUEST       => 0
+		)
+		port map (
+			reset_in0      => audio_pll_0_reset_source_reset,     -- reset_in0.reset
+			clk            => audio_pll_0_audio_clk_clk,          --       clk.clk
+			reset_out      => rst_controller_001_reset_out_reset, -- reset_out.reset
+			reset_req      => open,                               -- (terminated)
+			reset_req_in0  => '0',                                -- (terminated)
+			reset_in1      => '0',                                -- (terminated)
+			reset_req_in1  => '0',                                -- (terminated)
+			reset_in2      => '0',                                -- (terminated)
+			reset_req_in2  => '0',                                -- (terminated)
+			reset_in3      => '0',                                -- (terminated)
+			reset_req_in3  => '0',                                -- (terminated)
+			reset_in4      => '0',                                -- (terminated)
+			reset_req_in4  => '0',                                -- (terminated)
+			reset_in5      => '0',                                -- (terminated)
+			reset_req_in5  => '0',                                -- (terminated)
+			reset_in6      => '0',                                -- (terminated)
+			reset_req_in6  => '0',                                -- (terminated)
+			reset_in7      => '0',                                -- (terminated)
+			reset_req_in7  => '0',                                -- (terminated)
+			reset_in8      => '0',                                -- (terminated)
+			reset_req_in8  => '0',                                -- (terminated)
+			reset_in9      => '0',                                -- (terminated)
+			reset_req_in9  => '0',                                -- (terminated)
+			reset_in10     => '0',                                -- (terminated)
+			reset_req_in10 => '0',                                -- (terminated)
+			reset_in11     => '0',                                -- (terminated)
+			reset_req_in11 => '0',                                -- (terminated)
+			reset_in12     => '0',                                -- (terminated)
+			reset_req_in12 => '0',                                -- (terminated)
+			reset_in13     => '0',                                -- (terminated)
+			reset_req_in13 => '0',                                -- (terminated)
+			reset_in14     => '0',                                -- (terminated)
+			reset_req_in14 => '0',                                -- (terminated)
+			reset_in15     => '0',                                -- (terminated)
+			reset_req_in15 => '0'                                 -- (terminated)
+		);
+
+	rst_controller_002 : component core_rst_controller_002
 		generic map (
 			NUM_RESET_INPUTS          => 2,
 			OUTPUT_RESET_SYNC_EDGES   => "deassert",
@@ -578,73 +916,8 @@ begin
 			reset_in0      => reset_reset_n_ports_inv,                -- reset_in0.reset
 			reset_in1      => nios2_gen2_0_debug_reset_request_reset, -- reset_in1.reset
 			clk            => clk_clk,                                --       clk.clk
-			reset_out      => rst_controller_reset_out_reset,         -- reset_out.reset
-			reset_req      => rst_controller_reset_out_reset_req,     --          .reset_req
-			reset_req_in0  => '0',                                    -- (terminated)
-			reset_req_in1  => '0',                                    -- (terminated)
-			reset_in2      => '0',                                    -- (terminated)
-			reset_req_in2  => '0',                                    -- (terminated)
-			reset_in3      => '0',                                    -- (terminated)
-			reset_req_in3  => '0',                                    -- (terminated)
-			reset_in4      => '0',                                    -- (terminated)
-			reset_req_in4  => '0',                                    -- (terminated)
-			reset_in5      => '0',                                    -- (terminated)
-			reset_req_in5  => '0',                                    -- (terminated)
-			reset_in6      => '0',                                    -- (terminated)
-			reset_req_in6  => '0',                                    -- (terminated)
-			reset_in7      => '0',                                    -- (terminated)
-			reset_req_in7  => '0',                                    -- (terminated)
-			reset_in8      => '0',                                    -- (terminated)
-			reset_req_in8  => '0',                                    -- (terminated)
-			reset_in9      => '0',                                    -- (terminated)
-			reset_req_in9  => '0',                                    -- (terminated)
-			reset_in10     => '0',                                    -- (terminated)
-			reset_req_in10 => '0',                                    -- (terminated)
-			reset_in11     => '0',                                    -- (terminated)
-			reset_req_in11 => '0',                                    -- (terminated)
-			reset_in12     => '0',                                    -- (terminated)
-			reset_req_in12 => '0',                                    -- (terminated)
-			reset_in13     => '0',                                    -- (terminated)
-			reset_req_in13 => '0',                                    -- (terminated)
-			reset_in14     => '0',                                    -- (terminated)
-			reset_req_in14 => '0',                                    -- (terminated)
-			reset_in15     => '0',                                    -- (terminated)
-			reset_req_in15 => '0'                                     -- (terminated)
-		);
-
-	rst_controller_001 : component core_rst_controller_001
-		generic map (
-			NUM_RESET_INPUTS          => 2,
-			OUTPUT_RESET_SYNC_EDGES   => "deassert",
-			SYNC_DEPTH                => 2,
-			RESET_REQUEST_PRESENT     => 0,
-			RESET_REQ_WAIT_TIME       => 1,
-			MIN_RST_ASSERTION_TIME    => 3,
-			RESET_REQ_EARLY_DSRT_TIME => 1,
-			USE_RESET_REQUEST_IN0     => 0,
-			USE_RESET_REQUEST_IN1     => 0,
-			USE_RESET_REQUEST_IN2     => 0,
-			USE_RESET_REQUEST_IN3     => 0,
-			USE_RESET_REQUEST_IN4     => 0,
-			USE_RESET_REQUEST_IN5     => 0,
-			USE_RESET_REQUEST_IN6     => 0,
-			USE_RESET_REQUEST_IN7     => 0,
-			USE_RESET_REQUEST_IN8     => 0,
-			USE_RESET_REQUEST_IN9     => 0,
-			USE_RESET_REQUEST_IN10    => 0,
-			USE_RESET_REQUEST_IN11    => 0,
-			USE_RESET_REQUEST_IN12    => 0,
-			USE_RESET_REQUEST_IN13    => 0,
-			USE_RESET_REQUEST_IN14    => 0,
-			USE_RESET_REQUEST_IN15    => 0,
-			ADAPT_RESET_REQUEST       => 0
-		)
-		port map (
-			reset_in0      => reset_reset_n_ports_inv,                -- reset_in0.reset
-			reset_in1      => nios2_gen2_0_debug_reset_request_reset, -- reset_in1.reset
-			clk            => clk_25_clk,                             --       clk.clk
-			reset_out      => rst_controller_001_reset_out_reset,     -- reset_out.reset
-			reset_req      => open,                                   -- (terminated)
+			reset_out      => rst_controller_002_reset_out_reset,     -- reset_out.reset
+			reset_req      => rst_controller_002_reset_out_reset_req, --          .reset_req
 			reset_req_in0  => '0',                                    -- (terminated)
 			reset_req_in1  => '0',                                    -- (terminated)
 			reset_in2      => '0',                                    -- (terminated)
@@ -683,6 +956,6 @@ begin
 
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;
 
-	rst_controller_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;
+	rst_controller_002_reset_out_reset_ports_inv <= not rst_controller_002_reset_out_reset;
 
 end architecture rtl; -- of Core
