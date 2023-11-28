@@ -1,5 +1,5 @@
 Timing Analyzer report for Main
-Tue Nov 21 15:49:01 2023
+Tue Nov 28 12:28:55 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -107,13 +107,13 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 1.56        ;
+; Average used               ; 1.55        ;
 ; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   5.1%      ;
-;     Processors 3-12        ;   5.1%      ;
+;     Processors 3-12        ;   5.0%      ;
 +----------------------------+-------------+
 
 
@@ -122,8 +122,8 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                     ; Status ; Read at                  ;
 +-------------------------------------------------------------------+--------+--------------------------+
-; NIOSII_Test/synthesis/submodules/altera_reset_controller.sdc      ; OK     ; Tue Nov 21 15:48:59 2023 ;
-; NIOSII_Test/synthesis/submodules/NIOSII_Test_nios2_gen2_0_cpu.sdc ; OK     ; Tue Nov 21 15:48:59 2023 ;
+; NIOSII_Test/synthesis/submodules/altera_reset_controller.sdc      ; OK     ; Tue Nov 28 12:28:53 2023 ;
+; NIOSII_Test/synthesis/submodules/NIOSII_Test_nios2_gen2_0_cpu.sdc ; OK     ; Tue Nov 28 12:28:53 2023 ;
 +-------------------------------------------------------------------+--------+--------------------------+
 
 
@@ -1830,7 +1830,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Nov 21 15:48:57 2023
+    Info: Processing started: Tue Nov 28 12:28:51 2023
 Info: Command: quartus_sta VoiceGame_VHDL -c Main
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -2002,8 +2002,8 @@ Info (332114): Report Metastability: Found 4 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 16 warnings
-    Info: Peak virtual memory: 5015 megabytes
-    Info: Processing ended: Tue Nov 21 15:49:01 2023
+    Info: Peak virtual memory: 5008 megabytes
+    Info: Processing ended: Tue Nov 28 12:28:55 2023
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:03
 

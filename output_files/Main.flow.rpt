@@ -1,5 +1,5 @@
 Flow report for Main
-Tue Nov 21 15:49:01 2023
+Tue Nov 28 12:28:55 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Nov 21 15:48:56 2023       ;
+; Flow Status                        ; Successful - Tue Nov 28 12:28:50 2023       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Main                                        ;
 ; Top-level Entity Name              ; NIOSII_Test                                 ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/21/2023 15:47:42 ;
+; Start date & time ; 11/28/2023 12:27:33 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Main                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+---------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                         ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+---------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 145440629424989.170057806115932                               ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 145440629424989.170117085313948                               ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                            ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                             ; --            ; --          ; --         ;
 ; MISC_FILE                           ; NIOSII_Test/synthesis/../NIOSII_Test.cmp                      ; --            ; --          ; --         ;
@@ -89,7 +89,7 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                  ; --            ; --          ; --         ;
 ; SLD_FILE                            ; NIOSII_Test/synthesis/NIOSII_Test.regmap                      ; --            ; --          ; --         ;
 ; SLD_FILE                            ; NIOSII_Test/synthesis/NIOSII_Test.debuginfo                   ; --            ; --          ; --         ;
-; SLD_INFO                            ; QSYS_NAME NIOSII_Test HAS_SOPCINFO 1 GENERATION_ID 1700577932 ; --            ; NIOSII_Test ; --         ;
+; SLD_INFO                            ; QSYS_NAME NIOSII_Test HAS_SOPCINFO 1 GENERATION_ID 1701170757 ; --            ; NIOSII_Test ; --         ;
 ; SOPCINFO_FILE                       ; NIOSII_Test/synthesis/../../NIOSII_Test.sopcinfo              ; --            ; --          ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                            ; --            ; --          ; --         ;
 ; TOP_LEVEL_ENTITY                    ; NIOSII_Test                                                   ; Main          ; --          ; --         ;
@@ -101,11 +101,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:42     ; 1.0                     ; 4997 MB             ; 00:00:39                           ;
-; Fitter               ; 00:00:21     ; 1.2                     ; 6398 MB             ; 00:00:27                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4731 MB             ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:04     ; 1.6                     ; 5015 MB             ; 00:00:03                           ;
-; Total                ; 00:01:11     ; --                      ; --                  ; 00:01:13                           ;
+; Analysis & Synthesis ; 00:00:43     ; 1.0                     ; 5002 MB             ; 00:00:33                           ;
+; Fitter               ; 00:00:23     ; 1.2                     ; 6402 MB             ; 00:00:25                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 4728 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.5                     ; 5008 MB             ; 00:00:03                           ;
+; Total                ; 00:01:14     ; --                      ; --                  ; 00:01:05                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
