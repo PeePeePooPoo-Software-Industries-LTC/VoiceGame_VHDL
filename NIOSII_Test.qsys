@@ -9,6 +9,14 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
+   element alt_vip_cl_tpg_0
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
    element alt_vip_cl_vfb_0
    {
       datum _sortIndex
@@ -142,15 +150,56 @@
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface
-   name="video_interface"
+   name="vga"
    internal="video_vga_controller_0.external_interface"
    type="conduit"
    dir="end" />
  <module
+   name="alt_vip_cl_tpg_0"
+   kind="alt_vip_cl_tpg"
+   version="18.1"
+   enabled="1">
+  <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="BITS_PER_SYMBOL" value="10" />
+  <parameter name="COLOR_PLANES_ARE_IN_PARALLEL" value="1" />
+  <parameter name="COLOR_SPACE_0" value="RGB_444" />
+  <parameter name="COLOR_SPACE_1" value="RGB_444" />
+  <parameter name="COLOR_SPACE_2" value="RGB_444" />
+  <parameter name="COLOR_SPACE_3" value="RGB_444" />
+  <parameter name="COLOR_SPACE_4" value="RGB_444" />
+  <parameter name="COLOR_SPACE_5" value="RGB_444" />
+  <parameter name="COLOR_SPACE_6" value="RGB_444" />
+  <parameter name="COLOR_SPACE_7" value="RGB_444" />
+  <parameter name="DEFAULT_BOARDER" value="1" />
+  <parameter name="FAMILY" value="Cyclone IV E" />
+  <parameter name="INTERLACING" value="PROGRESSIVE" />
+  <parameter name="LIMITED_READBACK" value="0" />
+  <parameter name="MAX_HEIGHT" value="480" />
+  <parameter name="MAX_WIDTH" value="640" />
+  <parameter name="NUMBER_OF_COLOR_PLANES" value="2" />
+  <parameter name="NUM_CORES" value="1" />
+  <parameter name="OUTPUT_FORMAT" value="4.4.4" />
+  <parameter name="PATTERN_0" value="colorbars" />
+  <parameter name="PATTERN_1" value="colorbars" />
+  <parameter name="PATTERN_2" value="colorbars" />
+  <parameter name="PATTERN_3" value="colorbars" />
+  <parameter name="PATTERN_4" value="colorbars" />
+  <parameter name="PATTERN_5" value="colorbars" />
+  <parameter name="PATTERN_6" value="colorbars" />
+  <parameter name="PATTERN_7" value="colorbars" />
+  <parameter name="PIPELINE_READY" value="0" />
+  <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="RUNTIME_CONTROL" value="0" />
+  <parameter name="UNIFORM_VALUE_BCR" value="16" />
+  <parameter name="UNIFORM_VALUE_GCB" value="16" />
+  <parameter name="UNIFORM_VALUE_RY" value="16" />
+ </module>
+ <module
    name="alt_vip_cl_vfb_0"
    kind="alt_vip_cl_vfb"
    version="18.1"
-   enabled="1">
+   enabled="0">
   <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="BITS_PER_SYMBOL" value="10" />
@@ -171,7 +220,7 @@
   <parameter name="MAX_HEIGHT" value="480" />
   <parameter name="MAX_SYMBOLS_PER_PACKET" value="10" />
   <parameter name="MAX_WIDTH" value="640" />
-  <parameter name="MEM_BASE_ADDR" value="0" />
+  <parameter name="MEM_BASE_ADDR" value="1298" />
   <parameter name="MEM_BUFFER_OFFSET" value="16777216" />
   <parameter name="MEM_PORT_WIDTH" value="256" />
   <parameter name="MULTI_FRAME_DELAY" value="1" />
@@ -546,7 +595,7 @@
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="alt_vip_cl_vfb_0.dout"
+   start="alt_vip_cl_tpg_0.dout"
    end="video_vga_controller_0.avalon_vga_sink" />
  <connection
    kind="clock"
@@ -585,6 +634,11 @@
    version="18.1"
    start="video_pll_0.vga_clk"
    end="alt_vip_cl_vfb_0.main_clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="video_pll_0.vga_clk"
+   end="alt_vip_cl_tpg_0.main_clock" />
  <connection
    kind="interrupt"
    version="18.1"
@@ -649,6 +703,11 @@
    version="18.1"
    start="video_pll_0.reset_source"
    end="alt_vip_cl_vfb_0.main_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="video_pll_0.reset_source"
+   end="alt_vip_cl_tpg_0.main_reset" />
  <connection
    kind="reset"
    version="18.1"

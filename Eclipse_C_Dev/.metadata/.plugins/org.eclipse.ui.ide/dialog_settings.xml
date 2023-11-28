@@ -14,11 +14,15 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/game_code_bsp"/>
+			<item value="/home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/game_code"/>
 			<item value="/home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/Pain"/>
 			<item value="/home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/Pain_bsp"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
 		</list>
+	</section>
+	<section name="NewWizardAction">
 	</section>
 </section>

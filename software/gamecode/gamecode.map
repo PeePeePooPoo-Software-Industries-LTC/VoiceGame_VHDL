@@ -237,7 +237,7 @@ LOAD /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu
                 0x0000000000080248                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
                 0x0000000000080020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
 
-.text           0x0000000000080248     0x53d8
+.text           0x0000000000080248     0x5408
                 [!provide]                        PROVIDE (stext, ABSOLUTE (.))
  *(.interp)
  *(.hash)
@@ -284,265 +284,265 @@ LOAD /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu
  *(.text .stub .text.* .gnu.linkonce.t.*)
  .text          0x0000000000080248       0x4c ../gamecode_bsp//obj/HAL/src/crt0.o
                 0x0000000000080248                _start
- .text          0x0000000000080294       0x40 obj/default/hello_world.o
+ .text          0x0000000000080294       0x70 obj/default/hello_world.o
                 0x0000000000080294                main
- .text          0x00000000000802d4        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
- .text._puts_r  0x00000000000802d4       0xc0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
-                0x00000000000802d4                _puts_r
- .text.puts     0x0000000000080394       0x14 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
-                0x0000000000080394                puts
- .text          0x00000000000803a8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
- .text.strlen   0x00000000000803a8       0x98 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
-                0x00000000000803a8                strlen
- .text          0x0000000000080440        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+ .text          0x0000000000080304        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+ .text._puts_r  0x0000000000080304       0xc0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+                0x0000000000080304                _puts_r
+ .text.puts     0x00000000000803c4       0x14 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+                0x00000000000803c4                puts
+ .text          0x00000000000803d8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
+ .text.strlen   0x00000000000803d8       0x98 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
+                0x00000000000803d8                strlen
+ .text          0x0000000000080470        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
  .text.__fp_unlock
-                0x0000000000080440        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x0000000000080470        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
  .text._cleanup_r
-                0x0000000000080448        0xc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x0000000000080448                _cleanup_r
+                0x0000000000080478        0xc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x0000000000080478                _cleanup_r
  .text.__sinit.part.1
-                0x0000000000080454      0x19c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x0000000000080484      0x19c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
  .text.__fp_lock
-                0x00000000000805f0        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x0000000000080620        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
  .text.__sfmoreglue
-                0x00000000000805f8       0x68 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x00000000000805f8                __sfmoreglue
- .text.__sfp    0x0000000000080660      0x118 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x0000000000080660                __sfp
+                0x0000000000080628       0x68 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x0000000000080628                __sfmoreglue
+ .text.__sfp    0x0000000000080690      0x118 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x0000000000080690                __sfp
  .text._cleanup
-                0x0000000000080778       0x18 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x0000000000080778                _cleanup
- .text.__sinit  0x0000000000080790       0x10 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x0000000000080790                __sinit
+                0x00000000000807a8       0x18 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807a8                _cleanup
+ .text.__sinit  0x00000000000807c0       0x10 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807c0                __sinit
  .text.__sfp_lock_acquire
-                0x00000000000807a0        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x00000000000807a0                __sfp_lock_acquire
+                0x00000000000807d0        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807d0                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x00000000000807a4        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x00000000000807a4                __sfp_lock_release
+                0x00000000000807d4        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807d4                __sfp_lock_release
  .text.__sinit_lock_acquire
-                0x00000000000807a8        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x00000000000807a8                __sinit_lock_acquire
+                0x00000000000807d8        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807d8                __sinit_lock_acquire
  .text.__sinit_lock_release
-                0x00000000000807ac        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x00000000000807ac                __sinit_lock_release
+                0x00000000000807dc        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807dc                __sinit_lock_release
  .text.__fp_lock_all
-                0x00000000000807b0       0x18 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x00000000000807b0                __fp_lock_all
+                0x00000000000807e0       0x18 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807e0                __fp_lock_all
  .text.__fp_unlock_all
-                0x00000000000807c8       0x18 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
-                0x00000000000807c8                __fp_unlock_all
- .text          0x00000000000807e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
+                0x00000000000807f8       0x18 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+                0x00000000000807f8                __fp_unlock_all
+ .text          0x0000000000080810        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
  .text.__sfvwrite_r
-                0x00000000000807e0      0x4bc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
-                0x00000000000807e0                __sfvwrite_r
- .text          0x0000000000080c9c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
- .text._fwalk   0x0000000000080c9c       0xc4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
-                0x0000000000080c9c                _fwalk
+                0x0000000000080810      0x4bc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
+                0x0000000000080810                __sfvwrite_r
+ .text          0x0000000000080ccc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+ .text._fwalk   0x0000000000080ccc       0xc4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+                0x0000000000080ccc                _fwalk
  .text._fwalk_reent
-                0x0000000000080d60       0xc4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
-                0x0000000000080d60                _fwalk_reent
- .text          0x0000000000080e24        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
- .text          0x0000000000080e24        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000080d90       0xc4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+                0x0000000000080d90                _fwalk_reent
+ .text          0x0000000000080e54        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+ .text          0x0000000000080e54        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
  .text._malloc_r
-                0x0000000000080e24      0x80c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x0000000000080e24                _malloc_r
- .text          0x0000000000081630        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
- .text.memchr   0x0000000000081630       0xe4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
-                0x0000000000081630                memchr
- .text          0x0000000000081714        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
- .text.memcpy   0x0000000000081714      0x148 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
-                0x0000000000081714                memcpy
- .text          0x000000000008185c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
- .text.memmove  0x000000000008185c      0x15c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
-                0x000000000008185c                memmove
- .text          0x00000000000819b8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
- .text.memset   0x00000000000819b8      0x128 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
-                0x00000000000819b8                memset
- .text          0x0000000000081ae0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
+                0x0000000000080e54      0x80c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000080e54                _malloc_r
+ .text          0x0000000000081660        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
+ .text.memchr   0x0000000000081660       0xe4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
+                0x0000000000081660                memchr
+ .text          0x0000000000081744        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
+ .text.memcpy   0x0000000000081744      0x148 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
+                0x0000000000081744                memcpy
+ .text          0x000000000008188c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
+ .text.memmove  0x000000000008188c      0x15c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
+                0x000000000008188c                memmove
+ .text          0x00000000000819e8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
+ .text.memset   0x00000000000819e8      0x128 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
+                0x00000000000819e8                memset
+ .text          0x0000000000081b10        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
  .text._realloc_r
-                0x0000000000081ae0      0x564 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
-                0x0000000000081ae0                _realloc_r
- .text          0x0000000000082044        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
- .text._sbrk_r  0x0000000000082044       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
-                0x0000000000082044                _sbrk_r
- .text          0x0000000000082098        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
- .text.__sread  0x0000000000082098       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
-                0x0000000000082098                __sread
+                0x0000000000081b10      0x564 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
+                0x0000000000081b10                _realloc_r
+ .text          0x0000000000082074        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
+ .text._sbrk_r  0x0000000000082074       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
+                0x0000000000082074                _sbrk_r
+ .text          0x00000000000820c8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+ .text.__sread  0x00000000000820c8       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+                0x00000000000820c8                __sread
  .text.__seofread
-                0x00000000000820ec        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
-                0x00000000000820ec                __seofread
+                0x000000000008211c        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+                0x000000000008211c                __seofread
  .text.__swrite
-                0x00000000000820f4       0x7c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
-                0x00000000000820f4                __swrite
- .text.__sseek  0x0000000000082170       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
-                0x0000000000082170                __sseek
+                0x0000000000082124       0x7c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+                0x0000000000082124                __swrite
+ .text.__sseek  0x00000000000821a0       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+                0x00000000000821a0                __sseek
  .text.__sclose
-                0x00000000000821cc        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
-                0x00000000000821cc                __sclose
- .text          0x00000000000821d4        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
+                0x00000000000821fc        0x8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+                0x00000000000821fc                __sclose
+ .text          0x0000000000082204        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
  .text._write_r
-                0x00000000000821d4       0x60 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
-                0x00000000000821d4                _write_r
- .text          0x0000000000082234        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
+                0x0000000000082204       0x60 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
+                0x0000000000082204                _write_r
+ .text          0x0000000000082264        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
  .text.__swsetup_r
-                0x0000000000082234      0x154 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
-                0x0000000000082234                __swsetup_r
- .text          0x0000000000082388        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
+                0x0000000000082264      0x154 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
+                0x0000000000082264                __swsetup_r
+ .text          0x00000000000823b8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
  .text._close_r
-                0x0000000000082388       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
-                0x0000000000082388                _close_r
- .text          0x00000000000823dc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+                0x00000000000823b8       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
+                0x00000000000823b8                _close_r
+ .text          0x000000000008240c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
  .text._fclose_r
-                0x00000000000823dc       0xf0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
-                0x00000000000823dc                _fclose_r
- .text.fclose   0x00000000000824cc       0x14 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
-                0x00000000000824cc                fclose
- .text          0x00000000000824e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+                0x000000000008240c       0xf0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+                0x000000000008240c                _fclose_r
+ .text.fclose   0x00000000000824fc       0x14 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+                0x00000000000824fc                fclose
+ .text          0x0000000000082510        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
  .text.__sflush_r
-                0x00000000000824e0      0x21c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
-                0x00000000000824e0                __sflush_r
+                0x0000000000082510      0x21c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+                0x0000000000082510                __sflush_r
  .text._fflush_r
-                0x00000000000826fc       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
-                0x00000000000826fc                _fflush_r
- .text.fflush   0x0000000000082758       0x30 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
-                0x0000000000082758                fflush
- .text          0x0000000000082788        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+                0x000000000008272c       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+                0x000000000008272c                _fflush_r
+ .text.fflush   0x0000000000082788       0x30 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+                0x0000000000082788                fflush
+ .text          0x00000000000827b8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
  .text._malloc_trim_r
-                0x0000000000082788      0x124 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
-                0x0000000000082788                _malloc_trim_r
- .text._free_r  0x00000000000828ac      0x310 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
-                0x00000000000828ac                _free_r
- .text          0x0000000000082bbc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
- .text          0x0000000000082bbc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
+                0x00000000000827b8      0x124 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+                0x00000000000827b8                _malloc_trim_r
+ .text._free_r  0x00000000000828dc      0x310 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+                0x00000000000828dc                _free_r
+ .text          0x0000000000082bec        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
+ .text          0x0000000000082bec        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
  .text._lseek_r
-                0x0000000000082bbc       0x60 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
-                0x0000000000082bbc                _lseek_r
- .text          0x0000000000082c1c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
+                0x0000000000082bec       0x60 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
+                0x0000000000082bec                _lseek_r
+ .text          0x0000000000082c4c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
  .text.__smakebuf_r
-                0x0000000000082c1c      0x1bc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
-                0x0000000000082c1c                __smakebuf_r
- .text          0x0000000000082dd8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
- .text._read_r  0x0000000000082dd8       0x60 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
-                0x0000000000082dd8                _read_r
- .text          0x0000000000082e38        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
+                0x0000000000082c4c      0x1bc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
+                0x0000000000082c4c                __smakebuf_r
+ .text          0x0000000000082e08        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
+ .text._read_r  0x0000000000082e08       0x60 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
+                0x0000000000082e08                _read_r
+ .text          0x0000000000082e68        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
  .text._fstat_r
-                0x0000000000082e38       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
-                0x0000000000082e38                _fstat_r
- .text          0x0000000000082e94        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
+                0x0000000000082e68       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
+                0x0000000000082e68                _fstat_r
+ .text          0x0000000000082ec4        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
  .text._isatty_r
-                0x0000000000082e94       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
-                0x0000000000082e94                _isatty_r
- .text          0x0000000000082ee8      0x1b4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
-                0x0000000000082ee8                __divsi3
-                0x0000000000082f6c                __modsi3
-                0x0000000000082fe0                __udivsi3
-                0x0000000000083044                __umodsi3
- .text          0x000000000008309c      0x10c ../gamecode_bsp//libhal_bsp.a(alt_close.o)
-                0x00000000000830d8                close
- .text          0x00000000000831a8       0x2c ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
- .text          0x00000000000831d4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
- .text          0x00000000000831d4       0xec ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
-                0x0000000000083210                fstat
- .text          0x00000000000832c0       0xe0 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
-                0x00000000000832fc                isatty
- .text          0x00000000000833a0       0xec ../gamecode_bsp//libhal_bsp.a(alt_load.o)
-                0x0000000000083408                alt_load
- .text          0x000000000008348c      0x110 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
-                0x00000000000834c8                lseek
- .text          0x000000000008359c       0x7c ../gamecode_bsp//libhal_bsp.a(alt_main.o)
-                0x000000000008359c                alt_main
- .text          0x0000000000083618       0x48 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
-                0x0000000000083618                __malloc_lock
-                0x000000000008363c                __malloc_unlock
- .text          0x0000000000083660      0x138 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
-                0x000000000008369c                read
- .text          0x0000000000083798       0x64 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
-                0x0000000000083798                alt_release_fd
- .text          0x00000000000837fc       0xb0 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
-                0x00000000000837fc                sbrk
- .text          0x00000000000838ac      0x134 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
-                0x00000000000838e8                write
- .text          0x00000000000839e0       0xc0 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
-                0x0000000000083a14                alt_irq_init
-                0x0000000000083a4c                alt_sys_init
- .text          0x0000000000083aa0      0x164 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
-                0x0000000000083aa0                altera_avalon_jtag_uart_read_fd
-                0x0000000000083b00                altera_avalon_jtag_uart_write_fd
-                0x0000000000083b60                altera_avalon_jtag_uart_close_fd
-                0x0000000000083bb0                altera_avalon_jtag_uart_ioctl_fd
- .text          0x0000000000083c04      0x3cc ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
-                0x0000000000083c04                altera_avalon_jtag_uart_init
-                0x0000000000083f68                altera_avalon_jtag_uart_close
- .text          0x0000000000083fd0       0xf0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
-                0x0000000000083fd0                altera_avalon_jtag_uart_ioctl
- .text          0x00000000000840c0      0x21c ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
-                0x00000000000840c0                altera_avalon_jtag_uart_read
- .text          0x00000000000842dc      0x224 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                0x00000000000842dc                altera_avalon_jtag_uart_write
- .text          0x0000000000084500      0x12c ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
-                0x0000000000084500                alt_alarm_start
- .text          0x000000000008462c       0x48 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
-                0x000000000008462c                alt_dcache_flush_all
- .text          0x0000000000084674       0xe0 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
-                0x00000000000846b0                alt_dev_llist_insert
- .text          0x0000000000084754       0x60 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
-                0x0000000000084754                _do_ctors
- .text          0x00000000000847b4       0x60 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
-                0x00000000000847b4                _do_dtors
- .text          0x0000000000084814       0x34 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
-                0x0000000000084814                alt_icache_flush_all
- .text          0x0000000000084848      0x140 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
-                0x000000000008490c                alt_io_redirect
- .text          0x0000000000084988      0x180 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
-                0x0000000000084988                alt_irq_register
- .text          0x0000000000084b08        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
- .text          0x0000000000084b08      0x254 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
-                0x0000000000084c08                open
- .text          0x0000000000084d5c      0x1a4 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
-                0x0000000000084d5c                alt_alarm_stop
-                0x0000000000084df8                alt_tick
- .text          0x0000000000084f00       0x24 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
-                0x0000000000084f00                altera_nios2_gen2_irq_init
- .text          0x0000000000084f24       0x90 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
-                0x0000000000084f24                alt_find_dev
- .text          0x0000000000084fb4      0x108 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
-                0x0000000000084fb4                alt_find_file
- .text          0x00000000000850bc       0xa4 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
-                0x00000000000850bc                alt_get_fd
- .text          0x0000000000085160       0x90 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
-                0x0000000000085160                alt_icache_flush
- .text          0x00000000000851f0        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
- .text          0x00000000000851f0        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
- .text          0x00000000000851f0        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
- .text          0x00000000000851f0       0x9c ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
-                0x00000000000851f0                alt_exception_cause_generated_bad_addr
- .text          0x000000000008528c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
- .text.atexit   0x000000000008528c       0x14 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
-                0x000000000008528c                atexit
- .text          0x00000000000852a0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
- .text.exit     0x00000000000852a0       0x38 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
-                0x00000000000852a0                exit
- .text          0x00000000000852d8        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
- .text.memcmp   0x00000000000852d8       0x7c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
-                0x00000000000852d8                memcmp
- .text          0x0000000000085354        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
+                0x0000000000082ec4       0x54 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
+                0x0000000000082ec4                _isatty_r
+ .text          0x0000000000082f18      0x1b4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
+                0x0000000000082f18                __divsi3
+                0x0000000000082f9c                __modsi3
+                0x0000000000083010                __udivsi3
+                0x0000000000083074                __umodsi3
+ .text          0x00000000000830cc      0x10c ../gamecode_bsp//libhal_bsp.a(alt_close.o)
+                0x0000000000083108                close
+ .text          0x00000000000831d8       0x2c ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+ .text          0x0000000000083204        0x0 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
+ .text          0x0000000000083204       0xec ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
+                0x0000000000083240                fstat
+ .text          0x00000000000832f0       0xe0 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
+                0x000000000008332c                isatty
+ .text          0x00000000000833d0       0xec ../gamecode_bsp//libhal_bsp.a(alt_load.o)
+                0x0000000000083438                alt_load
+ .text          0x00000000000834bc      0x110 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
+                0x00000000000834f8                lseek
+ .text          0x00000000000835cc       0x7c ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+                0x00000000000835cc                alt_main
+ .text          0x0000000000083648       0x48 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
+                0x0000000000083648                __malloc_lock
+                0x000000000008366c                __malloc_unlock
+ .text          0x0000000000083690      0x138 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
+                0x00000000000836cc                read
+ .text          0x00000000000837c8       0x64 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
+                0x00000000000837c8                alt_release_fd
+ .text          0x000000000008382c       0xb0 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
+                0x000000000008382c                sbrk
+ .text          0x00000000000838dc      0x134 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
+                0x0000000000083918                write
+ .text          0x0000000000083a10       0xc0 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
+                0x0000000000083a44                alt_irq_init
+                0x0000000000083a7c                alt_sys_init
+ .text          0x0000000000083ad0      0x164 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                0x0000000000083ad0                altera_avalon_jtag_uart_read_fd
+                0x0000000000083b30                altera_avalon_jtag_uart_write_fd
+                0x0000000000083b90                altera_avalon_jtag_uart_close_fd
+                0x0000000000083be0                altera_avalon_jtag_uart_ioctl_fd
+ .text          0x0000000000083c34      0x3cc ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+                0x0000000000083c34                altera_avalon_jtag_uart_init
+                0x0000000000083f98                altera_avalon_jtag_uart_close
+ .text          0x0000000000084000       0xf0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+                0x0000000000084000                altera_avalon_jtag_uart_ioctl
+ .text          0x00000000000840f0      0x21c ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x00000000000840f0                altera_avalon_jtag_uart_read
+ .text          0x000000000008430c      0x224 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x000000000008430c                altera_avalon_jtag_uart_write
+ .text          0x0000000000084530      0x12c ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
+                0x0000000000084530                alt_alarm_start
+ .text          0x000000000008465c       0x48 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+                0x000000000008465c                alt_dcache_flush_all
+ .text          0x00000000000846a4       0xe0 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
+                0x00000000000846e0                alt_dev_llist_insert
+ .text          0x0000000000084784       0x60 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
+                0x0000000000084784                _do_ctors
+ .text          0x00000000000847e4       0x60 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
+                0x00000000000847e4                _do_dtors
+ .text          0x0000000000084844       0x34 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+                0x0000000000084844                alt_icache_flush_all
+ .text          0x0000000000084878      0x140 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
+                0x000000000008493c                alt_io_redirect
+ .text          0x00000000000849b8      0x180 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
+                0x00000000000849b8                alt_irq_register
+ .text          0x0000000000084b38        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+ .text          0x0000000000084b38      0x254 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
+                0x0000000000084c38                open
+ .text          0x0000000000084d8c      0x1a4 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+                0x0000000000084d8c                alt_alarm_stop
+                0x0000000000084e28                alt_tick
+ .text          0x0000000000084f30       0x24 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x0000000000084f30                altera_nios2_gen2_irq_init
+ .text          0x0000000000084f54       0x90 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
+                0x0000000000084f54                alt_find_dev
+ .text          0x0000000000084fe4      0x108 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
+                0x0000000000084fe4                alt_find_file
+ .text          0x00000000000850ec       0xa4 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
+                0x00000000000850ec                alt_get_fd
+ .text          0x0000000000085190       0x90 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
+                0x0000000000085190                alt_icache_flush
+ .text          0x0000000000085220        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
+ .text          0x0000000000085220        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
+ .text          0x0000000000085220        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
+ .text          0x0000000000085220       0x9c ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x0000000000085220                alt_exception_cause_generated_bad_addr
+ .text          0x00000000000852bc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
+ .text.atexit   0x00000000000852bc       0x14 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
+                0x00000000000852bc                atexit
+ .text          0x00000000000852d0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
+ .text.exit     0x00000000000852d0       0x38 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
+                0x00000000000852d0                exit
+ .text          0x0000000000085308        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
+ .text.memcmp   0x0000000000085308       0x7c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
+                0x0000000000085308                memcmp
+ .text          0x0000000000085384        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
  .text.__register_exitproc
-                0x0000000000085354      0x118 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
-                0x0000000000085354                __register_exitproc
- .text          0x000000000008546c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
+                0x0000000000085384      0x118 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
+                0x0000000000085384                __register_exitproc
+ .text          0x000000000008549c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
  .text.__call_exitprocs
-                0x000000000008546c      0x180 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
-                0x000000000008546c                __call_exitprocs
- .text          0x00000000000855ec       0x34 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
-                0x00000000000855ec                _exit
+                0x000000000008549c      0x180 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
+                0x000000000008549c                __call_exitprocs
+ .text          0x000000000008561c       0x34 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
+                0x000000000008561c                _exit
  *(.gnu.warning.*)
  *(.fini)
                 [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (etext, ABSOLUTE (.))
  *(.eh_frame_hdr)
-                0x0000000000085620                . = ALIGN (0x4)
+                0x0000000000085650                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
@@ -555,288 +555,288 @@ LOAD /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu
  *(.eh_frame)
  *(.gcc_except_table .gcc_except_table.*)
  *(.dynamic)
-                0x0000000000085620                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
+                0x0000000000085650                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
  *(.ctors)
  *(SORT(.ctors.*))
-                0x0000000000085620                PROVIDE (__CTOR_END__, ABSOLUTE (.))
-                0x0000000000085620                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
+                0x0000000000085650                PROVIDE (__CTOR_END__, ABSOLUTE (.))
+                0x0000000000085650                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
  *(.dtors)
  *(SORT(.dtors.*))
-                0x0000000000085620                PROVIDE (__DTOR_END__, ABSOLUTE (.))
+                0x0000000000085650                PROVIDE (__DTOR_END__, ABSOLUTE (.))
  *(.jcr)
-                0x0000000000085620                . = ALIGN (0x4)
+                0x0000000000085650                . = ALIGN (0x4)
 
-.rodata         0x0000000000085620       0x90
-                0x0000000000085620                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
-                0x0000000000085620                . = ALIGN (0x4)
+.rodata         0x0000000000085650       0x90
+                0x0000000000085650                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0000000000085650                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x0000000000085620       0x42 obj/default/hello_world.o
- *fill*         0x0000000000085662        0x2 
+ .rodata        0x0000000000085650       0x42 obj/default/hello_world.o
+ *fill*         0x0000000000085692        0x2 
  .rodata.str1.4
-                0x0000000000085664        0x2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
- *fill*         0x0000000000085666        0x2 
+                0x0000000000085694        0x2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+ *fill*         0x0000000000085696        0x2 
  .rodata.str1.4
-                0x0000000000085668        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+                0x0000000000085698        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
                                           0x2 (size before relaxing)
- .rodata        0x000000000008566c        0xa ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
- *fill*         0x0000000000085676        0x2 
- .rodata        0x0000000000085678       0x11 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
- *fill*         0x0000000000085689        0x3 
- .rodata        0x000000000008568c       0x21 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
+ .rodata        0x000000000008569c        0xa ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+ *fill*         0x00000000000856a6        0x2 
+ .rodata        0x00000000000856a8       0x11 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+ *fill*         0x00000000000856b9        0x3 
+ .rodata        0x00000000000856bc       0x21 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
  *(.rodata1)
-                0x00000000000856b0                . = ALIGN (0x4)
- *fill*         0x00000000000856ad        0x3 
-                0x00000000000856b0                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
-                0x0000000000085620                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+                0x00000000000856e0                . = ALIGN (0x4)
+ *fill*         0x00000000000856dd        0x3 
+                0x00000000000856e0                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000000085650                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x00000000000856b0     0x1a9c load address 0x000000000008714c
-                0x00000000000856b0                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x00000000000856b0                . = ALIGN (0x4)
+.rwdata         0x00000000000856e0     0x1a9c load address 0x000000000008717c
+                0x00000000000856e0                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x00000000000856e0                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00000000000856b0        0x0 ../gamecode_bsp//obj/HAL/src/crt0.o
- .data          0x00000000000856b0        0x0 obj/default/hello_world.o
- .data          0x00000000000856b0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
- .data          0x00000000000856b0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
- .data          0x00000000000856b0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
- .data          0x00000000000856b0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
- .data          0x00000000000856b0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
- .data          0x00000000000856b0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+ .data          0x00000000000856e0        0x0 ../gamecode_bsp//obj/HAL/src/crt0.o
+ .data          0x00000000000856e0        0x0 obj/default/hello_world.o
+ .data          0x00000000000856e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+ .data          0x00000000000856e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
+ .data          0x00000000000856e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+ .data          0x00000000000856e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
+ .data          0x00000000000856e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+ .data          0x00000000000856e0        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
  .data.impure_data
-                0x00000000000856b0      0x424 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
- .data          0x0000000000085ad4        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x00000000000856e0      0x424 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+ .data          0x0000000000085b04        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
  .data.__malloc_av_
-                0x0000000000085ad4      0x408 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x0000000000085ad4                __malloc_av_
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
- .data          0x0000000000085edc        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
- .data          0x0000000000085edc        0x0 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
- .data          0x0000000000085edc      0x1a8 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
-                0x0000000000085edc                alt_dev_null
-                0x0000000000085f04                alt_fd_list
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_load.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
- .data          0x0000000000086084        0x0 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
- .data          0x0000000000086084     0x1090 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
- .data          0x0000000000087114        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
- .data          0x0000000000087114        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
- .data          0x0000000000087114        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
- .data          0x0000000000087114        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
- .data          0x0000000000087114        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
- .data          0x0000000000087114        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
-                0x000000000008f114                _gp = ABSOLUTE ((. + 0x8000))
+                0x0000000000085b04      0x408 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000085b04                __malloc_av_
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
+ .data          0x0000000000085f0c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
+ .data          0x0000000000085f0c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
+ .data          0x0000000000085f0c      0x1a8 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+                0x0000000000085f0c                alt_dev_null
+                0x0000000000085f34                alt_fd_list
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_load.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
+ .data          0x00000000000860b4        0x0 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
+ .data          0x00000000000860b4     0x1090 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
+ .data          0x0000000000087144        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
+ .data          0x0000000000087144        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
+ .data          0x0000000000087144        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
+ .data          0x0000000000087144        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
+ .data          0x0000000000087144        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000087144        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
+                0x000000000008f144                _gp = ABSOLUTE ((. + 0x8000))
                 [!provide]                        PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
  .sdata._global_impure_ptr
-                0x0000000000087114        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
-                0x0000000000087114                _global_impure_ptr
+                0x0000000000087144        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+                0x0000000000087144                _global_impure_ptr
  .sdata._impure_ptr
-                0x0000000000087118        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
-                0x0000000000087118                _impure_ptr
+                0x0000000000087148        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+                0x0000000000087148                _impure_ptr
  .sdata.__malloc_sbrk_base
-                0x000000000008711c        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x000000000008711c                __malloc_sbrk_base
+                0x000000000008714c        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x000000000008714c                __malloc_sbrk_base
  .sdata.__malloc_trim_threshold
-                0x0000000000087120        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x0000000000087120                __malloc_trim_threshold
- .sdata         0x0000000000087124       0x14 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
-                0x0000000000087124                alt_fs_list
-                0x000000000008712c                alt_dev_list
-                0x0000000000087134                alt_max_fd
- .sdata         0x0000000000087138        0x4 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
-                0x0000000000087138                alt_errno
- .sdata         0x000000000008713c        0x4 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
- .sdata         0x0000000000087140        0x4 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
-                0x0000000000087140                alt_priority_mask
- .sdata         0x0000000000087144        0x8 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
-                0x0000000000087144                alt_alarm_list
+                0x0000000000087150        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000087150                __malloc_trim_threshold
+ .sdata         0x0000000000087154       0x14 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+                0x0000000000087154                alt_fs_list
+                0x000000000008715c                alt_dev_list
+                0x0000000000087164                alt_max_fd
+ .sdata         0x0000000000087168        0x4 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
+                0x0000000000087168                alt_errno
+ .sdata         0x000000000008716c        0x4 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
+ .sdata         0x0000000000087170        0x4 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+                0x0000000000087170                alt_priority_mask
+ .sdata         0x0000000000087174        0x8 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+                0x0000000000087174                alt_alarm_list
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x000000000008714c                . = ALIGN (0x4)
-                0x000000000008714c                _edata = ABSOLUTE (.)
+                0x000000000008717c                . = ALIGN (0x4)
+                0x000000000008717c                _edata = ABSOLUTE (.)
                 [!provide]                        PROVIDE (edata, ABSOLUTE (.))
-                0x000000000008714c                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x000000000008714c                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x000000000008717c                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x000000000008717c                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x0000000000088be8      0x154
-                0x0000000000088be8                __bss_start = ABSOLUTE (.)
+.bss            0x0000000000088c18      0x154
+                0x0000000000088c18                __bss_start = ABSOLUTE (.)
                 [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
  .sbss.__malloc_max_total_mem
-                0x0000000000088be8        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x0000000000088be8                __malloc_max_total_mem
+                0x0000000000088c18        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000088c18                __malloc_max_total_mem
  .sbss.__malloc_max_sbrked_mem
-                0x0000000000088bec        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x0000000000088bec                __malloc_max_sbrked_mem
+                0x0000000000088c1c        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000088c1c                __malloc_max_sbrked_mem
  .sbss.__malloc_top_pad
-                0x0000000000088bf0        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x0000000000088bf0                __malloc_top_pad
- .sbss          0x0000000000088bf4        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
-                0x0000000000088bf4                errno
- .sbss          0x0000000000088bf8        0xc ../gamecode_bsp//libhal_bsp.a(alt_main.o)
-                0x0000000000088bf8                alt_argc
-                0x0000000000088bfc                alt_argv
-                0x0000000000088c00                alt_envp
- .sbss          0x0000000000088c04        0x4 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
-                0x0000000000088c04                alt_irq_active
- .sbss          0x0000000000088c08        0x8 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
-                0x0000000000088c08                _alt_tick_rate
-                0x0000000000088c0c                _alt_nticks
- .sbss          0x0000000000088c10        0x4 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
-                0x0000000000088c10                alt_instruction_exception_handler
+                0x0000000000088c20        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000088c20                __malloc_top_pad
+ .sbss          0x0000000000088c24        0x4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
+                0x0000000000088c24                errno
+ .sbss          0x0000000000088c28        0xc ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+                0x0000000000088c28                alt_argc
+                0x0000000000088c2c                alt_argv
+                0x0000000000088c30                alt_envp
+ .sbss          0x0000000000088c34        0x4 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+                0x0000000000088c34                alt_irq_active
+ .sbss          0x0000000000088c38        0x8 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+                0x0000000000088c38                _alt_tick_rate
+                0x0000000000088c3c                _alt_nticks
+ .sbss          0x0000000000088c40        0x4 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x0000000000088c40                alt_instruction_exception_handler
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
                 [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x0000000000088c14        0x0 ../gamecode_bsp//obj/HAL/src/crt0.o
- .bss           0x0000000000088c14        0x0 obj/default/hello_world.o
- .bss           0x0000000000088c14        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
- .bss           0x0000000000088c14        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
- .bss           0x0000000000088c14        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
- .bss           0x0000000000088c14        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
- .bss           0x0000000000088c14        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
- .bss           0x0000000000088c14        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
- .bss           0x0000000000088c14        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+ .bss           0x0000000000088c44        0x0 ../gamecode_bsp//obj/HAL/src/crt0.o
+ .bss           0x0000000000088c44        0x0 obj/default/hello_world.o
+ .bss           0x0000000000088c44        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+ .bss           0x0000000000088c44        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
+ .bss           0x0000000000088c44        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+ .bss           0x0000000000088c44        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
+ .bss           0x0000000000088c44        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+ .bss           0x0000000000088c44        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+ .bss           0x0000000000088c44        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
  .bss.__malloc_current_mallinfo
-                0x0000000000088c14       0x28 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
-                0x0000000000088c14                __malloc_current_mallinfo
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_load.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
- .bss           0x0000000000088c3c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
- .bss           0x0000000000088c3c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
+                0x0000000000088c44       0x28 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+                0x0000000000088c44                __malloc_current_mallinfo
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_load.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
+ .bss           0x0000000000088c6c        0x0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000000088c6c        0x0 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
  *(COMMON)
- COMMON         0x0000000000088c3c      0x100 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
-                0x0000000000088c3c                alt_irq
-                0x0000000000088d3c                . = ALIGN (0x4)
-                0x0000000000088d3c                __bss_end = ABSOLUTE (.)
+ COMMON         0x0000000000088c6c      0x100 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
+                0x0000000000088c6c                alt_irq
+                0x0000000000088d6c                . = ALIGN (0x4)
+                0x0000000000088d6c                __bss_end = ABSOLUTE (.)
 
 .onchip_memory2_0
-                0x0000000000088d3c        0x0
+                0x0000000000088d6c        0x0
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_start, ABSOLUTE (.))
  *(.onchip_memory2_0 .onchip_memory2_0. onchip_memory2_0.*)
-                0x0000000000088d3c                . = ALIGN (0x4)
+                0x0000000000088d6c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_end, ABSOLUTE (.))
-                0x0000000000088d3c                _end = ABSOLUTE (.)
-                0x0000000000088d3c                end = ABSOLUTE (.)
-                0x0000000000088d3c                __alt_stack_base = ABSOLUTE (.)
+                0x0000000000088d6c                _end = ABSOLUTE (.)
+                0x0000000000088d6c                end = ABSOLUTE (.)
+                0x0000000000088d6c                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_load_addr, LOADADDR (.onchip_memory2_0))
 
 .stab
@@ -1098,236 +1098,236 @@ LOAD /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000    0x16243
+.debug_info     0x0000000000000000    0x16258
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0x7f ../gamecode_bsp//obj/HAL/src/crt0.o
- .debug_info    0x000000000000007f       0x96 obj/default/hello_world.o
- .debug_info    0x0000000000000115      0xa38 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
- .debug_info    0x0000000000000b4d       0xe2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
- .debug_info    0x0000000000000c2f      0xd37 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
- .debug_info    0x0000000000001966      0xbb8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
- .debug_info    0x000000000000251e      0x9b0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
- .debug_info    0x0000000000002ece      0x8a1 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
- .debug_info    0x000000000000376f      0xd57 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
- .debug_info    0x00000000000044c6      0x132 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
- .debug_info    0x00000000000045f8      0x144 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
- .debug_info    0x000000000000473c      0x13a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
- .debug_info    0x0000000000004876      0x121 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
- .debug_info    0x0000000000004997      0xc6b /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
- .debug_info    0x0000000000005602      0x900 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
- .debug_info    0x0000000000005f02      0xb32 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
- .debug_info    0x0000000000006a34      0x928 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
- .debug_info    0x000000000000735c      0x936 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
- .debug_info    0x0000000000007c92      0x8df /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
- .debug_info    0x0000000000008571      0xa23 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
- .debug_info    0x0000000000008f94      0xa93 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
- .debug_info    0x0000000000009a27      0xbf7 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
- .debug_info    0x000000000000a61e       0x8a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
- .debug_info    0x000000000000a6a8      0x90b /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
- .debug_info    0x000000000000afb3      0xad8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
- .debug_info    0x000000000000ba8b      0x921 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
- .debug_info    0x000000000000c3ac      0xa5d /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
- .debug_info    0x000000000000ce09      0x8df /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
- .debug_info    0x000000000000d6e8      0x2c6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
- .debug_info    0x000000000000d9ae      0x321 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
- .debug_info    0x000000000000dccf      0x49c ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
- .debug_info    0x000000000000e16b       0xa6 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
- .debug_info    0x000000000000e211      0x488 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
- .debug_info    0x000000000000e699      0x48b ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
- .debug_info    0x000000000000eb24      0x145 ../gamecode_bsp//libhal_bsp.a(alt_load.o)
- .debug_info    0x000000000000ec69      0x352 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
- .debug_info    0x000000000000efbb      0x157 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
- .debug_info    0x000000000000f112      0x8b6 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
- .debug_info    0x000000000000f9c8      0x4b0 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
- .debug_info    0x000000000000fe78      0x2b0 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
- .debug_info    0x0000000000010128      0x1d2 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
- .debug_info    0x00000000000102fa      0x4b7 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
- .debug_info    0x00000000000107b1      0x526 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x0000000000010cd7      0x52e ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_info    0x0000000000011205      0x3c3 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .debug_info    0x00000000000115c8      0x280 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .debug_info    0x0000000000011848      0x35b ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_info    0x0000000000011ba3      0x356 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_info    0x0000000000011ef9      0x2e2 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
- .debug_info    0x00000000000121db       0xa5 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_info    0x0000000000012280      0x1a9 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_info    0x0000000000012429       0x83 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
- .debug_info    0x00000000000124ac       0x83 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
- .debug_info    0x000000000001252f       0x92 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
- .debug_info    0x00000000000125c1      0x4a5 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
- .debug_info    0x0000000000012a66      0x329 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
- .debug_info    0x0000000000012d8f       0x88 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
- .debug_info    0x0000000000012e17      0x3bb ../gamecode_bsp//libhal_bsp.a(alt_open.o)
- .debug_info    0x00000000000131d2      0x2af ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
- .debug_info    0x0000000000013481       0xb8 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_info    0x0000000000013539      0x2e9 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
- .debug_info    0x0000000000013822      0x2e6 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
- .debug_info    0x0000000000013b08      0x310 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
- .debug_info    0x0000000000013e18       0xdc ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
- .debug_info    0x0000000000013ef4       0x88 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
- .debug_info    0x0000000000013f7c      0x1a7 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
- .debug_info    0x0000000000014123       0x8e ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
- .debug_info    0x00000000000141b1      0x1e7 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_info    0x0000000000014398       0xfe /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
- .debug_info    0x0000000000014496      0x8e4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
- .debug_info    0x0000000000014d7a      0x11a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
- .debug_info    0x0000000000014e94      0x934 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
- .debug_info    0x00000000000157c8      0x965 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
- .debug_info    0x000000000001612d      0x116 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
+ .debug_info    0x000000000000007f       0xab obj/default/hello_world.o
+ .debug_info    0x000000000000012a      0xa38 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+ .debug_info    0x0000000000000b62       0xe2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
+ .debug_info    0x0000000000000c44      0xd37 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+ .debug_info    0x000000000000197b      0xbb8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
+ .debug_info    0x0000000000002533      0x9b0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+ .debug_info    0x0000000000002ee3      0x8a1 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+ .debug_info    0x0000000000003784      0xd57 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+ .debug_info    0x00000000000044db      0x132 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
+ .debug_info    0x000000000000460d      0x144 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
+ .debug_info    0x0000000000004751      0x13a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
+ .debug_info    0x000000000000488b      0x121 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
+ .debug_info    0x00000000000049ac      0xc6b /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
+ .debug_info    0x0000000000005617      0x900 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
+ .debug_info    0x0000000000005f17      0xb32 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+ .debug_info    0x0000000000006a49      0x928 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
+ .debug_info    0x0000000000007371      0x936 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
+ .debug_info    0x0000000000007ca7      0x8df /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
+ .debug_info    0x0000000000008586      0xa23 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+ .debug_info    0x0000000000008fa9      0xa93 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+ .debug_info    0x0000000000009a3c      0xbf7 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+ .debug_info    0x000000000000a633       0x8a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
+ .debug_info    0x000000000000a6bd      0x90b /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
+ .debug_info    0x000000000000afc8      0xad8 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
+ .debug_info    0x000000000000baa0      0x921 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
+ .debug_info    0x000000000000c3c1      0xa5d /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
+ .debug_info    0x000000000000ce1e      0x8df /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
+ .debug_info    0x000000000000d6fd      0x2c6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
+ .debug_info    0x000000000000d9c3      0x321 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
+ .debug_info    0x000000000000dce4      0x49c ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+ .debug_info    0x000000000000e180       0xa6 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
+ .debug_info    0x000000000000e226      0x488 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
+ .debug_info    0x000000000000e6ae      0x48b ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
+ .debug_info    0x000000000000eb39      0x145 ../gamecode_bsp//libhal_bsp.a(alt_load.o)
+ .debug_info    0x000000000000ec7e      0x352 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
+ .debug_info    0x000000000000efd0      0x157 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+ .debug_info    0x000000000000f127      0x8b6 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
+ .debug_info    0x000000000000f9dd      0x4b0 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
+ .debug_info    0x000000000000fe8d      0x2b0 ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
+ .debug_info    0x000000000001013d      0x1d2 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
+ .debug_info    0x000000000001030f      0x4b7 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
+ .debug_info    0x00000000000107c6      0x526 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000010cec      0x52e ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_info    0x000000000001121a      0x3c3 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_info    0x00000000000115dd      0x280 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_info    0x000000000001185d      0x35b ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_info    0x0000000000011bb8      0x356 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x0000000000011f0e      0x2e2 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
+ .debug_info    0x00000000000121f0       0xa5 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x0000000000012295      0x1a9 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_info    0x000000000001243e       0x83 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
+ .debug_info    0x00000000000124c1       0x83 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
+ .debug_info    0x0000000000012544       0x92 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x00000000000125d6      0x4a5 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
+ .debug_info    0x0000000000012a7b      0x329 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
+ .debug_info    0x0000000000012da4       0x88 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+ .debug_info    0x0000000000012e2c      0x3bb ../gamecode_bsp//libhal_bsp.a(alt_open.o)
+ .debug_info    0x00000000000131e7      0x2af ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+ .debug_info    0x0000000000013496       0xb8 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x000000000001354e      0x2e9 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
+ .debug_info    0x0000000000013837      0x2e6 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
+ .debug_info    0x0000000000013b1d      0x310 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
+ .debug_info    0x0000000000013e2d       0xdc ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_info    0x0000000000013f09       0x88 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
+ .debug_info    0x0000000000013f91      0x1a7 ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
+ .debug_info    0x0000000000014138       0x8e ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
+ .debug_info    0x00000000000141c6      0x1e7 ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_info    0x00000000000143ad       0xfe /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
+ .debug_info    0x00000000000144ab      0x8e4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
+ .debug_info    0x0000000000014d8f      0x11a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
+ .debug_info    0x0000000000014ea9      0x934 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
+ .debug_info    0x00000000000157dd      0x965 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_info    0x0000000000016142      0x116 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
 
-.debug_abbrev   0x0000000000000000     0x5e27
+.debug_abbrev   0x0000000000000000     0x5e3f
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0x12 ../gamecode_bsp//obj/HAL/src/crt0.o
- .debug_abbrev  0x0000000000000012       0x42 obj/default/hello_world.o
- .debug_abbrev  0x0000000000000054      0x249 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
- .debug_abbrev  0x000000000000029d       0x90 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
- .debug_abbrev  0x000000000000032d      0x391 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
- .debug_abbrev  0x00000000000006be      0x228 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
- .debug_abbrev  0x00000000000008e6      0x1d1 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
- .debug_abbrev  0x0000000000000ab7      0x18f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
- .debug_abbrev  0x0000000000000c46      0x29d /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
- .debug_abbrev  0x0000000000000ee3       0xab /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
- .debug_abbrev  0x0000000000000f8e       0xa3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
- .debug_abbrev  0x0000000000001031       0x9c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
- .debug_abbrev  0x00000000000010cd       0xae /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
- .debug_abbrev  0x000000000000117b      0x231 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
- .debug_abbrev  0x00000000000013ac      0x20a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
- .debug_abbrev  0x00000000000015b6      0x239 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
- .debug_abbrev  0x00000000000017ef      0x1eb /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
- .debug_abbrev  0x00000000000019da      0x218 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
- .debug_abbrev  0x0000000000001bf2      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
- .debug_abbrev  0x0000000000001dd8      0x2a2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
- .debug_abbrev  0x000000000000207a      0x2a0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
- .debug_abbrev  0x000000000000231a      0x264 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
- .debug_abbrev  0x000000000000257e       0x37 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
- .debug_abbrev  0x00000000000025b5      0x1f5 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
- .debug_abbrev  0x00000000000027aa      0x20f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
- .debug_abbrev  0x00000000000029b9      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
- .debug_abbrev  0x0000000000002b9f      0x1f5 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
- .debug_abbrev  0x0000000000002d94      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
- .debug_abbrev  0x0000000000002f7a      0x10e /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
- .debug_abbrev  0x0000000000003088      0x11f ../gamecode_bsp//libhal_bsp.a(alt_close.o)
- .debug_abbrev  0x00000000000031a7       0xd9 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
- .debug_abbrev  0x0000000000003280       0x5a ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
- .debug_abbrev  0x00000000000032da      0x11f ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
- .debug_abbrev  0x00000000000033f9      0x11f ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
- .debug_abbrev  0x0000000000003518       0x9f ../gamecode_bsp//libhal_bsp.a(alt_load.o)
- .debug_abbrev  0x00000000000035b7      0x11f ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
- .debug_abbrev  0x00000000000036d6       0xc1 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
- .debug_abbrev  0x0000000000003797      0x1b4 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
- .debug_abbrev  0x000000000000394b      0x12e ../gamecode_bsp//libhal_bsp.a(alt_read.o)
- .debug_abbrev  0x0000000000003a79       0xde ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
- .debug_abbrev  0x0000000000003b57      0x119 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
- .debug_abbrev  0x0000000000003c70      0x133 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
- .debug_abbrev  0x0000000000003da3      0x187 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
- .debug_abbrev  0x0000000000003f2a      0x127 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_abbrev  0x0000000000004051      0x19e ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .debug_abbrev  0x00000000000041ef      0x111 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .debug_abbrev  0x0000000000004300      0x1aa ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_abbrev  0x00000000000044aa      0x1a8 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_abbrev  0x0000000000004652      0x162 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
- .debug_abbrev  0x00000000000047b4       0x5a ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_abbrev  0x000000000000480e      0x114 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_abbrev  0x0000000000004922       0x79 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
- .debug_abbrev  0x000000000000499b       0x79 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
- .debug_abbrev  0x0000000000004a14       0x42 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
- .debug_abbrev  0x0000000000004a56      0x114 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
- .debug_abbrev  0x0000000000004b6a      0x186 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
- .debug_abbrev  0x0000000000004cf0       0x40 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
- .debug_abbrev  0x0000000000004d30      0x148 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
- .debug_abbrev  0x0000000000004e78      0x16b ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
- .debug_abbrev  0x0000000000004fe3       0x67 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_abbrev  0x000000000000504a       0xf0 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
- .debug_abbrev  0x000000000000513a       0xf0 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
- .debug_abbrev  0x000000000000522a      0x10d ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
- .debug_abbrev  0x0000000000005337       0x8c ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
- .debug_abbrev  0x00000000000053c3       0x12 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
- .debug_abbrev  0x00000000000053d5      0x13a ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
- .debug_abbrev  0x000000000000550f       0x12 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
- .debug_abbrev  0x0000000000005521       0xdc ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_abbrev  0x00000000000055fd       0xaa /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
- .debug_abbrev  0x00000000000056a7      0x1e5 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
- .debug_abbrev  0x000000000000588c       0x7f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
- .debug_abbrev  0x000000000000590b      0x21e /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
- .debug_abbrev  0x0000000000005b29      0x22e /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
- .debug_abbrev  0x0000000000005d57       0xd0 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
+ .debug_abbrev  0x0000000000000012       0x5a obj/default/hello_world.o
+ .debug_abbrev  0x000000000000006c      0x249 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+ .debug_abbrev  0x00000000000002b5       0x90 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
+ .debug_abbrev  0x0000000000000345      0x391 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+ .debug_abbrev  0x00000000000006d6      0x228 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
+ .debug_abbrev  0x00000000000008fe      0x1d1 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+ .debug_abbrev  0x0000000000000acf      0x18f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+ .debug_abbrev  0x0000000000000c5e      0x29d /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+ .debug_abbrev  0x0000000000000efb       0xab /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
+ .debug_abbrev  0x0000000000000fa6       0xa3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
+ .debug_abbrev  0x0000000000001049       0x9c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
+ .debug_abbrev  0x00000000000010e5       0xae /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
+ .debug_abbrev  0x0000000000001193      0x231 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
+ .debug_abbrev  0x00000000000013c4      0x20a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
+ .debug_abbrev  0x00000000000015ce      0x239 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+ .debug_abbrev  0x0000000000001807      0x1eb /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
+ .debug_abbrev  0x00000000000019f2      0x218 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
+ .debug_abbrev  0x0000000000001c0a      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
+ .debug_abbrev  0x0000000000001df0      0x2a2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+ .debug_abbrev  0x0000000000002092      0x2a0 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+ .debug_abbrev  0x0000000000002332      0x264 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+ .debug_abbrev  0x0000000000002596       0x37 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
+ .debug_abbrev  0x00000000000025cd      0x1f5 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
+ .debug_abbrev  0x00000000000027c2      0x20f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
+ .debug_abbrev  0x00000000000029d1      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
+ .debug_abbrev  0x0000000000002bb7      0x1f5 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
+ .debug_abbrev  0x0000000000002dac      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
+ .debug_abbrev  0x0000000000002f92      0x10e /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
+ .debug_abbrev  0x00000000000030a0      0x11f ../gamecode_bsp//libhal_bsp.a(alt_close.o)
+ .debug_abbrev  0x00000000000031bf       0xd9 ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+ .debug_abbrev  0x0000000000003298       0x5a ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
+ .debug_abbrev  0x00000000000032f2      0x11f ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
+ .debug_abbrev  0x0000000000003411      0x11f ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
+ .debug_abbrev  0x0000000000003530       0x9f ../gamecode_bsp//libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x00000000000035cf      0x11f ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
+ .debug_abbrev  0x00000000000036ee       0xc1 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x00000000000037af      0x1b4 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
+ .debug_abbrev  0x0000000000003963      0x12e ../gamecode_bsp//libhal_bsp.a(alt_read.o)
+ .debug_abbrev  0x0000000000003a91       0xde ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
+ .debug_abbrev  0x0000000000003b6f      0x119 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
+ .debug_abbrev  0x0000000000003c88      0x133 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
+ .debug_abbrev  0x0000000000003dbb      0x187 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x0000000000003f42      0x127 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_abbrev  0x0000000000004069      0x19e ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_abbrev  0x0000000000004207      0x111 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_abbrev  0x0000000000004318      0x1aa ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_abbrev  0x00000000000044c2      0x1a8 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x000000000000466a      0x162 ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
+ .debug_abbrev  0x00000000000047cc       0x5a ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x0000000000004826      0x114 ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_abbrev  0x000000000000493a       0x79 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
+ .debug_abbrev  0x00000000000049b3       0x79 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
+ .debug_abbrev  0x0000000000004a2c       0x42 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x0000000000004a6e      0x114 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
+ .debug_abbrev  0x0000000000004b82      0x186 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
+ .debug_abbrev  0x0000000000004d08       0x40 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+ .debug_abbrev  0x0000000000004d48      0x148 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
+ .debug_abbrev  0x0000000000004e90      0x16b ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+ .debug_abbrev  0x0000000000004ffb       0x67 ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_abbrev  0x0000000000005062       0xf0 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
+ .debug_abbrev  0x0000000000005152       0xf0 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
+ .debug_abbrev  0x0000000000005242      0x10d ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
+ .debug_abbrev  0x000000000000534f       0x8c ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_abbrev  0x00000000000053db       0x12 ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
+ .debug_abbrev  0x00000000000053ed      0x13a ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
+ .debug_abbrev  0x0000000000005527       0x12 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
+ .debug_abbrev  0x0000000000005539       0xdc ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_abbrev  0x0000000000005615       0xaa /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
+ .debug_abbrev  0x00000000000056bf      0x1e5 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
+ .debug_abbrev  0x00000000000058a4       0x7f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
+ .debug_abbrev  0x0000000000005923      0x21e /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
+ .debug_abbrev  0x0000000000005b41      0x22e /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x0000000000005d6f       0xd0 ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
 
-.debug_line     0x0000000000000000     0x6a03
+.debug_line     0x0000000000000000     0x6a07
  *(.debug_line)
  .debug_line    0x0000000000000000       0x72 ../gamecode_bsp//obj/HAL/src/crt0.o
- .debug_line    0x0000000000000072       0x41 obj/default/hello_world.o
- .debug_line    0x00000000000000b3      0x245 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
- .debug_line    0x00000000000002f8      0x16c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
- .debug_line    0x0000000000000464      0x36f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
- .debug_line    0x00000000000007d3      0x342 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
- .debug_line    0x0000000000000b15      0x237 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
- .debug_line    0x0000000000000d4c      0x15d /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
- .debug_line    0x0000000000000ea9      0x3f9 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
- .debug_line    0x00000000000012a2      0x18a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
- .debug_line    0x000000000000142c      0x189 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
- .debug_line    0x00000000000015b5      0x18a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
- .debug_line    0x000000000000173f      0x18c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
- .debug_line    0x00000000000018cb      0x2f2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
- .debug_line    0x0000000000001bbd      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
- .debug_line    0x0000000000001da3      0x267 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
- .debug_line    0x000000000000200a      0x1f3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
- .debug_line    0x00000000000021fd      0x263 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
- .debug_line    0x0000000000002460      0x1f3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
- .debug_line    0x0000000000002653      0x236 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
- .debug_line    0x0000000000002889      0x2e7 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
- .debug_line    0x0000000000002b70      0x2f4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
- .debug_line    0x0000000000002e64       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
- .debug_line    0x0000000000002ec0      0x1f3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
- .debug_line    0x00000000000030b3      0x271 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
- .debug_line    0x0000000000003324      0x1f2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
- .debug_line    0x0000000000003516      0x1fc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
- .debug_line    0x0000000000003712      0x1f4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
- .debug_line    0x0000000000003906      0x102 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
- .debug_line    0x0000000000003a08      0x178 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
- .debug_line    0x0000000000003b80      0x10b ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
- .debug_line    0x0000000000003c8b       0x51 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
- .debug_line    0x0000000000003cdc      0x171 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
- .debug_line    0x0000000000003e4d      0x175 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
- .debug_line    0x0000000000003fc2       0x8e ../gamecode_bsp//libhal_bsp.a(alt_load.o)
- .debug_line    0x0000000000004050      0x176 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
- .debug_line    0x00000000000041c6       0xd1 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
- .debug_line    0x0000000000004297      0x148 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
- .debug_line    0x00000000000043df      0x202 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
- .debug_line    0x00000000000045e1       0xae ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
- .debug_line    0x000000000000468f      0x142 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
- .debug_line    0x00000000000047d1      0x201 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
- .debug_line    0x00000000000049d2      0x167 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
- .debug_line    0x0000000000004b39      0x12f ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_line    0x0000000000004c68      0x19f ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
- .debug_line    0x0000000000004e07      0x131 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
- .debug_line    0x0000000000004f38      0x185 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_line    0x00000000000050bd      0x184 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_line    0x0000000000005241      0x10d ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
- .debug_line    0x000000000000534e       0x61 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_line    0x00000000000053af       0xcf ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_line    0x000000000000547e       0x59 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
- .debug_line    0x00000000000054d7       0x59 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
- .debug_line    0x0000000000005530       0x50 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
- .debug_line    0x0000000000005580      0x146 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
- .debug_line    0x00000000000056c6      0x155 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
- .debug_line    0x000000000000581b       0x50 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
- .debug_line    0x000000000000586b      0x128 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
- .debug_line    0x0000000000005993      0x113 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
- .debug_line    0x0000000000005aa6       0x8d ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_line    0x0000000000005b33       0xb5 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
- .debug_line    0x0000000000005be8       0xd1 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
- .debug_line    0x0000000000005cb9       0xd4 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
- .debug_line    0x0000000000005d8d       0x81 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
- .debug_line    0x0000000000005e0e       0x6b ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
- .debug_line    0x0000000000005e79       0xcd ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
- .debug_line    0x0000000000005f46       0xb3 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
- .debug_line    0x0000000000005ff9       0xba ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_line    0x00000000000060b3       0xe4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
- .debug_line    0x0000000000006197      0x1f9 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
- .debug_line    0x0000000000006390      0x173 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
- .debug_line    0x0000000000006503      0x21c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
- .debug_line    0x000000000000671f      0x237 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
- .debug_line    0x0000000000006956       0xad ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
+ .debug_line    0x0000000000000072       0x45 obj/default/hello_world.o
+ .debug_line    0x00000000000000b7      0x245 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-puts.o)
+ .debug_line    0x00000000000002fc      0x16c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000000468      0x36f /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-findfp.o)
+ .debug_line    0x00000000000007d7      0x342 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fvwrite.o)
+ .debug_line    0x0000000000000b19      0x237 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fwalk.o)
+ .debug_line    0x0000000000000d50      0x15d /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-impure.o)
+ .debug_line    0x0000000000000ead      0x3f9 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-mallocr.o)
+ .debug_line    0x00000000000012a6      0x18a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memchr.o)
+ .debug_line    0x0000000000001430      0x189 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcpy.o)
+ .debug_line    0x00000000000015b9      0x18a /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memmove.o)
+ .debug_line    0x0000000000001743      0x18c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memset.o)
+ .debug_line    0x00000000000018cf      0x2f2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-reallocr.o)
+ .debug_line    0x0000000000001bc1      0x1e6 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-sbrkr.o)
+ .debug_line    0x0000000000001da7      0x267 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-stdio.o)
+ .debug_line    0x000000000000200e      0x1f3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-writer.o)
+ .debug_line    0x0000000000002201      0x263 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-wsetup.o)
+ .debug_line    0x0000000000002464      0x1f3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(closer.o)
+ .debug_line    0x0000000000002657      0x236 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fclose.o)
+ .debug_line    0x000000000000288d      0x2e7 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fflush.o)
+ .debug_line    0x0000000000002b74      0x2f4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-freer.o)
+ .debug_line    0x0000000000002e68       0x5c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-int_errno.o)
+ .debug_line    0x0000000000002ec4      0x1f3 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-lseekr.o)
+ .debug_line    0x00000000000030b7      0x271 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-makebuf.o)
+ .debug_line    0x0000000000003328      0x1f2 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-readr.o)
+ .debug_line    0x000000000000351a      0x1fc /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-fstatr.o)
+ .debug_line    0x0000000000003716      0x1f4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-isattyr.o)
+ .debug_line    0x000000000000390a      0x102 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/libgcc.a(lib2-divmod.o)
+ .debug_line    0x0000000000003a0c      0x178 ../gamecode_bsp//libhal_bsp.a(alt_close.o)
+ .debug_line    0x0000000000003b84      0x10b ../gamecode_bsp//libhal_bsp.a(alt_dev.o)
+ .debug_line    0x0000000000003c8f       0x51 ../gamecode_bsp//libhal_bsp.a(alt_errno.o)
+ .debug_line    0x0000000000003ce0      0x171 ../gamecode_bsp//libhal_bsp.a(alt_fstat.o)
+ .debug_line    0x0000000000003e51      0x175 ../gamecode_bsp//libhal_bsp.a(alt_isatty.o)
+ .debug_line    0x0000000000003fc6       0x8e ../gamecode_bsp//libhal_bsp.a(alt_load.o)
+ .debug_line    0x0000000000004054      0x176 ../gamecode_bsp//libhal_bsp.a(alt_lseek.o)
+ .debug_line    0x00000000000041ca       0xd1 ../gamecode_bsp//libhal_bsp.a(alt_main.o)
+ .debug_line    0x000000000000429b      0x148 ../gamecode_bsp//libhal_bsp.a(alt_malloc_lock.o)
+ .debug_line    0x00000000000043e3      0x202 ../gamecode_bsp//libhal_bsp.a(alt_read.o)
+ .debug_line    0x00000000000045e5       0xae ../gamecode_bsp//libhal_bsp.a(alt_release_fd.o)
+ .debug_line    0x0000000000004693      0x142 ../gamecode_bsp//libhal_bsp.a(alt_sbrk.o)
+ .debug_line    0x00000000000047d5      0x201 ../gamecode_bsp//libhal_bsp.a(alt_write.o)
+ .debug_line    0x00000000000049d6      0x167 ../gamecode_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x0000000000004b3d      0x12f ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_line    0x0000000000004c6c      0x19f ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_line    0x0000000000004e0b      0x131 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_line    0x0000000000004f3c      0x185 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_line    0x00000000000050c1      0x184 ../gamecode_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x0000000000005245      0x10d ../gamecode_bsp//libhal_bsp.a(alt_alarm_start.o)
+ .debug_line    0x0000000000005352       0x61 ../gamecode_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x00000000000053b3       0xcf ../gamecode_bsp//libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_line    0x0000000000005482       0x59 ../gamecode_bsp//libhal_bsp.a(alt_do_ctors.o)
+ .debug_line    0x00000000000054db       0x59 ../gamecode_bsp//libhal_bsp.a(alt_do_dtors.o)
+ .debug_line    0x0000000000005534       0x50 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x0000000000005584      0x146 ../gamecode_bsp//libhal_bsp.a(alt_io_redirect.o)
+ .debug_line    0x00000000000056ca      0x155 ../gamecode_bsp//libhal_bsp.a(alt_irq_register.o)
+ .debug_line    0x000000000000581f       0x50 ../gamecode_bsp//libhal_bsp.a(alt_irq_vars.o)
+ .debug_line    0x000000000000586f      0x128 ../gamecode_bsp//libhal_bsp.a(alt_open.o)
+ .debug_line    0x0000000000005997      0x113 ../gamecode_bsp//libhal_bsp.a(alt_tick.o)
+ .debug_line    0x0000000000005aaa       0x8d ../gamecode_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_line    0x0000000000005b37       0xb5 ../gamecode_bsp//libhal_bsp.a(alt_find_dev.o)
+ .debug_line    0x0000000000005bec       0xd1 ../gamecode_bsp//libhal_bsp.a(alt_find_file.o)
+ .debug_line    0x0000000000005cbd       0xd4 ../gamecode_bsp//libhal_bsp.a(alt_get_fd.o)
+ .debug_line    0x0000000000005d91       0x81 ../gamecode_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_line    0x0000000000005e12       0x6b ../gamecode_bsp//libhal_bsp.a(alt_irq_entry.o)
+ .debug_line    0x0000000000005e7d       0xcd ../gamecode_bsp//libhal_bsp.a(alt_irq_handler.o)
+ .debug_line    0x0000000000005f4a       0xb3 ../gamecode_bsp//libhal_bsp.a(alt_exception_entry.o)
+ .debug_line    0x0000000000005ffd       0xba ../gamecode_bsp//libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_line    0x00000000000060b7       0xe4 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-atexit.o)
+ .debug_line    0x000000000000619b      0x1f9 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-exit.o)
+ .debug_line    0x0000000000006394      0x173 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-memcmp.o)
+ .debug_line    0x0000000000006507      0x21c /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__atexit.o)
+ .debug_line    0x0000000000006723      0x237 /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libc.a(lib_a-__call_atexit.o)
+ .debug_line    0x000000000000695a       0xad ../gamecode_bsp//libhal_bsp.a(alt_exit.o)
 
 .debug_frame    0x0000000000000000     0x1494
  *(.debug_frame)
@@ -1600,7 +1600,7 @@ LOAD /home/jaschutte/Applications/Quartus/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu
                 0x00000000000e1a80                __alt_data_end = 0xe1a80
                 0x00000000000e1a80                PROVIDE (__alt_stack_pointer, __alt_data_end)
                 [!provide]                        PROVIDE (__alt_stack_limit, __alt_stack_base)
-                0x0000000000088d3c                PROVIDE (__alt_heap_start, end)
+                0x0000000000088d6c                PROVIDE (__alt_heap_start, end)
                 0x00000000000e1a80                PROVIDE (__alt_heap_limit, 0xe1a80)
 OUTPUT(gamecode.elf elf32-littlenios2)
 

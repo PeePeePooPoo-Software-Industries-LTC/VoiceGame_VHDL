@@ -21,5 +21,11 @@ int main()
   printf("Hello from Nios II!\n");
   printf("Look, I even modified this file and it works!\n");
 
+//  char* ptr = 0x00;
+//
+//  *(ptr + 0) = 0xff;
+//  *(ptr + 1) = 0xff;
+//  *(ptr + 2) = 0xff;
+
   return 0;
 }

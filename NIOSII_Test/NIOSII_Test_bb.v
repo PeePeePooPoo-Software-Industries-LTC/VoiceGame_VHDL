@@ -5,26 +5,26 @@ module NIOSII_Test (
 	audio_interface_ADCDAT,
 	audio_interface_ADCLRCK,
 	audio_interface_BCLK,
-	video_interface_CLK,
-	video_interface_HS,
-	video_interface_VS,
-	video_interface_BLANK,
-	video_interface_SYNC,
-	video_interface_R,
-	video_interface_G,
-	video_interface_B);	
+	vga_CLK,
+	vga_HS,
+	vga_VS,
+	vga_BLANK,
+	vga_SYNC,
+	vga_R,
+	vga_G,
+	vga_B);	
 
 	input		clk_clk;
 	input		reset_reset_n;
 	input		audio_interface_ADCDAT;
 	input		audio_interface_ADCLRCK;
 	input		audio_interface_BCLK;
-	output		video_interface_CLK;
-	output		video_interface_HS;
-	output		video_interface_VS;
-	output		video_interface_BLANK;
-	output		video_interface_SYNC;
-	output	[7:0]	video_interface_R;
-	output	[7:0]	video_interface_G;
-	output	[7:0]	video_interface_B;
+	output		vga_CLK;
+	output		vga_HS;
+	output		vga_VS;
+	output		vga_BLANK;
+	output		vga_SYNC;
+	output	[7:0]	vga_R;
+	output	[7:0]	vga_G;
+	output	[7:0]	vga_B;
 endmodule

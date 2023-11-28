@@ -4,13 +4,13 @@
 		.audio_interface_ADCDAT  (<connected-to-audio_interface_ADCDAT>),  // audio_interface.ADCDAT
 		.audio_interface_ADCLRCK (<connected-to-audio_interface_ADCLRCK>), //                .ADCLRCK
 		.audio_interface_BCLK    (<connected-to-audio_interface_BCLK>),    //                .BCLK
-		.video_interface_CLK     (<connected-to-video_interface_CLK>),     // video_interface.CLK
-		.video_interface_HS      (<connected-to-video_interface_HS>),      //                .HS
-		.video_interface_VS      (<connected-to-video_interface_VS>),      //                .VS
-		.video_interface_BLANK   (<connected-to-video_interface_BLANK>),   //                .BLANK
-		.video_interface_SYNC    (<connected-to-video_interface_SYNC>),    //                .SYNC
-		.video_interface_R       (<connected-to-video_interface_R>),       //                .R
-		.video_interface_G       (<connected-to-video_interface_G>),       //                .G
-		.video_interface_B       (<connected-to-video_interface_B>)        //                .B
+		.vga_CLK                 (<connected-to-vga_CLK>),                 //             vga.CLK
+		.vga_HS                  (<connected-to-vga_HS>),                  //                .HS
+		.vga_VS                  (<connected-to-vga_VS>),                  //                .VS
+		.vga_BLANK               (<connected-to-vga_BLANK>),               //                .BLANK
+		.vga_SYNC                (<connected-to-vga_SYNC>),                //                .SYNC
+		.vga_R                   (<connected-to-vga_R>),                   //                .R
+		.vga_G                   (<connected-to-vga_G>),                   //                .G
+		.vga_B                   (<connected-to-vga_B>)                    //                .B
 	);
 
