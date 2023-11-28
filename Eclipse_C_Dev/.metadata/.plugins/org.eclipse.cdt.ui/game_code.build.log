@@ -1,0 +1,9 @@
+13:54:02 **** Incremental Build of configuration Nios II for project game_code ****
+make all 
+Info: Building ../game_code_bsp/
+make --no-print-directory -C ../game_code_bsp/
+[BSP build complete]
+[game_code build complete]
+
+13:54:02 Build Finished (took 112ms)
+

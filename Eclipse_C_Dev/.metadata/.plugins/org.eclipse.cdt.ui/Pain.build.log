@@ -1,9 +1,27 @@
-12:33:48 **** Incremental Build of configuration Nios II for project Pain ****
+13:52:06 **** Build of configuration Nios II for project Pain ****
 make all 
+/bin/sh: line 0: igncr: invalid option name
+/bin/sh: line 0: igncr: invalid option name
 Info: Building ../Pain_bsp/
-C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Pain_bsp/
-[BSP build complete]
-[Pain build complete]
+make --no-print-directory -C ../Pain_bsp/
+Makefile not up to date.
+settings.bsp has been modified since the BSP Makefile was generated.
 
-12:33:49 Build Finished (took 799ms)
+Generate the BSP to update the Makefile, and then build again.
+
+To generate from Eclipse:
+/bin/sh: line 0: igncr: invalid option name
+ 1. Right-click the BSP project.
+/bin/sh: line 0: igncr: invalid option name
+ 2. In the Nios II Menu, click Generate BSP.
+
+To generate from the command line:
+/bin/sh: line 0: igncr: invalid option name
+ nios2-bsp-generate-files --settings=<settings file> --bsp-dir=<target bsp files directory>
+
+/bin/sh: line 0: igncr: invalid option name
+make[1]: *** [Makefile:526: Makefile] Error 1
+make: *** [Makefile:893: ../Pain_bsp/-recurs-make-lib] Error 2
+
+13:52:06 Build Finished (took 113ms)
 
