@@ -18,7 +18,24 @@
 
 int main()
 {
-  printf("Hello from Nios II!\n");
+  int x = 0;
+
+  printf("Printing out address of variable X: %p\n", &x);
+
+  int* framebuffer = 0x00100000;
+
+  while ((int)framebuffer <= 0x007fffff) {
+
+	  *framebuffer = 0xff;
+
+	  framebuffer++;
+
+	  if ((int)framebuffer % 0x1000 == 0) {
+		  printf("At: %p\n", framebuffer);
+	  }
+  }
+
+  printf("Done\n");
 
   return 0;
 }

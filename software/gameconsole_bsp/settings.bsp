@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Nov 28, 2023 4:56:52 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1701187012194</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Nov 29, 2023 3:21:08 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1701267668578</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../NIOSII_Test.sopcinfo</SopcDesignFile>
@@ -899,20 +899,26 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
+                <slaveDescriptor>new_sdram_controller_0</slaveDescriptor>
+                <addressRange>0x00000000 - 0x007FFFFF</addressRange>
+                <addressSpan>8388608</addressSpan>
+                <attributes>memory</attributes>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>onchip_memory2_0</slaveDescriptor>
-                <addressRange>0x00000000 - 0x00061A7F</addressRange>
+                <addressRange>0x00880000 - 0x008E1A7F</addressRange>
                 <addressSpan>400000</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>audio_0</slaveDescriptor>
-                <addressRange>0x00081000 - 0x0008100F</addressRange>
+                <addressRange>0x00901000 - 0x0090100F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00081010 - 0x00081017</addressRange>
+                <addressRange>0x00901010 - 0x00901017</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

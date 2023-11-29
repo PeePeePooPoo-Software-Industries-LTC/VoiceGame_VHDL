@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Tue Nov 28 16:46:23 CET 2023
+ * Generated: Wed Nov 29 15:21:08 CET 2023
  */
 
 /*
@@ -65,9 +65,11 @@
  *
  */
 
-#define ONCHIP_MEMORY2_0_REGION_BASE 0x20
+#define NEW_SDRAM_CONTROLLER_0_REGION_BASE 0x0
+#define NEW_SDRAM_CONTROLLER_0_REGION_SPAN 8388608
+#define ONCHIP_MEMORY2_0_REGION_BASE 0x880020
 #define ONCHIP_MEMORY2_0_REGION_SPAN 399968
-#define RESET_REGION_BASE 0x0
+#define RESET_REGION_BASE 0x880000
 #define RESET_REGION_SPAN 32
 
 
