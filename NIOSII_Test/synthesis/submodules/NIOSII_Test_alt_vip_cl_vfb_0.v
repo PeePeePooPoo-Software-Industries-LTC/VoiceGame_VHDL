@@ -16,7 +16,7 @@ module NIOSII_Test_alt_vip_cl_vfb_0 #(
 		parameter MAX_HEIGHT                   = 480,
 		parameter CLOCKS_ARE_SEPARATE          = 1,
 		parameter MEM_PORT_WIDTH               = 256,
-		parameter MEM_BASE_ADDR                = 1298,
+		parameter MEM_BASE_ADDR                = 0,
 		parameter BURST_ALIGNMENT              = 1,
 		parameter WRITE_FIFO_DEPTH             = 64,
 		parameter WRITE_BURST_TARGET           = 32,
@@ -222,7 +222,7 @@ module NIOSII_Test_alt_vip_cl_vfb_0 #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					mem_port_width_check ( .error(1'b1) );
 		end
-		if (MEM_BASE_ADDR != 1298)
+		if (MEM_BASE_ADDR != 0)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -752,7 +752,7 @@ module NIOSII_Test_alt_vip_cl_vfb_0 #(
 		.REPEAT_FRAMES            (0),
 		.DROP_REPEAT_USER         (0),
 		.MULTI_FRAME_DELAY        (1),
-		.MEM_BASE_ADDR            (1298),
+		.MEM_BASE_ADDR            (0),
 		.USER_PACKETS_MAX_STORAGE (0),
 		.MAX_SYMBOLS_PER_PACKET   (12),
 		.INTERLACED_SUPPORT       (0),
