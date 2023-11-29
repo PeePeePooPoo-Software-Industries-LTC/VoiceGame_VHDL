@@ -1,5 +1,5 @@
 Flow report for Main
-Wed Nov 29 15:19:49 2023
+Wed Nov 29 16:11:06 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,21 +40,21 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Nov 29 15:19:45 2023       ;
+; Flow Status                        ; Successful - Wed Nov 29 16:11:01 2023       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; Main                                        ;
 ; Top-level Entity Name              ; NIOSII_Test                                 ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 6,498 / 114,480 ( 6 % )                     ;
-;     Total combinational functions  ; 5,504 / 114,480 ( 5 % )                     ;
-;     Dedicated logic registers      ; 4,041 / 114,480 ( 4 % )                     ;
-; Total registers                    ; 4187                                        ;
+; Total logic elements               ; 8,730 / 114,480 ( 8 % )                     ;
+;     Total combinational functions  ; 7,227 / 114,480 ( 6 % )                     ;
+;     Dedicated logic registers      ; 5,655 / 114,480 ( 5 % )                     ;
+; Total registers                    ; 5801                                        ;
 ; Total pins                         ; 89 / 529 ( 17 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 3,271,900 / 3,981,312 ( 82 % )              ;
-; Embedded Multiplier 9-bit elements ; 6 / 532 ( 1 % )                             ;
+; Total memory bits                  ; 3,285,254 / 3,981,312 ( 83 % )              ;
+; Embedded Multiplier 9-bit elements ; 8 / 532 ( 2 % )                             ;
 ; Total PLLs                         ; 3 / 4 ( 75 % )                              ;
 +------------------------------------+---------------------------------------------+
 
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/29/2023 15:18:19 ;
+; Start date & time ; 11/29/2023 16:09:29 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Main                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+---------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                         ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+---------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 66351915178467.170126749821761                                ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 66351915178467.170127056934053                                ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                            ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                             ; --            ; --          ; --         ;
 ; MISC_FILE                           ; NIOSII_Test/synthesis/../NIOSII_Test.cmp                      ; --            ; --          ; --         ;
@@ -89,7 +89,7 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                  ; --            ; --          ; --         ;
 ; SLD_FILE                            ; NIOSII_Test/synthesis/NIOSII_Test.regmap                      ; --            ; --          ; --         ;
 ; SLD_FILE                            ; NIOSII_Test/synthesis/NIOSII_Test.debuginfo                   ; --            ; --          ; --         ;
-; SLD_INFO                            ; QSYS_NAME NIOSII_Test HAS_SOPCINFO 1 GENERATION_ID 1701266817 ; --            ; NIOSII_Test ; --         ;
+; SLD_INFO                            ; QSYS_NAME NIOSII_Test HAS_SOPCINFO 1 GENERATION_ID 1701270486 ; --            ; NIOSII_Test ; --         ;
 ; SOPCINFO_FILE                       ; NIOSII_Test/synthesis/../../NIOSII_Test.sopcinfo              ; --            ; --          ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                            ; --            ; --          ; --         ;
 ; TOP_LEVEL_ENTITY                    ; NIOSII_Test                                                   ; Main          ; --          ; --         ;
@@ -101,11 +101,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:42     ; 1.0                     ; 1324 MB             ; 00:01:08                           ;
-; Fitter               ; 00:00:32     ; 1.1                     ; 2154 MB             ; 00:00:58                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 858 MB              ; 00:00:04                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.4                     ; 1059 MB             ; 00:00:04                           ;
-; Total                ; 00:01:21     ; --                      ; --                  ; 00:02:14                           ;
+; Analysis & Synthesis ; 00:00:46     ; 1.0                     ; 1316 MB             ; 00:01:27                           ;
+; Fitter               ; 00:00:36     ; 1.1                     ; 2264 MB             ; 00:01:06                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 870 MB              ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:04     ; 1.4                     ; 1092 MB             ; 00:00:05                           ;
+; Total                ; 00:01:30     ; --                      ; --                  ; 00:02:42                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

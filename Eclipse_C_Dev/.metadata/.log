@@ -1491,3 +1491,99 @@ SEVERE: nios2-bsp-generate-files failed.
 
 !ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:32:59.433
 !MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:53:49.772
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:53:51.407
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:54:07.346
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:54:07.369
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:54:08.746
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:54:33.279
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:54:33.303
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:54:34.742
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:55:14.568
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:55:14.597
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 15:55:16.008
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:00:24.312
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:00:25.716
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:01:37.232
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:01:37.264
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:01:38.685
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:02:39.924
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:02:41.525
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:14:43.919
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:14:45.543
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:19:26.634
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:19:27.094
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:19:28.459
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:20:25.836
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:20:25.870
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:20:27.273
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:24:58.624
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:24:58.652
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:25:00.056
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:25:26.810
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [1-9]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:25:27.269
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-11-29 16:25:28.633
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [1-9]' --device=1 --instance=0 --go /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole/gameconsole.elf]

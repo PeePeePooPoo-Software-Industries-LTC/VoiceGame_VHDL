@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Wed Nov 29 15:21:08 CET 2023
+ * Generated: Wed Nov 29 16:11:54 CET 2023
  */
 
 /*
@@ -146,6 +146,7 @@
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_AUDIO
+#define __ALT_VIP_CL_VFB
 
 
 /*
@@ -164,19 +165,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x901010
+#define ALT_STDERR_BASE 0x901050
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x901010
+#define ALT_STDIN_BASE 0x901050
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x901010
+#define ALT_STDOUT_BASE 0x901050
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -185,12 +186,26 @@
 
 
 /*
+ * alt_vip_cl_vfb_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_alt_vip_cl_vfb_0 alt_vip_cl_vfb
+#define ALT_VIP_CL_VFB_0_BASE 0x901000
+#define ALT_VIP_CL_VFB_0_IRQ 2
+#define ALT_VIP_CL_VFB_0_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define ALT_VIP_CL_VFB_0_NAME "/dev/alt_vip_cl_vfb_0"
+#define ALT_VIP_CL_VFB_0_SPAN 64
+#define ALT_VIP_CL_VFB_0_TYPE "alt_vip_cl_vfb"
+
+
+/*
  * audio_0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_audio_0 altera_up_avalon_audio
-#define AUDIO_0_BASE 0x901000
+#define AUDIO_0_BASE 0x901040
 #define AUDIO_0_IRQ 0
 #define AUDIO_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define AUDIO_0_NAME "/dev/audio_0"
@@ -215,7 +230,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x901010
+#define JTAG_UART_0_BASE 0x901050
 #define JTAG_UART_0_IRQ 1
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"

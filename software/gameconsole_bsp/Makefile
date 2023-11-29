@@ -215,6 +215,17 @@ Avalon_Audio_driver_SRCS_ROOT := drivers
 Avalon_Audio_driver_C_LIB_SRCS := \
 	$(Avalon_Audio_driver_SRCS_ROOT)/src/altera_up_avalon_audio.c
 
+# alt_vip_cl_vfb_driver sources root 
+alt_vip_cl_vfb_driver_SRCS_ROOT := drivers/vip
+
+# alt_vip_cl_vfb_driver sources 
+alt_vip_cl_vfb_driver_CPP_LIB_SRCS := \
+	$(alt_vip_cl_vfb_driver_SRCS_ROOT)/../../drivers/vip/src/VipUtil.cpp \
+	$(alt_vip_cl_vfb_driver_SRCS_ROOT)/../../drivers/vip/src/VipCore.cpp \
+	$(alt_vip_cl_vfb_driver_SRCS_ROOT)/../../drivers/vip/src/Frame_Reader.cpp \
+	$(alt_vip_cl_vfb_driver_SRCS_ROOT)/../../drivers/vip/src/Frame_Writer.cpp \
+	$(alt_vip_cl_vfb_driver_SRCS_ROOT)/../../drivers/vip/src/Frame_Buffer.cpp
+
 # altera_avalon_jtag_uart_driver sources root 
 altera_avalon_jtag_uart_driver_SRCS_ROOT := drivers
 
@@ -336,6 +347,7 @@ COMPONENT_ASM_LIB_SRCS += \
 
 # Assemble all component C++ source files 
 COMPONENT_CPP_LIB_SRCS += \
+	$(alt_vip_cl_vfb_driver_CPP_LIB_SRCS)
 
 #END MANAGED
 

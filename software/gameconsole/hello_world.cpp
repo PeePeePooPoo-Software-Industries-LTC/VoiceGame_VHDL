@@ -16,26 +16,28 @@
 
 #include <stdio.h>
 
+#include "Frame_Buffer.hpp"
+
 int main()
 {
   int x = 0;
 
   printf("Printing out address of variable X: %p\n", &x);
 
-  int* framebuffer = 0x00100000;
+  unsigned long framebuffer_addr = 0x00100000;
 
-  while ((int)framebuffer <= 0x007fffff) {
+  Frame_Buffer vip(framebuffer_addr, 2);
 
-	  *framebuffer = 0xff;
+  printf("Is on: %d\n", vip.is_on());
+  vip.start();
+  printf("Is on: %d\n", vip.is_on());
 
-	  framebuffer++;
 
-	  if ((int)framebuffer % 0x1000 == 0) {
-		  printf("At: %p\n", framebuffer);
-	  }
+  unsigned long test = framebuffer_addr + 0x10000;
+
+  for (int i = 0; i < 0x20000; i++) {
+	  *((char*)(test + i)) = 0xff;
   }
-
-  printf("Done\n");
 
   return 0;
 }

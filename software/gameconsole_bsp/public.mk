@@ -347,6 +347,8 @@ ELF_PATCH_FLAG  += --stdout_dev jtag_uart_0
 #                 SOFTWARE COMPONENT & DRIVER INCLUDE PATHS
 #------------------------------------------------------------------------------
 
+ALT_INCLUDE_DIRS += $(ALT_LIBRARY_ROOT_DIR)/drivers/vip/../../drivers/vip/inc
+ALT_INCLUDE_DIRS += $(ALT_LIBRARY_ROOT_DIR)/drivers/vip/../../drivers/vip/src
 ALT_INCLUDE_DIRS += $(ALT_LIBRARY_ROOT_DIR)/HAL/inc
 
 #------------------------------------------------------------------------------
