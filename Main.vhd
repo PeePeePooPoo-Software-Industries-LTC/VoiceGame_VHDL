@@ -28,7 +28,10 @@ entity Main is
 		VGA_HS : out std_logic;
 		VGA_VS : out std_logic;
 		VGA_BLANK : out std_logic;
-		VGA_SYNC : out std_logic
+		VGA_SYNC : out std_logic;
+		
+		LEDR : out std_logic_vector(17 downto 0);
+		LEDG : out std_logic_vector(7 downto 0)
 	);
 end entity Main;
 
@@ -126,8 +129,8 @@ begin
 		h_sync		=> VGA_HS,
 		v_sync		=> VGA_VS,
 		disp_ena		=> vga_is_on_screen,
-		column		=> vga_current_y,
-		row			=> vga_current_x,
+		column		=> vga_current_x,
+		row			=> vga_current_y,
 		n_blank		=> VGA_BLANK,
 		n_sync		=> VGA_SYNC
 	);
@@ -137,16 +140,24 @@ begin
 		c0 => vga_pixel_clock
 	);
 	
-	process(vga_pixel_clock)
+	process(vga_is_on_screen, vga_current_x, vga_current_y)
 	begin
 		if vga_is_on_screen = '1' then
-			VGA_R <= (others => '1');
-			VGA_G <= (others => '1');
-			VGA_B <= (others => '0');
+			if vga_current_x < 960 then
+				VGA_R <= (others => '0');
+				VGA_G <= (others => '1');
+				VGA_B <= (others => '0');
+			else
+				VGA_R <= (others => '0');
+				VGA_G <= (others => '0');
+				VGA_B <= (others => '1');
+			end if;
 		else
 			VGA_R <= (others => '0');
 			VGA_G <= (others => '0');
 			VGA_B <= (others => '0');
 		end if;
 	end process;
+	
+	VGA_CLK <= vga_pixel_clock;
 end architecture rtl;
