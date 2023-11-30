@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Wed Nov 29 16:10:18 2023
+Analysis & Synthesis Status : Successful - Thu Nov 30 12:11:57 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : Main
-Top-level Entity Name : NIOSII_Test
+Top-level Entity Name : Main
 Family : Cyclone IV E
-Total logic elements : 9,735
-    Total combinational functions : 7,204
-    Dedicated logic registers : 5,820
-Total registers : 5820
+Total logic elements : 4,961
+    Total combinational functions : 4,067
+    Dedicated logic registers : 2,722
+Total registers : 2722
 Total pins : 89
 Total virtual pins : 0
-Total memory bits : 3,285,254
-Embedded Multiplier 9-bit elements : 8
+Total memory bits : 3,268,800
+Embedded Multiplier 9-bit elements : 6
 Total PLLs : 3

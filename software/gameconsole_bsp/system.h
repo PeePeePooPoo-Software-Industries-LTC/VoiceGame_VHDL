@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Wed Nov 29 16:11:54 CET 2023
+ * Generated: Thu Nov 30 11:27:39 CET 2023
  */
 
 /*
@@ -146,7 +146,6 @@
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_AUDIO
-#define __ALT_VIP_CL_VFB
 
 
 /*
@@ -183,20 +182,6 @@
 #define ALT_STDOUT_PRESENT
 #define ALT_STDOUT_TYPE "altera_avalon_jtag_uart"
 #define ALT_SYSTEM_NAME "NIOSII_Test"
-
-
-/*
- * alt_vip_cl_vfb_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_alt_vip_cl_vfb_0 alt_vip_cl_vfb
-#define ALT_VIP_CL_VFB_0_BASE 0x901000
-#define ALT_VIP_CL_VFB_0_IRQ 2
-#define ALT_VIP_CL_VFB_0_IRQ_INTERRUPT_CONTROLLER_ID 0
-#define ALT_VIP_CL_VFB_0_NAME "/dev/alt_vip_cl_vfb_0"
-#define ALT_VIP_CL_VFB_0_SPAN 64
-#define ALT_VIP_CL_VFB_0_TYPE "alt_vip_cl_vfb"
 
 
 /*

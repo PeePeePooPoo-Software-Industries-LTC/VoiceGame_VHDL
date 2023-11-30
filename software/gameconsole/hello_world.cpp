@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 
-#include "Frame_Buffer.hpp"
+//#include "Frame_Buffer.hpp"
 
 int main()
 {
@@ -24,20 +24,20 @@ int main()
 
   printf("Printing out address of variable X: %p\n", &x);
 
-  unsigned long framebuffer_addr = 0x00100000;
+//  unsigned long framebuffer_addr = 0x00100000;
+//
+//  Frame_Buffer vip(framebuffer_addr, 2);
+//
+//  printf("Is on: %d\n", vip.is_on());
+//  vip.start();
+//  printf("Is on: %d\n", vip.is_on());
 
-  Frame_Buffer vip(framebuffer_addr, 2);
 
-  printf("Is on: %d\n", vip.is_on());
-  vip.start();
-  printf("Is on: %d\n", vip.is_on());
-
-
-  unsigned long test = framebuffer_addr + 0x10000;
-
-  for (int i = 0; i < 0x20000; i++) {
-	  *((char*)(test + i)) = 0xff;
-  }
+//  unsigned long test = framebuffer_addr + 0x10000;
+//
+//  for (int i = 0; i < 0x20000; i++) {
+//	  *((char*)(test + i)) = 0xff;
+//  }
 
   return 0;
 }
