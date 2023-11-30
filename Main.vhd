@@ -49,24 +49,22 @@ architecture rtl of Main is
 			sdram_wire_dq           : inout std_logic_vector(31 downto 0) := (others => '0'); --                .dq
 			sdram_wire_dqm          : out   std_logic_vector(3 downto 0);                     --                .dqm
 			sdram_wire_ras_n        : out   std_logic;                                        --                .ras_n
-			sdram_wire_we_n         : out   std_logic;                                        --                .we_n
-			video_clk_clk           : out   std_logic;                                        --       video_clk.clk
-			video_reset_reset       : out   std_logic                                         --     video_reset.reset
+			sdram_wire_we_n         : out   std_logic                                         --                .we_n
 		);
 	end component NIOSII_Test;
 	
 	component vga_controller is
 		generic(
-			h_pulse 	:	INTEGER := 96;    	--horiztonal sync pulse width in pixels
-			h_bp	 	:	INTEGER := 48;		--horiztonal back porch width in pixels
-			h_pixels	:	INTEGER := 640;		--horiztonal display width in pixels
-			h_fp	 	:	INTEGER := 16;		--horiztonal front porch width in pixels
-			h_pol		:	STD_LOGIC := '0';		--horizontal sync pulse polarity (1 = positive, 0 = negative)
-			v_pulse 	:	INTEGER := 2;			--vertical sync pulse width in rows
-			v_bp	 	:	INTEGER := 33;			--vertical back porch width in rows
-			v_pixels	:	INTEGER := 480;		--vertical display width in rows
-			v_fp	 	:	INTEGER := 10;			--vertical front porch width in rows
-			v_pol		:	STD_LOGIC := '0'	--vertical sync pulse polarity (1 = positive, 0 = negative)
+			h_pulse 	:	INTEGER;    	--horiztonal sync pulse width in pixels
+			h_bp	 	:	INTEGER;		--horiztonal back porch width in pixels
+			h_pixels	:	INTEGER;		--horiztonal display width in pixels
+			h_fp	 	:	INTEGER;		--horiztonal front porch width in pixels
+			h_pol		:	STD_LOGIC;		--horizontal sync pulse polarity (1 = positive, 0 = negative)
+			v_pulse 	:	INTEGER;			--vertical sync pulse width in rows
+			v_bp	 	:	INTEGER;			--vertical back porch width in rows
+			v_pixels	:	INTEGER;		--vertical display width in rows
+			v_fp	 	:	INTEGER;			--vertical front porch width in rows
+			v_pol		:	STD_LOGIC	--vertical sync pulse polarity (1 = positive, 0 = negative)
 		);
 		port(
 			pixel_clk	:	IN		STD_LOGIC;	--pixel clock at frequency of VGA mode being used
@@ -81,8 +79,14 @@ architecture rtl of Main is
 		);
 	end component vga_controller;
 	
+	component video_pll is
+		port(
+			inclk0 : IN STD_LOGIC  := '0';
+			c0		 : OUT STD_LOGIC 
+		);
+	end component video_pll;
+	
 	signal vga_pixel_clock : std_logic;
-	signal vga_pixel_reset : std_logic;
 	signal vga_is_on_screen : std_logic;
 	signal vga_current_x : integer;
 	signal vga_current_y : integer;
@@ -102,14 +106,23 @@ begin
 			sdram_wire_dq           => sdram_wire_dq,
 			sdram_wire_dqm          => sdram_wire_dqm,
 			sdram_wire_ras_n        => sdram_wire_ras_n,
-			sdram_wire_we_n         => sdram_wire_we_n,
-			video_clk_clk           => vga_pixel_clock,
-			video_reset_reset       => vga_pixel_reset
+			sdram_wire_we_n         => sdram_wire_we_n
 	);
 	
-	vga : vga_controller port map(
+	vga : vga_controller generic map(
+		h_pulse 	=> 208,    	--horiztonal sync pulse width in pixels
+		h_bp	 	=> 336, 	--horiztonal back porch width in pixels
+		h_pixels	=> 1920,		--horiztonal display width in pixels
+		h_fp	 	=> 128,		--horiztonal front porch width in pixels
+		h_pol		=> '0',		--horizontal sync pulse polarity (1 = positive, 0 = negative)
+		v_pulse 	=> 3,			--vertical sync pulse width in rows
+		v_bp	 	=> 38,			--vertical back porch width in rows
+		v_pixels	=> 1200,		--vertical display width in rows
+		v_fp	 	=> 1,			--vertical front porch width in rows
+		v_pol		=> '1'	--vertical sync pulse polarity (1 = positive, 0 = negative)
+	)	port map(
 		pixel_clk	=> vga_pixel_clock,
-		reset_n		=> vga_pixel_reset,
+		reset_n		=> reset_reset,
 		h_sync		=> VGA_HS,
 		v_sync		=> VGA_VS,
 		disp_ena		=> vga_is_on_screen,
@@ -119,10 +132,15 @@ begin
 		n_sync		=> VGA_SYNC
 	);
 	
+	video_pll_component : video_pll port map(
+		inclk0 => clk_clk,
+		c0 => vga_pixel_clock
+	);
+	
 	process(vga_pixel_clock)
 	begin
 		if vga_is_on_screen = '1' then
-			VGA_R <= (others => '0');
+			VGA_R <= (others => '1');
 			VGA_G <= (others => '1');
 			VGA_B <= (others => '0');
 		else

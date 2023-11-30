@@ -22,9 +22,7 @@ entity NIOSII_Test is
 		sdram_wire_dq           : inout std_logic_vector(31 downto 0) := (others => '0'); --                .dq
 		sdram_wire_dqm          : out   std_logic_vector(3 downto 0);                     --                .dqm
 		sdram_wire_ras_n        : out   std_logic;                                        --                .ras_n
-		sdram_wire_we_n         : out   std_logic;                                        --                .we_n
-		video_clk_clk           : out   std_logic;                                        --       video_clk.clk
-		video_reset_reset       : out   std_logic                                         --     video_reset.reset
+		sdram_wire_we_n         : out   std_logic                                         --                .we_n
 	);
 end entity NIOSII_Test;
 
@@ -153,15 +151,6 @@ architecture rtl of NIOSII_Test is
 			reset_source_reset : out std_logic         -- reset
 		);
 	end component NIOSII_Test_sys_sdram_pll_0;
-
-	component NIOSII_Test_video_pll_0 is
-		port (
-			ref_clk_clk        : in  std_logic := 'X'; -- clk
-			ref_reset_reset    : in  std_logic := 'X'; -- reset
-			vga_clk_clk        : out std_logic;        -- clk
-			reset_source_reset : out std_logic         -- reset
-		);
-	end component NIOSII_Test_video_pll_0;
 
 	component NIOSII_Test_mm_interconnect_0 is
 		port (
@@ -448,7 +437,7 @@ architecture rtl of NIOSII_Test is
 	end component niosii_test_rst_controller_003;
 
 	signal audio_pll_0_audio_clk_clk                                        : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio_0:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:audio_pll_0_audio_clk_clk, rst_controller:clk]
-	signal sys_sdram_pll_0_sys_clk_clk                                      : std_logic;                     -- sys_sdram_pll_0:sys_clk_clk -> [audio_pll_0:ref_clk_clk, irq_mapper:clk, irq_synchronizer:sender_clk, jtag_uart_0:clk, mm_interconnect_0:sys_sdram_pll_0_sys_clk_clk, new_sdram_controller_0:clk, nios2_gen2_0:clk, onchip_memory2_0:clk, rst_controller_001:clk, rst_controller_002:clk, rst_controller_003:clk, video_pll_0:ref_clk_clk]
+	signal sys_sdram_pll_0_sys_clk_clk                                      : std_logic;                     -- sys_sdram_pll_0:sys_clk_clk -> [audio_pll_0:ref_clk_clk, irq_mapper:clk, irq_synchronizer:sender_clk, jtag_uart_0:clk, mm_interconnect_0:sys_sdram_pll_0_sys_clk_clk, new_sdram_controller_0:clk, nios2_gen2_0:clk, onchip_memory2_0:clk, rst_controller_001:clk, rst_controller_002:clk, rst_controller_003:clk]
 	signal nios2_gen2_0_data_master_readdata                                : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
 	signal nios2_gen2_0_data_master_waitrequest                             : std_logic;                     -- mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
 	signal nios2_gen2_0_data_master_debugaccess                             : std_logic;                     -- nios2_gen2_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_0_data_master_debugaccess
@@ -506,7 +495,7 @@ architecture rtl of NIOSII_Test is
 	signal irq_synchronizer_receiver_irq                                    : std_logic_vector(0 downto 0);  -- audio_0:irq -> irq_synchronizer:receiver_irq
 	signal rst_controller_reset_out_reset                                   : std_logic;                     -- rst_controller:reset_out -> [audio_0:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:audio_0_reset_reset_bridge_in_reset_reset]
 	signal audio_pll_0_reset_source_reset                                   : std_logic;                     -- audio_pll_0:reset_source_reset -> rst_controller:reset_in0
-	signal rst_controller_001_reset_out_reset                               : std_logic;                     -- rst_controller_001:reset_out -> [audio_pll_0:ref_reset_reset, mm_interconnect_0:new_sdram_controller_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in, video_pll_0:ref_reset_reset]
+	signal rst_controller_001_reset_out_reset                               : std_logic;                     -- rst_controller_001:reset_out -> [audio_pll_0:ref_reset_reset, mm_interconnect_0:new_sdram_controller_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in]
 	signal sys_sdram_pll_0_reset_source_reset                               : std_logic;                     -- sys_sdram_pll_0:reset_source_reset -> [rst_controller_001:reset_in0, rst_controller_003:reset_in1]
 	signal rst_controller_002_reset_out_reset                               : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator:in_reset]
 	signal rst_controller_002_reset_out_reset_req                           : std_logic;                     -- rst_controller_002:reset_req -> [nios2_gen2_0:reset_req, rst_translator:reset_req_in]
@@ -639,14 +628,6 @@ begin
 			sys_clk_clk        => sys_sdram_pll_0_sys_clk_clk,        --      sys_clk.clk
 			sdram_clk_clk      => sdram_clk_clk,                      --    sdram_clk.clk
 			reset_source_reset => sys_sdram_pll_0_reset_source_reset  -- reset_source.reset
-		);
-
-	video_pll_0 : component NIOSII_Test_video_pll_0
-		port map (
-			ref_clk_clk        => sys_sdram_pll_0_sys_clk_clk,        --      ref_clk.clk
-			ref_reset_reset    => rst_controller_001_reset_out_reset, --    ref_reset.reset
-			vga_clk_clk        => video_clk_clk,                      --      vga_clk.clk
-			reset_source_reset => video_reset_reset                   -- reset_source.reset
 		);
 
 	mm_interconnect_0 : component NIOSII_Test_mm_interconnect_0

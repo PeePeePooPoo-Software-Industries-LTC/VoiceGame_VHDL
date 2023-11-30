@@ -14,9 +14,7 @@ module NIOSII_Test (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n,
-	video_reset_reset,
-	video_clk_clk);	
+	sdram_wire_we_n);	
 
 	input		audio_interface_ADCDAT;
 	input		audio_interface_ADCLRCK;
@@ -33,6 +31,4 @@ module NIOSII_Test (
 	output	[3:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
-	output		video_reset_reset;
-	output		video_clk_clk;
 endmodule

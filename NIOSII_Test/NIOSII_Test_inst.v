@@ -13,8 +13,6 @@
 		.sdram_wire_dq           (<connected-to-sdram_wire_dq>),           //                .dq
 		.sdram_wire_dqm          (<connected-to-sdram_wire_dqm>),          //                .dqm
 		.sdram_wire_ras_n        (<connected-to-sdram_wire_ras_n>),        //                .ras_n
-		.sdram_wire_we_n         (<connected-to-sdram_wire_we_n>),         //                .we_n
-		.video_reset_reset       (<connected-to-video_reset_reset>),       //     video_reset.reset
-		.video_clk_clk           (<connected-to-video_clk_clk>)            //       video_clk.clk
+		.sdram_wire_we_n         (<connected-to-sdram_wire_we_n>)          //                .we_n
 	);
 

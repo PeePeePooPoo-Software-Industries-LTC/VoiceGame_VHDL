@@ -14,9 +14,7 @@
 			sdram_wire_dq           : inout std_logic_vector(31 downto 0) := (others => 'X'); -- dq
 			sdram_wire_dqm          : out   std_logic_vector(3 downto 0);                     -- dqm
 			sdram_wire_ras_n        : out   std_logic;                                        -- ras_n
-			sdram_wire_we_n         : out   std_logic;                                        -- we_n
-			video_reset_reset       : out   std_logic;                                        -- reset
-			video_clk_clk           : out   std_logic                                         -- clk
+			sdram_wire_we_n         : out   std_logic                                         -- we_n
 		);
 	end component NIOSII_Test;
 
@@ -36,8 +34,6 @@
 			sdram_wire_dq           => CONNECTED_TO_sdram_wire_dq,           --                .dq
 			sdram_wire_dqm          => CONNECTED_TO_sdram_wire_dqm,          --                .dqm
 			sdram_wire_ras_n        => CONNECTED_TO_sdram_wire_ras_n,        --                .ras_n
-			sdram_wire_we_n         => CONNECTED_TO_sdram_wire_we_n,         --                .we_n
-			video_reset_reset       => CONNECTED_TO_video_reset_reset,       --     video_reset.reset
-			video_clk_clk           => CONNECTED_TO_video_clk_clk            --       video_clk.clk
+			sdram_wire_we_n         => CONNECTED_TO_sdram_wire_we_n          --                .we_n
 		);
 
