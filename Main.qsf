@@ -576,7 +576,6 @@ set_location_assignment PIN_U7 -to sdram_wire_ba
 set_location_assignment PIN_R4 -to sdram_wire_ba[1]
 set_global_assignment -name VHDL_FILE Main.vhd
 set_global_assignment -name VHDL_FILE vga_controller.vhd
-set_global_assignment -name VHDL_FILE hw_image_generator.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

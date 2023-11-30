@@ -93,6 +93,10 @@ architecture rtl of Main is
 	signal vga_is_on_screen : std_logic;
 	signal vga_current_x : integer;
 	signal vga_current_y : integer;
+	
+	type squareBuffer is array (10 downto 0, 10 downto 0) of std_logic_vector(23 downto 0);
+	signal frameBuffer : squareBuffer;
+	
 begin
 	nios2_core : NIOSII_Test port map(
 			audio_interface_ADCDAT  => audio_interface_ADCDAT,
@@ -141,22 +145,30 @@ begin
 	);
 	
 	process(vga_is_on_screen, vga_current_x, vga_current_y)
+		variable color : std_logic_vector(23 downto 0) := (others => '0');
+		variable squareCol : integer := 0;
+		variable squareRow : integer := 0;
 	begin
-		if vga_is_on_screen = '1' then
-			if vga_current_x < 960 then
-				VGA_R <= (others => '0');
-				VGA_G <= (others => '1');
-				VGA_B <= (others => '0');
-			else
-				VGA_R <= (others => '0');
-				VGA_G <= (others => '0');
-				VGA_B <= (others => '1');
-			end if;
-		else
-			VGA_R <= (others => '0');
-			VGA_G <= (others => '0');
-			VGA_B <= (others => '0');
-		end if;
+	
+		for i1 in 0 to 9 loop
+			for i2 in 0 to 9 loop
+					frameBuffer(i1,i2) <= (std_logic_vector(unsigned(frameBuffer(i1,i2)) + 10000));
+			end loop;
+		end loop;
+		-- aaaaaaaaaaaaa
+		squareCol := vga_current_x/192;
+		squareRow := vga_current_y/120;
+
+		IF(vga_is_on_screen = '1') THEN		--display time
+			color := frameBuffer(squareCol,squareRow);
+			VGA_R <= color(23 downto 16);
+			VGA_G <= color(15 downto 8);
+			VGA_B <= color(7 downto 0);
+		ELSE								--blanking time
+			VGA_R <= (OTHERS => '0');
+			VGA_G <= (OTHERS => '0');
+			VGA_B <= (OTHERS => '0');
+		END IF;
 	end process;
 	
 	VGA_CLK <= vga_pixel_clock;

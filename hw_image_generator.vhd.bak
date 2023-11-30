@@ -37,21 +37,20 @@ ENTITY hw_image_generator IS
 END hw_image_generator;
 
 ARCHITECTURE behavior OF hw_image_generator IS
-	type squareBuffer is array (10 downto 0, 10 downto 0) of std_logic_vector(24 downto 0);
-
 BEGIN
-
-	frameBuffer(2,2) <= "111111110000000000000000";
-	
 	PROCESS(disp_ena, row, column)
-		variable color : std_logic_vector := (others => '0');
 	BEGIN
 
 		IF(disp_ena = '1') THEN		--display time
-			color := frameBuffer(row,column);
-			red <= color(24 downto 17);
-			blue <= color(16 downto 9);
-			green <= color(8 downto 0);
+			IF(row < pixels_y AND column < pixels_x) THEN
+				red <= (OTHERS => '0');
+				green	<= (OTHERS => '0');
+				blue <= (OTHERS => '1');
+			ELSE
+				red <= (OTHERS => '1');
+				green	<= (OTHERS => '1');
+				blue <= (OTHERS => '0');
+			END IF;
 		ELSE								--blanking time
 			red <= (OTHERS => '0');
 			green <= (OTHERS => '0');
