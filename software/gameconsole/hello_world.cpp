@@ -9,4 +9,10 @@ int main()
 {
 	WRITE_SDRAM(1, 69);
 	printf("%i", READ_SDRAM(1));
+	printf("\n");
+	printf("%i", READ_SDRAM(0));
+	printf("\n");
+	printf("%i", READ_SDRAM(2));
+	printf("\n");
+	printf("%i", READ_SDRAM(3));
 }

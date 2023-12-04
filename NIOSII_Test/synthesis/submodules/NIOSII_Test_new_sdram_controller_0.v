@@ -186,8 +186,8 @@ module NIOSII_Test_new_sdram_controller_0 (
   output  [ 31: 0] za_data;
   output           za_valid;
   output           za_waitrequest;
-  output  [ 11: 0] zs_addr;
-  output           zs_ba;
+  output  [ 12: 0] zs_addr;
+  output  [  1: 0] zs_ba;
   output           zs_cas_n;
   output           zs_cke;
   output           zs_cs_n;

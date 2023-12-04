@@ -14,8 +14,8 @@ entity NIOSII_Test is
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset             : in    std_logic                     := '0';             --           reset.reset
 		sdram_clk_clk           : out   std_logic;                                        --       sdram_clk.clk
-		sdram_wire_addr         : out   std_logic_vector(11 downto 0);                    --      sdram_wire.addr
-		sdram_wire_ba           : out   std_logic;                                        --                .ba
+		sdram_wire_addr         : out   std_logic_vector(12 downto 0);                    --      sdram_wire.addr
+		sdram_wire_ba           : out   std_logic_vector(1 downto 0);                                        --                .ba
 		sdram_wire_cas_n        : out   std_logic;                                        --                .cas_n
 		sdram_wire_cke          : out   std_logic;                                        --                .cke
 		sdram_wire_cs_n         : out   std_logic;                                        --                .cs_n
@@ -81,8 +81,8 @@ architecture rtl of NIOSII_Test is
 			za_data        : out   std_logic_vector(31 downto 0);                    -- readdata
 			za_valid       : out   std_logic;                                        -- readdatavalid
 			za_waitrequest : out   std_logic;                                        -- waitrequest
-			zs_addr        : out   std_logic_vector(11 downto 0);                    -- export
-			zs_ba          : out   std_logic;                                        -- export
+			zs_addr        : out   std_logic_vector(12 downto 0);                    -- export
+			zs_ba          : out   std_logic_vector(1 downto 0);                     -- export
 			zs_cas_n       : out   std_logic;                                        -- export
 			zs_cke         : out   std_logic;                                        -- export
 			zs_cs_n        : out   std_logic;                                        -- export
