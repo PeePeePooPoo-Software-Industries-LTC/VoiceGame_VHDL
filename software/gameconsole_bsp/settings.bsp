@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Nov 30, 2023 2:16:51 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1701350211212</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Dec 4, 2023 9:40:57 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1701679257926</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../NIOSII_Test.sopcinfo</SopcDesignFile>
