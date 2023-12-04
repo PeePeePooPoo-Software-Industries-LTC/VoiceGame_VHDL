@@ -1111,7 +1111,6 @@ set_instance_assignment -name IO_MAXIMUM_TOGGLE_RATE "0 MHz" -to SW
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_SYNC
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_BLANK
 set_location_assignment PIN_M23 -to reset_reset
-set_global_assignment -name VHDL_FILE sdram.vhd
 set_global_assignment -name QIP_FILE NIOSII_Test/synthesis/NIOSII_Test.qip
 set_global_assignment -name VHDL_FILE Main.vhd
 set_global_assignment -name VHDL_FILE vga_controller.vhd
