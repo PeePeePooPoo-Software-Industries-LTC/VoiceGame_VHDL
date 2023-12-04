@@ -94,9 +94,7 @@ architecture rtl of Main is
 	signal vga_current_x : integer;
 	signal vga_current_y : integer;
 	
-	type squareBuffer is array (10 downto 0, 10 downto 0) of std_logic_vector(23 downto 0);
-	signal frameBuffer : squareBuffer;
-	
+	signal line_buffer : std_logic_vector(640*24 downto 0);
 begin
 	nios2_core : NIOSII_Test port map(
 			audio_interface_ADCDAT  => audio_interface_ADCDAT,
@@ -117,16 +115,16 @@ begin
 	);
 	
 	vga : vga_controller generic map(
-		h_pulse 	=> 208,    	--horiztonal sync pulse width in pixels
-		h_bp	 	=> 336, 	--horiztonal back porch width in pixels
-		h_pixels	=> 1920,		--horiztonal display width in pixels
-		h_fp	 	=> 128,		--horiztonal front porch width in pixels
+		h_pulse 	=> 96,    	--horiztonal sync pulse width in pixels
+		h_bp	 	=> 48, 	--horiztonal back porch width in pixels
+		h_pixels	=> 640,		--horiztonal display width in pixels
+		h_fp	 	=> 16,		--horiztonal front porch width in pixels
 		h_pol		=> '0',		--horizontal sync pulse polarity (1 = positive, 0 = negative)
 		v_pulse 	=> 3,			--vertical sync pulse width in rows
-		v_bp	 	=> 38,			--vertical back porch width in rows
-		v_pixels	=> 1200,		--vertical display width in rows
-		v_fp	 	=> 1,			--vertical front porch width in rows
-		v_pol		=> '1'	--vertical sync pulse polarity (1 = positive, 0 = negative)
+		v_bp	 	=> 28,			--vertical back porch width in rows
+		v_pixels	=> 480,		--vertical display width in rows
+		v_fp	 	=> 9,			--vertical front porch width in rows
+		v_pol		=> '0'	--vertical sync pulse polarity (1 = positive, 0 = negative)
 	)	port map(
 		pixel_clk	=> vga_pixel_clock,
 		reset_n		=> reset_reset,
@@ -145,30 +143,16 @@ begin
 	);
 	
 	process(vga_is_on_screen, vga_current_x, vga_current_y)
-		variable color : std_logic_vector(23 downto 0) := (others => '0');
-		variable squareCol : integer := 0;
-		variable squareRow : integer := 0;
 	begin
-	
-		for i1 in 0 to 9 loop
-			for i2 in 0 to 9 loop
-					frameBuffer(i1,i2) <= (std_logic_vector(unsigned(frameBuffer(i1,i2)) + 10000));
-			end loop;
-		end loop;
-		-- aaaaaaaaaaaaa
-		squareCol := vga_current_x/192;
-		squareRow := vga_current_y/120;
-
-		IF(vga_is_on_screen = '1') THEN		--display time
-			color := frameBuffer(squareCol,squareRow);
-			VGA_R <= color(23 downto 16);
-			VGA_G <= color(15 downto 8);
-			VGA_B <= color(7 downto 0);
-		ELSE								--blanking time
-			VGA_R <= (OTHERS => '0');
-			VGA_G <= (OTHERS => '0');
-			VGA_B <= (OTHERS => '0');
-		END IF;
+		if (vga_is_on_screen = '1') then
+			VGA_R <= (others => '0');
+			VGA_G <= (others => '1');
+			VGA_B <= (others => '1');
+		else
+			VGA_R <= (others => '0');
+			VGA_G <= (others => '0');
+			VGA_B <= (others => '0');
+		end if;
 	end process;
 	
 	VGA_CLK <= vga_pixel_clock;

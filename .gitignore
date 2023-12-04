@@ -1,5 +1,5 @@
 *.flock
-db/
-incremental_db/
-output_files/
-Eclipse_C_Dev/.metadata/
+db
+incremental_db
+output_files
+Eclipse_C_Dev/.metadata
