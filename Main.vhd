@@ -43,6 +43,9 @@ architecture rtl of Main is
 			audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
 			clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 			reset_reset             : in    std_logic                     := '0';             --           reset.reset
+			pio_pixel_color_external_connection_export    : out   std_logic_vector(23 downto 0);                    --    pio_pixel_color_external_connection.export
+			pio_pixel_position_external_connection_export : in    std_logic_vector(31 downto 0) := (others => '0'); -- pio_pixel_position_external_connection.export
+			pio_request_external_connection_export        : in    std_logic                     := '0';             --        pio_request_external_connection.export
 			sdram_clk_clk           : out   std_logic;                                        --       sdram_clk.clk
 			sdram_wire_addr         : out   std_logic_vector(12 downto 0);                    --      sdram_wire.addr
 			sdram_wire_ba           : out   std_logic_vector(1 downto 0);                                        --                .ba
@@ -97,7 +100,13 @@ architecture rtl of Main is
 	type LineBuffer is array (639 downto 0) of std_logic_vector(23 downto 0);
 	signal line_buffer : LineBuffer;
 	
+	signal pio_pixel_color : std_logic_vector(23 downto 0);
+	signal pio_pixel_position : std_logic_vector(31 downto 0);
+	signal pio_request : std_logic;
 begin
+	pio_pixel_position <= "0000000000000010" && "0000000000000001";
+	LEDG(7 downto 0) <= pio_pixel_color(7 downto 0);
+
 	nios2_core : NIOSII_Test port map(
 			audio_interface_ADCDAT  => audio_interface_ADCDAT,
 			audio_interface_ADCLRCK => audio_interface_ADCLRCK,
@@ -113,7 +122,11 @@ begin
 			sdram_wire_dq           => sdram_wire_dq,
 			sdram_wire_dqm          => sdram_wire_dqm,
 			sdram_wire_ras_n        => sdram_wire_ras_n,
-			sdram_wire_we_n         => sdram_wire_we_n
+			sdram_wire_we_n         => sdram_wire_we_n,
+			
+			pio_pixel_color_external_connection_export    => pio_pixel_color,
+			pio_pixel_position_external_connection_export => pio_pixel_position,
+			pio_request_external_connection_export        => pio_request
 	);
 	
 	vga : vga_controller generic map(
