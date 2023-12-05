@@ -142,8 +142,8 @@ ACDS_VERSION := 18.1
 ELF := gameconsole.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS :=
-CXX_SRCS := hello_world.cpp
+C_SRCS := hello_world.c
+CXX_SRCS :=
 ASM_SRCS :=
 
 

@@ -30,6 +30,7 @@ entity Main is
 		VGA_BLANK : out std_logic;
 		VGA_SYNC : out std_logic;
 		
+		KEY : in std_logic_vector(3 downto 0);
 		LEDR : out std_logic_vector(17 downto 0);
 		LEDG : out std_logic_vector(7 downto 0)
 	);
@@ -106,6 +107,8 @@ architecture rtl of Main is
 begin
 	pio_pixel_position <= "00000000000000100000000000000001";
 	LEDG(7 downto 0) <= pio_pixel_color(7 downto 0);
+	
+	pio_request <= not KEY(0);
 
 	nios2_core : NIOSII_Test port map(
 			audio_interface_ADCDAT  => audio_interface_ADCDAT,
