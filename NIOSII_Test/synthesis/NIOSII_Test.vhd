@@ -8,21 +8,28 @@ use IEEE.numeric_std.all;
 
 entity NIOSII_Test is
 	port (
-		audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
-		audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
-		audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
-		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
-		reset_reset             : in    std_logic                     := '0';             --           reset.reset
-		sdram_clk_clk           : out   std_logic;                                        --       sdram_clk.clk
-		sdram_wire_addr         : out   std_logic_vector(12 downto 0);                    --      sdram_wire.addr
-		sdram_wire_ba           : out   std_logic_vector(1 downto 0);                                        --                .ba
-		sdram_wire_cas_n        : out   std_logic;                                        --                .cas_n
-		sdram_wire_cke          : out   std_logic;                                        --                .cke
-		sdram_wire_cs_n         : out   std_logic;                                        --                .cs_n
-		sdram_wire_dq           : inout std_logic_vector(31 downto 0) := (others => '0'); --                .dq
-		sdram_wire_dqm          : out   std_logic_vector(3 downto 0);                     --                .dqm
-		sdram_wire_ras_n        : out   std_logic;                                        --                .ras_n
-		sdram_wire_we_n         : out   std_logic                                         --                .we_n
+		audio_interface_ADCDAT          : in    std_logic                     := '0';             --      audio_interface.ADCDAT
+		audio_interface_ADCLRCK         : in    std_logic                     := '0';             --                     .ADCLRCK
+		audio_interface_BCLK            : in    std_logic                     := '0';             --                     .BCLK
+		clk_clk                         : in    std_logic                     := '0';             --                  clk.clk
+		onchip_memory_access_address    : in    std_logic_vector(16 downto 0) := (others => '0'); -- onchip_memory_access.address
+		onchip_memory_access_chipselect : in    std_logic                     := '0';             --                     .chipselect
+		onchip_memory_access_clken      : in    std_logic                     := '0';             --                     .clken
+		onchip_memory_access_write      : in    std_logic                     := '0';             --                     .write
+		onchip_memory_access_readdata   : out   std_logic_vector(31 downto 0);                    --                     .readdata
+		onchip_memory_access_writedata  : in    std_logic_vector(31 downto 0) := (others => '0'); --                     .writedata
+		onchip_memory_access_byteenable : in    std_logic_vector(3 downto 0)  := (others => '0'); --                     .byteenable
+		reset_reset                     : in    std_logic                     := '0';             --                reset.reset
+		sdram_clk_clk                   : out   std_logic;                                        --            sdram_clk.clk
+		sdram_wire_addr                 : out   std_logic_vector(11 downto 0);                    --           sdram_wire.addr
+		sdram_wire_ba                   : out   std_logic;                                        --                     .ba
+		sdram_wire_cas_n                : out   std_logic;                                        --                     .cas_n
+		sdram_wire_cke                  : out   std_logic;                                        --                     .cke
+		sdram_wire_cs_n                 : out   std_logic;                                        --                     .cs_n
+		sdram_wire_dq                   : inout std_logic_vector(31 downto 0) := (others => '0'); --                     .dq
+		sdram_wire_dqm                  : out   std_logic_vector(3 downto 0);                     --                     .dqm
+		sdram_wire_ras_n                : out   std_logic;                                        --                     .ras_n
+		sdram_wire_we_n                 : out   std_logic                                         --                     .we_n
 	);
 end entity NIOSII_Test;
 
@@ -81,8 +88,8 @@ architecture rtl of NIOSII_Test is
 			za_data        : out   std_logic_vector(31 downto 0);                    -- readdata
 			za_valid       : out   std_logic;                                        -- readdatavalid
 			za_waitrequest : out   std_logic;                                        -- waitrequest
-			zs_addr        : out   std_logic_vector(12 downto 0);                    -- export
-			zs_ba          : out   std_logic_vector(1 downto 0);                     -- export
+			zs_addr        : out   std_logic_vector(11 downto 0);                    -- export
+			zs_ba          : out   std_logic;                                        -- export
 			zs_cas_n       : out   std_logic;                                        -- export
 			zs_cke         : out   std_logic;                                        -- export
 			zs_cs_n        : out   std_logic;                                        -- export
@@ -128,17 +135,24 @@ architecture rtl of NIOSII_Test is
 
 	component NIOSII_Test_onchip_memory2_0 is
 		port (
-			clk        : in  std_logic                     := 'X';             -- clk
-			address    : in  std_logic_vector(16 downto 0) := (others => 'X'); -- address
-			clken      : in  std_logic                     := 'X';             -- clken
-			chipselect : in  std_logic                     := 'X';             -- chipselect
-			write      : in  std_logic                     := 'X';             -- write
-			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
-			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			byteenable : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
-			reset      : in  std_logic                     := 'X';             -- reset
-			reset_req  : in  std_logic                     := 'X';             -- reset_req
-			freeze     : in  std_logic                     := 'X'              -- freeze
+			address     : in  std_logic_vector(16 downto 0) := (others => 'X'); -- address
+			clken       : in  std_logic                     := 'X';             -- clken
+			chipselect  : in  std_logic                     := 'X';             -- chipselect
+			write       : in  std_logic                     := 'X';             -- write
+			readdata    : out std_logic_vector(31 downto 0);                    -- readdata
+			writedata   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			byteenable  : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			address2    : in  std_logic_vector(16 downto 0) := (others => 'X'); -- address
+			chipselect2 : in  std_logic                     := 'X';             -- chipselect
+			clken2      : in  std_logic                     := 'X';             -- clken
+			write2      : in  std_logic                     := 'X';             -- write
+			readdata2   : out std_logic_vector(31 downto 0);                    -- readdata
+			writedata2  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			byteenable2 : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			clk         : in  std_logic                     := 'X';             -- clk
+			reset       : in  std_logic                     := 'X';             -- reset
+			reset_req   : in  std_logic                     := 'X';             -- reset_req
+			freeze      : in  std_logic                     := 'X'              -- freeze
 		);
 	end component NIOSII_Test_onchip_memory2_0;
 
@@ -163,7 +177,7 @@ architecture rtl of NIOSII_Test is
 			nios2_gen2_0_data_master_address                         : in  std_logic_vector(23 downto 0) := (others => 'X'); -- address
 			nios2_gen2_0_data_master_waitrequest                     : out std_logic;                                        -- waitrequest
 			nios2_gen2_0_data_master_byteenable                      : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
-			nios2_gen2_0_data_master_read                            : in  std_logic                     := 'X';             -- read
+			nios2_gen2_0_data_master_read                            : in  std_logic                     := 'X';             -- 
 			nios2_gen2_0_data_master_readdata                        : out std_logic_vector(31 downto 0);                    -- readdata
 			nios2_gen2_0_data_master_readdatavalid                   : out std_logic;                                        -- readdatavalid
 			nios2_gen2_0_data_master_write                           : in  std_logic                     := 'X';             -- write
@@ -608,17 +622,24 @@ begin
 
 	onchip_memory2_0 : component NIOSII_Test_onchip_memory2_0
 		port map (
-			clk        => sys_sdram_pll_0_sys_clk_clk,                      --   clk1.clk
-			address    => mm_interconnect_0_onchip_memory2_0_s1_address,    --     s1.address
-			clken      => mm_interconnect_0_onchip_memory2_0_s1_clken,      --       .clken
-			chipselect => mm_interconnect_0_onchip_memory2_0_s1_chipselect, --       .chipselect
-			write      => mm_interconnect_0_onchip_memory2_0_s1_write,      --       .write
-			readdata   => mm_interconnect_0_onchip_memory2_0_s1_readdata,   --       .readdata
-			writedata  => mm_interconnect_0_onchip_memory2_0_s1_writedata,  --       .writedata
-			byteenable => mm_interconnect_0_onchip_memory2_0_s1_byteenable, --       .byteenable
-			reset      => rst_controller_003_reset_out_reset,               -- reset1.reset
-			reset_req  => rst_controller_003_reset_out_reset_req,           --       .reset_req
-			freeze     => '0'                                               -- (terminated)
+			address     => mm_interconnect_0_onchip_memory2_0_s1_address,    --     s1.address
+			clken       => mm_interconnect_0_onchip_memory2_0_s1_clken,      --       .clken
+			chipselect  => mm_interconnect_0_onchip_memory2_0_s1_chipselect, --       .chipselect
+			write       => mm_interconnect_0_onchip_memory2_0_s1_write,      --       .write
+			readdata    => mm_interconnect_0_onchip_memory2_0_s1_readdata,   --       .readdata
+			writedata   => mm_interconnect_0_onchip_memory2_0_s1_writedata,  --       .writedata
+			byteenable  => mm_interconnect_0_onchip_memory2_0_s1_byteenable, --       .byteenable
+			address2    => onchip_memory_access_address,                     --     s2.address
+			chipselect2 => onchip_memory_access_chipselect,                  --       .chipselect
+			clken2      => onchip_memory_access_clken,                       --       .clken
+			write2      => onchip_memory_access_write,                       --       .write
+			readdata2   => onchip_memory_access_readdata,                    --       .readdata
+			writedata2  => onchip_memory_access_writedata,                   --       .writedata
+			byteenable2 => onchip_memory_access_byteenable,                  --       .byteenable
+			clk         => sys_sdram_pll_0_sys_clk_clk,                      --   clk1.clk
+			reset       => rst_controller_003_reset_out_reset,               -- reset1.reset
+			reset_req   => rst_controller_003_reset_out_reset_req,           --       .reset_req
+			freeze      => '0'                                               -- (terminated)
 		);
 
 	sys_sdram_pll_0 : component NIOSII_Test_sys_sdram_pll_0
