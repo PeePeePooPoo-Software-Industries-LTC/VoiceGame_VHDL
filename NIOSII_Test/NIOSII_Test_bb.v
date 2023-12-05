@@ -16,7 +16,8 @@ module NIOSII_Test (
 	sdram_wire_we_n,
 	pio_pixel_color_external_connection_export,
 	pio_pixel_position_external_connection_export,
-	pio_request_external_connection_export);	
+	pio_request_external_connection_export,
+	sdram_clk_clk);	
 
 	input		audio_interface_ADCDAT;
 	input		audio_interface_ADCLRCK;
@@ -35,4 +36,5 @@ module NIOSII_Test (
 	output	[23:0]	pio_pixel_color_external_connection_export;
 	input	[31:0]	pio_pixel_position_external_connection_export;
 	input		pio_request_external_connection_export;
+	output		sdram_clk_clk;
 endmodule

@@ -12,9 +12,15 @@
 							<targetPlatform id="altera.nios2.linux.gcc4.845836171" name="Nios II" osList="linux" superClass="altera.nios2.linux.gcc4"/>
 							<builder buildPath="${workspace_loc://gameconsole}" id="altera.tool.gnu.builder.1055642438" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="altera.tool.gnu.builder"/>
 							<tool id="altera.tool.gnu.c.compiler.677119725" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler">
+								<option id="gnu.c.compiler.option.include.paths.1142845493" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gameconsole_bsp}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1355093091" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="altera.tool.gnu.cpp.compiler.1847227012" name="Nios II GCC C++ Compiler" superClass="altera.tool.gnu.cpp.compiler">
+								<option id="gnu.cpp.compiler.option.include.paths.538108965" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/gameconsole_bsp}&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.411762516" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="altera.tool.gnu.archiver.1033525484" name="Nios II GCC Archiver" superClass="altera.tool.gnu.archiver"/>
@@ -87,4 +93,5 @@
 			</target>
 		</buildTargets>
 	</storageModule>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

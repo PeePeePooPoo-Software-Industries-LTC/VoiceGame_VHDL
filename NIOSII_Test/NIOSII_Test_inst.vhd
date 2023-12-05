@@ -16,7 +16,8 @@
 			sdram_wire_we_n                               : out   std_logic;                                        -- we_n
 			pio_pixel_color_external_connection_export    : out   std_logic_vector(23 downto 0);                    -- export
 			pio_pixel_position_external_connection_export : in    std_logic_vector(31 downto 0) := (others => 'X'); -- export
-			pio_request_external_connection_export        : in    std_logic                     := 'X'              -- export
+			pio_request_external_connection_export        : in    std_logic                     := 'X';             -- export
+			sdram_clk_clk                                 : out   std_logic                                         -- clk
 		);
 	end component NIOSII_Test;
 
@@ -38,6 +39,7 @@
 			sdram_wire_we_n                               => CONNECTED_TO_sdram_wire_we_n,                               --                                       .we_n
 			pio_pixel_color_external_connection_export    => CONNECTED_TO_pio_pixel_color_external_connection_export,    --    pio_pixel_color_external_connection.export
 			pio_pixel_position_external_connection_export => CONNECTED_TO_pio_pixel_position_external_connection_export, -- pio_pixel_position_external_connection.export
-			pio_request_external_connection_export        => CONNECTED_TO_pio_request_external_connection_export         --        pio_request_external_connection.export
+			pio_request_external_connection_export        => CONNECTED_TO_pio_request_external_connection_export,        --        pio_request_external_connection.export
+			sdram_clk_clk                                 => CONNECTED_TO_sdram_clk_clk                                  --                              sdram_clk.clk
 		);
 

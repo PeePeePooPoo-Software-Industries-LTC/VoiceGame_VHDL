@@ -15,6 +15,7 @@
 		.sdram_wire_we_n                               (<connected-to-sdram_wire_we_n>),                               //                                       .we_n
 		.pio_pixel_color_external_connection_export    (<connected-to-pio_pixel_color_external_connection_export>),    //    pio_pixel_color_external_connection.export
 		.pio_pixel_position_external_connection_export (<connected-to-pio_pixel_position_external_connection_export>), // pio_pixel_position_external_connection.export
-		.pio_request_external_connection_export        (<connected-to-pio_request_external_connection_export>)         //        pio_request_external_connection.export
+		.pio_request_external_connection_export        (<connected-to-pio_request_external_connection_export>),        //        pio_request_external_connection.export
+		.sdram_clk_clk                                 (<connected-to-sdram_clk_clk>)                                  //                              sdram_clk.clk
 	);
 

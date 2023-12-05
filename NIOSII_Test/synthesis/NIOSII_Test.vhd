@@ -16,6 +16,7 @@ entity NIOSII_Test is
 		pio_pixel_position_external_connection_export : in    std_logic_vector(31 downto 0) := (others => '0'); -- pio_pixel_position_external_connection.export
 		pio_request_external_connection_export        : in    std_logic                     := '0';             --        pio_request_external_connection.export
 		reset_reset                                   : in    std_logic                     := '0';             --                                  reset.reset
+		sdram_clk_clk                                 : out   std_logic;                                        --                              sdram_clk.clk
 		sdram_wire_addr                               : out   std_logic_vector(11 downto 0);                    --                             sdram_wire.addr
 		sdram_wire_ba                                 : out   std_logic;                                        --                                       .ba
 		sdram_wire_cas_n                              : out   std_logic;                                        --                                       .cas_n
@@ -727,7 +728,7 @@ begin
 			ref_clk_clk        => clk_clk,                            --      ref_clk.clk
 			ref_reset_reset    => reset_reset,                        --    ref_reset.reset
 			sys_clk_clk        => sys_sdram_pll_0_sys_clk_clk,        --      sys_clk.clk
-			sdram_clk_clk      => open,                               --    sdram_clk.clk
+			sdram_clk_clk      => sdram_clk_clk,                      --    sdram_clk.clk
 			reset_source_reset => sys_sdram_pll_0_reset_source_reset  -- reset_source.reset
 		);
 

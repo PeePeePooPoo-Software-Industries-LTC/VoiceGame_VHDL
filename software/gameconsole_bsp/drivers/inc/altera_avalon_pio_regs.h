@@ -2,7 +2,7 @@
 *                                                                             *
 * License Agreement                                                           *
 *                                                                             *
-* Copyright (c) 2004 Altera Corporation, San Jose, California, USA.           *
+* Copyright (c) 2003 Altera Corporation, San Jose, California, USA.           *
 * All rights reserved.                                                        *
 *                                                                             *
 * Permission is hereby granted, free of charge, to any person obtaining a     *
@@ -26,50 +26,42 @@
 * This agreement shall be governed in all respects by the laws of the State   *
 * of California and by the laws of the United States of America.              *
 *                                                                             *
-* Altera does not recommend, suggest or require that this reference design    *
-* file be used in conjunction or combination with any other product.          *
 ******************************************************************************/
 
-#include <errno.h>
+#ifndef __ALTERA_AVALON_PIO_REGS_H__
+#define __ALTERA_AVALON_PIO_REGS_H__
 
-#include "priv/alt_file.h"
+#include <io.h>
 
-/*
- * alt_fd_lock() is called as a consequence of an ioctl call to gain exclusive
- * access to a device, i.e.:
- *
- * ioctl (fd, TIOCEXCL, NULL);
- *
- * If there are no other open file descriptors which reference the same
- * device, then alt_fd_lock() will grant the lock. Further calls to open() 
- * for this device will fail until the lock is released.
- *
- * This is done by calling close() for this file descriptor, or by calling:
- *
- * ioctl (fd, TIOCNXCL, NULL);
- *
- * The return value is zero for success, or negative in the case of failure.
- */
+#define IOADDR_ALTERA_AVALON_PIO_DATA(base)           __IO_CALC_ADDRESS_NATIVE(base, 0)
+#define IORD_ALTERA_AVALON_PIO_DATA(base)             IORD(base, 0) 
+#define IOWR_ALTERA_AVALON_PIO_DATA(base, data)       IOWR(base, 0, data)
 
-int alt_fd_lock (alt_fd* fd)
-{
-  int i;
-  int rc = 0;
+#define IOADDR_ALTERA_AVALON_PIO_DIRECTION(base)      __IO_CALC_ADDRESS_NATIVE(base, 1)
+#define IORD_ALTERA_AVALON_PIO_DIRECTION(base)        IORD(base, 1) 
+#define IOWR_ALTERA_AVALON_PIO_DIRECTION(base, data)  IOWR(base, 1, data)
 
-  ALT_SEM_PEND(alt_fd_list_lock, 0);
+#define IOADDR_ALTERA_AVALON_PIO_IRQ_MASK(base)       __IO_CALC_ADDRESS_NATIVE(base, 2)
+#define IORD_ALTERA_AVALON_PIO_IRQ_MASK(base)         IORD(base, 2) 
+#define IOWR_ALTERA_AVALON_PIO_IRQ_MASK(base, data)   IOWR(base, 2, data)
 
-  for (i = 0; i < alt_max_fd; i++)
-  {
-    if ((&alt_fd_list[i] != fd) && (alt_fd_list[i].dev == fd->dev))
-    {
-      rc = -EACCES;
-      goto alt_fd_lock_exit;
-    }
-  }
-  fd->fd_flags |= ALT_FD_EXCL;
+#define IOADDR_ALTERA_AVALON_PIO_EDGE_CAP(base)       __IO_CALC_ADDRESS_NATIVE(base, 3)
+#define IORD_ALTERA_AVALON_PIO_EDGE_CAP(base)         IORD(base, 3) 
+#define IOWR_ALTERA_AVALON_PIO_EDGE_CAP(base, data)   IOWR(base, 3, data)
 
- alt_fd_lock_exit:
 
-  ALT_SEM_POST(alt_fd_list_lock);
-  return rc;
-}
+#define IOADDR_ALTERA_AVALON_PIO_SET_BIT(base)       __IO_CALC_ADDRESS_NATIVE(base, 4)
+#define IORD_ALTERA_AVALON_PIO_SET_BITS(base)         IORD(base, 4) 
+#define IOWR_ALTERA_AVALON_PIO_SET_BITS(base, data)   IOWR(base, 4, data)
+    
+#define IOADDR_ALTERA_AVALON_PIO_CLEAR_BITS(base)       __IO_CALC_ADDRESS_NATIVE(base, 5)
+#define IORD_ALTERA_AVALON_PIO_CLEAR_BITS(base)         IORD(base, 5) 
+#define IOWR_ALTERA_AVALON_PIO_CLEAR_BITS(base, data)   IOWR(base, 5, data)
+     
+
+ 
+/* Defintions for direction-register operation with bi-directional PIOs */
+#define ALTERA_AVALON_PIO_DIRECTION_INPUT  0
+#define ALTERA_AVALON_PIO_DIRECTION_OUTPUT 1
+
+#endif /* __ALTERA_AVALON_PIO_REGS_H__ */

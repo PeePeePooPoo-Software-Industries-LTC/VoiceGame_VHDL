@@ -11,8 +11,8 @@ entity Main is
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset             : in    std_logic                     := '0';             --           reset.reset
 		sdram_clk_clk           : out   std_logic;                                        --       sdram_clk.clk
-		sdram_wire_addr         : out   std_logic_vector(12 downto 0);                    --      sdram_wire.addr
-		sdram_wire_ba           : out   std_logic_vector(1 downto 0);                                        --                .ba
+		sdram_wire_addr         : out   std_logic_vector(11 downto 0);                    --      sdram_wire.addr
+		sdram_wire_ba           : out   std_logic;                                        --                .ba
 		sdram_wire_cas_n        : out   std_logic;                                        --                .cas_n
 		sdram_wire_cke          : out   std_logic;                                        --                .cke
 		sdram_wire_cs_n         : out   std_logic;                                        --                .cs_n
@@ -47,8 +47,8 @@ architecture rtl of Main is
 			pio_pixel_position_external_connection_export : in    std_logic_vector(31 downto 0) := (others => '0'); -- pio_pixel_position_external_connection.export
 			pio_request_external_connection_export        : in    std_logic                     := '0';             --        pio_request_external_connection.export
 			sdram_clk_clk           : out   std_logic;                                        --       sdram_clk.clk
-			sdram_wire_addr         : out   std_logic_vector(12 downto 0);                    --      sdram_wire.addr
-			sdram_wire_ba           : out   std_logic_vector(1 downto 0);                                        --                .ba
+			sdram_wire_addr         : out   std_logic_vector(11 downto 0);                    --      sdram_wire.addr
+			sdram_wire_ba           : out   std_logic;                                        --                .ba
 			sdram_wire_cas_n        : out   std_logic;                                        --                .cas_n
 			sdram_wire_cke          : out   std_logic;                                        --                .cke
 			sdram_wire_cs_n         : out   std_logic;                                        --                .cs_n
@@ -104,7 +104,7 @@ architecture rtl of Main is
 	signal pio_pixel_position : std_logic_vector(31 downto 0);
 	signal pio_request : std_logic;
 begin
-	pio_pixel_position <= "0000000000000010" && "0000000000000001";
+	pio_pixel_position <= "00000000000000100000000000000001";
 	LEDG(7 downto 0) <= pio_pixel_color(7 downto 0);
 
 	nios2_core : NIOSII_Test port map(
