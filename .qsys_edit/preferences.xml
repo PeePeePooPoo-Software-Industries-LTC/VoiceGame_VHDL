@@ -8,8 +8,7 @@
    <inputclock preferredWidth="188" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library,Library/Basic Functions,Library/Basic Functions/Bridges and Adaptors,Library/Qsys Interconnect,Library/Qsys Interconnect/Interrupt,Library/Basic Functions/Bridges and Adaptors/Interrupt,Project" />
+ <library expandedCategories="Library,Project" />
  <window width="1908" height="1020" x="12" y="0" />
  <generation synthesis="VHDL" />
 </preferences>
