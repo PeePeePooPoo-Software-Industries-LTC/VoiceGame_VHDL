@@ -176,7 +176,7 @@ refer to the applicable agreement for further details.
 		(text "dqm" (rect 277 435 572 880)(font "Arial" (color 0 0 0)))
 		(text "ras_n" (rect 277 451 584 912)(font "Arial" (color 0 0 0)))
 		(text "we_n" (rect 277 467 578 944)(font "Arial" (color 0 0 0)))
-		(text " NIOSII_Test " (rect 567 488 1212 986)(font "Arial" ))
+		(text " system " (rect 589 488 1226 986)(font "Arial" ))
 		(line (pt 272 32)(pt 352 32)(line_width 1))
 		(line (pt 352 32)(pt 352 488)(line_width 1))
 		(line (pt 272 488)(pt 352 488)(line_width 1))
