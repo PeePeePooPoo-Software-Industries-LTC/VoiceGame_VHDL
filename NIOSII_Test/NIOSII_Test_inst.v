@@ -1,9 +1,13 @@
 	NIOSII_Test u0 (
-		.clk_clk                 (<connected-to-clk_clk>),                 //             clk.clk
-		.reset_reset_n           (<connected-to-reset_reset_n>),           //           reset.reset_n
 		.audio_interface_ADCDAT  (<connected-to-audio_interface_ADCDAT>),  // audio_interface.ADCDAT
 		.audio_interface_ADCLRCK (<connected-to-audio_interface_ADCLRCK>), //                .ADCLRCK
 		.audio_interface_BCLK    (<connected-to-audio_interface_BCLK>),    //                .BCLK
+		.audio_interface_DACDAT  (<connected-to-audio_interface_DACDAT>),  //                .DACDAT
+		.audio_interface_DACLRCK (<connected-to-audio_interface_DACLRCK>), //                .DACLRCK
+		.clk_clk                 (<connected-to-clk_clk>),                 //             clk.clk
+		.keys_export             (<connected-to-keys_export>),             //            keys.export
+		.ledgs_export            (<connected-to-ledgs_export>),            //           ledgs.export
+		.reset_reset_n           (<connected-to-reset_reset_n>),           //           reset.reset_n
 		.vga_CLK                 (<connected-to-vga_CLK>),                 //             vga.CLK
 		.vga_HS                  (<connected-to-vga_HS>),                  //                .HS
 		.vga_VS                  (<connected-to-vga_VS>),                  //                .VS

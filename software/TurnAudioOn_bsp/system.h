@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Wed Nov 29 14:15:30 CET 2023
+ * Generated: Tue Dec 05 15:49:51 CET 2023
  */
 
 /*
@@ -143,6 +143,7 @@
 
 #define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
+#define __ALTERA_AVALON_PIO
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_AUDIO
 
@@ -163,19 +164,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x101010
+#define ALT_STDERR_BASE 0x101030
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x101010
+#define ALT_STDIN_BASE 0x101030
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x101010
+#define ALT_STDOUT_BASE 0x101030
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -189,7 +190,7 @@
  */
 
 #define ALT_MODULE_CLASS_audio_0 altera_up_avalon_audio
-#define AUDIO_0_BASE 0x101000
+#define AUDIO_0_BASE 0x101020
 #define AUDIO_0_IRQ 1
 #define AUDIO_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define AUDIO_0_NAME "/dev/audio_0"
@@ -214,7 +215,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x101010
+#define JTAG_UART_0_BASE 0x101030
 #define JTAG_UART_0_IRQ 0
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -253,5 +254,59 @@
 #define ONCHIP_MEMORY2_0_SPAN 400000
 #define ONCHIP_MEMORY2_0_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY2_0_WRITABLE 1
+
+
+/*
+ * pio_0_keys configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_0_keys altera_avalon_pio
+#define PIO_0_KEYS_BASE 0x101010
+#define PIO_0_KEYS_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_0_KEYS_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_0_KEYS_CAPTURE 0
+#define PIO_0_KEYS_DATA_WIDTH 3
+#define PIO_0_KEYS_DO_TEST_BENCH_WIRING 0
+#define PIO_0_KEYS_DRIVEN_SIM_VALUE 0
+#define PIO_0_KEYS_EDGE_TYPE "NONE"
+#define PIO_0_KEYS_FREQ 50000000
+#define PIO_0_KEYS_HAS_IN 1
+#define PIO_0_KEYS_HAS_OUT 0
+#define PIO_0_KEYS_HAS_TRI 0
+#define PIO_0_KEYS_IRQ -1
+#define PIO_0_KEYS_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_0_KEYS_IRQ_TYPE "NONE"
+#define PIO_0_KEYS_NAME "/dev/pio_0_keys"
+#define PIO_0_KEYS_RESET_VALUE 0
+#define PIO_0_KEYS_SPAN 16
+#define PIO_0_KEYS_TYPE "altera_avalon_pio"
+
+
+/*
+ * pio_1_ledgs configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_1_ledgs altera_avalon_pio
+#define PIO_1_LEDGS_BASE 0x101000
+#define PIO_1_LEDGS_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_1_LEDGS_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_1_LEDGS_CAPTURE 0
+#define PIO_1_LEDGS_DATA_WIDTH 8
+#define PIO_1_LEDGS_DO_TEST_BENCH_WIRING 0
+#define PIO_1_LEDGS_DRIVEN_SIM_VALUE 0
+#define PIO_1_LEDGS_EDGE_TYPE "NONE"
+#define PIO_1_LEDGS_FREQ 50000000
+#define PIO_1_LEDGS_HAS_IN 0
+#define PIO_1_LEDGS_HAS_OUT 1
+#define PIO_1_LEDGS_HAS_TRI 0
+#define PIO_1_LEDGS_IRQ -1
+#define PIO_1_LEDGS_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_1_LEDGS_IRQ_TYPE "NONE"
+#define PIO_1_LEDGS_NAME "/dev/pio_1_ledgs"
+#define PIO_1_LEDGS_RESET_VALUE 0
+#define PIO_1_LEDGS_SPAN 16
+#define PIO_1_LEDGS_TYPE "altera_avalon_pio"
 
 #endif /* __SYSTEM_H_ */

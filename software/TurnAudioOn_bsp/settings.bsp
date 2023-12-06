@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>30-nov-2023 11:39:07</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1701340747481</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>6-dec-2023 10:49:54</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1701856194577</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\raivo\OneDrive\Bureaublad\KBS_CE_Git_Repo\VoiceGame_VHDL\software\TurnAudioOn_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\NIOSII_Test.sopcinfo</SopcDesignFile>
@@ -905,14 +905,26 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_0</slaveDescriptor>
+                <slaveDescriptor>pio_1_ledgs</slaveDescriptor>
                 <addressRange>0x00101000 - 0x0010100F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>pio_0_keys</slaveDescriptor>
+                <addressRange>0x00101010 - 0x0010101F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>audio_0</slaveDescriptor>
+                <addressRange>0x00101020 - 0x0010102F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00101010 - 0x00101017</addressRange>
+                <addressRange>0x00101030 - 0x00101037</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
