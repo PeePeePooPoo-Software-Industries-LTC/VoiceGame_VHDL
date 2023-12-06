@@ -8,7 +8,6 @@ module NIOSII_Test (
 	pio_pixel_position_external_connection_export,
 	pio_request_external_connection_export,
 	reset_reset,
-	sdram_clk_clk,
 	sdram_wire_addr,
 	sdram_wire_ba,
 	sdram_wire_cas_n,
@@ -17,7 +16,16 @@ module NIOSII_Test (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n);	
+	sdram_wire_we_n,
+	sdram_clk_clk,
+	vga_CLK,
+	vga_HS,
+	vga_VS,
+	vga_BLANK,
+	vga_SYNC,
+	vga_R,
+	vga_G,
+	vga_B);	
 
 	input		audio_interface_ADCDAT;
 	input		audio_interface_ADCLRCK;
@@ -27,7 +35,6 @@ module NIOSII_Test (
 	input	[31:0]	pio_pixel_position_external_connection_export;
 	input		pio_request_external_connection_export;
 	input		reset_reset;
-	output		sdram_clk_clk;
 	output	[11:0]	sdram_wire_addr;
 	output		sdram_wire_ba;
 	output		sdram_wire_cas_n;
@@ -37,4 +44,13 @@ module NIOSII_Test (
 	output	[3:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
+	output		sdram_clk_clk;
+	output		vga_CLK;
+	output		vga_HS;
+	output		vga_VS;
+	output		vga_BLANK;
+	output		vga_SYNC;
+	output	[7:0]	vga_R;
+	output	[7:0]	vga_G;
+	output	[7:0]	vga_B;
 endmodule

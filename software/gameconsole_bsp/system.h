@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Wed Dec 06 14:52:31 CET 2023
+ * Generated: Wed Dec 06 17:54:26 CET 2023
  */
 
 /*
@@ -147,6 +147,7 @@
 #define __ALTERA_AVALON_PIO
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_AUDIO
+#define __ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA
 
 
 /*
@@ -165,19 +166,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x1101040
+#define ALT_STDERR_BASE 0x1101050
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x1101040
+#define ALT_STDIN_BASE 0x1101050
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x1101040
+#define ALT_STDOUT_BASE 0x1101050
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -191,7 +192,7 @@
  */
 
 #define ALT_MODULE_CLASS_audio_0 altera_up_avalon_audio
-#define AUDIO_0_BASE 0x1101030
+#define AUDIO_0_BASE 0x1101040
 #define AUDIO_0_IRQ 0
 #define AUDIO_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define AUDIO_0_NAME "/dev/audio_0"
@@ -216,7 +217,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x1101040
+#define JTAG_UART_0_BASE 0x1101050
 #define JTAG_UART_0_IRQ 1
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -302,7 +303,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_pixel_color altera_avalon_pio
-#define PIO_PIXEL_COLOR_BASE 0x1101000
+#define PIO_PIXEL_COLOR_BASE 0x1101010
 #define PIO_PIXEL_COLOR_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_PIXEL_COLOR_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_PIXEL_COLOR_CAPTURE 0
@@ -329,7 +330,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_pixel_position altera_avalon_pio
-#define PIO_PIXEL_POSITION_BASE 0x1101020
+#define PIO_PIXEL_POSITION_BASE 0x1101030
 #define PIO_PIXEL_POSITION_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_PIXEL_POSITION_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_PIXEL_POSITION_CAPTURE 0
@@ -356,7 +357,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_request altera_avalon_pio
-#define PIO_REQUEST_BASE 0x1101010
+#define PIO_REQUEST_BASE 0x1101020
 #define PIO_REQUEST_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_REQUEST_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_REQUEST_CAPTURE 1
@@ -375,5 +376,19 @@
 #define PIO_REQUEST_RESET_VALUE 0
 #define PIO_REQUEST_SPAN 16
 #define PIO_REQUEST_TYPE "altera_avalon_pio"
+
+
+/*
+ * video_pixel_buffer_dma_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_video_pixel_buffer_dma_0 altera_up_avalon_video_pixel_buffer_dma
+#define VIDEO_PIXEL_BUFFER_DMA_0_BASE 0x1101000
+#define VIDEO_PIXEL_BUFFER_DMA_0_IRQ -1
+#define VIDEO_PIXEL_BUFFER_DMA_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VIDEO_PIXEL_BUFFER_DMA_0_NAME "/dev/video_pixel_buffer_dma_0"
+#define VIDEO_PIXEL_BUFFER_DMA_0_SPAN 16
+#define VIDEO_PIXEL_BUFFER_DMA_0_TYPE "altera_up_avalon_video_pixel_buffer_dma"
 
 #endif /* __SYSTEM_H_ */

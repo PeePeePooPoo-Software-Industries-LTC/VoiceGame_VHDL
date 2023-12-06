@@ -1,10 +1,10 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst NIOSII_Test.pio_request -pg 1 -lvl 3 -y 520
+preplace inst NIOSII_Test.pio_request -pg 1 -lvl 3 -y 460
 preplace inst NIOSII_Test.nios2_gen2_0 -pg 1 -lvl 2 -y 240
 preplace inst NIOSII_Test.nios2_gen2_0.reset_bridge -pg 1
 preplace inst NIOSII_Test.audio_pll_0.audio_pll -pg 1
-preplace inst NIOSII_Test.jtag_uart_0 -pg 1 -lvl 3 -y 420
+preplace inst NIOSII_Test.jtag_uart_0 -pg 1 -lvl 3 -y 360
 preplace inst NIOSII_Test.onchip_memory2_0 -pg 1 -lvl 3 -y 220
 preplace inst NIOSII_Test.nios2_gen2_0.clock_bridge -pg 1
 preplace inst NIOSII_Test.pio_pixel_color -pg 1 -lvl 3 -y 760
@@ -18,19 +18,19 @@ preplace inst NIOSII_Test.sys_sdram_pll_0 -pg 1 -lvl 1 -y 100
 preplace inst NIOSII_Test -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst NIOSII_Test.sys_sdram_pll_0.sys_pll -pg 1
 preplace inst NIOSII_Test.pio_pixel_position -pg 1 -lvl 3 -y 660
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(MASTER)NIOSII_Test.sdram_clk,(MASTER)sys_sdram_pll_0.sdram_clk) 1 1 4 NJ 60 NJ 210 NJ 210 NJ
 preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.clk,(SLAVE)sys_sdram_pll_0.ref_clk) 1 0 1 NJ
-preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(MASTER)audio_pll_0.reset_source,(SLAVE)audio_0.reset) 1 2 1 910
-preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)new_sdram_controller_0.s1,(SLAVE)pio_request.s1,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)pio_pixel_color.s1,(SLAVE)audio_0.avalon_audio_slave,(SLAVE)onchip_memory2_0.s1,(SLAVE)pio_pixel_position.s1,(MASTER)nios2_gen2_0.data_master,(SLAVE)jtag_uart_0.avalon_jtag_slave) 1 1 3 510 400 890 370 1290
+preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(MASTER)audio_pll_0.reset_source,(SLAVE)audio_0.reset) 1 2 1 930
+preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)pio_pixel_position.s1,(SLAVE)pio_pixel_color.s1,(SLAVE)audio_0.avalon_audio_slave,(SLAVE)pio_request.s1,(SLAVE)nios2_gen2_0.debug_mem_slave,(MASTER)nios2_gen2_0.data_master,(SLAVE)onchip_memory2_0.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)new_sdram_controller_0.s1) 1 1 3 490 380 890 650 1330
 preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.reset,(SLAVE)sys_sdram_pll_0.ref_reset) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)onchip_memory2_0.reset1,(SLAVE)pio_pixel_color.reset,(SLAVE)pio_request.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)audio_pll_0.ref_reset,(SLAVE)pio_pixel_position.reset,(MASTER)sys_sdram_pll_0.reset_source,(SLAVE)jtag_uart_0.reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)new_sdram_controller_0.reset) 1 1 3 470 420 970 410 1270
-preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)pio_request.irq,(SLAVE)jtag_uart_0.irq,(SLAVE)audio_0.interrupt,(MASTER)nios2_gen2_0.irq) 1 2 1 950
+preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)new_sdram_controller_0.reset,(SLAVE)onchip_memory2_0.reset1,(MASTER)nios2_gen2_0.debug_reset_request,(MASTER)sys_sdram_pll_0.reset_source,(SLAVE)pio_pixel_position.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)pio_pixel_color.reset,(SLAVE)audio_pll_0.ref_reset,(SLAVE)pio_request.reset) 1 1 3 470 200 870 630 1290
 preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(MASTER)audio_pll_0.audio_clk,(SLAVE)audio_0.clk) 1 2 1 N
-preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)nios2_gen2_0.clk,(SLAVE)pio_pixel_position.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)new_sdram_controller_0.clk,(SLAVE)jtag_uart_0.clk,(MASTER)sys_sdram_pll_0.sys_clk,(SLAVE)pio_pixel_color.clk,(SLAVE)pio_request.clk,(SLAVE)audio_pll_0.ref_clk) 1 1 3 490 380 870 390 1310
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)new_sdram_controller_0.wire,(SLAVE)NIOSII_Test.sdram_wire) 1 0 4 NJ 650 NJ 650 NJ 650 NJ
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.pio_request_external_connection,(SLAVE)pio_request.external_connection) 1 0 3 NJ 550 NJ 550 NJ
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)new_sdram_controller_0.wire,(SLAVE)NIOSII_Test.sdram_wire) 1 0 4 NJ 590 NJ 590 NJ 590 NJ
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.pio_request_external_connection,(SLAVE)pio_request.external_connection) 1 0 3 NJ 490 NJ 490 NJ
 preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.pio_pixel_position_external_connection,(SLAVE)pio_pixel_position.external_connection) 1 0 3 NJ 690 NJ 690 NJ
 preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.pio_pixel_color_external_connection,(SLAVE)pio_pixel_color.external_connection) 1 0 3 NJ 790 NJ 790 NJ
 preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)audio_0.external_interface,(SLAVE)NIOSII_Test.audio_interface) 1 0 3 NJ 40 NJ 40 NJ
+preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(MASTER)sys_sdram_pll_0.sys_clk,(SLAVE)pio_pixel_color.clk,(SLAVE)nios2_gen2_0.clk,(SLAVE)new_sdram_controller_0.clk,(SLAVE)pio_pixel_position.clk,(SLAVE)pio_request.clk,(SLAVE)audio_pll_0.ref_clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)jtag_uart_0.clk) 1 1 3 490 180 910 610 1270
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(MASTER)sys_sdram_pll_0.sdram_clk,(MASTER)NIOSII_Test.sdram_clk) 1 1 4 NJ 60 NJ 210 NJ 210 NJ
+preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)audio_0.interrupt,(MASTER)nios2_gen2_0.irq,(SLAVE)jtag_uart_0.irq,(SLAVE)pio_request.irq) 1 2 1 970
 levelinfo -pg 1 0 200 1620
 levelinfo -hier NIOSII_Test 210 290 630 1120 1400 1530
