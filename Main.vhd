@@ -105,7 +105,7 @@ architecture rtl of Main is
 	signal pio_pixel_position : std_logic_vector(31 downto 0);
 	signal pio_request : std_logic;
 begin
-	pio_pixel_position <= "00000000000000100000000000000001";
+--	pio_pixel_position <= "00000000000000100000000000000001";
 	LEDR(7 downto 0) <= pio_pixel_color(7 downto 0);
 	
 	pio_request <= SW(0);
@@ -165,13 +165,16 @@ begin
 		variable first : std_logic := '0';
 		variable color : std_logic_vector(23 downto 0) := (others => '0');
 	begin
-		if (first = '0') then
-			color := "000000000000000011111111";
-			
-			first := '1';
-		end if;
-	
 		if (vga_is_on_screen = '1') then
+			if (vga_current_x rem 64 = 0) then
+				pio_pixel_position <= std_logic_vector(
+					to_unsigned(vga_current_x, 16)
+				) & std_logic_vector(
+					to_unsigned(vga_current_y, 16)
+				);
+			end if;
+			color := pio_pixel_color;
+			
 			VGA_R <= color(23 downto 16);
 			VGA_G <= color(15 downto 8);
 			VGA_B <= color(7 downto 0);
