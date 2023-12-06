@@ -22,3 +22,27 @@
 	<version>Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition</version>
 </internal_error>
 
+<internal_error>
+	<executable>quartus</executable>
+	<sub_system>MEM</sub_system>
+	<error>*** Fatal Error: Out of memory in module quartus (2719 megabytes used)</error>
+	<date>Wed Dec  6 09:50:16 2023</date>
+	<version>Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition</version>
+</internal_error>
+
+<internal_error>
+	<executable>quartus</executable>
+	<sub_system>MEM</sub_system>
+	<error>*** Fatal Error: Out of memory in module quartus (2756 megabytes used)</error>
+	<date>Wed Dec  6 10:02:22 2023</date>
+	<version>Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition</version>
+</internal_error>
+
+<internal_error>
+	<executable>quartus</executable>
+	<sub_system>MEM</sub_system>
+	<error>*** Fatal Error: Out of memory in module quartus (2728 megabytes used)</error>
+	<date>Wed Dec  6 10:17:36 2023</date>
+	<version>Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition</version>
+</internal_error>
+
