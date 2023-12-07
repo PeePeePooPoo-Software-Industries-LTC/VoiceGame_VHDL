@@ -47,7 +47,7 @@ module NIOSII_Test_mm_interconnect_0_router_001_default_decode
      parameter DEFAULT_CHANNEL = 2,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 2 
+               DEFAULT_DESTID = 3 
    )
   (output [87 - 85 : 0] default_destination_id,
    output [8-1 : 0] default_wr_channel,
@@ -193,19 +193,19 @@ module NIOSII_Test_mm_interconnect_0_router_001
     // ( 0x800000 .. 0x1000000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 25'h800000   ) begin
             src_channel = 8'b100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
     // ( 0x1080000 .. 0x1100000 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 25'h1080000   ) begin
             src_channel = 8'b010;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
     end
 
     // ( 0x1100800 .. 0x1101000 )
     if ( {address[RG:PAD2],{PAD2{1'b0}}} == 25'h1100800   ) begin
             src_channel = 8'b001;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
     end
 
 end
