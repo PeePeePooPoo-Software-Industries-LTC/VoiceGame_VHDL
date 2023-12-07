@@ -10,16 +10,13 @@ entity Main is
 		audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset             : in    std_logic                     := '0';             --           reset.reset
-		sdram_clk_clk           : out   std_logic;                                        --       sdram_clk.clk
-		sdram_wire_addr         : out   std_logic_vector(11 downto 0);                    --      sdram_wire.addr
-		sdram_wire_ba           : out   std_logic;                                        --                .ba
-		sdram_wire_cas_n        : out   std_logic;                                        --                .cas_n
-		sdram_wire_cke          : out   std_logic;                                        --                .cke
-		sdram_wire_cs_n         : out   std_logic;                                        --                .cs_n
-		sdram_wire_dq           : inout std_logic_vector(31 downto 0) := (others => '0'); --                .dq
-		sdram_wire_dqm          : out   std_logic_vector(3 downto 0);                     --                .dqm
-		sdram_wire_ras_n        : out   std_logic;                                        --                .ras_n
-		sdram_wire_we_n         : out   std_logic;                                        --                .we_n
+		sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
+		sram_ADDR               : out   std_logic_vector(19 downto 0);                    --                .ADDR
+		sram_LB_N               : out   std_logic;                                        --                .LB_N
+		sram_UB_N               : out   std_logic;                                        --                .UB_N
+		sram_CE_N               : out   std_logic;                                        --                .CE_N
+		sram_OE_N               : out   std_logic;                                        --                .OE_N
+		sram_WE_N               : out   std_logic;                                        --                .WE_N
 		
 		VGA_R : out std_logic_vector(7 downto 0);
 		VGA_G : out std_logic_vector(7 downto 0);
@@ -43,20 +40,14 @@ architecture rtl of Main is
 			audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
 			audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
 			clk_clk                 : in    std_logic                     := '0';             --             clk.clk
-			reset_reset             : in    std_logic                     := '0';             --           reset.reset
-			pio_pixel_color_external_connection_export    : out   std_logic_vector(23 downto 0);                    --    pio_pixel_color_external_connection.export
-			pio_pixel_position_external_connection_export : in    std_logic_vector(31 downto 0) := (others => '0'); -- pio_pixel_position_external_connection.export
-			pio_request_external_connection_export        : in    std_logic                     := '0';             --        pio_request_external_connection.export
-			sdram_clk_clk           : out   std_logic;                                        --       sdram_clk.clk
-			sdram_wire_addr         : out   std_logic_vector(11 downto 0);                    --      sdram_wire.addr
-			sdram_wire_ba           : out   std_logic;                                        --                .ba
-			sdram_wire_cas_n        : out   std_logic;                                        --                .cas_n
-			sdram_wire_cke          : out   std_logic;                                        --                .cke
-			sdram_wire_cs_n         : out   std_logic;                                        --                .cs_n
-			sdram_wire_dq           : inout std_logic_vector(31 downto 0) := (others => '0'); --                .dq
-			sdram_wire_dqm          : out   std_logic_vector(3 downto 0);                     --                .dqm
-			sdram_wire_ras_n        : out   std_logic;                                        --                .ras_n
-			sdram_wire_we_n         : out   std_logic;                                        --                .we_n
+			reset_reset_n             : in    std_logic                     := '0';             --           reset.reset
+			sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
+			sram_ADDR               : out   std_logic_vector(19 downto 0);                    --                .ADDR
+			sram_LB_N               : out   std_logic;                                        --                .LB_N
+			sram_UB_N               : out   std_logic;                                        --                .UB_N
+			sram_CE_N               : out   std_logic;                                        --                .CE_N
+			sram_OE_N               : out   std_logic;                                        --                .OE_N
+			sram_WE_N               : out   std_logic;                                        --                .WE_N
 			vga_CLK                                       : out   std_logic;                                        --                                    vga.CLK
 			vga_HS                                        : out   std_logic;                                        --                                       .HS
 			vga_VS                                        : out   std_logic;                                        --                                       .VS
@@ -125,22 +116,16 @@ begin
 			audio_interface_ADCLRCK => audio_interface_ADCLRCK,
 			audio_interface_BCLK    => audio_interface_BCLK,
 			clk_clk                 => clk_clk,
-			reset_reset             => reset_reset,
-			sdram_clk_clk           => sdram_clk_clk,
-			sdram_wire_addr         => sdram_wire_addr,
-			sdram_wire_ba           => sdram_wire_ba,
-			sdram_wire_cas_n        => sdram_wire_cas_n,
-			sdram_wire_cke          => sdram_wire_cke,
-			sdram_wire_cs_n         => sdram_wire_cs_n,
-			sdram_wire_dq           => sdram_wire_dq,
-			sdram_wire_dqm          => sdram_wire_dqm,
-			sdram_wire_ras_n        => sdram_wire_ras_n,
-			sdram_wire_we_n         => sdram_wire_we_n,
-			
-			pio_pixel_color_external_connection_export    => pio_pixel_color,
-			pio_pixel_position_external_connection_export => pio_pixel_position,
-			pio_request_external_connection_export        => pio_request,
-			
+			reset_reset_n             => reset_reset,
+
+			sram_DQ                 => sram_DQ,
+			sram_ADDR               => sram_ADDR,
+			sram_LB_N               => sram_LB_N,
+			sram_UB_N               => sram_UB_N,
+			sram_CE_N               => sram_CE_N,
+			sram_OE_N               => sram_OE_N,
+			sram_WE_N               => sram_WE_N,
+
 			vga_CLK => vga_CLK,
 			vga_HS => vga_HS,
 			vga_VS => vga_VS,

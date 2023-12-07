@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Tue Dec 05 11:11:52 CET 2023
+ * Generated: Thu Dec 07 14:57:33 CET 2023
  */
 
 /*
@@ -50,14 +50,12 @@
 
 MEMORY
 {
-    new_sdram_controller_0 : ORIGIN = 0x800000, LENGTH = 8388608
-    reset : ORIGIN = 0x1080000, LENGTH = 32
-    onchip_memory2_0 : ORIGIN = 0x1080020, LENGTH = 399968
+    reset : ORIGIN = 0x280000, LENGTH = 32
+    onchip_memory2_0 : ORIGIN = 0x280020, LENGTH = 399968
 }
 
 /* Define symbols for each memory base-address */
-__alt_mem_new_sdram_controller_0 = 0x800000;
-__alt_mem_onchip_memory2_0 = 0x1080000;
+__alt_mem_onchip_memory2_0 = 0x280000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -309,24 +307,7 @@ SECTIONS
      *
      */
 
-    .new_sdram_controller_0 : AT ( LOADADDR (.bss) + SIZEOF (.bss) )
-    {
-        PROVIDE (_alt_partition_new_sdram_controller_0_start = ABSOLUTE(.));
-        *(.new_sdram_controller_0 .new_sdram_controller_0. new_sdram_controller_0.*)
-        . = ALIGN(4);
-        PROVIDE (_alt_partition_new_sdram_controller_0_end = ABSOLUTE(.));
-    } > new_sdram_controller_0
-
-    PROVIDE (_alt_partition_new_sdram_controller_0_load_addr = LOADADDR(.new_sdram_controller_0));
-
-    /*
-     *
-     * This section's LMA is set to the .text region.
-     * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
-     *
-     */
-
-    .onchip_memory2_0 LOADADDR (.new_sdram_controller_0) + SIZEOF (.new_sdram_controller_0) : AT ( LOADADDR (.new_sdram_controller_0) + SIZEOF (.new_sdram_controller_0) )
+    .onchip_memory2_0 LOADADDR (.bss) + SIZEOF (.bss) : AT ( LOADADDR (.bss) + SIZEOF (.bss) )
     {
         PROVIDE (_alt_partition_onchip_memory2_0_start = ABSOLUTE(.));
         *(.onchip_memory2_0 .onchip_memory2_0. onchip_memory2_0.*)
@@ -386,7 +367,7 @@ SECTIONS
 /*
  * Don't override this, override the __alt_stack_* symbols instead.
  */
-__alt_data_end = 0x10e1a80;
+__alt_data_end = 0x2e1a80;
 
 /*
  * The next two symbols define the location of the default stack.  You can
@@ -402,4 +383,4 @@ PROVIDE( __alt_stack_limit   = __alt_stack_base );
  * Override this symbol to put the heap in a different memory.
  */
 PROVIDE( __alt_heap_start    = end );
-PROVIDE( __alt_heap_limit    = 0x10e1a80 );
+PROVIDE( __alt_heap_limit    = 0x2e1a80 );

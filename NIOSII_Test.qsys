@@ -21,7 +21,7 @@
    {
       datum baseAddress
       {
-         value = "17829952";
+         value = "3149840";
          type = "String";
       }
    }
@@ -30,6 +30,14 @@
       datum _sortIndex
       {
          value = "3";
+         type = "int";
+      }
+   }
+   element clk_0
+   {
+      datum _sortIndex
+      {
+         value = "13";
          type = "int";
       }
    }
@@ -45,7 +53,7 @@
    {
       datum baseAddress
       {
-         value = "17829968";
+         value = "3149856";
          type = "String";
       }
    }
@@ -55,6 +63,11 @@
       {
          value = "5";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element new_sdram_controller_0.s1
@@ -77,7 +90,7 @@
    {
       datum baseAddress
       {
-         value = "17827840";
+         value = "3147776";
          type = "String";
       }
    }
@@ -93,7 +106,7 @@
    {
       datum baseAddress
       {
-         value = "17301504";
+         value = "2621440";
          type = "String";
       }
    }
@@ -101,7 +114,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
       datum sopceditor_expanded
@@ -122,7 +135,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "7";
          type = "int";
       }
       datum sopceditor_expanded
@@ -143,7 +156,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "8";
          type = "int";
       }
       datum sopceditor_expanded
@@ -160,31 +173,7 @@
          type = "String";
       }
    }
-   element sys_sdram_pll_0
-   {
-      datum _sortIndex
-      {
-         value = "6";
-         type = "int";
-      }
-   }
-   element video_pixel_buffer_dma_0
-   {
-      datum _sortIndex
-      {
-         value = "10";
-         type = "int";
-      }
-   }
-   element video_pixel_buffer_dma_0.avalon_control_slave
-   {
-      datum baseAddress
-      {
-         value = "17829888";
-         type = "String";
-      }
-   }
-   element video_pll_0
+   element sram_0
    {
       datum _sortIndex
       {
@@ -192,11 +181,56 @@
          type = "int";
       }
    }
-   element video_vga_controller_0
+   element sram_0.avalon_sram_slave
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element video_dual_clock_buffer_0
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
+   element video_pixel_buffer_dma_0
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element video_pixel_buffer_dma_0.avalon_control_slave
+   {
+      datum baseAddress
+      {
+         value = "3149824";
+         type = "String";
+      }
+   }
+   element video_pll_0
    {
       datum _sortIndex
       {
          value = "11";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
+   element video_vga_controller_0
+   {
+      datum _sortIndex
+      {
+         value = "10";
          type = "int";
       }
    }
@@ -226,36 +260,22 @@
    internal="audio_0.external_interface"
    type="conduit"
    dir="end" />
- <interface name="clk" internal="sys_sdram_pll_0.ref_clk" type="clock" dir="end" />
+ <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="onchip_memory_access" internal="onchip_memory2_0.s2" />
  <interface
    name="pio_pixel_color_external_connection"
-   internal="pio_pixel_color.external_connection"
-   type="conduit"
-   dir="end" />
+   internal="pio_pixel_color.external_connection" />
  <interface
    name="pio_pixel_position_external_connection"
-   internal="pio_pixel_position.external_connection"
-   type="conduit"
-   dir="end" />
+   internal="pio_pixel_position.external_connection" />
  <interface
    name="pio_request_external_connection"
-   internal="pio_request.external_connection"
-   type="conduit"
-   dir="end" />
+   internal="pio_request.external_connection" />
+ <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface name="sdram_wire" internal="new_sdram_controller_0.wire" />
  <interface
-   name="reset"
-   internal="sys_sdram_pll_0.ref_reset"
-   type="reset"
-   dir="end" />
- <interface
-   name="sdram_clk"
-   internal="sys_sdram_pll_0.sdram_clk"
-   type="clock"
-   dir="start" />
- <interface
-   name="sdram_wire"
-   internal="new_sdram_controller_0.wire"
+   name="sram"
+   internal="sram_0.external_interface"
    type="conduit"
    dir="end" />
  <interface
@@ -286,6 +306,12 @@
   <parameter name="device_family" value="Cyclone IV E" />
   <parameter name="gui_refclk" value="50.0" />
  </module>
+ <module name="clk_0" kind="clock_source" version="18.1" enabled="1">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
  <module
    name="jtag_uart_0"
    kind="altera_avalon_jtag_uart"
@@ -309,7 +335,7 @@
    name="new_sdram_controller_0"
    kind="altera_avalon_new_sdram_controller"
    version="18.1"
-   enabled="1">
+   enabled="0">
   <parameter name="TAC" value="5.5" />
   <parameter name="TMRD" value="3" />
   <parameter name="TRCD" value="20.0" />
@@ -319,7 +345,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="columnWidth" value="8" />
-  <parameter name="componentName">$${FILENAME}_new_sdram_controller_0</parameter>
+  <parameter name="componentName">NIOSII_Test_new_sdram_controller_0</parameter>
   <parameter name="dataWidth" value="32" />
   <parameter name="generateSimulationModel" value="false" />
   <parameter name="initNOPDelay" value="0.0" />
@@ -339,8 +365,8 @@
    kind="altera_nios2_gen2"
    version="18.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="8" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="8" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
   <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -355,10 +381,10 @@
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
-  <parameter name="dataAddrWidth" value="25" />
+  <parameter name="dataAddrWidth" value="22" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x800000' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='onchip_memory2_0.s1' start='0x1080000' end='0x10E1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1100800' end='0x1101000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x1101000' end='0x1101010' type='altera_up_avalon_video_pixel_buffer_dma.avalon_control_slave' /><slave name='pio_pixel_color.s1' start='0x1101010' end='0x1101020' type='altera_avalon_pio.s1' /><slave name='pio_request.s1' start='0x1101020' end='0x1101030' type='altera_avalon_pio.s1' /><slave name='pio_pixel_position.s1' start='0x1101030' end='0x1101040' type='altera_avalon_pio.s1' /><slave name='audio_0.avalon_audio_slave' start='0x1101040' end='0x1101050' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1101050' end='0x1101058' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sram_0.avalon_sram_slave' start='0x0' end='0x200000' type='altera_up_avalon_sram.avalon_sram_slave' /><slave name='onchip_memory2_0.s1' start='0x280000' end='0x2E1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x300800' end='0x301000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x301000' end='0x301010' type='altera_up_avalon_video_pixel_buffer_dma.avalon_control_slave' /><slave name='audio_0.avalon_audio_slave' start='0x301010' end='0x301020' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x301020' end='0x301028' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -396,15 +422,15 @@
   <parameter name="icache_size" value="4096" />
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Fast" />
-  <parameter name="instAddrWidth" value="25" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x800000' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='onchip_memory2_0.s1' start='0x1080000' end='0x10E1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1100800' end='0x1101000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="22" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x280000' end='0x2E1A80' type='altera_avalon_onchip_memory2.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x300800' end='0x301000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="7" />
+  <parameter name="internalIrqMaskSystemInfo" value="3" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -552,7 +578,7 @@
    name="pio_pixel_color"
    kind="altera_avalon_pio"
    version="18.1"
-   enabled="1">
+   enabled="0">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -570,7 +596,7 @@
    name="pio_pixel_position"
    kind="altera_avalon_pio"
    version="18.1"
-   enabled="1">
+   enabled="0">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -588,7 +614,7 @@
    name="pio_request"
    kind="altera_avalon_pio"
    version="18.1"
-   enabled="1">
+   enabled="0">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="true" />
@@ -602,35 +628,36 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
+ <module name="sram_0" kind="altera_up_avalon_sram" version="18.0" enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="board" value="DE2-115" />
+  <parameter name="pixel_buffer" value="true" />
+ </module>
  <module
-   name="sys_sdram_pll_0"
-   kind="altera_up_avalon_sys_sdram_pll"
+   name="video_dual_clock_buffer_0"
+   kind="altera_up_avalon_video_dual_clock_buffer"
    version="18.0"
    enabled="1">
-  <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
-  <parameter name="CIII_boards" value="DE0" />
-  <parameter name="CIV_boards" value="DE2-115" />
-  <parameter name="CV_boards" value="DE10-Standard" />
-  <parameter name="MAX10_boards" value="DE10-Lite" />
-  <parameter name="device_family" value="Cyclone IV E" />
-  <parameter name="gui_outclk" value="50.0" />
-  <parameter name="gui_refclk" value="50.0" />
-  <parameter name="other_boards" value="None" />
+  <parameter name="AUTO_CLOCK_STREAM_IN_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLOCK_STREAM_OUT_CLOCK_RATE" value="25000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="color_bits" value="10" />
+  <parameter name="color_planes" value="3" />
  </module>
  <module
    name="video_pixel_buffer_dma_0"
    kind="altera_up_avalon_video_pixel_buffer_dma"
    version="18.0"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="25000000" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
   <parameter name="addr_mode" value="X-Y" />
-  <parameter name="back_start_address" value="8388608" />
+  <parameter name="back_start_address" value="0" />
   <parameter name="color_space" value="30-bit RGB" />
   <parameter name="image_height" value="480" />
   <parameter name="image_width" value="640" />
-  <parameter name="start_address" value="8388608" />
+  <parameter name="start_address" value="0" />
  </module>
  <module
    name="video_pll_0"
@@ -664,6 +691,15 @@
    kind="avalon"
    version="18.1"
    start="video_pixel_buffer_dma_0.avalon_pixel_dma_master"
+   end="sram_0.avalon_sram_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="video_pixel_buffer_dma_0.avalon_pixel_dma_master"
    end="new_sdram_controller_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00800000" />
@@ -675,7 +711,7 @@
    start="nios2_gen2_0.data_master"
    end="audio_0.avalon_audio_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01101040" />
+  <parameter name="baseAddress" value="0x00301010" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -684,7 +720,7 @@
    start="nios2_gen2_0.data_master"
    end="video_pixel_buffer_dma_0.avalon_control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01101000" />
+  <parameter name="baseAddress" value="0x00301000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -693,7 +729,16 @@
    start="nios2_gen2_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01101050" />
+  <parameter name="baseAddress" value="0x00301020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="nios2_gen2_0.data_master"
+   end="sram_0.avalon_sram_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -702,7 +747,7 @@
    start="nios2_gen2_0.data_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01100800" />
+  <parameter name="baseAddress" value="0x00300800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -711,7 +756,7 @@
    start="nios2_gen2_0.data_master"
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01080000" />
+  <parameter name="baseAddress" value="0x00280000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -756,7 +801,7 @@
    start="nios2_gen2_0.instruction_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01100800" />
+  <parameter name="baseAddress" value="0x00300800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -765,7 +810,7 @@
    start="nios2_gen2_0.instruction_master"
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01080000" />
+  <parameter name="baseAddress" value="0x00280000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -780,58 +825,46 @@
  <connection
    kind="avalon_streaming"
    version="18.1"
-   start="video_pixel_buffer_dma_0.avalon_pixel_source"
+   start="video_dual_clock_buffer_0.avalon_dc_buffer_source"
    end="video_vga_controller_0.avalon_vga_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="video_pixel_buffer_dma_0.avalon_pixel_source"
+   end="video_dual_clock_buffer_0.avalon_dc_buffer_sink" />
  <connection
    kind="clock"
    version="18.1"
    start="audio_pll_0.audio_clk"
    end="audio_0.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="jtag_uart_0.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="nios2_gen2_0.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="sram_0.clk" />
  <connection
    kind="clock"
    version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
-   end="new_sdram_controller_0.clk" />
+   start="clk_0.clk"
+   end="video_pixel_buffer_dma_0.clk" />
  <connection
    kind="clock"
    version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
-   end="jtag_uart_0.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
-   end="nios2_gen2_0.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
-   end="pio_pixel_color.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
-   end="pio_request.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
-   end="pio_pixel_position.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
+   start="clk_0.clk"
    end="onchip_memory2_0.clk1" />
  <connection
    kind="clock"
    version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
-   end="audio_pll_0.ref_clk" />
+   start="clk_0.clk"
+   end="video_dual_clock_buffer_0.clock_stream_in" />
  <connection
    kind="clock"
    version="18.1"
-   start="sys_sdram_pll_0.sys_clk"
+   start="clk_0.clk"
    end="video_pll_0.ref_clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="audio_pll_0.ref_clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -841,7 +874,7 @@
    kind="clock"
    version="18.1"
    start="video_pll_0.vga_clk"
-   end="video_pixel_buffer_dma_0.clk" />
+   end="video_dual_clock_buffer_0.clock_stream_out" />
  <connection
    kind="interrupt"
    version="18.1"
@@ -866,53 +899,53 @@
  <connection
    kind="reset"
    version="18.1"
+   start="clk_0.clk_reset"
+   end="video_pll_0.ref_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="audio_pll_0.ref_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="nios2_gen2_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="jtag_uart_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="sram_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="video_pixel_buffer_dma_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="onchip_memory2_0.reset1" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="video_dual_clock_buffer_0.reset_stream_in" />
+ <connection
+   kind="reset"
+   version="18.1"
    start="nios2_gen2_0.debug_reset_request"
    end="nios2_gen2_0.reset" />
  <connection
    kind="reset"
    version="18.1"
-   start="nios2_gen2_0.debug_reset_request"
-   end="jtag_uart_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="nios2_gen2_0.debug_reset_request"
-   end="onchip_memory2_0.reset1" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_sdram_pll_0.reset_source"
-   end="audio_pll_0.ref_reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_sdram_pll_0.reset_source"
-   end="video_pll_0.ref_reset" />
- <connection
-   kind="reset"
-   version="18.1"
    start="audio_pll_0.reset_source"
    end="audio_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_sdram_pll_0.reset_source"
-   end="new_sdram_controller_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_sdram_pll_0.reset_source"
-   end="pio_pixel_color.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_sdram_pll_0.reset_source"
-   end="pio_pixel_position.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_sdram_pll_0.reset_source"
-   end="pio_request.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -922,12 +955,7 @@
    kind="reset"
    version="18.1"
    start="video_pll_0.reset_source"
-   end="video_pixel_buffer_dma_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_sdram_pll_0.reset_source"
-   end="onchip_memory2_0.reset1" />
+   end="video_dual_clock_buffer_0.reset_stream_out" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

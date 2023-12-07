@@ -3,7 +3,7 @@
 # Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
 # SOPC Builder design path: ../../NIOSII_Test.sopcinfo
 #
-# Generated: Tue Dec 05 11:11:52 CET 2023
+# Generated: Thu Dec 07 14:57:33 CET 2023
 
 # DO NOT MODIFY THIS FILE
 #
@@ -46,8 +46,5 @@
 # The cache attribute is specified which improves GDB performance
 # by allowing GDB to cache memory contents on the host.
 
-# new_sdram_controller_0
-memory 0x800000 0x1000000 cache
-
 # onchip_memory2_0
-memory 0x1080000 0x10e1a80 cache
+memory 0x280000 0x2e1a80 cache
