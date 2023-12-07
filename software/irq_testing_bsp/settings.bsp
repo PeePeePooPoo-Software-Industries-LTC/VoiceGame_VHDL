@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>06-Dec-2023 17:09:12</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1701878952987</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>07-Dec-2023 11:54:39</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1701946479787</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\niels\Documents\VoiceGame_VHDL\software\irq_testing_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\NIOSII_Test.sopcinfo</SopcDesignFile>
