@@ -38,7 +38,6 @@ Progress: Validating
 Progress: Done reading input file
 Info: NIOSII_Test.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
 Info: NIOSII_Test.video_vga_controller_0: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
-Warning: NIOSII_Test.video_pixel_buffer_dma_0: video_pixel_buffer_dma_0.avalon_control_slave must be connected to an Avalon-MM master
 Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
@@ -82,7 +81,6 @@ Progress: Validating
 Progress: Done reading input file
 Info: NIOSII_Test.jtag_uart_0: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
 Info: NIOSII_Test.video_vga_controller_0: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
-Warning: NIOSII_Test.video_pixel_buffer_dma_0: video_pixel_buffer_dma_0.avalon_control_slave must be connected to an Avalon-MM master
 Info: NIOSII_Test: Generating NIOSII_Test "NIOSII_Test" for QUARTUS_SYNTH
 Info: Inserting clock-crossing logic between cmd_demux_001.src1 and cmd_mux_001.sink0
 Info: Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux_001.sink1
@@ -90,12 +88,12 @@ Info: audio_0: Starting Generation of Audio Controller
 Info: audio_0: "NIOSII_Test" instantiated altera_up_avalon_audio "audio_0"
 Info: audio_pll_0: "NIOSII_Test" instantiated altera_up_avalon_audio_pll "audio_pll_0"
 Info: jtag_uart_0: Starting RTL generation for module 'NIOSII_Test_jtag_uart_0'
-Info: jtag_uart_0:   Generation command is [exec /home/jaschutte/Applications/Quartus/quartus/linux64/perl/bin/perl -I /home/jaschutte/Applications/Quartus/quartus/linux64/perl/lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/europa -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/perl_lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/common -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=NIOSII_Test_jtag_uart_0 --dir=/tmp/alt9698_4181318269238243945.dir/0083_jtag_uart_0_gen/ --quartus_dir=/home/jaschutte/Applications/Quartus/quartus --verilog --config=/tmp/alt9698_4181318269238243945.dir/0083_jtag_uart_0_gen//NIOSII_Test_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0:   Generation command is [exec /home/jaschutte/Applications/Quartus/quartus/linux64/perl/bin/perl -I /home/jaschutte/Applications/Quartus/quartus/linux64/perl/lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/europa -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/perl_lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/common -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=NIOSII_Test_jtag_uart_0 --dir=/tmp/alt9698_4181318269238243945.dir/0123_jtag_uart_0_gen/ --quartus_dir=/home/jaschutte/Applications/Quartus/quartus --verilog --config=/tmp/alt9698_4181318269238243945.dir/0123_jtag_uart_0_gen//NIOSII_Test_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
 Info: jtag_uart_0: Done RTL generation for module 'NIOSII_Test_jtag_uart_0'
 Info: jtag_uart_0: "NIOSII_Test" instantiated altera_avalon_jtag_uart "jtag_uart_0"
 Info: nios2_gen2_0: "NIOSII_Test" instantiated altera_nios2_gen2 "nios2_gen2_0"
 Info: onchip_memory2_0: Starting RTL generation for module 'NIOSII_Test_onchip_memory2_0'
-Info: onchip_memory2_0:   Generation command is [exec /home/jaschutte/Applications/Quartus/quartus/linux64/perl/bin/perl -I /home/jaschutte/Applications/Quartus/quartus/linux64/perl/lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/europa -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/perl_lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/common -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=NIOSII_Test_onchip_memory2_0 --dir=/tmp/alt9698_4181318269238243945.dir/0084_onchip_memory2_0_gen/ --quartus_dir=/home/jaschutte/Applications/Quartus/quartus --verilog --config=/tmp/alt9698_4181318269238243945.dir/0084_onchip_memory2_0_gen//NIOSII_Test_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory2_0:   Generation command is [exec /home/jaschutte/Applications/Quartus/quartus/linux64/perl/bin/perl -I /home/jaschutte/Applications/Quartus/quartus/linux64/perl/lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/europa -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/perl_lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/common -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/jaschutte/Applications/Quartus/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=NIOSII_Test_onchip_memory2_0 --dir=/tmp/alt9698_4181318269238243945.dir/0124_onchip_memory2_0_gen/ --quartus_dir=/home/jaschutte/Applications/Quartus/quartus --verilog --config=/tmp/alt9698_4181318269238243945.dir/0124_onchip_memory2_0_gen//NIOSII_Test_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
 Info: onchip_memory2_0: Done RTL generation for module 'NIOSII_Test_onchip_memory2_0'
 Info: onchip_memory2_0: "NIOSII_Test" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
 Info: sram_0: Starting Generation of the SRAM Controller
@@ -112,6 +110,7 @@ Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "NIOSII_Test" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: irq_mapper: "NIOSII_Test" instantiated altera_irq_mapper "irq_mapper"
 Info: irq_synchronizer: "NIOSII_Test" instantiated altera_irq_clock_crosser "irq_synchronizer"
@@ -119,31 +118,31 @@ Info: rst_controller: "NIOSII_Test" instantiated altera_reset_controller "rst_co
 Info: audio_pll: "audio_pll_0" instantiated altera_up_altpll "audio_pll"
 Info: reset_from_locked: "audio_pll_0" instantiated altera_up_avalon_reset_from_locked_signal "reset_from_locked"
 Info: cpu: Starting RTL generation for module 'NIOSII_Test_nios2_gen2_0_cpu'
-Info: cpu:   Generation command is [exec /home/jaschutte/Applications/Quartus/quartus/linux64//eperlcmd -I /home/jaschutte/Applications/Quartus/quartus/linux64//perl/lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/europa -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/perl_lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=NIOSII_Test_nios2_gen2_0_cpu --dir=/tmp/alt9698_4181318269238243945.dir/0094_cpu_gen/ --quartus_bindir=/home/jaschutte/Applications/Quartus/quartus/linux64/ --verilog --config=/tmp/alt9698_4181318269238243945.dir/0094_cpu_gen//NIOSII_Test_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
-Info: cpu: # 2023.12.07 15:09:43 (*) Starting Nios II generation
-Info: cpu: # 2023.12.07 15:09:43 (*)   Checking for plaintext license.
-Info: cpu: # 2023.12.07 15:09:43 (*)   Couldn't query license setup in Quartus directory /home/jaschutte/Applications/Quartus/quartus/linux64/
-Info: cpu: # 2023.12.07 15:09:43 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: cpu: # 2023.12.07 15:09:43 (*)   LM_LICENSE_FILE environment variable is empty
-Info: cpu: # 2023.12.07 15:09:43 (*)   Plaintext license not found.
-Info: cpu: # 2023.12.07 15:09:43 (*)   Checking for encrypted license (non-evaluation).
-Info: cpu: # 2023.12.07 15:09:44 (*)   Couldn't query license setup in Quartus directory /home/jaschutte/Applications/Quartus/quartus/linux64/
-Info: cpu: # 2023.12.07 15:09:44 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: cpu: # 2023.12.07 15:09:44 (*)   LM_LICENSE_FILE environment variable is empty
-Info: cpu: # 2023.12.07 15:09:44 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
-Info: cpu: # 2023.12.07 15:09:44 (*)   Elaborating CPU configuration settings
-Info: cpu: # 2023.12.07 15:09:44 (*)   Creating all objects for CPU
-Info: cpu: # 2023.12.07 15:09:44 (*)     Testbench
-Info: cpu: # 2023.12.07 15:09:44 (*)     Instruction decoding
-Info: cpu: # 2023.12.07 15:09:44 (*)       Instruction fields
-Info: cpu: # 2023.12.07 15:09:44 (*)       Instruction decodes
-Info: cpu: # 2023.12.07 15:09:44 (*)       Signals for RTL simulation waveforms
-Info: cpu: # 2023.12.07 15:09:44 (*)       Instruction controls
-Info: cpu: # 2023.12.07 15:09:44 (*)     Pipeline frontend
-Info: cpu: # 2023.12.07 15:09:44 (*)     Pipeline backend
-Info: cpu: # 2023.12.07 15:09:46 (*)   Generating RTL from CPU objects
-Info: cpu: # 2023.12.07 15:09:47 (*)   Creating encrypted RTL
-Info: cpu: # 2023.12.07 15:09:47 (*) Done Nios II generation
+Info: cpu:   Generation command is [exec /home/jaschutte/Applications/Quartus/quartus/linux64//eperlcmd -I /home/jaschutte/Applications/Quartus/quartus/linux64//perl/lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/europa -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin/perl_lib -I /home/jaschutte/Applications/Quartus/quartus/sopc_builder/bin -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- /home/jaschutte/Applications/Quartus/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=NIOSII_Test_nios2_gen2_0_cpu --dir=/tmp/alt9698_4181318269238243945.dir/0134_cpu_gen/ --quartus_bindir=/home/jaschutte/Applications/Quartus/quartus/linux64/ --verilog --config=/tmp/alt9698_4181318269238243945.dir/0134_cpu_gen//NIOSII_Test_nios2_gen2_0_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2023.12.07 15:18:33 (*) Starting Nios II generation
+Info: cpu: # 2023.12.07 15:18:33 (*)   Checking for plaintext license.
+Info: cpu: # 2023.12.07 15:18:33 (*)   Couldn't query license setup in Quartus directory /home/jaschutte/Applications/Quartus/quartus/linux64/
+Info: cpu: # 2023.12.07 15:18:33 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2023.12.07 15:18:33 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2023.12.07 15:18:33 (*)   Plaintext license not found.
+Info: cpu: # 2023.12.07 15:18:33 (*)   Checking for encrypted license (non-evaluation).
+Info: cpu: # 2023.12.07 15:18:33 (*)   Couldn't query license setup in Quartus directory /home/jaschutte/Applications/Quartus/quartus/linux64/
+Info: cpu: # 2023.12.07 15:18:33 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2023.12.07 15:18:33 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2023.12.07 15:18:33 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
+Info: cpu: # 2023.12.07 15:18:33 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2023.12.07 15:18:33 (*)   Creating all objects for CPU
+Info: cpu: # 2023.12.07 15:18:33 (*)     Testbench
+Info: cpu: # 2023.12.07 15:18:33 (*)     Instruction decoding
+Info: cpu: # 2023.12.07 15:18:33 (*)       Instruction fields
+Info: cpu: # 2023.12.07 15:18:34 (*)       Instruction decodes
+Info: cpu: # 2023.12.07 15:18:34 (*)       Signals for RTL simulation waveforms
+Info: cpu: # 2023.12.07 15:18:34 (*)       Instruction controls
+Info: cpu: # 2023.12.07 15:18:34 (*)     Pipeline frontend
+Info: cpu: # 2023.12.07 15:18:34 (*)     Pipeline backend
+Info: cpu: # 2023.12.07 15:18:35 (*)   Generating RTL from CPU objects
+Info: cpu: # 2023.12.07 15:18:36 (*)   Creating encrypted RTL
+Info: cpu: # 2023.12.07 15:18:37 (*) Done Nios II generation
 Info: cpu: Done RTL generation for module 'NIOSII_Test_nios2_gen2_0_cpu'
 Info: cpu: "nios2_gen2_0" instantiated altera_nios2_gen2_unit "cpu"
 Info: video_pixel_buffer_dma_0_avalon_pixel_dma_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "video_pixel_buffer_dma_0_avalon_pixel_dma_master_translator"
@@ -156,7 +155,7 @@ Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_
 Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
 Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
 Info: router_004: "mm_interconnect_0" instantiated altera_merlin_router "router_004"
-Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_006"
+Info: router_007: "mm_interconnect_0" instantiated altera_merlin_router "router_007"
 Info: nios2_gen2_0_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "nios2_gen2_0_data_master_limiter"
 Info: Reusing file /home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/NIOSII_Test/synthesis/submodules/altera_avalon_sc_fifo.v
 Info: sram_0_avalon_sram_slave_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "sram_0_avalon_sram_slave_burst_adapter"
