@@ -2,7 +2,7 @@ set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_TOOL
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "NIOSII_Test" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../NIOSII_Test.sopcinfo"]
-set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name SLD_INFO "QSYS_NAME NIOSII_Test HAS_SOPCINFO 1 GENERATION_ID 1701960171"
+set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name SLD_INFO "QSYS_NAME NIOSII_Test HAS_SOPCINFO 1 GENERATION_ID 1702289275"
 set_global_assignment -library "NIOSII_Test" -name MISC_FILE [file join $::quartus(qip_path) "../NIOSII_Test.cmp"]
 set_global_assignment -library "NIOSII_Test" -name SLD_FILE [file join $::quartus(qip_path) "NIOSII_Test.regmap"]
 set_global_assignment -library "NIOSII_Test" -name SLD_FILE [file join $::quartus(qip_path) "NIOSII_Test.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMP
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTcwMTk2MDE3MQ==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTcwMjI4OTI3NQ==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::RVA0Q0UxMTVGMjlDNw==::QXV0byBERVZJQ0U="
 set_global_assignment -entity "NIOSII_Test" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -55,6 +55,53 @@ set_global_assignment -entity "altera_reset_controller" -library "NIOSII_Test" -
 set_global_assignment -entity "altera_reset_controller" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE1"
 set_global_assignment -entity "altera_reset_controller" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU5QVVQ=::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcmVzZXRfaW5wdXRz"
 set_global_assignment -entity "altera_reset_controller" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QURBUFRfUkVTRVRfUkVRVUVTVA==::MA==::T25seSBhZGFwdCBvbmx5IHJlc2V0IHJlcXVlc3Q="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_NAME "TklPU0lJX1Rlc3RfYXZhbG9uX3N0X2FkYXB0ZXI="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uLVNUIEFkYXB0ZXI="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_DESCRIPTION "QWRhcHQgbWlzbWF0Y2hlZCBBdmFsb24tU1QgZW5kcG9pbnRz"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5CaXRzUGVyU3ltYm9s::MTA=::U3ltYm9sIFdpZHRo"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VQYWNrZXRz::MQ==::VXNlIFBhY2tldA=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5EYXRhV2lkdGg=::MzA=::U291cmNlIERhdGEgV2lkdGg="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5NYXhDaGFubmVs::MA==::U291cmNlIE1heCBDaGFubmVs"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5DaGFubmVsV2lkdGg=::Mg==::U291cmNlIENoYW5uZWwgUG9ydCBXaWR0aA=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5FcnJvcldpZHRo::MA==::U291cmNlIEVycm9yIFBvcnQgV2lkdGg="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VFbXB0eVBvcnQ=::MA==::U291cmNlIFVzZXMgRW1wdHkgUG9ydA=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5FbXB0eVdpZHRo::Mg==::U291cmNlIEVtcHR5IFBvcnQgV2lkdGg="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VWYWxpZA==::MQ==::U291cmNlIFVzZXMgVmFsaWQgUG9ydA=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VSZWFkeQ==::MQ==::U291cmNlIFVzZXMgUmVhZHkgUG9ydA=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5SZWFkeUxhdGVuY3k=::MA==::U291cmNlIFJlYWR5IExhdGVuY3k="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0RGF0YVdpZHRo::MzA=::U2luayBEYXRhIFdpZHRo"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0TWF4Q2hhbm5lbA==::MA==::U2luayBNYXggQ2hhbm5lbA=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0Q2hhbm5lbFdpZHRo::MA==::U2luayBDaGFubmVsIFBvcnQgV2lkdGg="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0RXJyb3JXaWR0aA==::MA==::U2luayBFcnJvciBQb3J0IFdpZHRo"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0VXNlRW1wdHlQb3J0::MA==::U2luayBVc2VzIEVtcHR5IFBvcnQ="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0RW1wdHlXaWR0aA==::Mg==::U2luayBFbXB0eSBQb3J0IFdpZHRo"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0VXNlVmFsaWQ=::MQ==::U2luayBVc2VzIFZhbGlkIFBvcnQ="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0VXNlUmVhZHk=::MQ==::U2luayBVc2VzIFJlYWR5IFBvcnQ="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0UmVhZHlMYXRlbmN5::MA==::U2luayBSZWFkeSBMYXRlbmN5"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::RVA0Q0UxMTVGMjlDNw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_NAME "TklPU0lJX1Rlc3RfYXZhbG9uX3N0X2FkYXB0ZXJfY2hhbm5lbF9hZGFwdGVyXzA="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uLVNUIENoYW5uZWwgQWRhcHRlcg=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5DaGFubmVsV2lkdGg=::Mg==::Q2hhbm5lbCBTaWduYWwgV2lkdGggKGJpdHMp"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5NYXhDaGFubmVs::MA==::TWF4IENoYW5uZWw="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0Q2hhbm5lbFdpZHRo::MA==::Q2hhbm5lbCBTaWduYWwgV2lkdGggKGJpdHMp"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "b3V0TWF4Q2hhbm5lbA==::MA==::TWF4IENoYW5uZWw="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5CaXRzUGVyU3ltYm9s::MTA=::RGF0YSBCaXRzIFBlciBTeW1ib2w="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VQYWNrZXRz::dHJ1ZQ==::SW5jbHVkZSBQYWNrZXQgU3VwcG9ydA=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VFbXB0eVBvcnQ=::Tk8=::SW5jbHVkZSBFbXB0eSBTaWduYWw="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VFbXB0eQ==::ZmFsc2U=::aW5Vc2VFbXB0eQ=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5TeW1ib2xzUGVyQmVhdA==::Mw==::RGF0YSBTeW1ib2xzIFBlciBCZWF0"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5Vc2VSZWFkeQ==::dHJ1ZQ==::U3VwcG9ydCBCYWNrcHJlc3N1cmUgd2l0aCB0aGUgcmVhZHkgc2lnbmFs"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5SZWFkeUxhdGVuY3k=::MA==::UmVhZHkgTGF0ZW5jeQ=="
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5FcnJvcldpZHRo::MA==::RXJyb3IgU2lnbmFsIFdpZHRoIChiaXRzKQ=="
 set_global_assignment -entity "altera_irq_clock_crosser" -library "NIOSII_Test" -name IP_COMPONENT_NAME "YWx0ZXJhX2lycV9jbG9ja19jcm9zc2Vy"
 set_global_assignment -entity "altera_irq_clock_crosser" -library "NIOSII_Test" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIElSUSBDbG9jayBDcm9zc2Vy"
 set_global_assignment -entity "altera_irq_clock_crosser" -library "NIOSII_Test" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -931,6 +978,25 @@ set_global_assignment -entity "NIOSII_Test_video_vga_controller_0" -library "NIO
 set_global_assignment -entity "NIOSII_Test_video_vga_controller_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "dW5kZXJmbG93X2ZsYWc=::ZmFsc2U=::SW5jbHVkZSBVbmRlcmZsb3cgRmxhZw=="
 set_global_assignment -entity "NIOSII_Test_video_vga_controller_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "NIOSII_Test_video_vga_controller_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MjUwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_NAME "TklPU0lJX1Rlc3RfdmlkZW9fc2NhbGVyXzA="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_DISPLAY_NAME "U2NhbGVy"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_AUTHOR "SW50ZWwgRlBHQSBVbml2ZXJzaXR5IFByb2dyYW0="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_VERSION "MTguMA=="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_DESCRIPTION "VmlkZW8gU2NhbGVyIGZvciBERS1zZXJpZXMgQm9hcmRz"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "d2lkdGhfc2NhbGluZw==::Mg==::V2lkdGggU2NhbGluZyBGYWN0b3I="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aGVpZ2h0X3NjYWxpbmc=::Mg==::SGVpZ2h0IFNjYWxpbmcgRmFjdG9y"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW5jbHVkZV9jaGFubmVs::ZmFsc2U=::T3V0cHV0IFNjYWxpbmcgYXMgQ2hhbm5lbA=="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "Y2hhbm5lbF9zaXpl::Mg==::Q2hhbm5lbCBzaXplICgjIG9mIGJpdHMp"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "d2lkdGhfaW4=::MzIw::V2lkdGggKCMgb2YgcGl4ZWxzKQ=="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aGVpZ2h0X2lu::MjQw::SGVpZ2h0ICgjIG9mIGxpbmVzKQ=="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "d2lkdGhfb3V0::NjQw::V2lkdGggKCMgb2YgcGl4ZWxzKQ=="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aGVpZ2h0X291dA==::NDgw::SGVpZ2h0ICgjIG9mIGxpbmVzKQ=="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "Y29sb3JfYml0cw==::MTA=::RGF0YSBCaXRzIHBlciBTeW1ib2w="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "Y29sb3JfcGxhbmVz::Mw==::U3ltYm9scyBwZXIgQmVhdA=="
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "NIOSII_Test_video_scaler_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "NIOSII_Test_video_pll_0" -library "NIOSII_Test" -name IP_COMPONENT_NAME "TklPU0lJX1Rlc3RfdmlkZW9fcGxsXzA="
 set_global_assignment -entity "NIOSII_Test_video_pll_0" -library "NIOSII_Test" -name IP_COMPONENT_DISPLAY_NAME "VmlkZW8gQ2xvY2tzIGZvciBERS1zZXJpZXMgQm9hcmRz"
 set_global_assignment -entity "NIOSII_Test_video_pll_0" -library "NIOSII_Test" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -984,8 +1050,8 @@ set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "N
 set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "YWRkcl9tb2Rl::WC1Z::QWRkcmVzc2luZyBNb2Rl"
 set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "c3RhcnRfYWRkcmVzcw==::MA==::RGVmYXVsdCBCdWZmZXIgU3RhcnQgQWRkcmVzcw=="
 set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "YmFja19zdGFydF9hZGRyZXNz::MTA0ODU3Ng==::RGVmYXVsdCBCYWNrIEJ1ZmZlciBTdGFydCBBZGRyZXNz"
-set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW1hZ2Vfd2lkdGg=::NjQw::V2lkdGggKCMgb2YgcGl4ZWxzKQ=="
-set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW1hZ2VfaGVpZ2h0::NDgw::SGVpZ2h0ICgjIG9mIGxpbmVzKQ=="
+set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW1hZ2Vfd2lkdGg=::MzIw::V2lkdGggKCMgb2YgcGl4ZWxzKQ=="
+set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "aW1hZ2VfaGVpZ2h0::MjQw::SGVpZ2h0ICgjIG9mIGxpbmVzKQ=="
 set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "Y29sb3Jfc3BhY2U=::MzAtYml0IFJHQg==::Q29sb3IgU3BhY2U="
 set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBJViBF::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "NIOSII_Test_video_pixel_buffer_dma_0" -library "NIOSII_Test" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
@@ -1444,6 +1510,8 @@ set_global_assignment -library "NIOSII_Test" -name VHDL_FILE [file join $::quart
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
 set_global_assignment -library "NIOSII_Test" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
+set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/NIOSII_Test_avalon_st_adapter.v"]
+set_global_assignment -library "NIOSII_Test" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/NIOSII_Test_avalon_st_adapter_channel_adapter_0.sv"]
 set_global_assignment -library "NIOSII_Test" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_irq_clock_crosser.sv"]
 set_global_assignment -library "NIOSII_Test" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/NIOSII_Test_irq_mapper.sv"]
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/NIOSII_Test_mm_interconnect_0.v"]
@@ -1493,6 +1561,10 @@ set_global_assignment -library "NIOSII_Test" -name SYSTEMVERILOG_FILE [file join
 set_global_assignment -library "NIOSII_Test" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_translator.sv"]
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_avalon_video_vga_timing.v"]
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/NIOSII_Test_video_vga_controller_0.v"]
+set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_video_scaler_shrink.v"]
+set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_video_scaler_multiply_width.v"]
+set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_video_scaler_multiply_height.v"]
+set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/NIOSII_Test_video_scaler_0.v"]
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/NIOSII_Test_video_pll_0.v"]
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_avalon_reset_from_locked_signal.v"]
 set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_altpll.v"]
@@ -1528,6 +1600,12 @@ set_global_assignment -library "NIOSII_Test" -name VERILOG_FILE [file join $::qu
 set_global_assignment -entity "altera_reset_controller" -library "NIOSII_Test" -name IP_TOOL_NAME "altera_reset_controller"
 set_global_assignment -entity "altera_reset_controller" -library "NIOSII_Test" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "altera_reset_controller" -library "NIOSII_Test" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_TOOL_NAME "altera_avalon_st_adapter"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter" -library "NIOSII_Test" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_TOOL_NAME "channel_adapter"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "NIOSII_Test_avalon_st_adapter_channel_adapter_0" -library "NIOSII_Test" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "altera_irq_clock_crosser" -library "NIOSII_Test" -name IP_TOOL_NAME "altera_irq_clock_crosser"
 set_global_assignment -entity "altera_irq_clock_crosser" -library "NIOSII_Test" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "altera_irq_clock_crosser" -library "NIOSII_Test" -name IP_TOOL_ENV "Qsys"

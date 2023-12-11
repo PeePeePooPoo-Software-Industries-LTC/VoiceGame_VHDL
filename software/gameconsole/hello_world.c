@@ -22,7 +22,6 @@ void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color);
 void vga_draw_rect(VgaBuffer* buff, int x, int y, int w, int h, Color);
 
 inline void vga_swap_buffers(VgaBuffer* buff) {
-	buff->current_buffer = !(buff->current_buffer);
 	alt_up_pixel_buffer_dma_swap_buffers(buff->device);
 }
 
@@ -45,27 +44,29 @@ void draw() {
 int main() {
 	VgaBuffer vga_buffer = {
 		alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_0_NAME),
-		0
+		1
 	};
 	if (vga_buffer.device == NULL) {
 		printf("Failed to open device\n");
 		return 1;
 	}
 
-	printf("Addresses (FRONT: %p) (BACK: %p)", vga_buffer.device->buffer_start_address, vga_buffer.device->back_buffer_start_address);
-
-	vga_clear(&vga_buffer);
+	printf(
+		"Addresses (FRONT: %p) (BACK: %p)",
+		vga_buffer.device->buffer_start_address,
+		vga_buffer.device->back_buffer_start_address
+	);
 
 	int x = 0;
 	while (1) {
-//		alt_up_pixel_buffer_dma_draw_box(pixel_buffer, x, 200, x + 20, 220, 0, 0);
+		vga_clear(&vga_buffer);
 
 		x += 1;
-		if (x == 620) {
+		if (x == 300) {
 			x = 0;
 		}
 
-		int normalized = x * BIT10_MAX / 620;
+		int normalized = x * BIT10_MAX / 300;
 
 		vga_draw_rect(&vga_buffer, x, 200, 20, 20, RGB(normalized, BIT10_MAX - normalized, 0));
 

@@ -68,15 +68,15 @@ module NIOSII_Test_video_pixel_buffer_dma_0 (
 parameter DEFAULT_BUFFER_ADDRESS		= 32'd0;
 parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd1048576;
 
-parameter WW						= 9;  // Image width's address width
-parameter HW						= 8;  // Image height's address width
+parameter WW						= 8;  // Image width's address width
+parameter HW						= 7;  // Image height's address width
 
 parameter MW						= 31; // Avalon master's data width
 parameter DW						= 29; // Image pixel width
 parameter EW						= 1;  // Streaming empty signel width
 
-parameter PIXELS					= 640; // Image width - number of pixels
-parameter LINES 					= 480; // Image height - number of lines
+parameter PIXELS					= 320; // Image width - number of pixels
+parameter LINES 					= 240; // Image height - number of lines
 
 /*****************************************************************************
  *                             Port Declarations                             *

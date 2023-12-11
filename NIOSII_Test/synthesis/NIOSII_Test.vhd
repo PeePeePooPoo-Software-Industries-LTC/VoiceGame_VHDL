@@ -195,6 +195,24 @@ architecture rtl of NIOSII_Test is
 		);
 	end component NIOSII_Test_video_pll_0;
 
+	component NIOSII_Test_video_scaler_0 is
+		port (
+			clk                      : in  std_logic                     := 'X';             -- clk
+			reset                    : in  std_logic                     := 'X';             -- reset
+			stream_in_startofpacket  : in  std_logic                     := 'X';             -- startofpacket
+			stream_in_endofpacket    : in  std_logic                     := 'X';             -- endofpacket
+			stream_in_valid          : in  std_logic                     := 'X';             -- valid
+			stream_in_ready          : out std_logic;                                        -- ready
+			stream_in_data           : in  std_logic_vector(29 downto 0) := (others => 'X'); -- data
+			stream_out_ready         : in  std_logic                     := 'X';             -- ready
+			stream_out_startofpacket : out std_logic;                                        -- startofpacket
+			stream_out_endofpacket   : out std_logic;                                        -- endofpacket
+			stream_out_valid         : out std_logic;                                        -- valid
+			stream_out_data          : out std_logic_vector(29 downto 0);                    -- data
+			stream_out_channel       : out std_logic_vector(1 downto 0)                      -- channel
+		);
+	end component NIOSII_Test_video_scaler_0;
+
 	component NIOSII_Test_video_vga_controller_0 is
 		port (
 			clk           : in  std_logic                     := 'X';             -- clk
@@ -309,6 +327,42 @@ architecture rtl of NIOSII_Test is
 			sender_irq     : out std_logic_vector(0 downto 0)                     -- irq
 		);
 	end component altera_irq_clock_crosser;
+
+	component NIOSII_Test_avalon_st_adapter is
+		generic (
+			inBitsPerSymbol : integer := 8;
+			inUsePackets    : integer := 0;
+			inDataWidth     : integer := 8;
+			inChannelWidth  : integer := 3;
+			inErrorWidth    : integer := 2;
+			inUseEmptyPort  : integer := 0;
+			inUseValid      : integer := 1;
+			inUseReady      : integer := 1;
+			inReadyLatency  : integer := 0;
+			outDataWidth    : integer := 32;
+			outChannelWidth : integer := 3;
+			outErrorWidth   : integer := 2;
+			outUseEmptyPort : integer := 0;
+			outUseValid     : integer := 1;
+			outUseReady     : integer := 1;
+			outReadyLatency : integer := 0
+		);
+		port (
+			in_clk_0_clk        : in  std_logic                     := 'X';             -- clk
+			in_rst_0_reset      : in  std_logic                     := 'X';             -- reset
+			in_0_data           : in  std_logic_vector(29 downto 0) := (others => 'X'); -- data
+			in_0_valid          : in  std_logic                     := 'X';             -- valid
+			in_0_ready          : out std_logic;                                        -- ready
+			in_0_startofpacket  : in  std_logic                     := 'X';             -- startofpacket
+			in_0_endofpacket    : in  std_logic                     := 'X';             -- endofpacket
+			in_0_channel        : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- channel
+			out_0_data          : out std_logic_vector(29 downto 0);                    -- data
+			out_0_valid         : out std_logic;                                        -- valid
+			out_0_ready         : in  std_logic                     := 'X';             -- ready
+			out_0_startofpacket : out std_logic;                                        -- startofpacket
+			out_0_endofpacket   : out std_logic                                         -- endofpacket
+		);
+	end component NIOSII_Test_avalon_st_adapter;
 
 	component niosii_test_rst_controller is
 		generic (
@@ -513,11 +567,11 @@ architecture rtl of NIOSII_Test is
 	signal video_dual_clock_buffer_0_avalon_dc_buffer_source_ready                    : std_logic;                     -- video_vga_controller_0:ready -> video_dual_clock_buffer_0:stream_out_ready
 	signal video_dual_clock_buffer_0_avalon_dc_buffer_source_startofpacket            : std_logic;                     -- video_dual_clock_buffer_0:stream_out_startofpacket -> video_vga_controller_0:startofpacket
 	signal video_dual_clock_buffer_0_avalon_dc_buffer_source_endofpacket              : std_logic;                     -- video_dual_clock_buffer_0:stream_out_endofpacket -> video_vga_controller_0:endofpacket
-	signal video_pixel_buffer_dma_0_avalon_pixel_source_valid                         : std_logic;                     -- video_pixel_buffer_dma_0:stream_valid -> video_dual_clock_buffer_0:stream_in_valid
-	signal video_pixel_buffer_dma_0_avalon_pixel_source_data                          : std_logic_vector(29 downto 0); -- video_pixel_buffer_dma_0:stream_data -> video_dual_clock_buffer_0:stream_in_data
-	signal video_pixel_buffer_dma_0_avalon_pixel_source_ready                         : std_logic;                     -- video_dual_clock_buffer_0:stream_in_ready -> video_pixel_buffer_dma_0:stream_ready
-	signal video_pixel_buffer_dma_0_avalon_pixel_source_startofpacket                 : std_logic;                     -- video_pixel_buffer_dma_0:stream_startofpacket -> video_dual_clock_buffer_0:stream_in_startofpacket
-	signal video_pixel_buffer_dma_0_avalon_pixel_source_endofpacket                   : std_logic;                     -- video_pixel_buffer_dma_0:stream_endofpacket -> video_dual_clock_buffer_0:stream_in_endofpacket
+	signal video_pixel_buffer_dma_0_avalon_pixel_source_valid                         : std_logic;                     -- video_pixel_buffer_dma_0:stream_valid -> video_scaler_0:stream_in_valid
+	signal video_pixel_buffer_dma_0_avalon_pixel_source_data                          : std_logic_vector(29 downto 0); -- video_pixel_buffer_dma_0:stream_data -> video_scaler_0:stream_in_data
+	signal video_pixel_buffer_dma_0_avalon_pixel_source_ready                         : std_logic;                     -- video_scaler_0:stream_in_ready -> video_pixel_buffer_dma_0:stream_ready
+	signal video_pixel_buffer_dma_0_avalon_pixel_source_startofpacket                 : std_logic;                     -- video_pixel_buffer_dma_0:stream_startofpacket -> video_scaler_0:stream_in_startofpacket
+	signal video_pixel_buffer_dma_0_avalon_pixel_source_endofpacket                   : std_logic;                     -- video_pixel_buffer_dma_0:stream_endofpacket -> video_scaler_0:stream_in_endofpacket
 	signal audio_pll_0_audio_clk_clk                                                  : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio_0:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:audio_pll_0_audio_clk_clk, rst_controller:clk]
 	signal video_pll_0_vga_clk_clk                                                    : std_logic;                     -- video_pll_0:vga_clk_clk -> [rst_controller_003:clk, video_dual_clock_buffer_0:clk_stream_out, video_vga_controller_0:clk]
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest               : std_logic;                     -- mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest -> video_pixel_buffer_dma_0:master_waitrequest
@@ -585,9 +639,20 @@ architecture rtl of NIOSII_Test is
 	signal nios2_gen2_0_irq_irq                                                       : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
 	signal irq_mapper_receiver0_irq                                                   : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
 	signal irq_synchronizer_receiver_irq                                              : std_logic_vector(0 downto 0);  -- audio_0:irq -> irq_synchronizer:receiver_irq
+	signal video_scaler_0_avalon_scaler_source_valid                                  : std_logic;                     -- video_scaler_0:stream_out_valid -> avalon_st_adapter:in_0_valid
+	signal video_scaler_0_avalon_scaler_source_data                                   : std_logic_vector(29 downto 0); -- video_scaler_0:stream_out_data -> avalon_st_adapter:in_0_data
+	signal video_scaler_0_avalon_scaler_source_ready                                  : std_logic;                     -- avalon_st_adapter:in_0_ready -> video_scaler_0:stream_out_ready
+	signal video_scaler_0_avalon_scaler_source_channel                                : std_logic_vector(1 downto 0);  -- video_scaler_0:stream_out_channel -> avalon_st_adapter:in_0_channel
+	signal video_scaler_0_avalon_scaler_source_startofpacket                          : std_logic;                     -- video_scaler_0:stream_out_startofpacket -> avalon_st_adapter:in_0_startofpacket
+	signal video_scaler_0_avalon_scaler_source_endofpacket                            : std_logic;                     -- video_scaler_0:stream_out_endofpacket -> avalon_st_adapter:in_0_endofpacket
+	signal avalon_st_adapter_out_0_valid                                              : std_logic;                     -- avalon_st_adapter:out_0_valid -> video_dual_clock_buffer_0:stream_in_valid
+	signal avalon_st_adapter_out_0_data                                               : std_logic_vector(29 downto 0); -- avalon_st_adapter:out_0_data -> video_dual_clock_buffer_0:stream_in_data
+	signal avalon_st_adapter_out_0_ready                                              : std_logic;                     -- video_dual_clock_buffer_0:stream_in_ready -> avalon_st_adapter:out_0_ready
+	signal avalon_st_adapter_out_0_startofpacket                                      : std_logic;                     -- avalon_st_adapter:out_0_startofpacket -> video_dual_clock_buffer_0:stream_in_startofpacket
+	signal avalon_st_adapter_out_0_endofpacket                                        : std_logic;                     -- avalon_st_adapter:out_0_endofpacket -> video_dual_clock_buffer_0:stream_in_endofpacket
 	signal rst_controller_reset_out_reset                                             : std_logic;                     -- rst_controller:reset_out -> [audio_0:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:audio_0_reset_reset_bridge_in_reset_reset]
 	signal audio_pll_0_reset_source_reset                                             : std_logic;                     -- audio_pll_0:reset_source_reset -> rst_controller:reset_in0
-	signal rst_controller_001_reset_out_reset                                         : std_logic;                     -- rst_controller_001:reset_out -> [audio_pll_0:ref_reset_reset, mm_interconnect_0:video_pixel_buffer_dma_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset, sram_0:reset, video_dual_clock_buffer_0:reset_stream_in, video_pixel_buffer_dma_0:reset, video_pll_0:ref_reset_reset]
+	signal rst_controller_001_reset_out_reset                                         : std_logic;                     -- rst_controller_001:reset_out -> [audio_pll_0:ref_reset_reset, avalon_st_adapter:in_rst_0_reset, mm_interconnect_0:video_pixel_buffer_dma_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset, sram_0:reset, video_dual_clock_buffer_0:reset_stream_in, video_pixel_buffer_dma_0:reset, video_pll_0:ref_reset_reset, video_scaler_0:reset]
 	signal rst_controller_001_reset_out_reset_req                                     : std_logic;                     -- rst_controller_001:reset_req -> [onchip_memory2_0:reset_req, rst_translator:reset_req_in]
 	signal rst_controller_002_reset_out_reset                                         : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator_001:in_reset]
 	signal rst_controller_002_reset_out_reset_req                                     : std_logic;                     -- rst_controller_002:reset_req -> [nios2_gen2_0:reset_req, rst_translator_001:reset_req_in]
@@ -713,11 +778,11 @@ begin
 			reset_stream_in          => rst_controller_001_reset_out_reset,                              --         reset_stream_in.reset
 			clk_stream_out           => video_pll_0_vga_clk_clk,                                         --        clock_stream_out.clk
 			reset_stream_out         => rst_controller_003_reset_out_reset,                              --        reset_stream_out.reset
-			stream_in_ready          => video_pixel_buffer_dma_0_avalon_pixel_source_ready,              --   avalon_dc_buffer_sink.ready
-			stream_in_startofpacket  => video_pixel_buffer_dma_0_avalon_pixel_source_startofpacket,      --                        .startofpacket
-			stream_in_endofpacket    => video_pixel_buffer_dma_0_avalon_pixel_source_endofpacket,        --                        .endofpacket
-			stream_in_valid          => video_pixel_buffer_dma_0_avalon_pixel_source_valid,              --                        .valid
-			stream_in_data           => video_pixel_buffer_dma_0_avalon_pixel_source_data,               --                        .data
+			stream_in_ready          => avalon_st_adapter_out_0_ready,                                   --   avalon_dc_buffer_sink.ready
+			stream_in_startofpacket  => avalon_st_adapter_out_0_startofpacket,                           --                        .startofpacket
+			stream_in_endofpacket    => avalon_st_adapter_out_0_endofpacket,                             --                        .endofpacket
+			stream_in_valid          => avalon_st_adapter_out_0_valid,                                   --                        .valid
+			stream_in_data           => avalon_st_adapter_out_0_data,                                    --                        .data
 			stream_out_ready         => video_dual_clock_buffer_0_avalon_dc_buffer_source_ready,         -- avalon_dc_buffer_source.ready
 			stream_out_startofpacket => video_dual_clock_buffer_0_avalon_dc_buffer_source_startofpacket, --                        .startofpacket
 			stream_out_endofpacket   => video_dual_clock_buffer_0_avalon_dc_buffer_source_endofpacket,   --                        .endofpacket
@@ -754,6 +819,23 @@ begin
 			ref_reset_reset    => rst_controller_001_reset_out_reset, --    ref_reset.reset
 			vga_clk_clk        => video_pll_0_vga_clk_clk,            --      vga_clk.clk
 			reset_source_reset => video_pll_0_reset_source_reset      -- reset_source.reset
+		);
+
+	video_scaler_0 : component NIOSII_Test_video_scaler_0
+		port map (
+			clk                      => clk_clk,                                                    --                  clk.clk
+			reset                    => rst_controller_001_reset_out_reset,                         --                reset.reset
+			stream_in_startofpacket  => video_pixel_buffer_dma_0_avalon_pixel_source_startofpacket, --   avalon_scaler_sink.startofpacket
+			stream_in_endofpacket    => video_pixel_buffer_dma_0_avalon_pixel_source_endofpacket,   --                     .endofpacket
+			stream_in_valid          => video_pixel_buffer_dma_0_avalon_pixel_source_valid,         --                     .valid
+			stream_in_ready          => video_pixel_buffer_dma_0_avalon_pixel_source_ready,         --                     .ready
+			stream_in_data           => video_pixel_buffer_dma_0_avalon_pixel_source_data,          --                     .data
+			stream_out_ready         => video_scaler_0_avalon_scaler_source_ready,                  -- avalon_scaler_source.ready
+			stream_out_startofpacket => video_scaler_0_avalon_scaler_source_startofpacket,          --                     .startofpacket
+			stream_out_endofpacket   => video_scaler_0_avalon_scaler_source_endofpacket,            --                     .endofpacket
+			stream_out_valid         => video_scaler_0_avalon_scaler_source_valid,                  --                     .valid
+			stream_out_data          => video_scaler_0_avalon_scaler_source_data,                   --                     .data
+			stream_out_channel       => video_scaler_0_avalon_scaler_source_channel                 --                     .channel
 		);
 
 	video_vga_controller_0 : component NIOSII_Test_video_vga_controller_0
@@ -865,6 +947,41 @@ begin
 			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
 			receiver_irq   => irq_synchronizer_receiver_irq,      --           receiver.irq
 			sender_irq(0)  => irq_mapper_receiver0_irq            --             sender.irq
+		);
+
+	avalon_st_adapter : component NIOSII_Test_avalon_st_adapter
+		generic map (
+			inBitsPerSymbol => 10,
+			inUsePackets    => 1,
+			inDataWidth     => 30,
+			inChannelWidth  => 2,
+			inErrorWidth    => 0,
+			inUseEmptyPort  => 0,
+			inUseValid      => 1,
+			inUseReady      => 1,
+			inReadyLatency  => 0,
+			outDataWidth    => 30,
+			outChannelWidth => 0,
+			outErrorWidth   => 0,
+			outUseEmptyPort => 0,
+			outUseValid     => 1,
+			outUseReady     => 1,
+			outReadyLatency => 0
+		)
+		port map (
+			in_clk_0_clk        => clk_clk,                                           -- in_clk_0.clk
+			in_rst_0_reset      => rst_controller_001_reset_out_reset,                -- in_rst_0.reset
+			in_0_data           => video_scaler_0_avalon_scaler_source_data,          --     in_0.data
+			in_0_valid          => video_scaler_0_avalon_scaler_source_valid,         --         .valid
+			in_0_ready          => video_scaler_0_avalon_scaler_source_ready,         --         .ready
+			in_0_startofpacket  => video_scaler_0_avalon_scaler_source_startofpacket, --         .startofpacket
+			in_0_endofpacket    => video_scaler_0_avalon_scaler_source_endofpacket,   --         .endofpacket
+			in_0_channel        => video_scaler_0_avalon_scaler_source_channel,       --         .channel
+			out_0_data          => avalon_st_adapter_out_0_data,                      --    out_0.data
+			out_0_valid         => avalon_st_adapter_out_0_valid,                     --         .valid
+			out_0_ready         => avalon_st_adapter_out_0_ready,                     --         .ready
+			out_0_startofpacket => avalon_st_adapter_out_0_startofpacket,             --         .startofpacket
+			out_0_endofpacket   => avalon_st_adapter_out_0_endofpacket                --         .endofpacket
 		);
 
 	rst_controller : component niosii_test_rst_controller

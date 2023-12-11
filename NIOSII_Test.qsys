@@ -37,7 +37,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "9";
          type = "int";
       }
    }
@@ -54,27 +54,6 @@
       datum baseAddress
       {
          value = "3149856";
-         type = "String";
-      }
-   }
-   element new_sdram_controller_0
-   {
-      datum _sortIndex
-      {
-         value = "5";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element new_sdram_controller_0.s1
-   {
-      datum baseAddress
-      {
-         value = "8388608";
          type = "String";
       }
    }
@@ -110,74 +89,11 @@
          type = "String";
       }
    }
-   element pio_pixel_color
-   {
-      datum _sortIndex
-      {
-         value = "6";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element pio_pixel_color.s1
-   {
-      datum baseAddress
-      {
-         value = "17829904";
-         type = "String";
-      }
-   }
-   element pio_pixel_position
-   {
-      datum _sortIndex
-      {
-         value = "7";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element pio_pixel_position.s1
-   {
-      datum baseAddress
-      {
-         value = "17829936";
-         type = "String";
-      }
-   }
-   element pio_request
-   {
-      datum _sortIndex
-      {
-         value = "8";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element pio_request.s1
-   {
-      datum baseAddress
-      {
-         value = "17829920";
-         type = "String";
-      }
-   }
    element sram_0
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "8";
          type = "int";
       }
    }
@@ -193,7 +109,7 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "10";
          type = "int";
       }
    }
@@ -201,7 +117,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "5";
          type = "int";
       }
    }
@@ -217,7 +133,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "7";
          type = "int";
       }
       datum sopceditor_expanded
@@ -226,11 +142,19 @@
          type = "boolean";
       }
    }
+   element video_scaler_0
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
    element video_vga_controller_0
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "6";
          type = "int";
       }
    }
@@ -262,17 +186,7 @@
    dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="onchip_memory_access" internal="onchip_memory2_0.s2" />
- <interface
-   name="pio_pixel_color_external_connection"
-   internal="pio_pixel_color.external_connection" />
- <interface
-   name="pio_pixel_position_external_connection"
-   internal="pio_pixel_position.external_connection" />
- <interface
-   name="pio_request_external_connection"
-   internal="pio_request.external_connection" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <interface name="sdram_wire" internal="new_sdram_controller_0.wire" />
  <interface
    name="sram"
    internal="sram_0.external_interface"
@@ -330,35 +244,6 @@
   <parameter name="useRelativePathForSimFile" value="false" />
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
- </module>
- <module
-   name="new_sdram_controller_0"
-   kind="altera_avalon_new_sdram_controller"
-   version="18.1"
-   enabled="0">
-  <parameter name="TAC" value="5.5" />
-  <parameter name="TMRD" value="3" />
-  <parameter name="TRCD" value="20.0" />
-  <parameter name="TRFC" value="70.0" />
-  <parameter name="TRP" value="20.0" />
-  <parameter name="TWR" value="14.0" />
-  <parameter name="casLatency" value="3" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="columnWidth" value="8" />
-  <parameter name="componentName">NIOSII_Test_new_sdram_controller_0</parameter>
-  <parameter name="dataWidth" value="32" />
-  <parameter name="generateSimulationModel" value="false" />
-  <parameter name="initNOPDelay" value="0.0" />
-  <parameter name="initRefreshCommands" value="2" />
-  <parameter name="masteredTristateBridgeSlave" value="0" />
-  <parameter name="model">single_Micron_MT48LC4M32B2_7_chip</parameter>
-  <parameter name="numberOfBanks" value="2" />
-  <parameter name="numberOfChipSelects" value="1" />
-  <parameter name="pinsSharedViaTriState" value="false" />
-  <parameter name="powerUpDelay" value="100.0" />
-  <parameter name="refreshPeriod" value="15.625" />
-  <parameter name="registerDataIn" value="true" />
-  <parameter name="rowWidth" value="12" />
  </module>
  <module
    name="nios2_gen2_0"
@@ -574,60 +459,6 @@
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
  </module>
- <module
-   name="pio_pixel_color"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="0">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="24" />
- </module>
- <module
-   name="pio_pixel_position"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="0">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="32" />
- </module>
- <module
-   name="pio_request"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="0">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="true" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="true" />
-  <parameter name="irqType" value="EDGE" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="1" />
- </module>
  <module name="sram_0" kind="altera_up_avalon_sram" version="18.0" enabled="1">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
@@ -655,8 +486,8 @@
   <parameter name="addr_mode" value="X-Y" />
   <parameter name="back_start_address" value="1048576" />
   <parameter name="color_space" value="30-bit RGB" />
-  <parameter name="image_height" value="480" />
-  <parameter name="image_width" value="640" />
+  <parameter name="image_height" value="240" />
+  <parameter name="image_width" value="320" />
   <parameter name="start_address" value="0" />
  </module>
  <module
@@ -674,6 +505,21 @@
   <parameter name="lcd_clk_en" value="false" />
   <parameter name="vga_clk_en" value="true" />
   <parameter name="video_in_clk_en" value="false" />
+ </module>
+ <module
+   name="video_scaler_0"
+   kind="altera_up_avalon_video_scaler"
+   version="18.0"
+   enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
+  <parameter name="color_bits" value="10" />
+  <parameter name="color_planes" value="3" />
+  <parameter name="height_in" value="240" />
+  <parameter name="height_scaling" value="2" />
+  <parameter name="include_channel" value="false" />
+  <parameter name="width_in" value="320" />
+  <parameter name="width_scaling" value="2" />
  </module>
  <module
    name="video_vga_controller_0"
@@ -694,15 +540,6 @@
    end="sram_0.avalon_sram_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="video_pixel_buffer_dma_0.avalon_pixel_dma_master"
-   end="new_sdram_controller_0.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00800000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -762,42 +599,6 @@
  <connection
    kind="avalon"
    version="18.1"
-   start="nios2_gen2_0.data_master"
-   end="new_sdram_controller_0.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00800000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2_0.data_master"
-   end="pio_pixel_position.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01101030" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2_0.data_master"
-   end="pio_request.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01101020" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2_0.data_master"
-   end="pio_pixel_color.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01101010" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
    start="nios2_gen2_0.instruction_master"
    end="nios2_gen2_0.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -814,15 +615,6 @@
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
-   kind="avalon"
-   version="18.1"
-   start="nios2_gen2_0.instruction_master"
-   end="new_sdram_controller_0.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00800000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
    kind="avalon_streaming"
    version="18.1"
    start="video_dual_clock_buffer_0.avalon_dc_buffer_source"
@@ -831,6 +623,11 @@
    kind="avalon_streaming"
    version="18.1"
    start="video_pixel_buffer_dma_0.avalon_pixel_source"
+   end="video_scaler_0.avalon_scaler_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="video_scaler_0.avalon_scaler_source"
    end="video_dual_clock_buffer_0.avalon_dc_buffer_sink" />
  <connection
    kind="clock"
@@ -845,6 +642,11 @@
    version="18.1"
    start="clk_0.clk"
    end="video_pixel_buffer_dma_0.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="video_scaler_0.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -890,13 +692,6 @@
   <parameter name="irqNumber" value="1" />
  </connection>
  <connection
-   kind="interrupt"
-   version="18.1"
-   start="nios2_gen2_0.irq"
-   end="pio_request.irq">
-  <parameter name="irqNumber" value="2" />
- </connection>
- <connection
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
@@ -926,6 +721,11 @@
    version="18.1"
    start="clk_0.clk_reset"
    end="video_pixel_buffer_dma_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="video_scaler_0.reset" />
  <connection
    kind="reset"
    version="18.1"
