@@ -16,13 +16,13 @@ volatile int flag_1 = 0;
 int main(void)
 {
 	init_pio_interrupt();
+	IOWR(PIO_PIXEL_COLOR_BASE,0,0);
 
 	while(1) {
 		usleep(1000000);
 		printf("edge_capture value: %i\n",edge_capture);
 		if(edge_capture > 0) {
 			printf("Interrupted!\n");
-			IOWR(PIO_PIXEL_COLOR_BASE,0,0);
 			edge_capture = 0;
 		}
 	}
