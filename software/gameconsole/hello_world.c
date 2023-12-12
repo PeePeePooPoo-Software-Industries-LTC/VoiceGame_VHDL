@@ -95,7 +95,7 @@ int main() {
 		vga_draw_rect(&vga_buffer, x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
 
 		vga_swap_buffers(&vga_buffer);
-//		usleep(50000);
+		usleep(100000); // Extended delay to improve stability until fixed.
 	}
 	return 0;
 }
