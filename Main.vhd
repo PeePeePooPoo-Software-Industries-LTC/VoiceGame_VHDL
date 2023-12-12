@@ -94,25 +94,12 @@ architecture rtl of Main is
 		);
 	end component video_pll;
 	
---	signal vga_pixel_clock : std_logic;
---	signal vga_is_on_screen : std_logic;
---	signal vga_current_x : integer;
---	signal vga_current_y : integer;
-	
 	type LineBuffer is array (639 downto 0) of std_logic_vector(23 downto 0);
 	signal line_buffer : LineBuffer;
 	
-	signal pio_pixel_color : std_logic_vector(23 downto 0);
-	signal pio_pixel_position : std_logic_vector(31 downto 0);
 	signal buttons_sig : std_logic_vector(31 downto 0);
-	signal pio_request : std_logic;
 begin
---	pio_pixel_position <= "00000000000000100000000000000001";
-	LEDR(7 downto 0) <= pio_pixel_color(7 downto 0);
-	
-	pio_request <= SW(0);
-	LEDR(17) <= pio_request;
-	buttons_sig(3 downto 0) <= SW(4 downto 1);
+	buttons_sig(3 downto 0) <= SW(3 downto 0);
 
 	nios2_core : NIOSII_Test port map(
 			audio_interface_ADCDAT  => audio_interface_ADCDAT,
@@ -140,58 +127,4 @@ begin
 			vga_G => vga_G,
 			vga_B => vga_B
 	);
-	
---	vga : vga_controller generic map(
---		h_pulse 	=> 96,    	--horiztonal sync pulse width in pixels
---		h_bp	 	=> 48, 	--horiztonal back porch width in pixels
---		h_pixels	=> 640,		--horiztonal display width in pixels
---		h_fp	 	=> 16,		--horiztonal front porch width in pixels
---		h_pol		=> '0',		--horizontal sync pulse polarity (1 = positive, 0 = negative)
---		v_pulse 	=> 3,			--vertical sync pulse width in rows
---		v_bp	 	=> 28,			--vertical back porch width in rows
---		v_pixels	=> 480,		--vertical display width in rows
---		v_fp	 	=> 9,			--vertical front porch width in rows
---		v_pol		=> '0'	--vertical sync pulse polarity (1 = positive, 0 = negative)
---	)	port map(
---		pixel_clk	=> vga_pixel_clock,
---		reset_n		=> reset_reset,
---		h_sync		=> VGA_HS,
---		v_sync		=> VGA_VS,
---		disp_ena		=> vga_is_on_screen,
---		column		=> vga_current_x,
---		row			=> vga_current_y,
---		n_blank		=> VGA_BLANK,
---		n_sync		=> VGA_SYNC
---	);
-	
---	video_pll_component : video_pll port map(
---		inclk0 => clk_clk,
---		c0 => vga_pixel_clock
---	);	
-	
---	process(vga_is_on_screen, vga_current_x, vga_current_y)
---		variable first : std_logic := '0';
---		variable color : std_logic_vector(23 downto 0) := (others => '0');
---	begin
---		if (vga_is_on_screen = '1') then
---			if (vga_current_x rem 64 = 0) then
---				pio_pixel_position <= std_logic_vector(
---					to_unsigned(vga_current_x, 16)
---				) & std_logic_vector(
---					to_unsigned(vga_current_y, 16)
---				);
---			end if;
---			color := pio_pixel_color;
---			
---			VGA_R <= color(23 downto 16);
---			VGA_G <= color(15 downto 8);
---			VGA_B <= color(7 downto 0);
---		else
---			VGA_R <= (others => '0');
---			VGA_G <= (others => '0');
---			VGA_B <= (others => '0');
---		end if;
---	end process;
-	
---	VGA_CLK <= vga_pixel_clock;
 end architecture rtl;
