@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="NIOSII_Test" kind="NIOSII_Test" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2023.12.07.11:02:38 -->
+ <!-- 2023.12.11.13:20:59 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1701943358</value>
+  <value>1702297259</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -839,7 +839,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="line_in_bypass">
    <type>boolean</type>
-   <value>true</value>
+   <value>false</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -855,7 +855,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="data_format">
    <type>java.lang.String</type>
-   <value>Left Justified</value>
+   <value>DSP Mode</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -871,7 +871,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="sampling_rate">
    <type>java.lang.String</type>
-   <value>48 kHz</value>
+   <value>8 kHz</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -887,7 +887,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="sr_register">
    <type>int</type>
-   <value>0</value>
+   <value>3</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -10737,10 +10737,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="sys_sdram_pll_0.reset_source/audio_and_video_config_0.reset"
+   name="audio_pll_0.reset_source/audio_and_video_config_0.reset"
    kind="reset"
    version="18.1"
-   start="sys_sdram_pll_0.reset_source"
+   start="audio_pll_0.reset_source"
    end="audio_and_video_config_0.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -10758,7 +10758,7 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>sys_sdram_pll_0</startModule>
+  <startModule>audio_pll_0</startModule>
   <startConnectionPoint>reset_source</startConnectionPoint>
   <endModule>audio_and_video_config_0</endModule>
   <endConnectionPoint>reset</endConnectionPoint>

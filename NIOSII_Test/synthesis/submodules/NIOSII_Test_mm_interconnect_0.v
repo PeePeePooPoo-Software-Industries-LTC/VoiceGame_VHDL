@@ -7,78 +7,77 @@
 
 `timescale 1 ps / 1 ps
 module NIOSII_Test_mm_interconnect_0 (
-		input  wire        audio_pll_0_audio_clk_clk,                                   //                                audio_pll_0_audio_clk.clk
-		input  wire        sys_sdram_pll_0_sys_clk_clk,                                 //                              sys_sdram_pll_0_sys_clk.clk
-		input  wire        audio_0_reset_reset_bridge_in_reset_reset,                   //                  audio_0_reset_reset_bridge_in_reset.reset
-		input  wire        audio_and_video_config_0_reset_reset_bridge_in_reset_reset,  // audio_and_video_config_0_reset_reset_bridge_in_reset.reset
-		input  wire        new_sdram_controller_0_reset_reset_bridge_in_reset_reset,    //   new_sdram_controller_0_reset_reset_bridge_in_reset.reset
-		input  wire        nios2_gen2_0_reset_reset_bridge_in_reset_reset,              //             nios2_gen2_0_reset_reset_bridge_in_reset.reset
-		input  wire        onchip_memory2_0_reset1_reset_bridge_in_reset_reset,         //        onchip_memory2_0_reset1_reset_bridge_in_reset.reset
-		input  wire [24:0] nios2_gen2_0_data_master_address,                            //                             nios2_gen2_0_data_master.address
-		output wire        nios2_gen2_0_data_master_waitrequest,                        //                                                     .waitrequest
-		input  wire [3:0]  nios2_gen2_0_data_master_byteenable,                         //                                                     .byteenable
-		input  wire        nios2_gen2_0_data_master_read,                               //                                                     .read
-		output wire [31:0] nios2_gen2_0_data_master_readdata,                           //                                                     .readdata
-		output wire        nios2_gen2_0_data_master_readdatavalid,                      //                                                     .readdatavalid
-		input  wire        nios2_gen2_0_data_master_write,                              //                                                     .write
-		input  wire [31:0] nios2_gen2_0_data_master_writedata,                          //                                                     .writedata
-		input  wire        nios2_gen2_0_data_master_debugaccess,                        //                                                     .debugaccess
-		input  wire [24:0] nios2_gen2_0_instruction_master_address,                     //                      nios2_gen2_0_instruction_master.address
-		output wire        nios2_gen2_0_instruction_master_waitrequest,                 //                                                     .waitrequest
-		input  wire        nios2_gen2_0_instruction_master_read,                        //                                                     .read
-		output wire [31:0] nios2_gen2_0_instruction_master_readdata,                    //                                                     .readdata
-		output wire        nios2_gen2_0_instruction_master_readdatavalid,               //                                                     .readdatavalid
-		output wire [1:0]  audio_0_avalon_audio_slave_address,                          //                           audio_0_avalon_audio_slave.address
-		output wire        audio_0_avalon_audio_slave_write,                            //                                                     .write
-		output wire        audio_0_avalon_audio_slave_read,                             //                                                     .read
-		input  wire [31:0] audio_0_avalon_audio_slave_readdata,                         //                                                     .readdata
-		output wire [31:0] audio_0_avalon_audio_slave_writedata,                        //                                                     .writedata
-		output wire        audio_0_avalon_audio_slave_chipselect,                       //                                                     .chipselect
-		output wire [1:0]  audio_and_video_config_0_avalon_av_config_slave_address,     //      audio_and_video_config_0_avalon_av_config_slave.address
-		output wire        audio_and_video_config_0_avalon_av_config_slave_write,       //                                                     .write
-		output wire        audio_and_video_config_0_avalon_av_config_slave_read,        //                                                     .read
-		input  wire [31:0] audio_and_video_config_0_avalon_av_config_slave_readdata,    //                                                     .readdata
-		output wire [31:0] audio_and_video_config_0_avalon_av_config_slave_writedata,   //                                                     .writedata
-		output wire [3:0]  audio_and_video_config_0_avalon_av_config_slave_byteenable,  //                                                     .byteenable
-		input  wire        audio_and_video_config_0_avalon_av_config_slave_waitrequest, //                                                     .waitrequest
-		output wire [0:0]  jtag_uart_0_avalon_jtag_slave_address,                       //                        jtag_uart_0_avalon_jtag_slave.address
-		output wire        jtag_uart_0_avalon_jtag_slave_write,                         //                                                     .write
-		output wire        jtag_uart_0_avalon_jtag_slave_read,                          //                                                     .read
-		input  wire [31:0] jtag_uart_0_avalon_jtag_slave_readdata,                      //                                                     .readdata
-		output wire [31:0] jtag_uart_0_avalon_jtag_slave_writedata,                     //                                                     .writedata
-		input  wire        jtag_uart_0_avalon_jtag_slave_waitrequest,                   //                                                     .waitrequest
-		output wire        jtag_uart_0_avalon_jtag_slave_chipselect,                    //                                                     .chipselect
-		output wire [20:0] new_sdram_controller_0_s1_address,                           //                            new_sdram_controller_0_s1.address
-		output wire        new_sdram_controller_0_s1_write,                             //                                                     .write
-		output wire        new_sdram_controller_0_s1_read,                              //                                                     .read
-		input  wire [31:0] new_sdram_controller_0_s1_readdata,                          //                                                     .readdata
-		output wire [31:0] new_sdram_controller_0_s1_writedata,                         //                                                     .writedata
-		output wire [3:0]  new_sdram_controller_0_s1_byteenable,                        //                                                     .byteenable
-		input  wire        new_sdram_controller_0_s1_readdatavalid,                     //                                                     .readdatavalid
-		input  wire        new_sdram_controller_0_s1_waitrequest,                       //                                                     .waitrequest
-		output wire        new_sdram_controller_0_s1_chipselect,                        //                                                     .chipselect
-		output wire [8:0]  nios2_gen2_0_debug_mem_slave_address,                        //                         nios2_gen2_0_debug_mem_slave.address
-		output wire        nios2_gen2_0_debug_mem_slave_write,                          //                                                     .write
-		output wire        nios2_gen2_0_debug_mem_slave_read,                           //                                                     .read
-		input  wire [31:0] nios2_gen2_0_debug_mem_slave_readdata,                       //                                                     .readdata
-		output wire [31:0] nios2_gen2_0_debug_mem_slave_writedata,                      //                                                     .writedata
-		output wire [3:0]  nios2_gen2_0_debug_mem_slave_byteenable,                     //                                                     .byteenable
-		input  wire        nios2_gen2_0_debug_mem_slave_waitrequest,                    //                                                     .waitrequest
-		output wire        nios2_gen2_0_debug_mem_slave_debugaccess,                    //                                                     .debugaccess
-		output wire [16:0] onchip_memory2_0_s1_address,                                 //                                  onchip_memory2_0_s1.address
-		output wire        onchip_memory2_0_s1_write,                                   //                                                     .write
-		input  wire [31:0] onchip_memory2_0_s1_readdata,                                //                                                     .readdata
-		output wire [31:0] onchip_memory2_0_s1_writedata,                               //                                                     .writedata
-		output wire [3:0]  onchip_memory2_0_s1_byteenable,                              //                                                     .byteenable
-		output wire        onchip_memory2_0_s1_chipselect,                              //                                                     .chipselect
-		output wire        onchip_memory2_0_s1_clken,                                   //                                                     .clken
-		output wire [1:0]  pio_ledr_s1_address,                                         //                                          pio_ledr_s1.address
-		output wire        pio_ledr_s1_write,                                           //                                                     .write
-		input  wire [31:0] pio_ledr_s1_readdata,                                        //                                                     .readdata
-		output wire [31:0] pio_ledr_s1_writedata,                                       //                                                     .writedata
-		output wire        pio_ledr_s1_chipselect,                                      //                                                     .chipselect
-		output wire [1:0]  pio_switches_s1_address,                                     //                                      pio_switches_s1.address
-		input  wire [31:0] pio_switches_s1_readdata                                     //                                                     .readdata
+		input  wire        audio_pll_0_audio_clk_clk,                                   //                              audio_pll_0_audio_clk.clk
+		input  wire        sys_sdram_pll_0_sys_clk_clk,                                 //                            sys_sdram_pll_0_sys_clk.clk
+		input  wire        audio_0_reset_reset_bridge_in_reset_reset,                   //                audio_0_reset_reset_bridge_in_reset.reset
+		input  wire        new_sdram_controller_0_reset_reset_bridge_in_reset_reset,    // new_sdram_controller_0_reset_reset_bridge_in_reset.reset
+		input  wire        nios2_gen2_0_reset_reset_bridge_in_reset_reset,              //           nios2_gen2_0_reset_reset_bridge_in_reset.reset
+		input  wire        onchip_memory2_0_reset1_reset_bridge_in_reset_reset,         //      onchip_memory2_0_reset1_reset_bridge_in_reset.reset
+		input  wire [24:0] nios2_gen2_0_data_master_address,                            //                           nios2_gen2_0_data_master.address
+		output wire        nios2_gen2_0_data_master_waitrequest,                        //                                                   .waitrequest
+		input  wire [3:0]  nios2_gen2_0_data_master_byteenable,                         //                                                   .byteenable
+		input  wire        nios2_gen2_0_data_master_read,                               //                                                   .read
+		output wire [31:0] nios2_gen2_0_data_master_readdata,                           //                                                   .readdata
+		output wire        nios2_gen2_0_data_master_readdatavalid,                      //                                                   .readdatavalid
+		input  wire        nios2_gen2_0_data_master_write,                              //                                                   .write
+		input  wire [31:0] nios2_gen2_0_data_master_writedata,                          //                                                   .writedata
+		input  wire        nios2_gen2_0_data_master_debugaccess,                        //                                                   .debugaccess
+		input  wire [24:0] nios2_gen2_0_instruction_master_address,                     //                    nios2_gen2_0_instruction_master.address
+		output wire        nios2_gen2_0_instruction_master_waitrequest,                 //                                                   .waitrequest
+		input  wire        nios2_gen2_0_instruction_master_read,                        //                                                   .read
+		output wire [31:0] nios2_gen2_0_instruction_master_readdata,                    //                                                   .readdata
+		output wire        nios2_gen2_0_instruction_master_readdatavalid,               //                                                   .readdatavalid
+		output wire [1:0]  audio_0_avalon_audio_slave_address,                          //                         audio_0_avalon_audio_slave.address
+		output wire        audio_0_avalon_audio_slave_write,                            //                                                   .write
+		output wire        audio_0_avalon_audio_slave_read,                             //                                                   .read
+		input  wire [31:0] audio_0_avalon_audio_slave_readdata,                         //                                                   .readdata
+		output wire [31:0] audio_0_avalon_audio_slave_writedata,                        //                                                   .writedata
+		output wire        audio_0_avalon_audio_slave_chipselect,                       //                                                   .chipselect
+		output wire [1:0]  audio_and_video_config_0_avalon_av_config_slave_address,     //    audio_and_video_config_0_avalon_av_config_slave.address
+		output wire        audio_and_video_config_0_avalon_av_config_slave_write,       //                                                   .write
+		output wire        audio_and_video_config_0_avalon_av_config_slave_read,        //                                                   .read
+		input  wire [31:0] audio_and_video_config_0_avalon_av_config_slave_readdata,    //                                                   .readdata
+		output wire [31:0] audio_and_video_config_0_avalon_av_config_slave_writedata,   //                                                   .writedata
+		output wire [3:0]  audio_and_video_config_0_avalon_av_config_slave_byteenable,  //                                                   .byteenable
+		input  wire        audio_and_video_config_0_avalon_av_config_slave_waitrequest, //                                                   .waitrequest
+		output wire [0:0]  jtag_uart_0_avalon_jtag_slave_address,                       //                      jtag_uart_0_avalon_jtag_slave.address
+		output wire        jtag_uart_0_avalon_jtag_slave_write,                         //                                                   .write
+		output wire        jtag_uart_0_avalon_jtag_slave_read,                          //                                                   .read
+		input  wire [31:0] jtag_uart_0_avalon_jtag_slave_readdata,                      //                                                   .readdata
+		output wire [31:0] jtag_uart_0_avalon_jtag_slave_writedata,                     //                                                   .writedata
+		input  wire        jtag_uart_0_avalon_jtag_slave_waitrequest,                   //                                                   .waitrequest
+		output wire        jtag_uart_0_avalon_jtag_slave_chipselect,                    //                                                   .chipselect
+		output wire [20:0] new_sdram_controller_0_s1_address,                           //                          new_sdram_controller_0_s1.address
+		output wire        new_sdram_controller_0_s1_write,                             //                                                   .write
+		output wire        new_sdram_controller_0_s1_read,                              //                                                   .read
+		input  wire [31:0] new_sdram_controller_0_s1_readdata,                          //                                                   .readdata
+		output wire [31:0] new_sdram_controller_0_s1_writedata,                         //                                                   .writedata
+		output wire [3:0]  new_sdram_controller_0_s1_byteenable,                        //                                                   .byteenable
+		input  wire        new_sdram_controller_0_s1_readdatavalid,                     //                                                   .readdatavalid
+		input  wire        new_sdram_controller_0_s1_waitrequest,                       //                                                   .waitrequest
+		output wire        new_sdram_controller_0_s1_chipselect,                        //                                                   .chipselect
+		output wire [8:0]  nios2_gen2_0_debug_mem_slave_address,                        //                       nios2_gen2_0_debug_mem_slave.address
+		output wire        nios2_gen2_0_debug_mem_slave_write,                          //                                                   .write
+		output wire        nios2_gen2_0_debug_mem_slave_read,                           //                                                   .read
+		input  wire [31:0] nios2_gen2_0_debug_mem_slave_readdata,                       //                                                   .readdata
+		output wire [31:0] nios2_gen2_0_debug_mem_slave_writedata,                      //                                                   .writedata
+		output wire [3:0]  nios2_gen2_0_debug_mem_slave_byteenable,                     //                                                   .byteenable
+		input  wire        nios2_gen2_0_debug_mem_slave_waitrequest,                    //                                                   .waitrequest
+		output wire        nios2_gen2_0_debug_mem_slave_debugaccess,                    //                                                   .debugaccess
+		output wire [16:0] onchip_memory2_0_s1_address,                                 //                                onchip_memory2_0_s1.address
+		output wire        onchip_memory2_0_s1_write,                                   //                                                   .write
+		input  wire [31:0] onchip_memory2_0_s1_readdata,                                //                                                   .readdata
+		output wire [31:0] onchip_memory2_0_s1_writedata,                               //                                                   .writedata
+		output wire [3:0]  onchip_memory2_0_s1_byteenable,                              //                                                   .byteenable
+		output wire        onchip_memory2_0_s1_chipselect,                              //                                                   .chipselect
+		output wire        onchip_memory2_0_s1_clken,                                   //                                                   .clken
+		output wire [1:0]  pio_ledr_s1_address,                                         //                                        pio_ledr_s1.address
+		output wire        pio_ledr_s1_write,                                           //                                                   .write
+		input  wire [31:0] pio_ledr_s1_readdata,                                        //                                                   .readdata
+		output wire [31:0] pio_ledr_s1_writedata,                                       //                                                   .writedata
+		output wire        pio_ledr_s1_chipselect,                                      //                                                   .chipselect
+		output wire [1:0]  pio_switches_s1_address,                                     //                                    pio_switches_s1.address
+		input  wire [31:0] pio_switches_s1_readdata                                     //                                                   .readdata
 	);
 
 	wire          nios2_gen2_0_data_master_translator_avalon_universal_master_0_waitrequest;          // nios2_gen2_0_data_master_agent:av_waitrequest -> nios2_gen2_0_data_master_translator:uav_waitrequest
@@ -896,7 +895,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.AV_DATA_HOLD_CYCLES            (0)
 	) audio_and_video_config_0_avalon_av_config_slave_translator (
 		.clk                    (audio_pll_0_audio_clk_clk),                                              //                      clk.clk
-		.reset                  (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),             //                    reset.reset
+		.reset                  (audio_0_reset_reset_bridge_in_reset_reset),                              //                    reset.reset
 		.uav_address            (audio_and_video_config_0_avalon_av_config_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (audio_and_video_config_0_avalon_av_config_slave_agent_m0_burstcount),    //                         .burstcount
 		.uav_read               (audio_and_video_config_0_avalon_av_config_slave_agent_m0_read),          //                         .read
@@ -1684,7 +1683,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.ECC_ENABLE                (0)
 	) audio_and_video_config_0_avalon_av_config_slave_agent (
 		.clk                     (audio_pll_0_audio_clk_clk),                                                        //             clk.clk
-		.reset                   (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                       //       clk_reset.reset
+		.reset                   (audio_0_reset_reset_bridge_in_reset_reset),                                        //       clk_reset.reset
 		.m0_address              (audio_and_video_config_0_avalon_av_config_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (audio_and_video_config_0_avalon_av_config_slave_agent_m0_burstcount),              //                .burstcount
 		.m0_byteenable           (audio_and_video_config_0_avalon_av_config_slave_agent_m0_byteenable),              //                .byteenable
@@ -1743,7 +1742,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_and_video_config_0_avalon_av_config_slave_agent_rsp_fifo (
 		.clk               (audio_pll_0_audio_clk_clk),                                                        //       clk.clk
-		.reset             (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                       // clk_reset.reset
+		.reset             (audio_0_reset_reset_bridge_in_reset_reset),                                        // clk_reset.reset
 		.in_data           (audio_and_video_config_0_avalon_av_config_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (audio_and_video_config_0_avalon_av_config_slave_agent_rf_source_valid),            //          .valid
 		.in_ready          (audio_and_video_config_0_avalon_av_config_slave_agent_rf_source_ready),            //          .ready
@@ -1784,7 +1783,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo (
 		.clk               (audio_pll_0_audio_clk_clk),                                                  //       clk.clk
-		.reset             (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                 // clk_reset.reset
+		.reset             (audio_0_reset_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.in_data           (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_src_valid), //          .valid
 		.in_ready          (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_src_ready), //          .ready
@@ -2615,7 +2614,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.sink_startofpacket (audio_and_video_config_0_avalon_av_config_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (audio_and_video_config_0_avalon_av_config_slave_agent_rp_endofpacket),   //          .endofpacket
 		.clk                (audio_pll_0_audio_clk_clk),                                              //       clk.clk
-		.reset              (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),             // clk_reset.reset
+		.reset              (audio_0_reset_reset_bridge_in_reset_reset),                              // clk_reset.reset
 		.src_ready          (router_003_src_ready),                                                   //       src.ready
 		.src_valid          (router_003_src_valid),                                                   //          .valid
 		.src_data           (router_003_src_data),                                                    //          .data
@@ -2926,20 +2925,20 @@ module NIOSII_Test_mm_interconnect_0 (
 	);
 
 	NIOSII_Test_mm_interconnect_0_cmd_mux cmd_mux_001 (
-		.clk                 (audio_pll_0_audio_clk_clk),                                  //       clk.clk
-		.reset               (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready           (cmd_mux_001_src_ready),                                      //       src.ready
-		.src_valid           (cmd_mux_001_src_valid),                                      //          .valid
-		.src_data            (cmd_mux_001_src_data),                                       //          .data
-		.src_channel         (cmd_mux_001_src_channel),                                    //          .channel
-		.src_startofpacket   (cmd_mux_001_src_startofpacket),                              //          .startofpacket
-		.src_endofpacket     (cmd_mux_001_src_endofpacket),                                //          .endofpacket
-		.sink0_ready         (crosser_001_out_ready),                                      //     sink0.ready
-		.sink0_valid         (crosser_001_out_valid),                                      //          .valid
-		.sink0_channel       (crosser_001_out_channel),                                    //          .channel
-		.sink0_data          (crosser_001_out_data),                                       //          .data
-		.sink0_startofpacket (crosser_001_out_startofpacket),                              //          .startofpacket
-		.sink0_endofpacket   (crosser_001_out_endofpacket)                                 //          .endofpacket
+		.clk                 (audio_pll_0_audio_clk_clk),                 //       clk.clk
+		.reset               (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.src_ready           (cmd_mux_001_src_ready),                     //       src.ready
+		.src_valid           (cmd_mux_001_src_valid),                     //          .valid
+		.src_data            (cmd_mux_001_src_data),                      //          .data
+		.src_channel         (cmd_mux_001_src_channel),                   //          .channel
+		.src_startofpacket   (cmd_mux_001_src_startofpacket),             //          .startofpacket
+		.src_endofpacket     (cmd_mux_001_src_endofpacket),               //          .endofpacket
+		.sink0_ready         (crosser_001_out_ready),                     //     sink0.ready
+		.sink0_valid         (crosser_001_out_valid),                     //          .valid
+		.sink0_channel       (crosser_001_out_channel),                   //          .channel
+		.sink0_data          (crosser_001_out_data),                      //          .data
+		.sink0_startofpacket (crosser_001_out_startofpacket),             //          .startofpacket
+		.sink0_endofpacket   (crosser_001_out_endofpacket)                //          .endofpacket
 	);
 
 	NIOSII_Test_mm_interconnect_0_cmd_mux cmd_mux_002 (
@@ -3080,20 +3079,20 @@ module NIOSII_Test_mm_interconnect_0 (
 	);
 
 	NIOSII_Test_mm_interconnect_0_rsp_demux rsp_demux_001 (
-		.clk                (audio_pll_0_audio_clk_clk),                                  //       clk.clk
-		.reset              (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_003_src_ready),                                       //      sink.ready
-		.sink_channel       (router_003_src_channel),                                     //          .channel
-		.sink_data          (router_003_src_data),                                        //          .data
-		.sink_startofpacket (router_003_src_startofpacket),                               //          .startofpacket
-		.sink_endofpacket   (router_003_src_endofpacket),                                 //          .endofpacket
-		.sink_valid         (router_003_src_valid),                                       //          .valid
-		.src0_ready         (rsp_demux_001_src0_ready),                                   //      src0.ready
-		.src0_valid         (rsp_demux_001_src0_valid),                                   //          .valid
-		.src0_data          (rsp_demux_001_src0_data),                                    //          .data
-		.src0_channel       (rsp_demux_001_src0_channel),                                 //          .channel
-		.src0_startofpacket (rsp_demux_001_src0_startofpacket),                           //          .startofpacket
-		.src0_endofpacket   (rsp_demux_001_src0_endofpacket)                              //          .endofpacket
+		.clk                (audio_pll_0_audio_clk_clk),                 //       clk.clk
+		.reset              (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_003_src_ready),                      //      sink.ready
+		.sink_channel       (router_003_src_channel),                    //          .channel
+		.sink_data          (router_003_src_data),                       //          .data
+		.sink_startofpacket (router_003_src_startofpacket),              //          .startofpacket
+		.sink_endofpacket   (router_003_src_endofpacket),                //          .endofpacket
+		.sink_valid         (router_003_src_valid),                      //          .valid
+		.src0_ready         (rsp_demux_001_src0_ready),                  //      src0.ready
+		.src0_valid         (rsp_demux_001_src0_valid),                  //          .valid
+		.src0_data          (rsp_demux_001_src0_data),                   //          .data
+		.src0_channel       (rsp_demux_001_src0_channel),                //          .channel
+		.src0_startofpacket (rsp_demux_001_src0_startofpacket),          //          .startofpacket
+		.src0_endofpacket   (rsp_demux_001_src0_endofpacket)             //          .endofpacket
 	);
 
 	NIOSII_Test_mm_interconnect_0_rsp_demux_002 rsp_demux_002 (
@@ -3350,26 +3349,26 @@ module NIOSII_Test_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_001 (
-		.in_clk            (sys_sdram_pll_0_sys_clk_clk),                                //        in_clk.clk
-		.in_reset          (nios2_gen2_0_reset_reset_bridge_in_reset_reset),             //  in_clk_reset.reset
-		.out_clk           (audio_pll_0_audio_clk_clk),                                  //       out_clk.clk
-		.out_reset         (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
-		.in_ready          (cmd_demux_src1_ready),                                       //            in.ready
-		.in_valid          (cmd_demux_src1_valid),                                       //              .valid
-		.in_startofpacket  (cmd_demux_src1_startofpacket),                               //              .startofpacket
-		.in_endofpacket    (cmd_demux_src1_endofpacket),                                 //              .endofpacket
-		.in_channel        (cmd_demux_src1_channel),                                     //              .channel
-		.in_data           (cmd_demux_src1_data),                                        //              .data
-		.out_ready         (crosser_001_out_ready),                                      //           out.ready
-		.out_valid         (crosser_001_out_valid),                                      //              .valid
-		.out_startofpacket (crosser_001_out_startofpacket),                              //              .startofpacket
-		.out_endofpacket   (crosser_001_out_endofpacket),                                //              .endofpacket
-		.out_channel       (crosser_001_out_channel),                                    //              .channel
-		.out_data          (crosser_001_out_data),                                       //              .data
-		.in_empty          (1'b0),                                                       //   (terminated)
-		.in_error          (1'b0),                                                       //   (terminated)
-		.out_empty         (),                                                           //   (terminated)
-		.out_error         ()                                                            //   (terminated)
+		.in_clk            (sys_sdram_pll_0_sys_clk_clk),                    //        in_clk.clk
+		.in_reset          (nios2_gen2_0_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
+		.out_clk           (audio_pll_0_audio_clk_clk),                      //       out_clk.clk
+		.out_reset         (audio_0_reset_reset_bridge_in_reset_reset),      // out_clk_reset.reset
+		.in_ready          (cmd_demux_src1_ready),                           //            in.ready
+		.in_valid          (cmd_demux_src1_valid),                           //              .valid
+		.in_startofpacket  (cmd_demux_src1_startofpacket),                   //              .startofpacket
+		.in_endofpacket    (cmd_demux_src1_endofpacket),                     //              .endofpacket
+		.in_channel        (cmd_demux_src1_channel),                         //              .channel
+		.in_data           (cmd_demux_src1_data),                            //              .data
+		.out_ready         (crosser_001_out_ready),                          //           out.ready
+		.out_valid         (crosser_001_out_valid),                          //              .valid
+		.out_startofpacket (crosser_001_out_startofpacket),                  //              .startofpacket
+		.out_endofpacket   (crosser_001_out_endofpacket),                    //              .endofpacket
+		.out_channel       (crosser_001_out_channel),                        //              .channel
+		.out_data          (crosser_001_out_data),                           //              .data
+		.in_empty          (1'b0),                                           //   (terminated)
+		.in_error          (1'b0),                                           //   (terminated)
+		.out_empty         (),                                               //   (terminated)
+		.out_error         ()                                                //   (terminated)
 	);
 
 	altera_avalon_st_handshake_clock_crosser #(
@@ -3418,26 +3417,26 @@ module NIOSII_Test_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_003 (
-		.in_clk            (audio_pll_0_audio_clk_clk),                                  //        in_clk.clk
-		.in_reset          (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
-		.out_clk           (sys_sdram_pll_0_sys_clk_clk),                                //       out_clk.clk
-		.out_reset         (nios2_gen2_0_reset_reset_bridge_in_reset_reset),             // out_clk_reset.reset
-		.in_ready          (rsp_demux_001_src0_ready),                                   //            in.ready
-		.in_valid          (rsp_demux_001_src0_valid),                                   //              .valid
-		.in_startofpacket  (rsp_demux_001_src0_startofpacket),                           //              .startofpacket
-		.in_endofpacket    (rsp_demux_001_src0_endofpacket),                             //              .endofpacket
-		.in_channel        (rsp_demux_001_src0_channel),                                 //              .channel
-		.in_data           (rsp_demux_001_src0_data),                                    //              .data
-		.out_ready         (crosser_003_out_ready),                                      //           out.ready
-		.out_valid         (crosser_003_out_valid),                                      //              .valid
-		.out_startofpacket (crosser_003_out_startofpacket),                              //              .startofpacket
-		.out_endofpacket   (crosser_003_out_endofpacket),                                //              .endofpacket
-		.out_channel       (crosser_003_out_channel),                                    //              .channel
-		.out_data          (crosser_003_out_data),                                       //              .data
-		.in_empty          (1'b0),                                                       //   (terminated)
-		.in_error          (1'b0),                                                       //   (terminated)
-		.out_empty         (),                                                           //   (terminated)
-		.out_error         ()                                                            //   (terminated)
+		.in_clk            (audio_pll_0_audio_clk_clk),                      //        in_clk.clk
+		.in_reset          (audio_0_reset_reset_bridge_in_reset_reset),      //  in_clk_reset.reset
+		.out_clk           (sys_sdram_pll_0_sys_clk_clk),                    //       out_clk.clk
+		.out_reset         (nios2_gen2_0_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
+		.in_ready          (rsp_demux_001_src0_ready),                       //            in.ready
+		.in_valid          (rsp_demux_001_src0_valid),                       //              .valid
+		.in_startofpacket  (rsp_demux_001_src0_startofpacket),               //              .startofpacket
+		.in_endofpacket    (rsp_demux_001_src0_endofpacket),                 //              .endofpacket
+		.in_channel        (rsp_demux_001_src0_channel),                     //              .channel
+		.in_data           (rsp_demux_001_src0_data),                        //              .data
+		.out_ready         (crosser_003_out_ready),                          //           out.ready
+		.out_valid         (crosser_003_out_valid),                          //              .valid
+		.out_startofpacket (crosser_003_out_startofpacket),                  //              .startofpacket
+		.out_endofpacket   (crosser_003_out_endofpacket),                    //              .endofpacket
+		.out_channel       (crosser_003_out_channel),                        //              .channel
+		.out_data          (crosser_003_out_data),                           //              .data
+		.in_empty          (1'b0),                                           //   (terminated)
+		.in_error          (1'b0),                                           //   (terminated)
+		.out_empty         (),                                               //   (terminated)
+		.out_error         ()                                                //   (terminated)
 	);
 
 	NIOSII_Test_mm_interconnect_0_avalon_st_adapter #(
@@ -3488,7 +3487,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.outReadyLatency (0)
 	) avalon_st_adapter_001 (
 		.in_clk_0_clk   (audio_pll_0_audio_clk_clk),                                                  // in_clk_0.clk
-		.in_rst_0_reset (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                 // in_rst_0.reset
+		.in_rst_0_reset (audio_0_reset_reset_bridge_in_reset_reset),                                  // in_rst_0.reset
 		.in_0_data      (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_out_valid), //         .valid
 		.in_0_ready     (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_out_ready), //         .ready

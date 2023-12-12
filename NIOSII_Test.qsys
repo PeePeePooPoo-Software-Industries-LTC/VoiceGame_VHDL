@@ -292,14 +292,14 @@
   <parameter name="board" value="DE2-115" />
   <parameter name="d5m_resolution" value="2592 x 1944" />
   <parameter name="dac_enable" value="true" />
-  <parameter name="data_format" value="Left Justified" />
+  <parameter name="data_format" value="DSP Mode" />
   <parameter name="device">On-Board Peripherals</parameter>
   <parameter name="eai" value="true" />
   <parameter name="exposure" value="false" />
-  <parameter name="line_in_bypass" value="true" />
+  <parameter name="line_in_bypass" value="false" />
   <parameter name="mic_attenuation" value="-6dB" />
   <parameter name="mic_bypass" value="false" />
-  <parameter name="sampling_rate" value="48 kHz" />
+  <parameter name="sampling_rate" value="8 kHz" />
   <parameter name="video_format" value="NTSC" />
  </module>
  <module
@@ -942,7 +942,7 @@
  <connection
    kind="reset"
    version="18.1"
-   start="sys_sdram_pll_0.reset_source"
+   start="audio_pll_0.reset_source"
    end="audio_and_video_config_0.reset" />
  <connection
    kind="reset"

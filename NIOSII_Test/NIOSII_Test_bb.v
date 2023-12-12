@@ -1,9 +1,13 @@
 
 module NIOSII_Test (
+	audio_and_video_export_SDAT,
+	audio_and_video_export_SCLK,
 	audio_interface_ADCDAT,
 	audio_interface_ADCLRCK,
 	audio_interface_BCLK,
 	clk_clk,
+	pio_ledr_export,
+	pio_switches_export,
 	reset_reset,
 	sdram_clk_clk,
 	sdram_wire_addr,
@@ -14,16 +18,16 @@ module NIOSII_Test (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n,
-	pio_switches_export,
-	pio_ledr_export,
-	audio_and_video_export_SDAT,
-	audio_and_video_export_SCLK);	
+	sdram_wire_we_n);	
 
+	inout		audio_and_video_export_SDAT;
+	output		audio_and_video_export_SCLK;
 	input		audio_interface_ADCDAT;
 	input		audio_interface_ADCLRCK;
 	input		audio_interface_BCLK;
 	input		clk_clk;
+	output	[17:0]	pio_ledr_export;
+	input	[17:0]	pio_switches_export;
 	input		reset_reset;
 	output		sdram_clk_clk;
 	output	[11:0]	sdram_wire_addr;
@@ -35,8 +39,4 @@ module NIOSII_Test (
 	output	[3:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
-	input	[17:0]	pio_switches_export;
-	output	[17:0]	pio_ledr_export;
-	inout		audio_and_video_export_SDAT;
-	output		audio_and_video_export_SCLK;
 endmodule

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Wed Dec 06 15:29:51 CET 2023
+ * Generated: Mon Dec 11 13:11:55 CET 2023
  */
 
 /*
@@ -147,6 +147,7 @@
 #define __ALTERA_AVALON_PIO
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_AUDIO
+#define __ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG
 
 
 /*
@@ -197,6 +198,20 @@
 #define AUDIO_0_NAME "/dev/audio_0"
 #define AUDIO_0_SPAN 16
 #define AUDIO_0_TYPE "altera_up_avalon_audio"
+
+
+/*
+ * audio_and_video_config_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_audio_and_video_config_0 altera_up_avalon_audio_and_video_config
+#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x1101000
+#define AUDIO_AND_VIDEO_CONFIG_0_IRQ -1
+#define AUDIO_AND_VIDEO_CONFIG_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define AUDIO_AND_VIDEO_CONFIG_0_NAME "/dev/audio_and_video_config_0"
+#define AUDIO_AND_VIDEO_CONFIG_0_SPAN 16
+#define AUDIO_AND_VIDEO_CONFIG_0_TYPE "altera_up_avalon_audio_and_video_config"
 
 
 /*
@@ -297,83 +312,56 @@
 
 
 /*
- * pio_pixel_color configuration
+ * pio_ledr configuration
  *
  */
 
-#define ALT_MODULE_CLASS_pio_pixel_color altera_avalon_pio
-#define PIO_PIXEL_COLOR_BASE 0x1101000
-#define PIO_PIXEL_COLOR_BIT_CLEARING_EDGE_REGISTER 0
-#define PIO_PIXEL_COLOR_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define PIO_PIXEL_COLOR_CAPTURE 0
-#define PIO_PIXEL_COLOR_DATA_WIDTH 24
-#define PIO_PIXEL_COLOR_DO_TEST_BENCH_WIRING 0
-#define PIO_PIXEL_COLOR_DRIVEN_SIM_VALUE 0
-#define PIO_PIXEL_COLOR_EDGE_TYPE "NONE"
-#define PIO_PIXEL_COLOR_FREQ 50000000
-#define PIO_PIXEL_COLOR_HAS_IN 0
-#define PIO_PIXEL_COLOR_HAS_OUT 1
-#define PIO_PIXEL_COLOR_HAS_TRI 0
-#define PIO_PIXEL_COLOR_IRQ -1
-#define PIO_PIXEL_COLOR_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define PIO_PIXEL_COLOR_IRQ_TYPE "NONE"
-#define PIO_PIXEL_COLOR_NAME "/dev/pio_pixel_color"
-#define PIO_PIXEL_COLOR_RESET_VALUE 0
-#define PIO_PIXEL_COLOR_SPAN 16
-#define PIO_PIXEL_COLOR_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_pio_ledr altera_avalon_pio
+#define PIO_LEDR_BASE 0x1101010
+#define PIO_LEDR_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_LEDR_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_LEDR_CAPTURE 0
+#define PIO_LEDR_DATA_WIDTH 18
+#define PIO_LEDR_DO_TEST_BENCH_WIRING 0
+#define PIO_LEDR_DRIVEN_SIM_VALUE 0
+#define PIO_LEDR_EDGE_TYPE "NONE"
+#define PIO_LEDR_FREQ 50000000
+#define PIO_LEDR_HAS_IN 0
+#define PIO_LEDR_HAS_OUT 1
+#define PIO_LEDR_HAS_TRI 0
+#define PIO_LEDR_IRQ -1
+#define PIO_LEDR_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_LEDR_IRQ_TYPE "NONE"
+#define PIO_LEDR_NAME "/dev/pio_ledr"
+#define PIO_LEDR_RESET_VALUE 0
+#define PIO_LEDR_SPAN 16
+#define PIO_LEDR_TYPE "altera_avalon_pio"
 
 
 /*
- * pio_pixel_position configuration
+ * pio_switches configuration
  *
  */
 
-#define ALT_MODULE_CLASS_pio_pixel_position altera_avalon_pio
-#define PIO_PIXEL_POSITION_BASE 0x1101020
-#define PIO_PIXEL_POSITION_BIT_CLEARING_EDGE_REGISTER 0
-#define PIO_PIXEL_POSITION_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define PIO_PIXEL_POSITION_CAPTURE 0
-#define PIO_PIXEL_POSITION_DATA_WIDTH 32
-#define PIO_PIXEL_POSITION_DO_TEST_BENCH_WIRING 0
-#define PIO_PIXEL_POSITION_DRIVEN_SIM_VALUE 0
-#define PIO_PIXEL_POSITION_EDGE_TYPE "NONE"
-#define PIO_PIXEL_POSITION_FREQ 50000000
-#define PIO_PIXEL_POSITION_HAS_IN 1
-#define PIO_PIXEL_POSITION_HAS_OUT 0
-#define PIO_PIXEL_POSITION_HAS_TRI 0
-#define PIO_PIXEL_POSITION_IRQ -1
-#define PIO_PIXEL_POSITION_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define PIO_PIXEL_POSITION_IRQ_TYPE "NONE"
-#define PIO_PIXEL_POSITION_NAME "/dev/pio_pixel_position"
-#define PIO_PIXEL_POSITION_RESET_VALUE 0
-#define PIO_PIXEL_POSITION_SPAN 16
-#define PIO_PIXEL_POSITION_TYPE "altera_avalon_pio"
-
-
-/*
- * pio_request configuration
- *
- */
-
-#define ALT_MODULE_CLASS_pio_request altera_avalon_pio
-#define PIO_REQUEST_BASE 0x1101010
-#define PIO_REQUEST_BIT_CLEARING_EDGE_REGISTER 0
-#define PIO_REQUEST_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define PIO_REQUEST_CAPTURE 1
-#define PIO_REQUEST_DATA_WIDTH 1
-#define PIO_REQUEST_DO_TEST_BENCH_WIRING 0
-#define PIO_REQUEST_DRIVEN_SIM_VALUE 0
-#define PIO_REQUEST_EDGE_TYPE "RISING"
-#define PIO_REQUEST_FREQ 50000000
-#define PIO_REQUEST_HAS_IN 1
-#define PIO_REQUEST_HAS_OUT 0
-#define PIO_REQUEST_HAS_TRI 0
-#define PIO_REQUEST_IRQ 2
-#define PIO_REQUEST_IRQ_INTERRUPT_CONTROLLER_ID 0
-#define PIO_REQUEST_IRQ_TYPE "EDGE"
-#define PIO_REQUEST_NAME "/dev/pio_request"
-#define PIO_REQUEST_RESET_VALUE 0
-#define PIO_REQUEST_SPAN 16
-#define PIO_REQUEST_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_pio_switches altera_avalon_pio
+#define PIO_SWITCHES_BASE 0x1101020
+#define PIO_SWITCHES_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_SWITCHES_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_SWITCHES_CAPTURE 0
+#define PIO_SWITCHES_DATA_WIDTH 18
+#define PIO_SWITCHES_DO_TEST_BENCH_WIRING 0
+#define PIO_SWITCHES_DRIVEN_SIM_VALUE 0
+#define PIO_SWITCHES_EDGE_TYPE "NONE"
+#define PIO_SWITCHES_FREQ 50000000
+#define PIO_SWITCHES_HAS_IN 1
+#define PIO_SWITCHES_HAS_OUT 0
+#define PIO_SWITCHES_HAS_TRI 0
+#define PIO_SWITCHES_IRQ -1
+#define PIO_SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_SWITCHES_IRQ_TYPE "NONE"
+#define PIO_SWITCHES_NAME "/dev/pio_switches"
+#define PIO_SWITCHES_RESET_VALUE 0
+#define PIO_SWITCHES_SPAN 16
+#define PIO_SWITCHES_TYPE "altera_avalon_pio"
 
 #endif /* __SYSTEM_H_ */

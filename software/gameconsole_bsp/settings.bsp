@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>6-dec-2023 15:45:26</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1701873926862</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Dec 11, 2023 1:49:04 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1702298944484</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\Windows\OneDrive\Documents\KBS_CE\VoiceGame_VHDL\software\gameconsole_bsp</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspSettingsFile>C:\Users\Windows\OneDrive\Documents\KBS_CE\VoiceGame_VHDL\software\gameconsole_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\NIOSII_Test.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_gen2_0</Cpu>
@@ -911,19 +911,19 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_pixel_color</slaveDescriptor>
+                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
                 <addressRange>0x01101000 - 0x0110100F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_request</slaveDescriptor>
+                <slaveDescriptor>pio_ledr</slaveDescriptor>
                 <addressRange>0x01101010 - 0x0110101F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_pixel_position</slaveDescriptor>
+                <slaveDescriptor>pio_switches</slaveDescriptor>
                 <addressRange>0x01101020 - 0x0110102F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
