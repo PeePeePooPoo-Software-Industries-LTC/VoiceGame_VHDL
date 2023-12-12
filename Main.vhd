@@ -47,7 +47,8 @@ architecture rtl of Main is
 			sram_UB_N               : out   std_logic;                                        --                .UB_N
 			sram_CE_N               : out   std_logic;                                        --                .CE_N
 			sram_OE_N               : out   std_logic;                                        --                .OE_N
-			sram_WE_N               : out   std_logic;                                        --                .WE_N
+			sram_WE_N               : out   std_logic;  
+			buttons_export          : in    std_logic_vector(31 downto 0);
 			vga_CLK                                       : out   std_logic;                                        --                                    vga.CLK
 			vga_HS                                        : out   std_logic;                                        --                                       .HS
 			vga_VS                                        : out   std_logic;                                        --                                       .VS
@@ -103,6 +104,7 @@ architecture rtl of Main is
 	
 	signal pio_pixel_color : std_logic_vector(23 downto 0);
 	signal pio_pixel_position : std_logic_vector(31 downto 0);
+	signal buttons_sig : std_logic_vector(31 downto 0);
 	signal pio_request : std_logic;
 begin
 --	pio_pixel_position <= "00000000000000100000000000000001";
@@ -110,13 +112,14 @@ begin
 	
 	pio_request <= SW(0);
 	LEDR(17) <= pio_request;
+	buttons_sig(3 downto 0) <= SW(4 downto 1);
 
 	nios2_core : NIOSII_Test port map(
 			audio_interface_ADCDAT  => audio_interface_ADCDAT,
 			audio_interface_ADCLRCK => audio_interface_ADCLRCK,
 			audio_interface_BCLK    => audio_interface_BCLK,
 			clk_clk                 => clk_clk,
-			reset_reset_n             => reset_reset,
+			reset_reset_n           => reset_reset,
 
 			sram_DQ                 => sram_DQ,
 			sram_ADDR               => sram_ADDR,
@@ -125,6 +128,8 @@ begin
 			sram_CE_N               => sram_CE_N,
 			sram_OE_N               => sram_OE_N,
 			sram_WE_N               => sram_WE_N,
+			
+			buttons_export => buttons_sig,
 
 			vga_CLK => vga_CLK,
 			vga_HS => vga_HS,

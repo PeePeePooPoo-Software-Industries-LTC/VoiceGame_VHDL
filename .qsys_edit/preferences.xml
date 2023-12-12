@@ -10,7 +10,7 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library,Library/DSP/Video and Image Processing,Library/University Program/Audio &amp; Video,Library/University Program,Library/DSP,Library/University Program/Audio &amp; Video/Video,Project" />
+   expandedCategories="Library/Interface Protocols,Library/Processors and Peripherals/Peripherals,Library,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Interface Protocols/PCI Express,Project,Library/Processors and Peripherals" />
  <window width="1908" height="1040" x="6" y="34" />
  <generation synthesis="VHDL" />
 </preferences>

@@ -19,7 +19,8 @@ module NIOSII_Test (
 	vga_SYNC,
 	vga_R,
 	vga_G,
-	vga_B);	
+	vga_B,
+	buttons_export);	
 
 	input		audio_interface_ADCDAT;
 	input		audio_interface_ADCLRCK;
@@ -41,4 +42,5 @@ module NIOSII_Test (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
+	input	[31:0]	buttons_export;
 endmodule

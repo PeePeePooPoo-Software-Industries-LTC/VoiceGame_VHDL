@@ -19,7 +19,8 @@
 			vga_SYNC                : out   std_logic;                                        -- SYNC
 			vga_R                   : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                   : out   std_logic_vector(7 downto 0);                     -- G
-			vga_B                   : out   std_logic_vector(7 downto 0)                      -- B
+			vga_B                   : out   std_logic_vector(7 downto 0);                     -- B
+			buttons_export          : in    std_logic_vector(31 downto 0) := (others => 'X')  -- export
 		);
 	end component NIOSII_Test;
 
@@ -44,6 +45,7 @@
 			vga_SYNC                => CONNECTED_TO_vga_SYNC,                --                .SYNC
 			vga_R                   => CONNECTED_TO_vga_R,                   --                .R
 			vga_G                   => CONNECTED_TO_vga_G,                   --                .G
-			vga_B                   => CONNECTED_TO_vga_B                    --                .B
+			vga_B                   => CONNECTED_TO_vga_B,                   --                .B
+			buttons_export          => CONNECTED_TO_buttons_export           --         buttons.export
 		);
 

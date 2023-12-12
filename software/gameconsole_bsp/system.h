@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Thu Dec 07 15:21:39 CET 2023
+ * Generated: Mon Dec 11 13:52:54 CET 2023
  */
 
 /*
@@ -143,6 +143,7 @@
 
 #define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
+#define __ALTERA_AVALON_PIO
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_AUDIO
 #define __ALTERA_UP_AVALON_SRAM
@@ -165,19 +166,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x301020
+#define ALT_STDERR_BASE 0x301030
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x301020
+#define ALT_STDIN_BASE 0x301030
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x301020
+#define ALT_STDOUT_BASE 0x301030
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -191,12 +192,39 @@
  */
 
 #define ALT_MODULE_CLASS_audio_0 altera_up_avalon_audio
-#define AUDIO_0_BASE 0x301010
+#define AUDIO_0_BASE 0x301020
 #define AUDIO_0_IRQ 0
 #define AUDIO_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define AUDIO_0_NAME "/dev/audio_0"
 #define AUDIO_0_SPAN 16
 #define AUDIO_0_TYPE "altera_up_avalon_audio"
+
+
+/*
+ * button_passthrough configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_button_passthrough altera_avalon_pio
+#define BUTTON_PASSTHROUGH_BASE 0x301000
+#define BUTTON_PASSTHROUGH_BIT_CLEARING_EDGE_REGISTER 0
+#define BUTTON_PASSTHROUGH_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define BUTTON_PASSTHROUGH_CAPTURE 0
+#define BUTTON_PASSTHROUGH_DATA_WIDTH 32
+#define BUTTON_PASSTHROUGH_DO_TEST_BENCH_WIRING 0
+#define BUTTON_PASSTHROUGH_DRIVEN_SIM_VALUE 0
+#define BUTTON_PASSTHROUGH_EDGE_TYPE "NONE"
+#define BUTTON_PASSTHROUGH_FREQ 25000000
+#define BUTTON_PASSTHROUGH_HAS_IN 1
+#define BUTTON_PASSTHROUGH_HAS_OUT 0
+#define BUTTON_PASSTHROUGH_HAS_TRI 0
+#define BUTTON_PASSTHROUGH_IRQ -1
+#define BUTTON_PASSTHROUGH_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define BUTTON_PASSTHROUGH_IRQ_TYPE "NONE"
+#define BUTTON_PASSTHROUGH_NAME "/dev/button_passthrough"
+#define BUTTON_PASSTHROUGH_RESET_VALUE 0
+#define BUTTON_PASSTHROUGH_SPAN 16
+#define BUTTON_PASSTHROUGH_TYPE "altera_avalon_pio"
 
 
 /*
@@ -216,7 +244,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x301020
+#define JTAG_UART_0_BASE 0x301030
 #define JTAG_UART_0_IRQ 1
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -277,7 +305,7 @@
  */
 
 #define ALT_MODULE_CLASS_video_pixel_buffer_dma_0 altera_up_avalon_video_pixel_buffer_dma
-#define VIDEO_PIXEL_BUFFER_DMA_0_BASE 0x301000
+#define VIDEO_PIXEL_BUFFER_DMA_0_BASE 0x301010
 #define VIDEO_PIXEL_BUFFER_DMA_0_IRQ -1
 #define VIDEO_PIXEL_BUFFER_DMA_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define VIDEO_PIXEL_BUFFER_DMA_0_NAME "/dev/video_pixel_buffer_dma_0"

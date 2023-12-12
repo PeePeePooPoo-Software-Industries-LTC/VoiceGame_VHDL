@@ -27,7 +27,7 @@
 
 // ------------------------------------------
 // Generation parameters:
-//   output_name:         NIOSII_Test_mm_interconnect_0_rsp_demux_001
+//   output_name:         NIOSII_Test_mm_interconnect_0_rsp_demux_006
 //   ST_DATA_W:           108
 //   ST_CHANNEL_W:        7
 //   NUM_OUTPUTS:         1
@@ -40,7 +40,7 @@
 // 15610 - Warning: Design contains x input pin(s) that do not drive logic
 //------------------------------------------
 
-module NIOSII_Test_mm_interconnect_0_rsp_demux_001
+module NIOSII_Test_mm_interconnect_0_rsp_demux_006
 (
     // -------------------
     // Sink

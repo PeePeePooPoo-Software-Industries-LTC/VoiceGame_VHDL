@@ -11,6 +11,7 @@ entity NIOSII_Test is
 		audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
 		audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
 		audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
+		buttons_export          : in    std_logic_vector(31 downto 0) := (others => '0'); --         buttons.export
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset_n           : in    std_logic                     := '0';             --           reset.reset_n
 		sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
@@ -57,6 +58,16 @@ architecture rtl of NIOSII_Test is
 			reset_source_reset : out std_logic         -- reset
 		);
 	end component NIOSII_Test_audio_pll_0;
+
+	component NIOSII_Test_button_passthrough is
+		port (
+			clk      : in  std_logic                     := 'X';             -- clk
+			reset_n  : in  std_logic                     := 'X';             -- reset_n
+			address  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			readdata : out std_logic_vector(31 downto 0);                    -- readdata
+			in_port  : in  std_logic_vector(31 downto 0) := (others => 'X')  -- export
+		);
+	end component NIOSII_Test_button_passthrough;
 
 	component NIOSII_Test_jtag_uart_0 is
 		port (
@@ -237,7 +248,9 @@ architecture rtl of NIOSII_Test is
 		port (
 			audio_pll_0_audio_clk_clk                                      : in  std_logic                     := 'X';             -- clk
 			clk_0_clk_clk                                                  : in  std_logic                     := 'X';             -- clk
+			video_pll_0_vga_clk_clk                                        : in  std_logic                     := 'X';             -- clk
 			audio_0_reset_reset_bridge_in_reset_reset                      : in  std_logic                     := 'X';             -- reset
+			button_passthrough_reset_reset_bridge_in_reset_reset           : in  std_logic                     := 'X';             -- reset
 			nios2_gen2_0_reset_reset_bridge_in_reset_reset                 : in  std_logic                     := 'X';             -- reset
 			video_pixel_buffer_dma_0_reset_reset_bridge_in_reset_reset     : in  std_logic                     := 'X';             -- reset
 			nios2_gen2_0_data_master_address                               : in  std_logic_vector(21 downto 0) := (others => 'X'); -- address
@@ -266,6 +279,8 @@ architecture rtl of NIOSII_Test is
 			audio_0_avalon_audio_slave_readdata                            : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			audio_0_avalon_audio_slave_writedata                           : out std_logic_vector(31 downto 0);                    -- writedata
 			audio_0_avalon_audio_slave_chipselect                          : out std_logic;                                        -- chipselect
+			button_passthrough_s1_address                                  : out std_logic_vector(1 downto 0);                     -- address
+			button_passthrough_s1_readdata                                 : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			jtag_uart_0_avalon_jtag_slave_address                          : out std_logic_vector(0 downto 0);                     -- address
 			jtag_uart_0_avalon_jtag_slave_write                            : out std_logic;                                        -- write
 			jtag_uart_0_avalon_jtag_slave_read                             : out std_logic;                                        -- read
@@ -496,7 +511,7 @@ architecture rtl of NIOSII_Test is
 		);
 	end component niosii_test_rst_controller_001;
 
-	component niosii_test_rst_controller_002 is
+	component niosii_test_rst_controller_003 is
 		generic (
 			NUM_RESET_INPUTS          : integer := 6;
 			OUTPUT_RESET_SYNC_EDGES   : string  := "deassert";
@@ -560,7 +575,7 @@ architecture rtl of NIOSII_Test is
 			reset_req_in8  : in  std_logic := 'X';
 			reset_req_in9  : in  std_logic := 'X'
 		);
-	end component niosii_test_rst_controller_002;
+	end component niosii_test_rst_controller_003;
 
 	signal video_dual_clock_buffer_0_avalon_dc_buffer_source_valid                    : std_logic;                     -- video_dual_clock_buffer_0:stream_out_valid -> video_vga_controller_0:valid
 	signal video_dual_clock_buffer_0_avalon_dc_buffer_source_data                     : std_logic_vector(29 downto 0); -- video_dual_clock_buffer_0:stream_out_data -> video_vga_controller_0:data
@@ -573,7 +588,7 @@ architecture rtl of NIOSII_Test is
 	signal video_pixel_buffer_dma_0_avalon_pixel_source_startofpacket                 : std_logic;                     -- video_pixel_buffer_dma_0:stream_startofpacket -> video_scaler_0:stream_in_startofpacket
 	signal video_pixel_buffer_dma_0_avalon_pixel_source_endofpacket                   : std_logic;                     -- video_pixel_buffer_dma_0:stream_endofpacket -> video_scaler_0:stream_in_endofpacket
 	signal audio_pll_0_audio_clk_clk                                                  : std_logic;                     -- audio_pll_0:audio_clk_clk -> [audio_0:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:audio_pll_0_audio_clk_clk, rst_controller:clk]
-	signal video_pll_0_vga_clk_clk                                                    : std_logic;                     -- video_pll_0:vga_clk_clk -> [rst_controller_003:clk, video_dual_clock_buffer_0:clk_stream_out, video_vga_controller_0:clk]
+	signal video_pll_0_vga_clk_clk                                                    : std_logic;                     -- video_pll_0:vga_clk_clk -> [button_passthrough:clk, mm_interconnect_0:video_pll_0_vga_clk_clk, rst_controller_002:clk, video_dual_clock_buffer_0:clk_stream_out, video_vga_controller_0:clk]
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest               : std_logic;                     -- mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest -> video_pixel_buffer_dma_0:master_waitrequest
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata                  : std_logic_vector(31 downto 0); -- mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata -> video_pixel_buffer_dma_0:master_readdata
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_address                   : std_logic_vector(31 downto 0); -- video_pixel_buffer_dma_0:master_address -> mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_address
@@ -635,6 +650,8 @@ architecture rtl of NIOSII_Test is
 	signal mm_interconnect_0_onchip_memory2_0_s1_write                                : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	signal mm_interconnect_0_onchip_memory2_0_s1_writedata                            : std_logic_vector(31 downto 0); -- mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	signal mm_interconnect_0_onchip_memory2_0_s1_clken                                : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
+	signal mm_interconnect_0_button_passthrough_s1_readdata                           : std_logic_vector(31 downto 0); -- button_passthrough:readdata -> mm_interconnect_0:button_passthrough_s1_readdata
+	signal mm_interconnect_0_button_passthrough_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:button_passthrough_s1_address -> button_passthrough:address
 	signal irq_mapper_receiver1_irq                                                   : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver1_irq
 	signal nios2_gen2_0_irq_irq                                                       : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
 	signal irq_mapper_receiver0_irq                                                   : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
@@ -654,16 +671,17 @@ architecture rtl of NIOSII_Test is
 	signal audio_pll_0_reset_source_reset                                             : std_logic;                     -- audio_pll_0:reset_source_reset -> rst_controller:reset_in0
 	signal rst_controller_001_reset_out_reset                                         : std_logic;                     -- rst_controller_001:reset_out -> [audio_pll_0:ref_reset_reset, avalon_st_adapter:in_rst_0_reset, mm_interconnect_0:video_pixel_buffer_dma_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset, sram_0:reset, video_dual_clock_buffer_0:reset_stream_in, video_pixel_buffer_dma_0:reset, video_pll_0:ref_reset_reset, video_scaler_0:reset]
 	signal rst_controller_001_reset_out_reset_req                                     : std_logic;                     -- rst_controller_001:reset_req -> [onchip_memory2_0:reset_req, rst_translator:reset_req_in]
-	signal rst_controller_002_reset_out_reset                                         : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator_001:in_reset]
-	signal rst_controller_002_reset_out_reset_req                                     : std_logic;                     -- rst_controller_002:reset_req -> [nios2_gen2_0:reset_req, rst_translator_001:reset_req_in]
-	signal nios2_gen2_0_debug_reset_request_reset                                     : std_logic;                     -- nios2_gen2_0:debug_reset_request -> rst_controller_002:reset_in1
-	signal rst_controller_003_reset_out_reset                                         : std_logic;                     -- rst_controller_003:reset_out -> [video_dual_clock_buffer_0:reset_stream_out, video_vga_controller_0:reset]
-	signal video_pll_0_reset_source_reset                                             : std_logic;                     -- video_pll_0:reset_source_reset -> rst_controller_003:reset_in0
-	signal reset_reset_n_ports_inv                                                    : std_logic;                     -- reset_reset_n:inv -> [rst_controller_001:reset_in0, rst_controller_002:reset_in0]
+	signal rst_controller_002_reset_out_reset                                         : std_logic;                     -- rst_controller_002:reset_out -> [mm_interconnect_0:button_passthrough_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, video_dual_clock_buffer_0:reset_stream_out, video_vga_controller_0:reset]
+	signal video_pll_0_reset_source_reset                                             : std_logic;                     -- video_pll_0:reset_source_reset -> rst_controller_002:reset_in0
+	signal rst_controller_003_reset_out_reset                                         : std_logic;                     -- rst_controller_003:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_003_reset_out_reset:in, rst_translator_001:in_reset]
+	signal rst_controller_003_reset_out_reset_req                                     : std_logic;                     -- rst_controller_003:reset_req -> [nios2_gen2_0:reset_req, rst_translator_001:reset_req_in]
+	signal nios2_gen2_0_debug_reset_request_reset                                     : std_logic;                     -- nios2_gen2_0:debug_reset_request -> rst_controller_003:reset_in1
+	signal reset_reset_n_ports_inv                                                    : std_logic;                     -- reset_reset_n:inv -> [rst_controller_001:reset_in0, rst_controller_003:reset_in0]
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv             : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv            : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
 	signal rst_controller_001_reset_out_reset_ports_inv                               : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> jtag_uart_0:rst_n
-	signal rst_controller_002_reset_out_reset_ports_inv                               : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> nios2_gen2_0:reset_n
+	signal rst_controller_002_reset_out_reset_ports_inv                               : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> button_passthrough:reset_n
+	signal rst_controller_003_reset_out_reset_ports_inv                               : std_logic;                     -- rst_controller_003_reset_out_reset:inv -> nios2_gen2_0:reset_n
 
 begin
 
@@ -691,6 +709,15 @@ begin
 			reset_source_reset => audio_pll_0_reset_source_reset      -- reset_source.reset
 		);
 
+	button_passthrough : component NIOSII_Test_button_passthrough
+		port map (
+			clk      => video_pll_0_vga_clk_clk,                          --                 clk.clk
+			reset_n  => rst_controller_002_reset_out_reset_ports_inv,     --               reset.reset_n
+			address  => mm_interconnect_0_button_passthrough_s1_address,  --                  s1.address
+			readdata => mm_interconnect_0_button_passthrough_s1_readdata, --                    .readdata
+			in_port  => buttons_export                                    -- external_connection.export
+		);
+
 	jtag_uart_0 : component NIOSII_Test_jtag_uart_0
 		port map (
 			clk            => clk_clk,                                                         --               clk.clk
@@ -708,8 +735,8 @@ begin
 	nios2_gen2_0 : component NIOSII_Test_nios2_gen2_0
 		port map (
 			clk                                 => clk_clk,                                                    --                       clk.clk
-			reset_n                             => rst_controller_002_reset_out_reset_ports_inv,               --                     reset.reset_n
-			reset_req                           => rst_controller_002_reset_out_reset_req,                     --                          .reset_req
+			reset_n                             => rst_controller_003_reset_out_reset_ports_inv,               --                     reset.reset_n
+			reset_req                           => rst_controller_003_reset_out_reset_req,                     --                          .reset_req
 			d_address                           => nios2_gen2_0_data_master_address,                           --               data_master.address
 			d_byteenable                        => nios2_gen2_0_data_master_byteenable,                        --                          .byteenable
 			d_read                              => nios2_gen2_0_data_master_read,                              --                          .read
@@ -777,7 +804,7 @@ begin
 			clk_stream_in            => clk_clk,                                                         --         clock_stream_in.clk
 			reset_stream_in          => rst_controller_001_reset_out_reset,                              --         reset_stream_in.reset
 			clk_stream_out           => video_pll_0_vga_clk_clk,                                         --        clock_stream_out.clk
-			reset_stream_out         => rst_controller_003_reset_out_reset,                              --        reset_stream_out.reset
+			reset_stream_out         => rst_controller_002_reset_out_reset,                              --        reset_stream_out.reset
 			stream_in_ready          => avalon_st_adapter_out_0_ready,                                   --   avalon_dc_buffer_sink.ready
 			stream_in_startofpacket  => avalon_st_adapter_out_0_startofpacket,                           --                        .startofpacket
 			stream_in_endofpacket    => avalon_st_adapter_out_0_endofpacket,                             --                        .endofpacket
@@ -841,7 +868,7 @@ begin
 	video_vga_controller_0 : component NIOSII_Test_video_vga_controller_0
 		port map (
 			clk           => video_pll_0_vga_clk_clk,                                         --                clk.clk
-			reset         => rst_controller_003_reset_out_reset,                              --              reset.reset
+			reset         => rst_controller_002_reset_out_reset,                              --              reset.reset
 			data          => video_dual_clock_buffer_0_avalon_dc_buffer_source_data,          --    avalon_vga_sink.data
 			startofpacket => video_dual_clock_buffer_0_avalon_dc_buffer_source_startofpacket, --                   .startofpacket
 			endofpacket   => video_dual_clock_buffer_0_avalon_dc_buffer_source_endofpacket,   --                   .endofpacket
@@ -861,8 +888,10 @@ begin
 		port map (
 			audio_pll_0_audio_clk_clk                                      => audio_pll_0_audio_clk_clk,                                                  --                                audio_pll_0_audio_clk.clk
 			clk_0_clk_clk                                                  => clk_clk,                                                                    --                                            clk_0_clk.clk
+			video_pll_0_vga_clk_clk                                        => video_pll_0_vga_clk_clk,                                                    --                                  video_pll_0_vga_clk.clk
 			audio_0_reset_reset_bridge_in_reset_reset                      => rst_controller_reset_out_reset,                                             --                  audio_0_reset_reset_bridge_in_reset.reset
-			nios2_gen2_0_reset_reset_bridge_in_reset_reset                 => rst_controller_002_reset_out_reset,                                         --             nios2_gen2_0_reset_reset_bridge_in_reset.reset
+			button_passthrough_reset_reset_bridge_in_reset_reset           => rst_controller_002_reset_out_reset,                                         --       button_passthrough_reset_reset_bridge_in_reset.reset
+			nios2_gen2_0_reset_reset_bridge_in_reset_reset                 => rst_controller_003_reset_out_reset,                                         --             nios2_gen2_0_reset_reset_bridge_in_reset.reset
 			video_pixel_buffer_dma_0_reset_reset_bridge_in_reset_reset     => rst_controller_001_reset_out_reset,                                         -- video_pixel_buffer_dma_0_reset_reset_bridge_in_reset.reset
 			nios2_gen2_0_data_master_address                               => nios2_gen2_0_data_master_address,                                           --                             nios2_gen2_0_data_master.address
 			nios2_gen2_0_data_master_waitrequest                           => nios2_gen2_0_data_master_waitrequest,                                       --                                                     .waitrequest
@@ -890,6 +919,8 @@ begin
 			audio_0_avalon_audio_slave_readdata                            => mm_interconnect_0_audio_0_avalon_audio_slave_readdata,                      --                                                     .readdata
 			audio_0_avalon_audio_slave_writedata                           => mm_interconnect_0_audio_0_avalon_audio_slave_writedata,                     --                                                     .writedata
 			audio_0_avalon_audio_slave_chipselect                          => mm_interconnect_0_audio_0_avalon_audio_slave_chipselect,                    --                                                     .chipselect
+			button_passthrough_s1_address                                  => mm_interconnect_0_button_passthrough_s1_address,                            --                                button_passthrough_s1.address
+			button_passthrough_s1_readdata                                 => mm_interconnect_0_button_passthrough_s1_readdata,                           --                                                     .readdata
 			jtag_uart_0_avalon_jtag_slave_address                          => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address,                    --                        jtag_uart_0_avalon_jtag_slave.address
 			jtag_uart_0_avalon_jtag_slave_write                            => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write,                      --                                                     .write
 			jtag_uart_0_avalon_jtag_slave_read                             => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read,                       --                                                     .read
@@ -930,7 +961,7 @@ begin
 	irq_mapper : component NIOSII_Test_irq_mapper
 		port map (
 			clk           => clk_clk,                            --       clk.clk
-			reset         => rst_controller_002_reset_out_reset, -- clk_reset.reset
+			reset         => rst_controller_003_reset_out_reset, -- clk_reset.reset
 			receiver0_irq => irq_mapper_receiver0_irq,           -- receiver0.irq
 			receiver1_irq => irq_mapper_receiver1_irq,           -- receiver1.irq
 			sender_irq    => nios2_gen2_0_irq_irq                --    sender.irq
@@ -944,7 +975,7 @@ begin
 			receiver_clk   => audio_pll_0_audio_clk_clk,          --       receiver_clk.clk
 			sender_clk     => clk_clk,                            --         sender_clk.clk
 			receiver_reset => rst_controller_reset_out_reset,     -- receiver_clk_reset.reset
-			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
+			sender_reset   => rst_controller_003_reset_out_reset, --   sender_clk_reset.reset
 			receiver_irq   => irq_synchronizer_receiver_irq,      --           receiver.irq
 			sender_irq(0)  => irq_mapper_receiver0_irq            --             sender.irq
 		);
@@ -1114,72 +1145,7 @@ begin
 			reset_req_in15 => '0'                                     -- (terminated)
 		);
 
-	rst_controller_002 : component niosii_test_rst_controller_002
-		generic map (
-			NUM_RESET_INPUTS          => 2,
-			OUTPUT_RESET_SYNC_EDGES   => "deassert",
-			SYNC_DEPTH                => 2,
-			RESET_REQUEST_PRESENT     => 1,
-			RESET_REQ_WAIT_TIME       => 1,
-			MIN_RST_ASSERTION_TIME    => 3,
-			RESET_REQ_EARLY_DSRT_TIME => 1,
-			USE_RESET_REQUEST_IN0     => 0,
-			USE_RESET_REQUEST_IN1     => 0,
-			USE_RESET_REQUEST_IN2     => 0,
-			USE_RESET_REQUEST_IN3     => 0,
-			USE_RESET_REQUEST_IN4     => 0,
-			USE_RESET_REQUEST_IN5     => 0,
-			USE_RESET_REQUEST_IN6     => 0,
-			USE_RESET_REQUEST_IN7     => 0,
-			USE_RESET_REQUEST_IN8     => 0,
-			USE_RESET_REQUEST_IN9     => 0,
-			USE_RESET_REQUEST_IN10    => 0,
-			USE_RESET_REQUEST_IN11    => 0,
-			USE_RESET_REQUEST_IN12    => 0,
-			USE_RESET_REQUEST_IN13    => 0,
-			USE_RESET_REQUEST_IN14    => 0,
-			USE_RESET_REQUEST_IN15    => 0,
-			ADAPT_RESET_REQUEST       => 0
-		)
-		port map (
-			reset_in0      => reset_reset_n_ports_inv,                -- reset_in0.reset
-			reset_in1      => nios2_gen2_0_debug_reset_request_reset, -- reset_in1.reset
-			clk            => clk_clk,                                --       clk.clk
-			reset_out      => rst_controller_002_reset_out_reset,     -- reset_out.reset
-			reset_req      => rst_controller_002_reset_out_reset_req, --          .reset_req
-			reset_req_in0  => '0',                                    -- (terminated)
-			reset_req_in1  => '0',                                    -- (terminated)
-			reset_in2      => '0',                                    -- (terminated)
-			reset_req_in2  => '0',                                    -- (terminated)
-			reset_in3      => '0',                                    -- (terminated)
-			reset_req_in3  => '0',                                    -- (terminated)
-			reset_in4      => '0',                                    -- (terminated)
-			reset_req_in4  => '0',                                    -- (terminated)
-			reset_in5      => '0',                                    -- (terminated)
-			reset_req_in5  => '0',                                    -- (terminated)
-			reset_in6      => '0',                                    -- (terminated)
-			reset_req_in6  => '0',                                    -- (terminated)
-			reset_in7      => '0',                                    -- (terminated)
-			reset_req_in7  => '0',                                    -- (terminated)
-			reset_in8      => '0',                                    -- (terminated)
-			reset_req_in8  => '0',                                    -- (terminated)
-			reset_in9      => '0',                                    -- (terminated)
-			reset_req_in9  => '0',                                    -- (terminated)
-			reset_in10     => '0',                                    -- (terminated)
-			reset_req_in10 => '0',                                    -- (terminated)
-			reset_in11     => '0',                                    -- (terminated)
-			reset_req_in11 => '0',                                    -- (terminated)
-			reset_in12     => '0',                                    -- (terminated)
-			reset_req_in12 => '0',                                    -- (terminated)
-			reset_in13     => '0',                                    -- (terminated)
-			reset_req_in13 => '0',                                    -- (terminated)
-			reset_in14     => '0',                                    -- (terminated)
-			reset_req_in14 => '0',                                    -- (terminated)
-			reset_in15     => '0',                                    -- (terminated)
-			reset_req_in15 => '0'                                     -- (terminated)
-		);
-
-	rst_controller_003 : component niosii_test_rst_controller
+	rst_controller_002 : component niosii_test_rst_controller
 		generic map (
 			NUM_RESET_INPUTS          => 1,
 			OUTPUT_RESET_SYNC_EDGES   => "deassert",
@@ -1209,7 +1175,7 @@ begin
 		port map (
 			reset_in0      => video_pll_0_reset_source_reset,     -- reset_in0.reset
 			clk            => video_pll_0_vga_clk_clk,            --       clk.clk
-			reset_out      => rst_controller_003_reset_out_reset, -- reset_out.reset
+			reset_out      => rst_controller_002_reset_out_reset, -- reset_out.reset
 			reset_req      => open,                               -- (terminated)
 			reset_req_in0  => '0',                                -- (terminated)
 			reset_in1      => '0',                                -- (terminated)
@@ -1244,6 +1210,71 @@ begin
 			reset_req_in15 => '0'                                 -- (terminated)
 		);
 
+	rst_controller_003 : component niosii_test_rst_controller_003
+		generic map (
+			NUM_RESET_INPUTS          => 2,
+			OUTPUT_RESET_SYNC_EDGES   => "deassert",
+			SYNC_DEPTH                => 2,
+			RESET_REQUEST_PRESENT     => 1,
+			RESET_REQ_WAIT_TIME       => 1,
+			MIN_RST_ASSERTION_TIME    => 3,
+			RESET_REQ_EARLY_DSRT_TIME => 1,
+			USE_RESET_REQUEST_IN0     => 0,
+			USE_RESET_REQUEST_IN1     => 0,
+			USE_RESET_REQUEST_IN2     => 0,
+			USE_RESET_REQUEST_IN3     => 0,
+			USE_RESET_REQUEST_IN4     => 0,
+			USE_RESET_REQUEST_IN5     => 0,
+			USE_RESET_REQUEST_IN6     => 0,
+			USE_RESET_REQUEST_IN7     => 0,
+			USE_RESET_REQUEST_IN8     => 0,
+			USE_RESET_REQUEST_IN9     => 0,
+			USE_RESET_REQUEST_IN10    => 0,
+			USE_RESET_REQUEST_IN11    => 0,
+			USE_RESET_REQUEST_IN12    => 0,
+			USE_RESET_REQUEST_IN13    => 0,
+			USE_RESET_REQUEST_IN14    => 0,
+			USE_RESET_REQUEST_IN15    => 0,
+			ADAPT_RESET_REQUEST       => 0
+		)
+		port map (
+			reset_in0      => reset_reset_n_ports_inv,                -- reset_in0.reset
+			reset_in1      => nios2_gen2_0_debug_reset_request_reset, -- reset_in1.reset
+			clk            => clk_clk,                                --       clk.clk
+			reset_out      => rst_controller_003_reset_out_reset,     -- reset_out.reset
+			reset_req      => rst_controller_003_reset_out_reset_req, --          .reset_req
+			reset_req_in0  => '0',                                    -- (terminated)
+			reset_req_in1  => '0',                                    -- (terminated)
+			reset_in2      => '0',                                    -- (terminated)
+			reset_req_in2  => '0',                                    -- (terminated)
+			reset_in3      => '0',                                    -- (terminated)
+			reset_req_in3  => '0',                                    -- (terminated)
+			reset_in4      => '0',                                    -- (terminated)
+			reset_req_in4  => '0',                                    -- (terminated)
+			reset_in5      => '0',                                    -- (terminated)
+			reset_req_in5  => '0',                                    -- (terminated)
+			reset_in6      => '0',                                    -- (terminated)
+			reset_req_in6  => '0',                                    -- (terminated)
+			reset_in7      => '0',                                    -- (terminated)
+			reset_req_in7  => '0',                                    -- (terminated)
+			reset_in8      => '0',                                    -- (terminated)
+			reset_req_in8  => '0',                                    -- (terminated)
+			reset_in9      => '0',                                    -- (terminated)
+			reset_req_in9  => '0',                                    -- (terminated)
+			reset_in10     => '0',                                    -- (terminated)
+			reset_req_in10 => '0',                                    -- (terminated)
+			reset_in11     => '0',                                    -- (terminated)
+			reset_req_in11 => '0',                                    -- (terminated)
+			reset_in12     => '0',                                    -- (terminated)
+			reset_req_in12 => '0',                                    -- (terminated)
+			reset_in13     => '0',                                    -- (terminated)
+			reset_req_in13 => '0',                                    -- (terminated)
+			reset_in14     => '0',                                    -- (terminated)
+			reset_req_in14 => '0',                                    -- (terminated)
+			reset_in15     => '0',                                    -- (terminated)
+			reset_req_in15 => '0'                                     -- (terminated)
+		);
+
 	reset_reset_n_ports_inv <= not reset_reset_n;
 
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read;
@@ -1253,5 +1284,7 @@ begin
 	rst_controller_001_reset_out_reset_ports_inv <= not rst_controller_001_reset_out_reset;
 
 	rst_controller_002_reset_out_reset_ports_inv <= not rst_controller_002_reset_out_reset;
+
+	rst_controller_003_reset_out_reset_ports_inv <= not rst_controller_003_reset_out_reset;
 
 end architecture rtl; -- of NIOSII_Test
