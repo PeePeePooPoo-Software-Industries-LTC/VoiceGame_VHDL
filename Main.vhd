@@ -5,9 +5,11 @@ use ieee.math_real.all;
 
 entity Main is
 	port (
-		audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
-		audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
-		audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
+		I2C_SDAT						: inout    std_logic                     := '0';
+		I2C_SCLK						: out   std_logic;
+		AUD_ADCDAT  				: in    std_logic                     := '0';             -- audio_interface.ADCDAT
+		AUD_ADCLRCK 				: in    std_logic                     := '0';             --                .ADCLRCK
+		AUD_BCLK    				: in    std_logic                     := '0';             --                .BCLK
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset             : in    std_logic                     := '0';             --           reset.reset
 		sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
@@ -29,37 +31,40 @@ entity Main is
 		
 		SW : in std_logic_vector(17 downto 0);
 		LEDR : out std_logic_vector(17 downto 0);
-		LEDG : out std_logic_vector(7 downto 0)
+		LEDG : out std_logic_vector(7 downto 0);
+		GPIO : inout std_logic_vector(35 downto 0)
 	);
 end entity Main;
 
 architecture rtl of Main is
 	component NIOSII_Test is
-		port (
-			audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
-			audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
-			audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
-			clk_clk                 : in    std_logic                     := '0';             --             clk.clk
-			reset_reset_n             : in    std_logic                     := '0';             --           reset.reset
-			sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
-			sram_ADDR               : out   std_logic_vector(19 downto 0);                    --                .ADDR
-			sram_LB_N               : out   std_logic;                                        --                .LB_N
-			sram_UB_N               : out   std_logic;                                        --                .UB_N
-			sram_CE_N               : out   std_logic;                                        --                .CE_N
-			sram_OE_N               : out   std_logic;                                        --                .OE_N
-			sram_WE_N               : out   std_logic;  
-			buttons_export          : in    std_logic_vector(31 downto 0);
-			vga_CLK                                       : out   std_logic;                                        --                                    vga.CLK
-			vga_HS                                        : out   std_logic;                                        --                                       .HS
-			vga_VS                                        : out   std_logic;                                        --                                       .VS
-			vga_BLANK                                     : out   std_logic;                                        --                                       .BLANK
-			vga_SYNC                                      : out   std_logic;                                        --                                       .SYNC
-			vga_R                                         : out   std_logic_vector(7 downto 0);                     --                                       .R
-			vga_G                                         : out   std_logic_vector(7 downto 0);                     --                                       .G
-			vga_B                                         : out   std_logic_vector(7 downto 0)                      --                                       .B
+	port (
+		audio_and_video_export_SDAT : inout std_logic                     := '0';             -- audio_and_video_export.SDAT
+		audio_and_video_export_SCLK : out   std_logic;                                        --                       .SCLK
+		audio_interface_ADCDAT      : in    std_logic                     := '0';             --        audio_interface.ADCDAT
+		audio_interface_ADCLRCK     : in    std_logic                     := '0';             --                       .ADCLRCK
+		audio_interface_BCLK        : in    std_logic                     := '0';             --                       .BCLK
+		buttons_export              : in    std_logic_vector(31 downto 0) := (others => '0'); --                buttons.export
+		clk_clk                     : in    std_logic                     := '0';             --                    clk.clk
+		reset_reset_n               : in    std_logic                     := '0';             --                  reset.reset_n
+		sram_DQ                     : inout std_logic_vector(15 downto 0) := (others => '0'); --                   sram.DQ
+		sram_ADDR                   : out   std_logic_vector(19 downto 0);                    --                       .ADDR
+		sram_LB_N                   : out   std_logic;                                        --                       .LB_N
+		sram_UB_N                   : out   std_logic;                                        --                       .UB_N
+		sram_CE_N                   : out   std_logic;                                        --                       .CE_N
+		sram_OE_N                   : out   std_logic;                                        --                       .OE_N
+		sram_WE_N                   : out   std_logic;                                        --                       .WE_N
+		vga_CLK                     : out   std_logic;                                        --                    vga.CLK
+		vga_HS                      : out   std_logic;                                        --                       .HS
+		vga_VS                      : out   std_logic;                                        --                       .VS
+		vga_BLANK                   : out   std_logic;                                        --                       .BLANK
+		vga_SYNC                    : out   std_logic;                                        --                       .SYNC
+		vga_R                       : out   std_logic_vector(7 downto 0);                     --                       .R
+		vga_G                       : out   std_logic_vector(7 downto 0);                     --                       .G
+		vga_B                       : out   std_logic_vector(7 downto 0)                      --                       .B
+	);
+end component NIOSII_Test;
 
-		);
-	end component NIOSII_Test;
 		
 	component vga_controller is
 		generic(
@@ -99,12 +104,14 @@ architecture rtl of Main is
 	
 	signal buttons_sig : std_logic_vector(31 downto 0);
 begin
-	buttons_sig(3 downto 0) <= SW(3 downto 0);
+	buttons_sig(4 downto 0) <= SW(4 downto 0);
 
 	nios2_core : NIOSII_Test port map(
-			audio_interface_ADCDAT  => audio_interface_ADCDAT,
-			audio_interface_ADCLRCK => audio_interface_ADCLRCK,
-			audio_interface_BCLK    => audio_interface_BCLK,
+			audio_interface_BCLK    =>  AUD_BCLK,               
+         audio_interface_ADCLRCK => AUD_ADCLRCK,           
+         audio_interface_ADCDAT => AUD_ADCDAT,          
+         audio_and_video_export_SCLK => I2C_SCLK,          
+         audio_and_video_export_SDAT => I2C_SDAT,
 			clk_clk                 => clk_clk,
 			reset_reset_n           => reset_reset,
 
@@ -127,4 +134,8 @@ begin
 			vga_G => vga_G,
 			vga_B => vga_B
 	);
+	
+		  GPIO(0) <= AUD_BCLK;
+        GPIO(1) <= AUD_ADCLRCK;
+        GPIO(2) <= AUD_ADCDAT;
 end architecture rtl;
