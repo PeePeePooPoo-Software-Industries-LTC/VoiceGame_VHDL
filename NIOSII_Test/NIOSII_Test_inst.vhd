@@ -1,5 +1,7 @@
 	component NIOSII_Test is
 		port (
+			audio_and_video_export_SDAT : inout std_logic                     := 'X';             -- SDAT
+			audio_and_video_export_SCLK : out   std_logic;                                        -- SCLK
 			audio_interface_ADCDAT      : in    std_logic                     := 'X';             -- ADCDAT
 			audio_interface_ADCLRCK     : in    std_logic                     := 'X';             -- ADCLRCK
 			audio_interface_BCLK        : in    std_logic                     := 'X';             -- BCLK
@@ -20,14 +22,14 @@
 			vga_SYNC                    : out   std_logic;                                        -- SYNC
 			vga_R                       : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                       : out   std_logic_vector(7 downto 0);                     -- G
-			vga_B                       : out   std_logic_vector(7 downto 0);                     -- B
-			audio_and_video_export_SDAT : inout std_logic                     := 'X';             -- SDAT
-			audio_and_video_export_SCLK : out   std_logic                                         -- SCLK
+			vga_B                       : out   std_logic_vector(7 downto 0)                      -- B
 		);
 	end component NIOSII_Test;
 
 	u0 : component NIOSII_Test
 		port map (
+			audio_and_video_export_SDAT => CONNECTED_TO_audio_and_video_export_SDAT, -- audio_and_video_export.SDAT
+			audio_and_video_export_SCLK => CONNECTED_TO_audio_and_video_export_SCLK, --                       .SCLK
 			audio_interface_ADCDAT      => CONNECTED_TO_audio_interface_ADCDAT,      --        audio_interface.ADCDAT
 			audio_interface_ADCLRCK     => CONNECTED_TO_audio_interface_ADCLRCK,     --                       .ADCLRCK
 			audio_interface_BCLK        => CONNECTED_TO_audio_interface_BCLK,        --                       .BCLK
@@ -48,8 +50,6 @@
 			vga_SYNC                    => CONNECTED_TO_vga_SYNC,                    --                       .SYNC
 			vga_R                       => CONNECTED_TO_vga_R,                       --                       .R
 			vga_G                       => CONNECTED_TO_vga_G,                       --                       .G
-			vga_B                       => CONNECTED_TO_vga_B,                       --                       .B
-			audio_and_video_export_SDAT => CONNECTED_TO_audio_and_video_export_SDAT, -- audio_and_video_export.SDAT
-			audio_and_video_export_SCLK => CONNECTED_TO_audio_and_video_export_SCLK  --                       .SCLK
+			vga_B                       => CONNECTED_TO_vga_B                        --                       .B
 		);
 

@@ -79,11 +79,14 @@ architecture rtl of NIOSII_Test is
 
 	component NIOSII_Test_button_passthrough is
 		port (
-			clk      : in  std_logic                     := 'X';             -- clk
-			reset_n  : in  std_logic                     := 'X';             -- reset_n
-			address  : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
-			readdata : out std_logic_vector(31 downto 0);                    -- readdata
-			in_port  : in  std_logic_vector(31 downto 0) := (others => 'X')  -- export
+			clk        : in  std_logic                     := 'X';             -- clk
+			reset_n    : in  std_logic                     := 'X';             -- reset_n
+			address    : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			write_n    : in  std_logic                     := 'X';             -- write_n
+			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			chipselect : in  std_logic                     := 'X';             -- chipselect
+			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			in_port    : in  std_logic_vector(31 downto 0) := (others => 'X')  -- export
 		);
 	end component NIOSII_Test_button_passthrough;
 
@@ -305,7 +308,10 @@ architecture rtl of NIOSII_Test is
 			audio_and_video_config_0_avalon_av_config_slave_byteenable     : out std_logic_vector(3 downto 0);                     -- byteenable
 			audio_and_video_config_0_avalon_av_config_slave_waitrequest    : in  std_logic                     := 'X';             -- waitrequest
 			button_passthrough_s1_address                                  : out std_logic_vector(1 downto 0);                     -- address
+			button_passthrough_s1_write                                    : out std_logic;                                        -- write
 			button_passthrough_s1_readdata                                 : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			button_passthrough_s1_writedata                                : out std_logic_vector(31 downto 0);                    -- writedata
+			button_passthrough_s1_chipselect                               : out std_logic;                                        -- chipselect
 			jtag_uart_0_avalon_jtag_slave_address                          : out std_logic_vector(0 downto 0);                     -- address
 			jtag_uart_0_avalon_jtag_slave_write                            : out std_logic;                                        -- write
 			jtag_uart_0_avalon_jtag_slave_read                             : out std_logic;                                        -- read
@@ -682,8 +688,11 @@ architecture rtl of NIOSII_Test is
 	signal mm_interconnect_0_onchip_memory2_0_s1_write                                   : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	signal mm_interconnect_0_onchip_memory2_0_s1_writedata                               : std_logic_vector(31 downto 0); -- mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	signal mm_interconnect_0_onchip_memory2_0_s1_clken                                   : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
+	signal mm_interconnect_0_button_passthrough_s1_chipselect                            : std_logic;                     -- mm_interconnect_0:button_passthrough_s1_chipselect -> button_passthrough:chipselect
 	signal mm_interconnect_0_button_passthrough_s1_readdata                              : std_logic_vector(31 downto 0); -- button_passthrough:readdata -> mm_interconnect_0:button_passthrough_s1_readdata
 	signal mm_interconnect_0_button_passthrough_s1_address                               : std_logic_vector(1 downto 0);  -- mm_interconnect_0:button_passthrough_s1_address -> button_passthrough:address
+	signal mm_interconnect_0_button_passthrough_s1_write                                 : std_logic;                     -- mm_interconnect_0:button_passthrough_s1_write -> mm_interconnect_0_button_passthrough_s1_write:in
+	signal mm_interconnect_0_button_passthrough_s1_writedata                             : std_logic_vector(31 downto 0); -- mm_interconnect_0:button_passthrough_s1_writedata -> button_passthrough:writedata
 	signal irq_mapper_receiver1_irq                                                      : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver1_irq
 	signal nios2_gen2_0_irq_irq                                                          : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
 	signal irq_mapper_receiver0_irq                                                      : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
@@ -711,6 +720,7 @@ architecture rtl of NIOSII_Test is
 	signal reset_reset_n_ports_inv                                                       : std_logic;                     -- reset_reset_n:inv -> [rst_controller_001:reset_in0, rst_controller_003:reset_in0]
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv                : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv               : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
+	signal mm_interconnect_0_button_passthrough_s1_write_ports_inv                       : std_logic;                     -- mm_interconnect_0_button_passthrough_s1_write:inv -> button_passthrough:write_n
 	signal rst_controller_001_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> jtag_uart_0:rst_n
 	signal rst_controller_002_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> button_passthrough:reset_n
 	signal rst_controller_003_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_003_reset_out_reset:inv -> nios2_gen2_0:reset_n
@@ -758,11 +768,14 @@ begin
 
 	button_passthrough : component NIOSII_Test_button_passthrough
 		port map (
-			clk      => video_pll_0_vga_clk_clk,                          --                 clk.clk
-			reset_n  => rst_controller_002_reset_out_reset_ports_inv,     --               reset.reset_n
-			address  => mm_interconnect_0_button_passthrough_s1_address,  --                  s1.address
-			readdata => mm_interconnect_0_button_passthrough_s1_readdata, --                    .readdata
-			in_port  => buttons_export                                    -- external_connection.export
+			clk        => video_pll_0_vga_clk_clk,                                 --                 clk.clk
+			reset_n    => rst_controller_002_reset_out_reset_ports_inv,            --               reset.reset_n
+			address    => mm_interconnect_0_button_passthrough_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_button_passthrough_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_button_passthrough_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_button_passthrough_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_button_passthrough_s1_readdata,        --                    .readdata
+			in_port    => buttons_export                                           -- external_connection.export
 		);
 
 	jtag_uart_0 : component NIOSII_Test_jtag_uart_0
@@ -974,7 +987,10 @@ begin
 			audio_and_video_config_0_avalon_av_config_slave_byteenable     => mm_interconnect_0_audio_and_video_config_0_avalon_av_config_slave_byteenable,  --                                                     .byteenable
 			audio_and_video_config_0_avalon_av_config_slave_waitrequest    => mm_interconnect_0_audio_and_video_config_0_avalon_av_config_slave_waitrequest, --                                                     .waitrequest
 			button_passthrough_s1_address                                  => mm_interconnect_0_button_passthrough_s1_address,                               --                                button_passthrough_s1.address
+			button_passthrough_s1_write                                    => mm_interconnect_0_button_passthrough_s1_write,                                 --                                                     .write
 			button_passthrough_s1_readdata                                 => mm_interconnect_0_button_passthrough_s1_readdata,                              --                                                     .readdata
+			button_passthrough_s1_writedata                                => mm_interconnect_0_button_passthrough_s1_writedata,                             --                                                     .writedata
+			button_passthrough_s1_chipselect                               => mm_interconnect_0_button_passthrough_s1_chipselect,                            --                                                     .chipselect
 			jtag_uart_0_avalon_jtag_slave_address                          => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address,                       --                        jtag_uart_0_avalon_jtag_slave.address
 			jtag_uart_0_avalon_jtag_slave_write                            => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write,                         --                                                     .write
 			jtag_uart_0_avalon_jtag_slave_read                             => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read,                          --                                                     .read
@@ -1334,6 +1350,8 @@ begin
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read;
 
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;
+
+	mm_interconnect_0_button_passthrough_s1_write_ports_inv <= not mm_interconnect_0_button_passthrough_s1_write;
 
 	rst_controller_001_reset_out_reset_ports_inv <= not rst_controller_001_reset_out_reset;
 

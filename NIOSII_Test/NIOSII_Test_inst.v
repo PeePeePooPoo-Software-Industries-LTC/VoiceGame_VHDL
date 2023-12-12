@@ -1,4 +1,6 @@
 	NIOSII_Test u0 (
+		.audio_and_video_export_SDAT (<connected-to-audio_and_video_export_SDAT>), // audio_and_video_export.SDAT
+		.audio_and_video_export_SCLK (<connected-to-audio_and_video_export_SCLK>), //                       .SCLK
 		.audio_interface_ADCDAT      (<connected-to-audio_interface_ADCDAT>),      //        audio_interface.ADCDAT
 		.audio_interface_ADCLRCK     (<connected-to-audio_interface_ADCLRCK>),     //                       .ADCLRCK
 		.audio_interface_BCLK        (<connected-to-audio_interface_BCLK>),        //                       .BCLK
@@ -19,8 +21,6 @@
 		.vga_SYNC                    (<connected-to-vga_SYNC>),                    //                       .SYNC
 		.vga_R                       (<connected-to-vga_R>),                       //                       .R
 		.vga_G                       (<connected-to-vga_G>),                       //                       .G
-		.vga_B                       (<connected-to-vga_B>),                       //                       .B
-		.audio_and_video_export_SDAT (<connected-to-audio_and_video_export_SDAT>), // audio_and_video_export.SDAT
-		.audio_and_video_export_SCLK (<connected-to-audio_and_video_export_SCLK>)  //                       .SCLK
+		.vga_B                       (<connected-to-vga_B>)                        //                       .B
 	);
 

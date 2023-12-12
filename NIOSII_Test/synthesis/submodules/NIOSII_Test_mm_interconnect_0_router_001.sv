@@ -176,11 +176,6 @@ module NIOSII_Test_mm_interconnect_0_router_001
 
 
 
-    // -------------------------------------------------------
-    // Write and read transaction signals
-    // -------------------------------------------------------
-    wire read_transaction;
-    assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     NIOSII_Test_mm_interconnect_0_router_001_default_decode the_default_decode(
@@ -225,7 +220,7 @@ module NIOSII_Test_mm_interconnect_0_router_001
     end
 
     // ( 0x301010 .. 0x301020 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 22'h301010  && read_transaction  ) begin
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 22'h301010   ) begin
             src_channel = 8'b10000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end

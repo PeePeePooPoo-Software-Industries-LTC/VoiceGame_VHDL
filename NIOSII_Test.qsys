@@ -291,7 +291,7 @@
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
+  <parameter name="captureEdge" value="true" />
   <parameter name="clockRate" value="25000000" />
   <parameter name="direction" value="Input" />
   <parameter name="edgeType" value="RISING" />
@@ -606,7 +606,7 @@
  <module
    name="video_vga_controller_0"
    kind="altera_up_avalon_video_vga_controller"
-   version="18.0"
+   version="18.1"
    enabled="1">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="25000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
