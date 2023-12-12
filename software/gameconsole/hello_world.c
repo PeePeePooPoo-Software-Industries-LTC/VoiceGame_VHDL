@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 #include "system.h"
 #include "io.h"
@@ -65,18 +66,24 @@
 ////	}
 //}
 int main() {
-#define BUFFER_MAX_SIZE 512
+#define BUFFER_MAX_SIZE 128
 
 alt_up_audio_dev* device = alt_up_audio_open_dev("/dev/audio_0"); // open audio device
+
+// Test clear FIFO buffers for audio.
+alt_up_audio_reset_audio_core(device);
+
 
 while (1) {
 	unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
   // Wait until a button is pressed or something
 	//printf("%i\n",*(int*)BUTTON_PASSTHROUGH_BASE);
-	while(!(input & 0x10)) {input = IORD(BUTTON_PASSTHROUGH_BASE, 0);}; // Wait until a switch is held down
-	printf("FIFO can read from right buffer: %d\n", alt_up_audio_read_fifo_avail(device, 0)); // Print available bytes
 
-	unsigned int left_available = alt_up_audio_read_fifo_avail(device, 0); // Read how many bytes can be read
+
+	while(!(input & 0x10)) {input = IORD(BUTTON_PASSTHROUGH_BASE, 0);}; // Wait until a switch is held down
+	printf("FIFO can read from left buffer: %d\n", alt_up_audio_read_fifo_avail(device, ALT_UP_AUDIO_LEFT)); // Print available bytes
+
+	unsigned int left_available = alt_up_audio_read_fifo_avail(device, ALT_UP_AUDIO_LEFT); // Read how many bytes can be read
 	unsigned int left_buffer[BUFFER_MAX_SIZE] = {0}; // Buffer for the audio to receive
 	alt_up_audio_record_l(device, &left_buffer, left_available); // Read bytes into buffer
 
