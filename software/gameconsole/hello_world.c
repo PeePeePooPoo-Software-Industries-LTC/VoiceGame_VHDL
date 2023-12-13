@@ -24,7 +24,8 @@ void vga_draw_rect(VgaBuffer* buff, int x, int y, int w, int h, Color);
 
 inline void vga_swap_buffers(VgaBuffer* buff) {
 	alt_up_pixel_buffer_dma_swap_buffers(buff->device);
-	while (!alt_up_pixel_buffer_dma_check_swap_buffers_status(buff->device)) {};
+	while (alt_up_pixel_buffer_dma_check_swap_buffers_status(buff->device)) {};
+	vga_clear(buff);
 }
 
 inline void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color color) {
@@ -53,8 +54,8 @@ int main() {
 		return 1;
 	}
 
-	alt_up_pixel_buffer_dma_clear_screen(vga_buffer.device, 0);
-	alt_up_pixel_buffer_dma_clear_screen(vga_buffer.device, 1);
+//	alt_up_pixel_buffer_dma_clear_screen(vga_buffer.device, 0);
+//	alt_up_pixel_buffer_dma_clear_screen(vga_buffer.device, 1);
 
 	printf(
 		"Addresses (FRONT: %p) (BACK: %p)",
@@ -67,7 +68,7 @@ int main() {
 	while (1) {
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
 
-		vga_draw_rect(&vga_buffer, x, y, 20, 20, 0);
+//		vga_draw_rect(&vga_buffer, x, y, 20, 20, 0);
 
 		int speed = 5;
 
@@ -95,7 +96,6 @@ int main() {
 		vga_draw_rect(&vga_buffer, x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
 
 		vga_swap_buffers(&vga_buffer);
-//		usleep(50000);
 	}
 	return 0;
 }
