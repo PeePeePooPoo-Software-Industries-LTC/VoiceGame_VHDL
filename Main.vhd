@@ -5,9 +5,11 @@ use ieee.math_real.all;
 
 entity Main is
 	port (
-		audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
-		audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
-		audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
+		I2C_SDAT       : inout std_logic                     := '0';             --    audio_config.SDAT
+		I2C_SCLK       : out   std_logic;                                        --                .SCLK
+		AUD_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
+		AUD_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
+		AUD_BCLK    : in    std_logic                     := '0';             --                .BCLK
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset             : in    std_logic                     := '0';             --           reset.reset
 		sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
@@ -36,6 +38,8 @@ end entity Main;
 architecture rtl of Main is
 	component NIOSII_Test is
 		port (
+			audio_config_SDAT       : inout std_logic                     := '0';             --    audio_config.SDAT
+			audio_config_SCLK       : out   std_logic;                                        --                .SCLK
 			audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
 			audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
 			audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
@@ -102,9 +106,11 @@ begin
 	buttons_sig(3 downto 0) <= SW(3 downto 0);
 
 	nios2_core : NIOSII_Test port map(
-			audio_interface_ADCDAT  => audio_interface_ADCDAT,
-			audio_interface_ADCLRCK => audio_interface_ADCLRCK,
-			audio_interface_BCLK    => audio_interface_BCLK,
+			audio_config_SDAT       => I2C_SDAT,
+			audio_config_SCLK       => I2C_SCLK,
+			audio_interface_ADCDAT  => AUD_ADCDAT,
+			audio_interface_ADCLRCK => AUD_ADCLRCK,
+			audio_interface_BCLK    => AUD_BCLK,
 			clk_clk                 => clk_clk,
 			reset_reset_n           => reset_reset,
 

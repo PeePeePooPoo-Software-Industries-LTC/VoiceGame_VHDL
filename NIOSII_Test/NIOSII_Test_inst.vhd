@@ -3,6 +3,7 @@
 			audio_interface_ADCDAT  : in    std_logic                     := 'X';             -- ADCDAT
 			audio_interface_ADCLRCK : in    std_logic                     := 'X';             -- ADCLRCK
 			audio_interface_BCLK    : in    std_logic                     := 'X';             -- BCLK
+			buttons_export          : in    std_logic_vector(31 downto 0) := (others => 'X'); -- export
 			clk_clk                 : in    std_logic                     := 'X';             -- clk
 			reset_reset_n           : in    std_logic                     := 'X';             -- reset_n
 			sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => 'X'); -- DQ
@@ -20,7 +21,8 @@
 			vga_R                   : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                   : out   std_logic_vector(7 downto 0);                     -- G
 			vga_B                   : out   std_logic_vector(7 downto 0);                     -- B
-			buttons_export          : in    std_logic_vector(31 downto 0) := (others => 'X')  -- export
+			audio_config_SDAT       : inout std_logic                     := 'X';             -- SDAT
+			audio_config_SCLK       : out   std_logic                                         -- SCLK
 		);
 	end component NIOSII_Test;
 
@@ -29,6 +31,7 @@
 			audio_interface_ADCDAT  => CONNECTED_TO_audio_interface_ADCDAT,  -- audio_interface.ADCDAT
 			audio_interface_ADCLRCK => CONNECTED_TO_audio_interface_ADCLRCK, --                .ADCLRCK
 			audio_interface_BCLK    => CONNECTED_TO_audio_interface_BCLK,    --                .BCLK
+			buttons_export          => CONNECTED_TO_buttons_export,          --         buttons.export
 			clk_clk                 => CONNECTED_TO_clk_clk,                 --             clk.clk
 			reset_reset_n           => CONNECTED_TO_reset_reset_n,           --           reset.reset_n
 			sram_DQ                 => CONNECTED_TO_sram_DQ,                 --            sram.DQ
@@ -46,6 +49,7 @@
 			vga_R                   => CONNECTED_TO_vga_R,                   --                .R
 			vga_G                   => CONNECTED_TO_vga_G,                   --                .G
 			vga_B                   => CONNECTED_TO_vga_B,                   --                .B
-			buttons_export          => CONNECTED_TO_buttons_export           --         buttons.export
+			audio_config_SDAT       => CONNECTED_TO_audio_config_SDAT,       --    audio_config.SDAT
+			audio_config_SCLK       => CONNECTED_TO_audio_config_SCLK        --                .SCLK
 		);
 

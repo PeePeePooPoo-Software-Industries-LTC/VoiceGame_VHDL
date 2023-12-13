@@ -2,6 +2,7 @@
 		.audio_interface_ADCDAT  (<connected-to-audio_interface_ADCDAT>),  // audio_interface.ADCDAT
 		.audio_interface_ADCLRCK (<connected-to-audio_interface_ADCLRCK>), //                .ADCLRCK
 		.audio_interface_BCLK    (<connected-to-audio_interface_BCLK>),    //                .BCLK
+		.buttons_export          (<connected-to-buttons_export>),          //         buttons.export
 		.clk_clk                 (<connected-to-clk_clk>),                 //             clk.clk
 		.reset_reset_n           (<connected-to-reset_reset_n>),           //           reset.reset_n
 		.sram_DQ                 (<connected-to-sram_DQ>),                 //            sram.DQ
@@ -19,6 +20,7 @@
 		.vga_R                   (<connected-to-vga_R>),                   //                .R
 		.vga_G                   (<connected-to-vga_G>),                   //                .G
 		.vga_B                   (<connected-to-vga_B>),                   //                .B
-		.buttons_export          (<connected-to-buttons_export>)           //         buttons.export
+		.audio_config_SDAT       (<connected-to-audio_config_SDAT>),       //    audio_config.SDAT
+		.audio_config_SCLK       (<connected-to-audio_config_SCLK>)        //                .SCLK
 	);
 
