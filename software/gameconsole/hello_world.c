@@ -5,6 +5,7 @@
 #include "io.h"
 #include "sys/alt_irq.h"
 #include "altera_up_avalon_audio.h"
+#include "altera_up_avalon_audio_and_video_config.h"
 #include "altera_up_avalon_video_pixel_buffer_dma.h"
 
 //#define WRITE_SDRAM(offset, value) *(NEW_SDRAM_CONTROLLER_0_BASE + offset) = value;
@@ -68,17 +69,39 @@
 int main() {
 #define BUFFER_MAX_SIZE 128
 
+alt_up_av_config_dev* config_device = alt_up_av_config_open_dev("/dev/audio_and_video_config_0"); // Open config device
 alt_up_audio_dev* device = alt_up_audio_open_dev("/dev/audio_0"); // open audio device
 
-// Test clear FIFO buffers for audio.
-alt_up_audio_reset_audio_core(device);
+if(config_device != NULL) {
+	printf("Config device opened.\n");
+}
+if(device != NULL) {
+	printf("Audio device opened.\n");
+}
 
+// Test clear FIFO buffers for audio.
+printf("Config reset returned %i\n", alt_up_av_config_reset(config_device));
+//printf("Audio  reset returned %i\n", alt_up_audio_reset_audio_core(device));
+
+usleep(500000);
+
+printf("Config Acknowledge: %i\n",alt_up_av_config_read_acknowledge(config_device));
+printf("Config ready: %i\n",alt_up_av_config_read_ready(config_device));
+
+int check = alt_up_av_config_write_audio_cfg_register(config_device,0b0001001,1);
+if(!check) {
+	printf("Chip activation successful\n");
+} else {
+	printf("Chip activation failed.\n");
+}
 
 while (1) {
 	unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
   // Wait until a button is pressed or something
 	//printf("%i\n",*(int*)BUTTON_PASSTHROUGH_BASE);
 
+	// Activate the CODEC Chip
+	// Byte: 0001001 - 0 - 1
 
 	while(!(input & 0x10)) {input = IORD(BUTTON_PASSTHROUGH_BASE, 0);}; // Wait until a switch is held down
 	printf("FIFO can read from left buffer: %d\n", alt_up_audio_read_fifo_avail(device, ALT_UP_AUDIO_LEFT)); // Print available bytes
