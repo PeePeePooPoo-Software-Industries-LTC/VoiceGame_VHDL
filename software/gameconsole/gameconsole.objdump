@@ -1092,12 +1092,12 @@ inline void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color color) {
   280374:	e17ffd15 	stw	r5,-12(fp)
   280378:	e1bffe15 	stw	r6,-8(fp)
   28037c:	e1ffff15 	stw	r7,-4(fp)
-	alt_up_pixel_buffer_dma_draw(buff->device, x, y, color);
+	alt_up_pixel_buffer_dma_draw(buff->device, color, x, y);
   280380:	e0bffc17 	ldw	r2,-16(fp)
   280384:	10800017 	ldw	r2,0(r2)
-  280388:	e0fffd17 	ldw	r3,-12(fp)
-  28038c:	e13ffe17 	ldw	r4,-8(fp)
-  280390:	e17fff17 	ldw	r5,-4(fp)
+  280388:	e0ffff17 	ldw	r3,-4(fp)
+  28038c:	e13ffd17 	ldw	r4,-12(fp)
+  280390:	e17ffe17 	ldw	r5,-8(fp)
   280394:	280f883a 	mov	r7,r5
   280398:	200d883a 	mov	r6,r4
   28039c:	180b883a 	mov	r5,r3
@@ -1594,6 +1594,10 @@ int main() {
   2808ac:	028091c0 	call	28091c <__divsi3>
   2808b0:	1085883a 	add	r2,r2,r2
   2808b4:	e0bed015 	stw	r2,-1216(fp)
+//			for (int y = 0; y < max_y; y++) {
+//				int val = y * 5;
+//				vga_draw_pixel(&vga_buffer, x + 10, y + 10, RGB(BIT10_MAX - val, 0, val));
+//			}
 
 			vga_draw_vertical_line(&vga_buffer, x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
   2808b8:	e0bec717 	ldw	r2,-1252(fp)
@@ -1618,7 +1622,7 @@ int main() {
   2808ec:	e0bec717 	ldw	r2,-1252(fp)
   2808f0:	10804b10 	cmplti	r2,r2,300
   2808f4:	103fda1e 	bne	r2,zero,280860 <main+0x3b8>
-			int max_y = RAW * 200 / 0xffff * 2;
+//			}
 
 			vga_draw_vertical_line(&vga_buffer, x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
 		}

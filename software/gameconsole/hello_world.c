@@ -37,7 +37,7 @@ inline void vga_swap_buffers(VgaBuffer* buff) {
 }
 
 inline void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color color) {
-	alt_up_pixel_buffer_dma_draw(buff->device, x, y, color);
+	alt_up_pixel_buffer_dma_draw(buff->device, color, x, y);
 }
 
 inline void vga_clear(VgaBuffer* buff) {
@@ -155,6 +155,11 @@ int main() {
 			}
 
 			int max_y = RAW * 200 / 0xffff * 2;
+
+//			for (int y = 0; y < max_y; y++) {
+//				int val = y * 5;
+//				vga_draw_pixel(&vga_buffer, x + 10, y + 10, RGB(BIT10_MAX - val, 0, val));
+//			}
 
 			vga_draw_vertical_line(&vga_buffer, x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
 		}
