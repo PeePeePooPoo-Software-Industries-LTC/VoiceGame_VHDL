@@ -1,7 +1,6 @@
 	NIOSII_Test u0 (
-		.audio_interface_ADCDAT  (<connected-to-audio_interface_ADCDAT>),  // audio_interface.ADCDAT
-		.audio_interface_ADCLRCK (<connected-to-audio_interface_ADCLRCK>), //                .ADCLRCK
-		.audio_interface_BCLK    (<connected-to-audio_interface_BCLK>),    //                .BCLK
+		.audio_config_SDAT       (<connected-to-audio_config_SDAT>),       //    audio_config.SDAT
+		.audio_config_SCLK       (<connected-to-audio_config_SCLK>),       //                .SCLK
 		.buttons_export          (<connected-to-buttons_export>),          //         buttons.export
 		.clk_clk                 (<connected-to-clk_clk>),                 //             clk.clk
 		.reset_reset_n           (<connected-to-reset_reset_n>),           //           reset.reset_n
@@ -20,7 +19,10 @@
 		.vga_R                   (<connected-to-vga_R>),                   //                .R
 		.vga_G                   (<connected-to-vga_G>),                   //                .G
 		.vga_B                   (<connected-to-vga_B>),                   //                .B
-		.audio_config_SDAT       (<connected-to-audio_config_SDAT>),       //    audio_config.SDAT
-		.audio_config_SCLK       (<connected-to-audio_config_SCLK>)        //                .SCLK
+		.audio_clk_clk           (<connected-to-audio_clk_clk>),           //       audio_clk.clk
+		.audio_rst_reset         (<connected-to-audio_rst_reset>),         //       audio_rst.reset
+		.audio_interface_ADCDAT  (<connected-to-audio_interface_ADCDAT>),  // audio_interface.ADCDAT
+		.audio_interface_ADCLRCK (<connected-to-audio_interface_ADCLRCK>), //                .ADCLRCK
+		.audio_interface_BCLK    (<connected-to-audio_interface_BCLK>)     //                .BCLK
 	);
 

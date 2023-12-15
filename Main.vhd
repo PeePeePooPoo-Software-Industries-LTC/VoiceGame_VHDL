@@ -5,11 +5,12 @@ use ieee.math_real.all;
 
 entity Main is
 	port (
-		I2C_SDAT       : inout std_logic                     := '0';             --    audio_config.SDAT
-		I2C_SCLK       : out   std_logic;                                        --                .SCLK
-		AUD_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
-		AUD_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
-		AUD_BCLK    : in    std_logic                     := '0';             --                .BCLK
+		I2C_SDAT       			: inout std_logic                     := '0';             --    audio_config.SDAT
+		I2C_SCLK       			: out   std_logic;                                        --                .SCLK
+		AUD_ADCDAT  				: in    std_logic                     := '0';             -- audio_interface.ADCDAT
+		AUD_ADCLRCK 				: in    std_logic                     := '0';             --                .ADCLRCK
+		AUD_BCLK    				: in    std_logic                     := '0';             --                .BCLK
+		AUD_XCK 						: out	  std_logic;
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset             : in    std_logic                     := '0';             --           reset.reset
 		sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
@@ -29,6 +30,7 @@ entity Main is
 		VGA_BLANK : out std_logic;
 		VGA_SYNC : out std_logic;
 		
+		GPIO : out std_logic_vector(35 downto 0);
 		SW : in std_logic_vector(17 downto 0);
 		LEDR : out std_logic_vector(17 downto 0);
 		LEDG : out std_logic_vector(7 downto 0)
@@ -43,8 +45,10 @@ architecture rtl of Main is
 			audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
 			audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
 			audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
+			audio_clk_clk  		   : out   std_logic;                                        --    audio_clk.clk
+			audio_rst_reset   		: out   std_logic;                                        --    audio_r
 			clk_clk                 : in    std_logic                     := '0';             --             clk.clk
-			reset_reset_n             : in    std_logic                     := '0';             --           reset.reset
+			reset_reset_n           : in    std_logic                     := '0';             --           reset.reset
 			sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => '0'); --            sram.DQ
 			sram_ADDR               : out   std_logic_vector(19 downto 0);                    --                .ADDR
 			sram_LB_N               : out   std_logic;                                        --                .LB_N
@@ -102,15 +106,29 @@ architecture rtl of Main is
 	signal line_buffer : LineBuffer;
 	
 	signal buttons_sig : std_logic_vector(31 downto 0);
+	
+	signal ignore_me : std_logic;
+	signal deez_nuts : std_logic;
 begin
 	buttons_sig(3 downto 0) <= SW(3 downto 0);
 
+	GPIO(0) <= AUD_ADCDAT;
+	GPIO(1) <= AUD_ADCLRCK;
+	GPIO(2) <= AUD_BCLK;
+	GPIO(3) <= deez_nuts;
+	
+	AUD_XCK <= deez_nuts;
+	
+--	AUD_XCLK <= audio_clock_wire;
+	
 	nios2_core : NIOSII_Test port map(
 			audio_config_SDAT       => I2C_SDAT,
 			audio_config_SCLK       => I2C_SCLK,
 			audio_interface_ADCDAT  => AUD_ADCDAT,
 			audio_interface_ADCLRCK => AUD_ADCLRCK,
 			audio_interface_BCLK    => AUD_BCLK,
+			audio_clk_clk 				=> deez_nuts,
+			audio_rst_reset 			=> ignore_me,
 			clk_clk                 => clk_clk,
 			reset_reset_n           => reset_reset,
 

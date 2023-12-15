@@ -7,11 +7,9 @@
 
 `timescale 1 ps / 1 ps
 module NIOSII_Test_mm_interconnect_0 (
-		input  wire        audio_pll_0_audio_clk_clk,                                      //                                audio_pll_0_audio_clk.clk
 		input  wire        clk_0_clk_clk,                                                  //                                            clk_0_clk.clk
 		input  wire        video_pll_0_vga_clk_clk,                                        //                                  video_pll_0_vga_clk.clk
 		input  wire        audio_0_reset_reset_bridge_in_reset_reset,                      //                  audio_0_reset_reset_bridge_in_reset.reset
-		input  wire        audio_and_video_config_0_reset_reset_bridge_in_reset_reset,     // audio_and_video_config_0_reset_reset_bridge_in_reset.reset
 		input  wire        nios2_gen2_0_reset_reset_bridge_in_reset_reset,                 //             nios2_gen2_0_reset_reset_bridge_in_reset.reset
 		input  wire        video_pixel_buffer_dma_0_reset_reset_bridge_in_reset_reset,     // video_pixel_buffer_dma_0_reset_reset_bridge_in_reset.reset
 		input  wire [21:0] nios2_gen2_0_data_master_address,                               //                             nios2_gen2_0_data_master.address
@@ -1024,7 +1022,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) audio_0_avalon_audio_slave_translator (
-		.clk                    (audio_pll_0_audio_clk_clk),                         //                      clk.clk
+		.clk                    (video_pll_0_vga_clk_clk),                           //                      clk.clk
 		.reset                  (audio_0_reset_reset_bridge_in_reset_reset),         //                    reset.reset
 		.uav_address            (audio_0_avalon_audio_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (audio_0_avalon_audio_slave_agent_m0_burstcount),    //                         .burstcount
@@ -1089,7 +1087,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.AV_DATA_HOLD_CYCLES            (0)
 	) audio_and_video_config_0_avalon_av_config_slave_translator (
 		.clk                    (video_pll_0_vga_clk_clk),                                                //                      clk.clk
-		.reset                  (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),             //                    reset.reset
+		.reset                  (audio_0_reset_reset_bridge_in_reset_reset),                              //                    reset.reset
 		.uav_address            (audio_and_video_config_0_avalon_av_config_slave_agent_m0_address),       // avalon_universal_slave_0.address
 		.uav_burstcount         (audio_and_video_config_0_avalon_av_config_slave_agent_m0_burstcount),    //                         .burstcount
 		.uav_read               (audio_and_video_config_0_avalon_av_config_slave_agent_m0_read),          //                         .read
@@ -1408,41 +1406,41 @@ module NIOSII_Test_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) button_passthrough_s1_translator (
-		.clk                    (video_pll_0_vga_clk_clk),                                    //                      clk.clk
-		.reset                  (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), //                    reset.reset
-		.uav_address            (button_passthrough_s1_agent_m0_address),                     // avalon_universal_slave_0.address
-		.uav_burstcount         (button_passthrough_s1_agent_m0_burstcount),                  //                         .burstcount
-		.uav_read               (button_passthrough_s1_agent_m0_read),                        //                         .read
-		.uav_write              (button_passthrough_s1_agent_m0_write),                       //                         .write
-		.uav_waitrequest        (button_passthrough_s1_agent_m0_waitrequest),                 //                         .waitrequest
-		.uav_readdatavalid      (button_passthrough_s1_agent_m0_readdatavalid),               //                         .readdatavalid
-		.uav_byteenable         (button_passthrough_s1_agent_m0_byteenable),                  //                         .byteenable
-		.uav_readdata           (button_passthrough_s1_agent_m0_readdata),                    //                         .readdata
-		.uav_writedata          (button_passthrough_s1_agent_m0_writedata),                   //                         .writedata
-		.uav_lock               (button_passthrough_s1_agent_m0_lock),                        //                         .lock
-		.uav_debugaccess        (button_passthrough_s1_agent_m0_debugaccess),                 //                         .debugaccess
-		.av_address             (button_passthrough_s1_address),                              //      avalon_anti_slave_0.address
-		.av_readdata            (button_passthrough_s1_readdata),                             //                         .readdata
-		.av_write               (),                                                           //              (terminated)
-		.av_read                (),                                                           //              (terminated)
-		.av_writedata           (),                                                           //              (terminated)
-		.av_begintransfer       (),                                                           //              (terminated)
-		.av_beginbursttransfer  (),                                                           //              (terminated)
-		.av_burstcount          (),                                                           //              (terminated)
-		.av_byteenable          (),                                                           //              (terminated)
-		.av_readdatavalid       (1'b0),                                                       //              (terminated)
-		.av_waitrequest         (1'b0),                                                       //              (terminated)
-		.av_writebyteenable     (),                                                           //              (terminated)
-		.av_lock                (),                                                           //              (terminated)
-		.av_chipselect          (),                                                           //              (terminated)
-		.av_clken               (),                                                           //              (terminated)
-		.uav_clken              (1'b0),                                                       //              (terminated)
-		.av_debugaccess         (),                                                           //              (terminated)
-		.av_outputenable        (),                                                           //              (terminated)
-		.uav_response           (),                                                           //              (terminated)
-		.av_response            (2'b00),                                                      //              (terminated)
-		.uav_writeresponsevalid (),                                                           //              (terminated)
-		.av_writeresponsevalid  (1'b0)                                                        //              (terminated)
+		.clk                    (video_pll_0_vga_clk_clk),                      //                      clk.clk
+		.reset                  (audio_0_reset_reset_bridge_in_reset_reset),    //                    reset.reset
+		.uav_address            (button_passthrough_s1_agent_m0_address),       // avalon_universal_slave_0.address
+		.uav_burstcount         (button_passthrough_s1_agent_m0_burstcount),    //                         .burstcount
+		.uav_read               (button_passthrough_s1_agent_m0_read),          //                         .read
+		.uav_write              (button_passthrough_s1_agent_m0_write),         //                         .write
+		.uav_waitrequest        (button_passthrough_s1_agent_m0_waitrequest),   //                         .waitrequest
+		.uav_readdatavalid      (button_passthrough_s1_agent_m0_readdatavalid), //                         .readdatavalid
+		.uav_byteenable         (button_passthrough_s1_agent_m0_byteenable),    //                         .byteenable
+		.uav_readdata           (button_passthrough_s1_agent_m0_readdata),      //                         .readdata
+		.uav_writedata          (button_passthrough_s1_agent_m0_writedata),     //                         .writedata
+		.uav_lock               (button_passthrough_s1_agent_m0_lock),          //                         .lock
+		.uav_debugaccess        (button_passthrough_s1_agent_m0_debugaccess),   //                         .debugaccess
+		.av_address             (button_passthrough_s1_address),                //      avalon_anti_slave_0.address
+		.av_readdata            (button_passthrough_s1_readdata),               //                         .readdata
+		.av_write               (),                                             //              (terminated)
+		.av_read                (),                                             //              (terminated)
+		.av_writedata           (),                                             //              (terminated)
+		.av_begintransfer       (),                                             //              (terminated)
+		.av_beginbursttransfer  (),                                             //              (terminated)
+		.av_burstcount          (),                                             //              (terminated)
+		.av_byteenable          (),                                             //              (terminated)
+		.av_readdatavalid       (1'b0),                                         //              (terminated)
+		.av_waitrequest         (1'b0),                                         //              (terminated)
+		.av_writebyteenable     (),                                             //              (terminated)
+		.av_lock                (),                                             //              (terminated)
+		.av_chipselect          (),                                             //              (terminated)
+		.av_clken               (),                                             //              (terminated)
+		.uav_clken              (1'b0),                                         //              (terminated)
+		.av_debugaccess         (),                                             //              (terminated)
+		.av_outputenable        (),                                             //              (terminated)
+		.uav_response           (),                                             //              (terminated)
+		.av_response            (2'b00),                                        //              (terminated)
+		.uav_writeresponsevalid (),                                             //              (terminated)
+		.av_writeresponsevalid  (1'b0)                                          //              (terminated)
 	);
 
 	altera_merlin_master_agent #(
@@ -1893,7 +1891,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) audio_0_avalon_audio_slave_agent (
-		.clk                     (audio_pll_0_audio_clk_clk),                                   //             clk.clk
+		.clk                     (video_pll_0_vga_clk_clk),                                     //             clk.clk
 		.reset                   (audio_0_reset_reset_bridge_in_reset_reset),                   //       clk_reset.reset
 		.m0_address              (audio_0_avalon_audio_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (audio_0_avalon_audio_slave_agent_m0_burstcount),              //                .burstcount
@@ -1952,7 +1950,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_0_avalon_audio_slave_agent_rsp_fifo (
-		.clk               (audio_pll_0_audio_clk_clk),                                   //       clk.clk
+		.clk               (video_pll_0_vga_clk_clk),                                     //       clk.clk
 		.reset             (audio_0_reset_reset_bridge_in_reset_reset),                   // clk_reset.reset
 		.in_data           (audio_0_avalon_audio_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (audio_0_avalon_audio_slave_agent_rf_source_valid),            //          .valid
@@ -1993,7 +1991,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_0_avalon_audio_slave_agent_rdata_fifo (
-		.clk               (audio_pll_0_audio_clk_clk),                             //       clk.clk
+		.clk               (video_pll_0_vga_clk_clk),                               //       clk.clk
 		.reset             (audio_0_reset_reset_bridge_in_reset_reset),             // clk_reset.reset
 		.in_data           (audio_0_avalon_audio_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (audio_0_avalon_audio_slave_agent_rdata_fifo_src_valid), //          .valid
@@ -2060,7 +2058,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.ECC_ENABLE                (0)
 	) audio_and_video_config_0_avalon_av_config_slave_agent (
 		.clk                     (video_pll_0_vga_clk_clk),                                                          //             clk.clk
-		.reset                   (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                       //       clk_reset.reset
+		.reset                   (audio_0_reset_reset_bridge_in_reset_reset),                                        //       clk_reset.reset
 		.m0_address              (audio_and_video_config_0_avalon_av_config_slave_agent_m0_address),                 //              m0.address
 		.m0_burstcount           (audio_and_video_config_0_avalon_av_config_slave_agent_m0_burstcount),              //                .burstcount
 		.m0_byteenable           (audio_and_video_config_0_avalon_av_config_slave_agent_m0_byteenable),              //                .byteenable
@@ -2119,7 +2117,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_and_video_config_0_avalon_av_config_slave_agent_rsp_fifo (
 		.clk               (video_pll_0_vga_clk_clk),                                                          //       clk.clk
-		.reset             (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                       // clk_reset.reset
+		.reset             (audio_0_reset_reset_bridge_in_reset_reset),                                        // clk_reset.reset
 		.in_data           (audio_and_video_config_0_avalon_av_config_slave_agent_rf_source_data),             //        in.data
 		.in_valid          (audio_and_video_config_0_avalon_av_config_slave_agent_rf_source_valid),            //          .valid
 		.in_ready          (audio_and_video_config_0_avalon_av_config_slave_agent_rf_source_ready),            //          .ready
@@ -2160,7 +2158,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_EMPTY_IF (0)
 	) audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo (
 		.clk               (video_pll_0_vga_clk_clk),                                                    //       clk.clk
-		.reset             (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                 // clk_reset.reset
+		.reset             (audio_0_reset_reset_bridge_in_reset_reset),                                  // clk_reset.reset
 		.in_data           (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_src_data),  //        in.data
 		.in_valid          (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_src_valid), //          .valid
 		.in_ready          (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_src_ready), //          .ready
@@ -2725,49 +2723,49 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) button_passthrough_s1_agent (
-		.clk                     (video_pll_0_vga_clk_clk),                                    //             clk.clk
-		.reset                   (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), //       clk_reset.reset
-		.m0_address              (button_passthrough_s1_agent_m0_address),                     //              m0.address
-		.m0_burstcount           (button_passthrough_s1_agent_m0_burstcount),                  //                .burstcount
-		.m0_byteenable           (button_passthrough_s1_agent_m0_byteenable),                  //                .byteenable
-		.m0_debugaccess          (button_passthrough_s1_agent_m0_debugaccess),                 //                .debugaccess
-		.m0_lock                 (button_passthrough_s1_agent_m0_lock),                        //                .lock
-		.m0_readdata             (button_passthrough_s1_agent_m0_readdata),                    //                .readdata
-		.m0_readdatavalid        (button_passthrough_s1_agent_m0_readdatavalid),               //                .readdatavalid
-		.m0_read                 (button_passthrough_s1_agent_m0_read),                        //                .read
-		.m0_waitrequest          (button_passthrough_s1_agent_m0_waitrequest),                 //                .waitrequest
-		.m0_writedata            (button_passthrough_s1_agent_m0_writedata),                   //                .writedata
-		.m0_write                (button_passthrough_s1_agent_m0_write),                       //                .write
-		.rp_endofpacket          (button_passthrough_s1_agent_rp_endofpacket),                 //              rp.endofpacket
-		.rp_ready                (button_passthrough_s1_agent_rp_ready),                       //                .ready
-		.rp_valid                (button_passthrough_s1_agent_rp_valid),                       //                .valid
-		.rp_data                 (button_passthrough_s1_agent_rp_data),                        //                .data
-		.rp_startofpacket        (button_passthrough_s1_agent_rp_startofpacket),               //                .startofpacket
-		.cp_ready                (cmd_mux_007_src_ready),                                      //              cp.ready
-		.cp_valid                (cmd_mux_007_src_valid),                                      //                .valid
-		.cp_data                 (cmd_mux_007_src_data),                                       //                .data
-		.cp_startofpacket        (cmd_mux_007_src_startofpacket),                              //                .startofpacket
-		.cp_endofpacket          (cmd_mux_007_src_endofpacket),                                //                .endofpacket
-		.cp_channel              (cmd_mux_007_src_channel),                                    //                .channel
-		.rf_sink_ready           (button_passthrough_s1_agent_rsp_fifo_out_ready),             //         rf_sink.ready
-		.rf_sink_valid           (button_passthrough_s1_agent_rsp_fifo_out_valid),             //                .valid
-		.rf_sink_startofpacket   (button_passthrough_s1_agent_rsp_fifo_out_startofpacket),     //                .startofpacket
-		.rf_sink_endofpacket     (button_passthrough_s1_agent_rsp_fifo_out_endofpacket),       //                .endofpacket
-		.rf_sink_data            (button_passthrough_s1_agent_rsp_fifo_out_data),              //                .data
-		.rf_source_ready         (button_passthrough_s1_agent_rf_source_ready),                //       rf_source.ready
-		.rf_source_valid         (button_passthrough_s1_agent_rf_source_valid),                //                .valid
-		.rf_source_startofpacket (button_passthrough_s1_agent_rf_source_startofpacket),        //                .startofpacket
-		.rf_source_endofpacket   (button_passthrough_s1_agent_rf_source_endofpacket),          //                .endofpacket
-		.rf_source_data          (button_passthrough_s1_agent_rf_source_data),                 //                .data
-		.rdata_fifo_sink_ready   (avalon_st_adapter_007_out_0_ready),                          // rdata_fifo_sink.ready
-		.rdata_fifo_sink_valid   (avalon_st_adapter_007_out_0_valid),                          //                .valid
-		.rdata_fifo_sink_data    (avalon_st_adapter_007_out_0_data),                           //                .data
-		.rdata_fifo_sink_error   (avalon_st_adapter_007_out_0_error),                          //                .error
-		.rdata_fifo_src_ready    (button_passthrough_s1_agent_rdata_fifo_src_ready),           //  rdata_fifo_src.ready
-		.rdata_fifo_src_valid    (button_passthrough_s1_agent_rdata_fifo_src_valid),           //                .valid
-		.rdata_fifo_src_data     (button_passthrough_s1_agent_rdata_fifo_src_data),            //                .data
-		.m0_response             (2'b00),                                                      //     (terminated)
-		.m0_writeresponsevalid   (1'b0)                                                        //     (terminated)
+		.clk                     (video_pll_0_vga_clk_clk),                                //             clk.clk
+		.reset                   (audio_0_reset_reset_bridge_in_reset_reset),              //       clk_reset.reset
+		.m0_address              (button_passthrough_s1_agent_m0_address),                 //              m0.address
+		.m0_burstcount           (button_passthrough_s1_agent_m0_burstcount),              //                .burstcount
+		.m0_byteenable           (button_passthrough_s1_agent_m0_byteenable),              //                .byteenable
+		.m0_debugaccess          (button_passthrough_s1_agent_m0_debugaccess),             //                .debugaccess
+		.m0_lock                 (button_passthrough_s1_agent_m0_lock),                    //                .lock
+		.m0_readdata             (button_passthrough_s1_agent_m0_readdata),                //                .readdata
+		.m0_readdatavalid        (button_passthrough_s1_agent_m0_readdatavalid),           //                .readdatavalid
+		.m0_read                 (button_passthrough_s1_agent_m0_read),                    //                .read
+		.m0_waitrequest          (button_passthrough_s1_agent_m0_waitrequest),             //                .waitrequest
+		.m0_writedata            (button_passthrough_s1_agent_m0_writedata),               //                .writedata
+		.m0_write                (button_passthrough_s1_agent_m0_write),                   //                .write
+		.rp_endofpacket          (button_passthrough_s1_agent_rp_endofpacket),             //              rp.endofpacket
+		.rp_ready                (button_passthrough_s1_agent_rp_ready),                   //                .ready
+		.rp_valid                (button_passthrough_s1_agent_rp_valid),                   //                .valid
+		.rp_data                 (button_passthrough_s1_agent_rp_data),                    //                .data
+		.rp_startofpacket        (button_passthrough_s1_agent_rp_startofpacket),           //                .startofpacket
+		.cp_ready                (cmd_mux_007_src_ready),                                  //              cp.ready
+		.cp_valid                (cmd_mux_007_src_valid),                                  //                .valid
+		.cp_data                 (cmd_mux_007_src_data),                                   //                .data
+		.cp_startofpacket        (cmd_mux_007_src_startofpacket),                          //                .startofpacket
+		.cp_endofpacket          (cmd_mux_007_src_endofpacket),                            //                .endofpacket
+		.cp_channel              (cmd_mux_007_src_channel),                                //                .channel
+		.rf_sink_ready           (button_passthrough_s1_agent_rsp_fifo_out_ready),         //         rf_sink.ready
+		.rf_sink_valid           (button_passthrough_s1_agent_rsp_fifo_out_valid),         //                .valid
+		.rf_sink_startofpacket   (button_passthrough_s1_agent_rsp_fifo_out_startofpacket), //                .startofpacket
+		.rf_sink_endofpacket     (button_passthrough_s1_agent_rsp_fifo_out_endofpacket),   //                .endofpacket
+		.rf_sink_data            (button_passthrough_s1_agent_rsp_fifo_out_data),          //                .data
+		.rf_source_ready         (button_passthrough_s1_agent_rf_source_ready),            //       rf_source.ready
+		.rf_source_valid         (button_passthrough_s1_agent_rf_source_valid),            //                .valid
+		.rf_source_startofpacket (button_passthrough_s1_agent_rf_source_startofpacket),    //                .startofpacket
+		.rf_source_endofpacket   (button_passthrough_s1_agent_rf_source_endofpacket),      //                .endofpacket
+		.rf_source_data          (button_passthrough_s1_agent_rf_source_data),             //                .data
+		.rdata_fifo_sink_ready   (avalon_st_adapter_007_out_0_ready),                      // rdata_fifo_sink.ready
+		.rdata_fifo_sink_valid   (avalon_st_adapter_007_out_0_valid),                      //                .valid
+		.rdata_fifo_sink_data    (avalon_st_adapter_007_out_0_data),                       //                .data
+		.rdata_fifo_sink_error   (avalon_st_adapter_007_out_0_error),                      //                .error
+		.rdata_fifo_src_ready    (button_passthrough_s1_agent_rdata_fifo_src_ready),       //  rdata_fifo_src.ready
+		.rdata_fifo_src_valid    (button_passthrough_s1_agent_rdata_fifo_src_valid),       //                .valid
+		.rdata_fifo_src_data     (button_passthrough_s1_agent_rdata_fifo_src_data),        //                .data
+		.m0_response             (2'b00),                                                  //     (terminated)
+		.m0_writeresponsevalid   (1'b0)                                                    //     (terminated)
 	);
 
 	altera_avalon_sc_fifo #(
@@ -2784,31 +2782,31 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) button_passthrough_s1_agent_rsp_fifo (
-		.clk               (video_pll_0_vga_clk_clk),                                    //       clk.clk
-		.reset             (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.in_data           (button_passthrough_s1_agent_rf_source_data),                 //        in.data
-		.in_valid          (button_passthrough_s1_agent_rf_source_valid),                //          .valid
-		.in_ready          (button_passthrough_s1_agent_rf_source_ready),                //          .ready
-		.in_startofpacket  (button_passthrough_s1_agent_rf_source_startofpacket),        //          .startofpacket
-		.in_endofpacket    (button_passthrough_s1_agent_rf_source_endofpacket),          //          .endofpacket
-		.out_data          (button_passthrough_s1_agent_rsp_fifo_out_data),              //       out.data
-		.out_valid         (button_passthrough_s1_agent_rsp_fifo_out_valid),             //          .valid
-		.out_ready         (button_passthrough_s1_agent_rsp_fifo_out_ready),             //          .ready
-		.out_startofpacket (button_passthrough_s1_agent_rsp_fifo_out_startofpacket),     //          .startofpacket
-		.out_endofpacket   (button_passthrough_s1_agent_rsp_fifo_out_endofpacket),       //          .endofpacket
-		.csr_address       (2'b00),                                                      // (terminated)
-		.csr_read          (1'b0),                                                       // (terminated)
-		.csr_write         (1'b0),                                                       // (terminated)
-		.csr_readdata      (),                                                           // (terminated)
-		.csr_writedata     (32'b00000000000000000000000000000000),                       // (terminated)
-		.almost_full_data  (),                                                           // (terminated)
-		.almost_empty_data (),                                                           // (terminated)
-		.in_empty          (1'b0),                                                       // (terminated)
-		.out_empty         (),                                                           // (terminated)
-		.in_error          (1'b0),                                                       // (terminated)
-		.out_error         (),                                                           // (terminated)
-		.in_channel        (1'b0),                                                       // (terminated)
-		.out_channel       ()                                                            // (terminated)
+		.clk               (video_pll_0_vga_clk_clk),                                //       clk.clk
+		.reset             (audio_0_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
+		.in_data           (button_passthrough_s1_agent_rf_source_data),             //        in.data
+		.in_valid          (button_passthrough_s1_agent_rf_source_valid),            //          .valid
+		.in_ready          (button_passthrough_s1_agent_rf_source_ready),            //          .ready
+		.in_startofpacket  (button_passthrough_s1_agent_rf_source_startofpacket),    //          .startofpacket
+		.in_endofpacket    (button_passthrough_s1_agent_rf_source_endofpacket),      //          .endofpacket
+		.out_data          (button_passthrough_s1_agent_rsp_fifo_out_data),          //       out.data
+		.out_valid         (button_passthrough_s1_agent_rsp_fifo_out_valid),         //          .valid
+		.out_ready         (button_passthrough_s1_agent_rsp_fifo_out_ready),         //          .ready
+		.out_startofpacket (button_passthrough_s1_agent_rsp_fifo_out_startofpacket), //          .startofpacket
+		.out_endofpacket   (button_passthrough_s1_agent_rsp_fifo_out_endofpacket),   //          .endofpacket
+		.csr_address       (2'b00),                                                  // (terminated)
+		.csr_read          (1'b0),                                                   // (terminated)
+		.csr_write         (1'b0),                                                   // (terminated)
+		.csr_readdata      (),                                                       // (terminated)
+		.csr_writedata     (32'b00000000000000000000000000000000),                   // (terminated)
+		.almost_full_data  (),                                                       // (terminated)
+		.almost_empty_data (),                                                       // (terminated)
+		.in_empty          (1'b0),                                                   // (terminated)
+		.out_empty         (),                                                       // (terminated)
+		.in_error          (1'b0),                                                   // (terminated)
+		.out_error         (),                                                       // (terminated)
+		.in_channel        (1'b0),                                                   // (terminated)
+		.out_channel       ()                                                        // (terminated)
 	);
 
 	altera_avalon_sc_fifo #(
@@ -2825,31 +2823,31 @@ module NIOSII_Test_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) button_passthrough_s1_agent_rdata_fifo (
-		.clk               (video_pll_0_vga_clk_clk),                                    //       clk.clk
-		.reset             (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.in_data           (button_passthrough_s1_agent_rdata_fifo_src_data),            //        in.data
-		.in_valid          (button_passthrough_s1_agent_rdata_fifo_src_valid),           //          .valid
-		.in_ready          (button_passthrough_s1_agent_rdata_fifo_src_ready),           //          .ready
-		.out_data          (button_passthrough_s1_agent_rdata_fifo_out_data),            //       out.data
-		.out_valid         (button_passthrough_s1_agent_rdata_fifo_out_valid),           //          .valid
-		.out_ready         (button_passthrough_s1_agent_rdata_fifo_out_ready),           //          .ready
-		.csr_address       (2'b00),                                                      // (terminated)
-		.csr_read          (1'b0),                                                       // (terminated)
-		.csr_write         (1'b0),                                                       // (terminated)
-		.csr_readdata      (),                                                           // (terminated)
-		.csr_writedata     (32'b00000000000000000000000000000000),                       // (terminated)
-		.almost_full_data  (),                                                           // (terminated)
-		.almost_empty_data (),                                                           // (terminated)
-		.in_startofpacket  (1'b0),                                                       // (terminated)
-		.in_endofpacket    (1'b0),                                                       // (terminated)
-		.out_startofpacket (),                                                           // (terminated)
-		.out_endofpacket   (),                                                           // (terminated)
-		.in_empty          (1'b0),                                                       // (terminated)
-		.out_empty         (),                                                           // (terminated)
-		.in_error          (1'b0),                                                       // (terminated)
-		.out_error         (),                                                           // (terminated)
-		.in_channel        (1'b0),                                                       // (terminated)
-		.out_channel       ()                                                            // (terminated)
+		.clk               (video_pll_0_vga_clk_clk),                          //       clk.clk
+		.reset             (audio_0_reset_reset_bridge_in_reset_reset),        // clk_reset.reset
+		.in_data           (button_passthrough_s1_agent_rdata_fifo_src_data),  //        in.data
+		.in_valid          (button_passthrough_s1_agent_rdata_fifo_src_valid), //          .valid
+		.in_ready          (button_passthrough_s1_agent_rdata_fifo_src_ready), //          .ready
+		.out_data          (button_passthrough_s1_agent_rdata_fifo_out_data),  //       out.data
+		.out_valid         (button_passthrough_s1_agent_rdata_fifo_out_valid), //          .valid
+		.out_ready         (button_passthrough_s1_agent_rdata_fifo_out_ready), //          .ready
+		.csr_address       (2'b00),                                            // (terminated)
+		.csr_read          (1'b0),                                             // (terminated)
+		.csr_write         (1'b0),                                             // (terminated)
+		.csr_readdata      (),                                                 // (terminated)
+		.csr_writedata     (32'b00000000000000000000000000000000),             // (terminated)
+		.almost_full_data  (),                                                 // (terminated)
+		.almost_empty_data (),                                                 // (terminated)
+		.in_startofpacket  (1'b0),                                             // (terminated)
+		.in_endofpacket    (1'b0),                                             // (terminated)
+		.out_startofpacket (),                                                 // (terminated)
+		.out_endofpacket   (),                                                 // (terminated)
+		.in_empty          (1'b0),                                             // (terminated)
+		.out_empty         (),                                                 // (terminated)
+		.in_error          (1'b0),                                             // (terminated)
+		.out_error         (),                                                 // (terminated)
+		.in_channel        (1'b0),                                             // (terminated)
+		.out_channel       ()                                                  // (terminated)
 	);
 
 	NIOSII_Test_mm_interconnect_0_router router (
@@ -2922,7 +2920,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.sink_data          (audio_0_avalon_audio_slave_agent_rp_data),          //          .data
 		.sink_startofpacket (audio_0_avalon_audio_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (audio_0_avalon_audio_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (audio_pll_0_audio_clk_clk),                         //       clk.clk
+		.clk                (video_pll_0_vga_clk_clk),                           //       clk.clk
 		.reset              (audio_0_reset_reset_bridge_in_reset_reset),         // clk_reset.reset
 		.src_ready          (router_004_src_ready),                              //       src.ready
 		.src_valid          (router_004_src_valid),                              //          .valid
@@ -2939,7 +2937,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.sink_startofpacket (audio_and_video_config_0_avalon_av_config_slave_agent_rp_startofpacket), //          .startofpacket
 		.sink_endofpacket   (audio_and_video_config_0_avalon_av_config_slave_agent_rp_endofpacket),   //          .endofpacket
 		.clk                (video_pll_0_vga_clk_clk),                                                //       clk.clk
-		.reset              (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),             // clk_reset.reset
+		.reset              (audio_0_reset_reset_bridge_in_reset_reset),                              // clk_reset.reset
 		.src_ready          (router_005_src_ready),                                                   //       src.ready
 		.src_valid          (router_005_src_valid),                                                   //          .valid
 		.src_data           (router_005_src_data),                                                    //          .data
@@ -3013,19 +3011,19 @@ module NIOSII_Test_mm_interconnect_0 (
 	);
 
 	NIOSII_Test_mm_interconnect_0_router_004 router_010 (
-		.sink_ready         (button_passthrough_s1_agent_rp_ready),                       //      sink.ready
-		.sink_valid         (button_passthrough_s1_agent_rp_valid),                       //          .valid
-		.sink_data          (button_passthrough_s1_agent_rp_data),                        //          .data
-		.sink_startofpacket (button_passthrough_s1_agent_rp_startofpacket),               //          .startofpacket
-		.sink_endofpacket   (button_passthrough_s1_agent_rp_endofpacket),                 //          .endofpacket
-		.clk                (video_pll_0_vga_clk_clk),                                    //       clk.clk
-		.reset              (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready          (router_010_src_ready),                                       //       src.ready
-		.src_valid          (router_010_src_valid),                                       //          .valid
-		.src_data           (router_010_src_data),                                        //          .data
-		.src_channel        (router_010_src_channel),                                     //          .channel
-		.src_startofpacket  (router_010_src_startofpacket),                               //          .startofpacket
-		.src_endofpacket    (router_010_src_endofpacket)                                  //          .endofpacket
+		.sink_ready         (button_passthrough_s1_agent_rp_ready),         //      sink.ready
+		.sink_valid         (button_passthrough_s1_agent_rp_valid),         //          .valid
+		.sink_data          (button_passthrough_s1_agent_rp_data),          //          .data
+		.sink_startofpacket (button_passthrough_s1_agent_rp_startofpacket), //          .startofpacket
+		.sink_endofpacket   (button_passthrough_s1_agent_rp_endofpacket),   //          .endofpacket
+		.clk                (video_pll_0_vga_clk_clk),                      //       clk.clk
+		.reset              (audio_0_reset_reset_bridge_in_reset_reset),    // clk_reset.reset
+		.src_ready          (router_010_src_ready),                         //       src.ready
+		.src_valid          (router_010_src_valid),                         //          .valid
+		.src_data           (router_010_src_data),                          //          .data
+		.src_channel        (router_010_src_channel),                       //          .channel
+		.src_startofpacket  (router_010_src_startofpacket),                 //          .startofpacket
+		.src_endofpacket    (router_010_src_endofpacket)                    //          .endofpacket
 	);
 
 	altera_merlin_traffic_limiter #(
@@ -3301,7 +3299,7 @@ module NIOSII_Test_mm_interconnect_0 (
 	);
 
 	NIOSII_Test_mm_interconnect_0_cmd_mux_001 cmd_mux_001 (
-		.clk                 (audio_pll_0_audio_clk_clk),                 //       clk.clk
+		.clk                 (video_pll_0_vga_clk_clk),                   //       clk.clk
 		.reset               (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_001_src_ready),                     //       src.ready
 		.src_valid           (cmd_mux_001_src_valid),                     //          .valid
@@ -3318,20 +3316,20 @@ module NIOSII_Test_mm_interconnect_0 (
 	);
 
 	NIOSII_Test_mm_interconnect_0_cmd_mux_001 cmd_mux_002 (
-		.clk                 (video_pll_0_vga_clk_clk),                                    //       clk.clk
-		.reset               (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready           (cmd_mux_002_src_ready),                                      //       src.ready
-		.src_valid           (cmd_mux_002_src_valid),                                      //          .valid
-		.src_data            (cmd_mux_002_src_data),                                       //          .data
-		.src_channel         (cmd_mux_002_src_channel),                                    //          .channel
-		.src_startofpacket   (cmd_mux_002_src_startofpacket),                              //          .startofpacket
-		.src_endofpacket     (cmd_mux_002_src_endofpacket),                                //          .endofpacket
-		.sink0_ready         (crosser_001_out_ready),                                      //     sink0.ready
-		.sink0_valid         (crosser_001_out_valid),                                      //          .valid
-		.sink0_channel       (crosser_001_out_channel),                                    //          .channel
-		.sink0_data          (crosser_001_out_data),                                       //          .data
-		.sink0_startofpacket (crosser_001_out_startofpacket),                              //          .startofpacket
-		.sink0_endofpacket   (crosser_001_out_endofpacket)                                 //          .endofpacket
+		.clk                 (video_pll_0_vga_clk_clk),                   //       clk.clk
+		.reset               (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.src_ready           (cmd_mux_002_src_ready),                     //       src.ready
+		.src_valid           (cmd_mux_002_src_valid),                     //          .valid
+		.src_data            (cmd_mux_002_src_data),                      //          .data
+		.src_channel         (cmd_mux_002_src_channel),                   //          .channel
+		.src_startofpacket   (cmd_mux_002_src_startofpacket),             //          .startofpacket
+		.src_endofpacket     (cmd_mux_002_src_endofpacket),               //          .endofpacket
+		.sink0_ready         (crosser_001_out_ready),                     //     sink0.ready
+		.sink0_valid         (crosser_001_out_valid),                     //          .valid
+		.sink0_channel       (crosser_001_out_channel),                   //          .channel
+		.sink0_data          (crosser_001_out_data),                      //          .data
+		.sink0_startofpacket (crosser_001_out_startofpacket),             //          .startofpacket
+		.sink0_endofpacket   (crosser_001_out_endofpacket)                //          .endofpacket
 	);
 
 	NIOSII_Test_mm_interconnect_0_cmd_mux_001 cmd_mux_003 (
@@ -3415,20 +3413,20 @@ module NIOSII_Test_mm_interconnect_0 (
 	);
 
 	NIOSII_Test_mm_interconnect_0_cmd_mux_001 cmd_mux_007 (
-		.clk                 (video_pll_0_vga_clk_clk),                                    //       clk.clk
-		.reset               (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.src_ready           (cmd_mux_007_src_ready),                                      //       src.ready
-		.src_valid           (cmd_mux_007_src_valid),                                      //          .valid
-		.src_data            (cmd_mux_007_src_data),                                       //          .data
-		.src_channel         (cmd_mux_007_src_channel),                                    //          .channel
-		.src_startofpacket   (cmd_mux_007_src_startofpacket),                              //          .startofpacket
-		.src_endofpacket     (cmd_mux_007_src_endofpacket),                                //          .endofpacket
-		.sink0_ready         (crosser_002_out_ready),                                      //     sink0.ready
-		.sink0_valid         (crosser_002_out_valid),                                      //          .valid
-		.sink0_channel       (crosser_002_out_channel),                                    //          .channel
-		.sink0_data          (crosser_002_out_data),                                       //          .data
-		.sink0_startofpacket (crosser_002_out_startofpacket),                              //          .startofpacket
-		.sink0_endofpacket   (crosser_002_out_endofpacket)                                 //          .endofpacket
+		.clk                 (video_pll_0_vga_clk_clk),                   //       clk.clk
+		.reset               (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.src_ready           (cmd_mux_007_src_ready),                     //       src.ready
+		.src_valid           (cmd_mux_007_src_valid),                     //          .valid
+		.src_data            (cmd_mux_007_src_data),                      //          .data
+		.src_channel         (cmd_mux_007_src_channel),                   //          .channel
+		.src_startofpacket   (cmd_mux_007_src_startofpacket),             //          .startofpacket
+		.src_endofpacket     (cmd_mux_007_src_endofpacket),               //          .endofpacket
+		.sink0_ready         (crosser_002_out_ready),                     //     sink0.ready
+		.sink0_valid         (crosser_002_out_valid),                     //          .valid
+		.sink0_channel       (crosser_002_out_channel),                   //          .channel
+		.sink0_data          (crosser_002_out_data),                      //          .data
+		.sink0_startofpacket (crosser_002_out_startofpacket),             //          .startofpacket
+		.sink0_endofpacket   (crosser_002_out_endofpacket)                //          .endofpacket
 	);
 
 	NIOSII_Test_mm_interconnect_0_rsp_demux rsp_demux (
@@ -3455,7 +3453,7 @@ module NIOSII_Test_mm_interconnect_0 (
 	);
 
 	NIOSII_Test_mm_interconnect_0_rsp_demux_001 rsp_demux_001 (
-		.clk                (audio_pll_0_audio_clk_clk),                 //       clk.clk
+		.clk                (video_pll_0_vga_clk_clk),                   //       clk.clk
 		.reset              (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_004_src_ready),                      //      sink.ready
 		.sink_channel       (router_004_src_channel),                    //          .channel
@@ -3471,21 +3469,21 @@ module NIOSII_Test_mm_interconnect_0 (
 		.src0_endofpacket   (rsp_demux_001_src0_endofpacket)             //          .endofpacket
 	);
 
-	NIOSII_Test_mm_interconnect_0_rsp_demux_002 rsp_demux_002 (
-		.clk                (video_pll_0_vga_clk_clk),                                    //       clk.clk
-		.reset              (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_005_src_ready),                                       //      sink.ready
-		.sink_channel       (router_005_src_channel),                                     //          .channel
-		.sink_data          (router_005_src_data),                                        //          .data
-		.sink_startofpacket (router_005_src_startofpacket),                               //          .startofpacket
-		.sink_endofpacket   (router_005_src_endofpacket),                                 //          .endofpacket
-		.sink_valid         (router_005_src_valid),                                       //          .valid
-		.src0_ready         (rsp_demux_002_src0_ready),                                   //      src0.ready
-		.src0_valid         (rsp_demux_002_src0_valid),                                   //          .valid
-		.src0_data          (rsp_demux_002_src0_data),                                    //          .data
-		.src0_channel       (rsp_demux_002_src0_channel),                                 //          .channel
-		.src0_startofpacket (rsp_demux_002_src0_startofpacket),                           //          .startofpacket
-		.src0_endofpacket   (rsp_demux_002_src0_endofpacket)                              //          .endofpacket
+	NIOSII_Test_mm_interconnect_0_rsp_demux_001 rsp_demux_002 (
+		.clk                (video_pll_0_vga_clk_clk),                   //       clk.clk
+		.reset              (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_005_src_ready),                      //      sink.ready
+		.sink_channel       (router_005_src_channel),                    //          .channel
+		.sink_data          (router_005_src_data),                       //          .data
+		.sink_startofpacket (router_005_src_startofpacket),              //          .startofpacket
+		.sink_endofpacket   (router_005_src_endofpacket),                //          .endofpacket
+		.sink_valid         (router_005_src_valid),                      //          .valid
+		.src0_ready         (rsp_demux_002_src0_ready),                  //      src0.ready
+		.src0_valid         (rsp_demux_002_src0_valid),                  //          .valid
+		.src0_data          (rsp_demux_002_src0_data),                   //          .data
+		.src0_channel       (rsp_demux_002_src0_channel),                //          .channel
+		.src0_startofpacket (rsp_demux_002_src0_startofpacket),          //          .startofpacket
+		.src0_endofpacket   (rsp_demux_002_src0_endofpacket)             //          .endofpacket
 	);
 
 	NIOSII_Test_mm_interconnect_0_cmd_demux rsp_demux_003 (
@@ -3568,21 +3566,21 @@ module NIOSII_Test_mm_interconnect_0 (
 		.src1_endofpacket   (rsp_demux_006_src1_endofpacket)                              //          .endofpacket
 	);
 
-	NIOSII_Test_mm_interconnect_0_rsp_demux_002 rsp_demux_007 (
-		.clk                (video_pll_0_vga_clk_clk),                                    //       clk.clk
-		.reset              (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
-		.sink_ready         (router_010_src_ready),                                       //      sink.ready
-		.sink_channel       (router_010_src_channel),                                     //          .channel
-		.sink_data          (router_010_src_data),                                        //          .data
-		.sink_startofpacket (router_010_src_startofpacket),                               //          .startofpacket
-		.sink_endofpacket   (router_010_src_endofpacket),                                 //          .endofpacket
-		.sink_valid         (router_010_src_valid),                                       //          .valid
-		.src0_ready         (rsp_demux_007_src0_ready),                                   //      src0.ready
-		.src0_valid         (rsp_demux_007_src0_valid),                                   //          .valid
-		.src0_data          (rsp_demux_007_src0_data),                                    //          .data
-		.src0_channel       (rsp_demux_007_src0_channel),                                 //          .channel
-		.src0_startofpacket (rsp_demux_007_src0_startofpacket),                           //          .startofpacket
-		.src0_endofpacket   (rsp_demux_007_src0_endofpacket)                              //          .endofpacket
+	NIOSII_Test_mm_interconnect_0_rsp_demux_001 rsp_demux_007 (
+		.clk                (video_pll_0_vga_clk_clk),                   //       clk.clk
+		.reset              (audio_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.sink_ready         (router_010_src_ready),                      //      sink.ready
+		.sink_channel       (router_010_src_channel),                    //          .channel
+		.sink_data          (router_010_src_data),                       //          .data
+		.sink_startofpacket (router_010_src_startofpacket),              //          .startofpacket
+		.sink_endofpacket   (router_010_src_endofpacket),                //          .endofpacket
+		.sink_valid         (router_010_src_valid),                      //          .valid
+		.src0_ready         (rsp_demux_007_src0_ready),                  //      src0.ready
+		.src0_valid         (rsp_demux_007_src0_valid),                  //          .valid
+		.src0_data          (rsp_demux_007_src0_data),                   //          .data
+		.src0_channel       (rsp_demux_007_src0_channel),                //          .channel
+		.src0_startofpacket (rsp_demux_007_src0_startofpacket),          //          .startofpacket
+		.src0_endofpacket   (rsp_demux_007_src0_endofpacket)             //          .endofpacket
 	);
 
 	NIOSII_Test_mm_interconnect_0_rsp_mux rsp_mux (
@@ -3830,7 +3828,7 @@ module NIOSII_Test_mm_interconnect_0 (
 	) crosser (
 		.in_clk            (clk_0_clk_clk),                                  //        in_clk.clk
 		.in_reset          (nios2_gen2_0_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
-		.out_clk           (audio_pll_0_audio_clk_clk),                      //       out_clk.clk
+		.out_clk           (video_pll_0_vga_clk_clk),                        //       out_clk.clk
 		.out_reset         (audio_0_reset_reset_bridge_in_reset_reset),      // out_clk_reset.reset
 		.in_ready          (cmd_demux_001_src1_ready),                       //            in.ready
 		.in_valid          (cmd_demux_001_src1_valid),                       //              .valid
@@ -3862,26 +3860,26 @@ module NIOSII_Test_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_001 (
-		.in_clk            (clk_0_clk_clk),                                              //        in_clk.clk
-		.in_reset          (nios2_gen2_0_reset_reset_bridge_in_reset_reset),             //  in_clk_reset.reset
-		.out_clk           (video_pll_0_vga_clk_clk),                                    //       out_clk.clk
-		.out_reset         (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
-		.in_ready          (cmd_demux_001_src2_ready),                                   //            in.ready
-		.in_valid          (cmd_demux_001_src2_valid),                                   //              .valid
-		.in_startofpacket  (cmd_demux_001_src2_startofpacket),                           //              .startofpacket
-		.in_endofpacket    (cmd_demux_001_src2_endofpacket),                             //              .endofpacket
-		.in_channel        (cmd_demux_001_src2_channel),                                 //              .channel
-		.in_data           (cmd_demux_001_src2_data),                                    //              .data
-		.out_ready         (crosser_001_out_ready),                                      //           out.ready
-		.out_valid         (crosser_001_out_valid),                                      //              .valid
-		.out_startofpacket (crosser_001_out_startofpacket),                              //              .startofpacket
-		.out_endofpacket   (crosser_001_out_endofpacket),                                //              .endofpacket
-		.out_channel       (crosser_001_out_channel),                                    //              .channel
-		.out_data          (crosser_001_out_data),                                       //              .data
-		.in_empty          (1'b0),                                                       //   (terminated)
-		.in_error          (1'b0),                                                       //   (terminated)
-		.out_empty         (),                                                           //   (terminated)
-		.out_error         ()                                                            //   (terminated)
+		.in_clk            (clk_0_clk_clk),                                  //        in_clk.clk
+		.in_reset          (nios2_gen2_0_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
+		.out_clk           (video_pll_0_vga_clk_clk),                        //       out_clk.clk
+		.out_reset         (audio_0_reset_reset_bridge_in_reset_reset),      // out_clk_reset.reset
+		.in_ready          (cmd_demux_001_src2_ready),                       //            in.ready
+		.in_valid          (cmd_demux_001_src2_valid),                       //              .valid
+		.in_startofpacket  (cmd_demux_001_src2_startofpacket),               //              .startofpacket
+		.in_endofpacket    (cmd_demux_001_src2_endofpacket),                 //              .endofpacket
+		.in_channel        (cmd_demux_001_src2_channel),                     //              .channel
+		.in_data           (cmd_demux_001_src2_data),                        //              .data
+		.out_ready         (crosser_001_out_ready),                          //           out.ready
+		.out_valid         (crosser_001_out_valid),                          //              .valid
+		.out_startofpacket (crosser_001_out_startofpacket),                  //              .startofpacket
+		.out_endofpacket   (crosser_001_out_endofpacket),                    //              .endofpacket
+		.out_channel       (crosser_001_out_channel),                        //              .channel
+		.out_data          (crosser_001_out_data),                           //              .data
+		.in_empty          (1'b0),                                           //   (terminated)
+		.in_error          (1'b0),                                           //   (terminated)
+		.out_empty         (),                                               //   (terminated)
+		.out_error         ()                                                //   (terminated)
 	);
 
 	altera_avalon_st_handshake_clock_crosser #(
@@ -3896,26 +3894,26 @@ module NIOSII_Test_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_002 (
-		.in_clk            (clk_0_clk_clk),                                              //        in_clk.clk
-		.in_reset          (nios2_gen2_0_reset_reset_bridge_in_reset_reset),             //  in_clk_reset.reset
-		.out_clk           (video_pll_0_vga_clk_clk),                                    //       out_clk.clk
-		.out_reset         (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
-		.in_ready          (cmd_demux_001_src7_ready),                                   //            in.ready
-		.in_valid          (cmd_demux_001_src7_valid),                                   //              .valid
-		.in_startofpacket  (cmd_demux_001_src7_startofpacket),                           //              .startofpacket
-		.in_endofpacket    (cmd_demux_001_src7_endofpacket),                             //              .endofpacket
-		.in_channel        (cmd_demux_001_src7_channel),                                 //              .channel
-		.in_data           (cmd_demux_001_src7_data),                                    //              .data
-		.out_ready         (crosser_002_out_ready),                                      //           out.ready
-		.out_valid         (crosser_002_out_valid),                                      //              .valid
-		.out_startofpacket (crosser_002_out_startofpacket),                              //              .startofpacket
-		.out_endofpacket   (crosser_002_out_endofpacket),                                //              .endofpacket
-		.out_channel       (crosser_002_out_channel),                                    //              .channel
-		.out_data          (crosser_002_out_data),                                       //              .data
-		.in_empty          (1'b0),                                                       //   (terminated)
-		.in_error          (1'b0),                                                       //   (terminated)
-		.out_empty         (),                                                           //   (terminated)
-		.out_error         ()                                                            //   (terminated)
+		.in_clk            (clk_0_clk_clk),                                  //        in_clk.clk
+		.in_reset          (nios2_gen2_0_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
+		.out_clk           (video_pll_0_vga_clk_clk),                        //       out_clk.clk
+		.out_reset         (audio_0_reset_reset_bridge_in_reset_reset),      // out_clk_reset.reset
+		.in_ready          (cmd_demux_001_src7_ready),                       //            in.ready
+		.in_valid          (cmd_demux_001_src7_valid),                       //              .valid
+		.in_startofpacket  (cmd_demux_001_src7_startofpacket),               //              .startofpacket
+		.in_endofpacket    (cmd_demux_001_src7_endofpacket),                 //              .endofpacket
+		.in_channel        (cmd_demux_001_src7_channel),                     //              .channel
+		.in_data           (cmd_demux_001_src7_data),                        //              .data
+		.out_ready         (crosser_002_out_ready),                          //           out.ready
+		.out_valid         (crosser_002_out_valid),                          //              .valid
+		.out_startofpacket (crosser_002_out_startofpacket),                  //              .startofpacket
+		.out_endofpacket   (crosser_002_out_endofpacket),                    //              .endofpacket
+		.out_channel       (crosser_002_out_channel),                        //              .channel
+		.out_data          (crosser_002_out_data),                           //              .data
+		.in_empty          (1'b0),                                           //   (terminated)
+		.in_error          (1'b0),                                           //   (terminated)
+		.out_empty         (),                                               //   (terminated)
+		.out_error         ()                                                //   (terminated)
 	);
 
 	altera_avalon_st_handshake_clock_crosser #(
@@ -3930,7 +3928,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_003 (
-		.in_clk            (audio_pll_0_audio_clk_clk),                      //        in_clk.clk
+		.in_clk            (video_pll_0_vga_clk_clk),                        //        in_clk.clk
 		.in_reset          (audio_0_reset_reset_bridge_in_reset_reset),      //  in_clk_reset.reset
 		.out_clk           (clk_0_clk_clk),                                  //       out_clk.clk
 		.out_reset         (nios2_gen2_0_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
@@ -3964,26 +3962,26 @@ module NIOSII_Test_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_004 (
-		.in_clk            (video_pll_0_vga_clk_clk),                                    //        in_clk.clk
-		.in_reset          (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
-		.out_clk           (clk_0_clk_clk),                                              //       out_clk.clk
-		.out_reset         (nios2_gen2_0_reset_reset_bridge_in_reset_reset),             // out_clk_reset.reset
-		.in_ready          (rsp_demux_002_src0_ready),                                   //            in.ready
-		.in_valid          (rsp_demux_002_src0_valid),                                   //              .valid
-		.in_startofpacket  (rsp_demux_002_src0_startofpacket),                           //              .startofpacket
-		.in_endofpacket    (rsp_demux_002_src0_endofpacket),                             //              .endofpacket
-		.in_channel        (rsp_demux_002_src0_channel),                                 //              .channel
-		.in_data           (rsp_demux_002_src0_data),                                    //              .data
-		.out_ready         (crosser_004_out_ready),                                      //           out.ready
-		.out_valid         (crosser_004_out_valid),                                      //              .valid
-		.out_startofpacket (crosser_004_out_startofpacket),                              //              .startofpacket
-		.out_endofpacket   (crosser_004_out_endofpacket),                                //              .endofpacket
-		.out_channel       (crosser_004_out_channel),                                    //              .channel
-		.out_data          (crosser_004_out_data),                                       //              .data
-		.in_empty          (1'b0),                                                       //   (terminated)
-		.in_error          (1'b0),                                                       //   (terminated)
-		.out_empty         (),                                                           //   (terminated)
-		.out_error         ()                                                            //   (terminated)
+		.in_clk            (video_pll_0_vga_clk_clk),                        //        in_clk.clk
+		.in_reset          (audio_0_reset_reset_bridge_in_reset_reset),      //  in_clk_reset.reset
+		.out_clk           (clk_0_clk_clk),                                  //       out_clk.clk
+		.out_reset         (nios2_gen2_0_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
+		.in_ready          (rsp_demux_002_src0_ready),                       //            in.ready
+		.in_valid          (rsp_demux_002_src0_valid),                       //              .valid
+		.in_startofpacket  (rsp_demux_002_src0_startofpacket),               //              .startofpacket
+		.in_endofpacket    (rsp_demux_002_src0_endofpacket),                 //              .endofpacket
+		.in_channel        (rsp_demux_002_src0_channel),                     //              .channel
+		.in_data           (rsp_demux_002_src0_data),                        //              .data
+		.out_ready         (crosser_004_out_ready),                          //           out.ready
+		.out_valid         (crosser_004_out_valid),                          //              .valid
+		.out_startofpacket (crosser_004_out_startofpacket),                  //              .startofpacket
+		.out_endofpacket   (crosser_004_out_endofpacket),                    //              .endofpacket
+		.out_channel       (crosser_004_out_channel),                        //              .channel
+		.out_data          (crosser_004_out_data),                           //              .data
+		.in_empty          (1'b0),                                           //   (terminated)
+		.in_error          (1'b0),                                           //   (terminated)
+		.out_empty         (),                                               //   (terminated)
+		.out_error         ()                                                //   (terminated)
 	);
 
 	altera_avalon_st_handshake_clock_crosser #(
@@ -3998,26 +3996,26 @@ module NIOSII_Test_mm_interconnect_0 (
 		.READY_SYNC_DEPTH    (2),
 		.USE_OUTPUT_PIPELINE (0)
 	) crosser_005 (
-		.in_clk            (video_pll_0_vga_clk_clk),                                    //        in_clk.clk
-		.in_reset          (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), //  in_clk_reset.reset
-		.out_clk           (clk_0_clk_clk),                                              //       out_clk.clk
-		.out_reset         (nios2_gen2_0_reset_reset_bridge_in_reset_reset),             // out_clk_reset.reset
-		.in_ready          (rsp_demux_007_src0_ready),                                   //            in.ready
-		.in_valid          (rsp_demux_007_src0_valid),                                   //              .valid
-		.in_startofpacket  (rsp_demux_007_src0_startofpacket),                           //              .startofpacket
-		.in_endofpacket    (rsp_demux_007_src0_endofpacket),                             //              .endofpacket
-		.in_channel        (rsp_demux_007_src0_channel),                                 //              .channel
-		.in_data           (rsp_demux_007_src0_data),                                    //              .data
-		.out_ready         (crosser_005_out_ready),                                      //           out.ready
-		.out_valid         (crosser_005_out_valid),                                      //              .valid
-		.out_startofpacket (crosser_005_out_startofpacket),                              //              .startofpacket
-		.out_endofpacket   (crosser_005_out_endofpacket),                                //              .endofpacket
-		.out_channel       (crosser_005_out_channel),                                    //              .channel
-		.out_data          (crosser_005_out_data),                                       //              .data
-		.in_empty          (1'b0),                                                       //   (terminated)
-		.in_error          (1'b0),                                                       //   (terminated)
-		.out_empty         (),                                                           //   (terminated)
-		.out_error         ()                                                            //   (terminated)
+		.in_clk            (video_pll_0_vga_clk_clk),                        //        in_clk.clk
+		.in_reset          (audio_0_reset_reset_bridge_in_reset_reset),      //  in_clk_reset.reset
+		.out_clk           (clk_0_clk_clk),                                  //       out_clk.clk
+		.out_reset         (nios2_gen2_0_reset_reset_bridge_in_reset_reset), // out_clk_reset.reset
+		.in_ready          (rsp_demux_007_src0_ready),                       //            in.ready
+		.in_valid          (rsp_demux_007_src0_valid),                       //              .valid
+		.in_startofpacket  (rsp_demux_007_src0_startofpacket),               //              .startofpacket
+		.in_endofpacket    (rsp_demux_007_src0_endofpacket),                 //              .endofpacket
+		.in_channel        (rsp_demux_007_src0_channel),                     //              .channel
+		.in_data           (rsp_demux_007_src0_data),                        //              .data
+		.out_ready         (crosser_005_out_ready),                          //           out.ready
+		.out_valid         (crosser_005_out_valid),                          //              .valid
+		.out_startofpacket (crosser_005_out_startofpacket),                  //              .startofpacket
+		.out_endofpacket   (crosser_005_out_endofpacket),                    //              .endofpacket
+		.out_channel       (crosser_005_out_channel),                        //              .channel
+		.out_data          (crosser_005_out_data),                           //              .data
+		.in_empty          (1'b0),                                           //   (terminated)
+		.in_error          (1'b0),                                           //   (terminated)
+		.out_empty         (),                                               //   (terminated)
+		.out_error         ()                                                //   (terminated)
 	);
 
 	NIOSII_Test_mm_interconnect_0_avalon_st_adapter #(
@@ -4067,7 +4065,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_001 (
-		.in_clk_0_clk   (audio_pll_0_audio_clk_clk),                             // in_clk_0.clk
+		.in_clk_0_clk   (video_pll_0_vga_clk_clk),                               // in_clk_0.clk
 		.in_rst_0_reset (audio_0_reset_reset_bridge_in_reset_reset),             // in_rst_0.reset
 		.in_0_data      (audio_0_avalon_audio_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (audio_0_avalon_audio_slave_agent_rdata_fifo_out_valid), //         .valid
@@ -4097,7 +4095,7 @@ module NIOSII_Test_mm_interconnect_0 (
 		.outReadyLatency (0)
 	) avalon_st_adapter_002 (
 		.in_clk_0_clk   (video_pll_0_vga_clk_clk),                                                    // in_clk_0.clk
-		.in_rst_0_reset (audio_and_video_config_0_reset_reset_bridge_in_reset_reset),                 // in_rst_0.reset
+		.in_rst_0_reset (audio_0_reset_reset_bridge_in_reset_reset),                                  // in_rst_0.reset
 		.in_0_data      (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_out_data),  //     in_0.data
 		.in_0_valid     (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_out_valid), //         .valid
 		.in_0_ready     (audio_and_video_config_0_avalon_av_config_slave_agent_rdata_fifo_out_ready), //         .ready
@@ -4241,15 +4239,15 @@ module NIOSII_Test_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter_007 (
-		.in_clk_0_clk   (video_pll_0_vga_clk_clk),                                    // in_clk_0.clk
-		.in_rst_0_reset (audio_and_video_config_0_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
-		.in_0_data      (button_passthrough_s1_agent_rdata_fifo_out_data),            //     in_0.data
-		.in_0_valid     (button_passthrough_s1_agent_rdata_fifo_out_valid),           //         .valid
-		.in_0_ready     (button_passthrough_s1_agent_rdata_fifo_out_ready),           //         .ready
-		.out_0_data     (avalon_st_adapter_007_out_0_data),                           //    out_0.data
-		.out_0_valid    (avalon_st_adapter_007_out_0_valid),                          //         .valid
-		.out_0_ready    (avalon_st_adapter_007_out_0_ready),                          //         .ready
-		.out_0_error    (avalon_st_adapter_007_out_0_error)                           //         .error
+		.in_clk_0_clk   (video_pll_0_vga_clk_clk),                          // in_clk_0.clk
+		.in_rst_0_reset (audio_0_reset_reset_bridge_in_reset_reset),        // in_rst_0.reset
+		.in_0_data      (button_passthrough_s1_agent_rdata_fifo_out_data),  //     in_0.data
+		.in_0_valid     (button_passthrough_s1_agent_rdata_fifo_out_valid), //         .valid
+		.in_0_ready     (button_passthrough_s1_agent_rdata_fifo_out_ready), //         .ready
+		.out_0_data     (avalon_st_adapter_007_out_0_data),                 //    out_0.data
+		.out_0_valid    (avalon_st_adapter_007_out_0_valid),                //         .valid
+		.out_0_ready    (avalon_st_adapter_007_out_0_ready),                //         .ready
+		.out_0_error    (avalon_st_adapter_007_out_0_error)                 //         .error
 	);
 
 endmodule

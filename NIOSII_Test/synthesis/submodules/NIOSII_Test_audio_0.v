@@ -83,8 +83,8 @@ output reg	[31: 0]	readdata;
  *                           Constant Declarations                           *
  *****************************************************************************/
 
-localparam DW						= 23;
-localparam BIT_COUNTER_INIT	= 5'd23;
+localparam DW						= 15;
+localparam BIT_COUNTER_INIT	= 5'd15;
 
 /*****************************************************************************
  *                 Internal Wires and Registers Declarations                 *

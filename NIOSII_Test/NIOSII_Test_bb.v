@@ -1,8 +1,7 @@
 
 module NIOSII_Test (
-	audio_interface_ADCDAT,
-	audio_interface_ADCLRCK,
-	audio_interface_BCLK,
+	audio_config_SDAT,
+	audio_config_SCLK,
 	buttons_export,
 	clk_clk,
 	reset_reset_n,
@@ -21,12 +20,14 @@ module NIOSII_Test (
 	vga_R,
 	vga_G,
 	vga_B,
-	audio_config_SDAT,
-	audio_config_SCLK);	
+	audio_clk_clk,
+	audio_rst_reset,
+	audio_interface_ADCDAT,
+	audio_interface_ADCLRCK,
+	audio_interface_BCLK);	
 
-	input		audio_interface_ADCDAT;
-	input		audio_interface_ADCLRCK;
-	input		audio_interface_BCLK;
+	inout		audio_config_SDAT;
+	output		audio_config_SCLK;
 	input	[31:0]	buttons_export;
 	input		clk_clk;
 	input		reset_reset_n;
@@ -45,6 +46,9 @@ module NIOSII_Test (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
-	inout		audio_config_SDAT;
-	output		audio_config_SCLK;
+	output		audio_clk_clk;
+	output		audio_rst_reset;
+	input		audio_interface_ADCDAT;
+	input		audio_interface_ADCLRCK;
+	input		audio_interface_BCLK;
 endmodule

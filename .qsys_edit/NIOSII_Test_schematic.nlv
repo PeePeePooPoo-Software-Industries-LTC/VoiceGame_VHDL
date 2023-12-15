@@ -1,42 +1,40 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst NIOSII_Test.video_pixel_buffer_dma_0 -pg 1 -lvl 4 -y 210
+preplace inst NIOSII_Test.video_pixel_buffer_dma_0 -pg 1 -lvl 4 -y 350
 preplace inst NIOSII_Test.nios2_gen2_0 -pg 1 -lvl 2 -y 460
 preplace inst NIOSII_Test.clk_0 -pg 1 -lvl 1 -y 320
 preplace inst NIOSII_Test.video_pll_0.reset_from_locked -pg 1
 preplace inst NIOSII_Test.video_dual_clock_buffer_0 -pg 1 -lvl 6 -y 130
 preplace inst NIOSII_Test.nios2_gen2_0.reset_bridge -pg 1
 preplace inst NIOSII_Test.audio_pll_0.audio_pll -pg 1
+preplace inst NIOSII_Test.audio_and_video_config_0 -pg 1 -lvl 4 -y 130
 preplace inst NIOSII_Test.video_pll_0.video_pll -pg 1
 preplace inst NIOSII_Test.jtag_uart_0 -pg 1 -lvl 3 -y 530
 preplace inst NIOSII_Test.button_passthrough -pg 1 -lvl 4 -y 30
 preplace inst NIOSII_Test.onchip_memory2_0 -pg 1 -lvl 3 -y 420
 preplace inst NIOSII_Test.nios2_gen2_0.clock_bridge -pg 1
-preplace inst NIOSII_Test.audio_0 -pg 1 -lvl 3 -y 260
 preplace inst NIOSII_Test.video_pll_0 -pg 1 -lvl 3 -y 150
 preplace inst NIOSII_Test.nios2_gen2_0.cpu -pg 1
 preplace inst NIOSII_Test.audio_pll_0 -pg 1 -lvl 2 -y 280
 preplace inst NIOSII_Test.video_vga_controller_0 -pg 1 -lvl 7 -y 250
 preplace inst NIOSII_Test.audio_pll_0.reset_from_locked -pg 1
 preplace inst NIOSII_Test -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst NIOSII_Test.video_scaler_0 -pg 1 -lvl 5 -y 370
+preplace inst NIOSII_Test.video_scaler_0 -pg 1 -lvl 5 -y 390
 preplace inst NIOSII_Test.sram_0 -pg 1 -lvl 3 -y 630
-preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)video_vga_controller_0.clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_out,(MASTER)video_pll_0.vga_clk,(SLAVE)button_passthrough.clk) 1 3 4 1180 160 NJ 360 1960 280 NJ
-preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)video_dual_clock_buffer_0.clock_stream_in,(MASTER)clk_0.clk,(SLAVE)sram_0.clk,(SLAVE)video_scaler_0.clk,(SLAVE)onchip_memory2_0.clk1,(SLAVE)nios2_gen2_0.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)audio_pll_0.ref_clk,(SLAVE)video_pixel_buffer_dma_0.clk,(SLAVE)video_pll_0.ref_clk) 1 1 5 360 360 760 110 1200 180 1640 320 NJ
-preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(MASTER)nios2_gen2_0.irq,(SLAVE)jtag_uart_0.irq,(SLAVE)audio_0.interrupt) 1 2 1 740
-preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(SLAVE)video_scaler_0.avalon_scaler_sink,(MASTER)video_pixel_buffer_dma_0.avalon_pixel_source) 1 4 1 1620
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)button_passthrough.external_connection,(SLAVE)NIOSII_Test.buttons) 1 0 4 NJ 60 NJ 60 NJ 60 NJ
-preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(MASTER)video_dual_clock_buffer_0.avalon_dc_buffer_source,(SLAVE)video_vga_controller_0.avalon_vga_sink) 1 6 1 2330
-preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)button_passthrough.s1,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)sram_0.avalon_sram_slave,(SLAVE)audio_0.avalon_audio_slave,(SLAVE)onchip_memory2_0.s1,(SLAVE)video_pixel_buffer_dma_0.avalon_control_slave,(SLAVE)jtag_uart_0.avalon_jtag_slave,(MASTER)nios2_gen2_0.data_master,(MASTER)video_pixel_buffer_dma_0.avalon_pixel_dma_master) 1 1 4 360 600 780 230 1220 320 1580
-preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)video_dual_clock_buffer_0.reset_stream_out,(SLAVE)video_vga_controller_0.reset,(MASTER)video_pll_0.reset_source,(SLAVE)button_passthrough.reset) 1 3 4 1160 140 NJ 340 1980 260 2310
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)NIOSII_Test.reset) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)video_scaler_0.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)video_pll_0.ref_reset,(SLAVE)video_pixel_buffer_dma_0.reset,(MASTER)clk_0.clk_reset,(SLAVE)sram_0.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)jtag_uart_0.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_in,(SLAVE)nios2_gen2_0.reset,(SLAVE)audio_pll_0.ref_reset) 1 1 5 340 400 800 250 1160 200 1600 460 NJ
-preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(SLAVE)audio_0.reset,(MASTER)audio_pll_0.reset_source) 1 2 1 820
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.sram,(SLAVE)sram_0.external_interface) 1 0 3 NJ 680 NJ 680 NJ
+preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)button_passthrough.clk,(SLAVE)audio_and_video_config_0.clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_out,(MASTER)video_pll_0.vga_clk,(SLAVE)video_vga_controller_0.clk) 1 3 4 1140 260 NJ 260 1940 280 NJ
+preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)audio_pll_0.ref_reset,(SLAVE)sram_0.reset,(SLAVE)video_scaler_0.reset,(SLAVE)video_pll_0.ref_reset,(SLAVE)video_pixel_buffer_dma_0.reset,(SLAVE)onchip_memory2_0.reset1,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)nios2_gen2_0.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_in,(SLAVE)jtag_uart_0.reset,(MASTER)clk_0.clk_reset) 1 1 5 320 420 760 350 1220 340 1600 340 1920
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)audio_and_video_config_0.external_interface,(SLAVE)NIOSII_Test.audio_config) 1 0 4 NJ 220 NJ 220 NJ 230 NJ
+preplace netloc INTERCONNECT<net_container>NIOSII_Test</net_container>(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)nios2_gen2_0.debug_mem_slave,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)onchip_memory2_0.s1,(SLAVE)video_pixel_buffer_dma_0.avalon_control_slave,(SLAVE)audio_and_video_config_0.avalon_av_config_slave,(SLAVE)sram_0.avalon_sram_slave,(MASTER)nios2_gen2_0.data_master,(MASTER)video_pixel_buffer_dma_0.avalon_pixel_dma_master,(SLAVE)button_passthrough.s1) 1 1 4 340 600 740 310 1180 300 1580
+preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)sram_0.clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_in,(MASTER)clk_0.clk,(SLAVE)video_pixel_buffer_dma_0.clk,(SLAVE)video_pll_0.ref_clk,(SLAVE)audio_pll_0.ref_clk,(SLAVE)nios2_gen2_0.clk,(SLAVE)video_scaler_0.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)onchip_memory2_0.clk1) 1 1 5 300 400 780 330 1200 320 1620 320 1880
+preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(MASTER)video_pixel_buffer_dma_0.avalon_pixel_source,(SLAVE)video_scaler_0.avalon_scaler_sink) 1 4 1 1580
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)sram_0.external_interface,(SLAVE)NIOSII_Test.sram) 1 0 3 NJ 680 NJ 680 NJ
+preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(MASTER)video_scaler_0.avalon_scaler_source,(SLAVE)video_dual_clock_buffer_0.avalon_dc_buffer_sink) 1 5 1 1900
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.buttons,(SLAVE)button_passthrough.external_connection) 1 0 4 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc FAN_OUT<net_container>NIOSII_Test</net_container>(SLAVE)audio_and_video_config_0.reset,(SLAVE)button_passthrough.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_out,(MASTER)video_pll_0.reset_source,(SLAVE)video_vga_controller_0.reset) 1 3 4 1120 240 NJ 240 1960 320 NJ
 preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)audio_0.external_interface,(SLAVE)NIOSII_Test.audio_interface) 1 0 3 NJ 310 NJ 380 NJ
-preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(SLAVE)audio_0.clk,(MASTER)audio_pll_0.audio_clk) 1 2 1 N
-preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(SLAVE)video_dual_clock_buffer_0.avalon_dc_buffer_sink,(MASTER)video_scaler_0.avalon_scaler_source) 1 5 1 1940
-preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)video_vga_controller_0.external_interface,(SLAVE)NIOSII_Test.vga) 1 0 7 NJ 90 NJ 90 NJ 90 NJ 300 NJ 300 NJ 120 2350
-levelinfo -pg 1 0 110 2550
-levelinfo -hier NIOSII_Test 120 150 500 980 1270 1710 2030 2380 2540
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(SLAVE)jtag_uart_0.irq,(MASTER)nios2_gen2_0.irq) 1 2 1 720
+preplace netloc EXPORT<net_container>NIOSII_Test</net_container>(SLAVE)NIOSII_Test.vga,(SLAVE)video_vga_controller_0.external_interface) 1 0 7 NJ 240 NJ 240 NJ 280 NJ 280 NJ 300 NJ 300 NJ
+preplace netloc POINT_TO_POINT<net_container>NIOSII_Test</net_container>(SLAVE)video_vga_controller_0.avalon_vga_sink,(MASTER)video_dual_clock_buffer_0.avalon_dc_buffer_source) 1 6 1 2290
+levelinfo -pg 1 0 90 2530
+levelinfo -hier NIOSII_Test 100 130 480 960 1270 1690 2010 2360 2520

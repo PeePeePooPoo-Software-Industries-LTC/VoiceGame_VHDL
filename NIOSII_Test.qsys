@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "13";
          type = "int";
       }
    }
@@ -29,7 +29,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "12";
          type = "int";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "11";
          type = "int";
       }
       datum sopceditor_expanded
@@ -74,7 +74,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "8";
          type = "int";
       }
       datum sopceditor_expanded
@@ -140,7 +140,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "7";
          type = "int";
       }
       datum sopceditor_expanded
@@ -161,7 +161,7 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "9";
          type = "int";
       }
       datum sopceditor_expanded
@@ -174,7 +174,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "4";
          type = "int";
       }
       datum sopceditor_expanded
@@ -195,7 +195,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
       datum sopceditor_expanded
@@ -208,7 +208,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "10";
          type = "int";
       }
       datum sopceditor_expanded
@@ -221,7 +221,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "5";
          type = "int";
       }
       datum sopceditor_expanded
@@ -252,6 +252,11 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface
+   name="audio_clk"
+   internal="audio_pll_0.audio_clk"
+   type="clock"
+   dir="start" />
+ <interface
    name="audio_config"
    internal="audio_and_video_config_0.external_interface"
    type="conduit"
@@ -261,6 +266,11 @@
    internal="audio_0.external_interface"
    type="conduit"
    dir="end" />
+ <interface
+   name="audio_rst"
+   internal="audio_pll_0.reset_source"
+   type="reset"
+   dir="start" />
  <interface
    name="buttons"
    internal="button_passthrough.external_connection"
@@ -284,12 +294,12 @@
    kind="altera_up_avalon_audio"
    version="18.0"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="12288000" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="25000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
   <parameter name="audio_in" value="true" />
   <parameter name="audio_out" value="false" />
   <parameter name="avalon_bus_type" value="Memory Mapped" />
-  <parameter name="dw" value="24" />
+  <parameter name="dw" value="16" />
  </module>
  <module
    name="audio_and_video_config_0"
@@ -372,8 +382,8 @@
    kind="altera_nios2_gen2"
    version="18.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="3" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="3" />
   <parameter name="AUTO_DEVICE" value="EP4CE115F29C7" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -769,11 +779,6 @@
    version="18.1"
    start="video_scaler_0.avalon_scaler_source"
    end="video_dual_clock_buffer_0.avalon_dc_buffer_sink" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="audio_pll_0.audio_clk"
-   end="audio_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="jtag_uart_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="nios2_gen2_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="sram_0.clk" />
@@ -822,6 +827,11 @@
    version="18.1"
    start="video_pll_0.vga_clk"
    end="audio_and_video_config_0.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="video_pll_0.vga_clk"
+   end="audio_0.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -894,11 +904,6 @@
  <connection
    kind="reset"
    version="18.1"
-   start="audio_pll_0.reset_source"
-   end="audio_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
    start="video_pll_0.reset_source"
    end="video_vga_controller_0.reset" />
  <connection
@@ -911,6 +916,11 @@
    version="18.1"
    start="video_pll_0.reset_source"
    end="audio_and_video_config_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="video_pll_0.reset_source"
+   end="audio_0.reset" />
  <connection
    kind="reset"
    version="18.1"
