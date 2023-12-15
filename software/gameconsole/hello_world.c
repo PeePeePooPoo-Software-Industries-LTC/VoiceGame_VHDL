@@ -89,14 +89,14 @@ int main() {
 	printf("---\n");
 
 	alt_up_av_config_reset(config_device);
-	alt_up_av_config_write_audio_cfg_register(config_device, 0b00001111, 0b00000000);
+//	alt_up_av_config_write_audio_cfg_register(config_device, 0b00001111, 0b00000000);
 //	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ANALOG_AUDIO_PATH_CTRL, 0b00000110);
-	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ANALOG_AUDIO_PATH_CTRL, 0b00100110);
-	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_DIGITAL_AUDIO_PATH_CTRL, 0b00001001);
-	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_POWER_DOWN_CTRL, 0b00001001);
-	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_AUDIO_DIGITAL_INTERFACE, 0b01000001);
-	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_SAMPLING_CTRL, 0b00001100);
-	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ACTIVE_CTRL, 0b00000001);
+//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ANALOG_AUDIO_PATH_CTRL, 0b00100110);
+//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_DIGITAL_AUDIO_PATH_CTRL, 0b00001001);
+//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_POWER_DOWN_CTRL, 0b00001001);
+//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_AUDIO_DIGITAL_INTERFACE, 0b01000001);
+//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_SAMPLING_CTRL, 0b00001100);
+//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ACTIVE_CTRL, 0b00000001);
 
 	printf("Is Ready? %d\n", alt_up_av_config_read_ready(config_device));
 	printf("Is Ack? %d\n", alt_up_av_config_read_acknowledge(config_device));
