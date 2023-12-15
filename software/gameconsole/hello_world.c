@@ -24,6 +24,11 @@ void vga_swap_buffers(VgaBuffer* buff);
 void vga_clear(VgaBuffer* buff);
 void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color);
 void vga_draw_rect(VgaBuffer* buff, int x, int y, int w, int h, Color);
+void vga_draw_vertical_line(VgaBuffer* buff, int x, int y, int height, Color color);
+
+inline void vga_draw_vertical_line(VgaBuffer* buff, int x, int y, int height, Color color) {
+	alt_up_pixel_buffer_dma_draw_vline(buff->device, x, y, y + height, color, buff->current_buffer);
+}
 
 inline void vga_swap_buffers(VgaBuffer* buff) {
 	alt_up_pixel_buffer_dma_swap_buffers(buff->device);
@@ -76,7 +81,9 @@ int main() {
 
 	alt_up_av_config_reset(config_device);
 
-	unsigned int audio_data[8000] = {0};
+#define AUDIO_BUFFER_SIZE 300
+
+	unsigned int audio_data[AUDIO_BUFFER_SIZE] = {69};
 	unsigned int* audio_data_ptr = audio_data;
 
 	int x = 0;
@@ -88,19 +95,34 @@ int main() {
 			unsigned int available_l = alt_up_audio_read_fifo_avail(audio_device, 0);
 			unsigned int max_l = available_l;
 
-			if (audio_data_ptr + max_l >= audio_data + 8000) {
-				max_l = 0;
+			if (audio_data_ptr + max_l >= audio_data + AUDIO_BUFFER_SIZE) {
+				max_l = audio_data_ptr + max_l - (audio_data + AUDIO_BUFFER_SIZE);
 				break_out = 1;
 			}
-			alt_up_audio_record_l(audio_device, audio_data_ptr, max_l);
+			alt_up_audio_read_fifo(audio_device, audio_data_ptr, max_l, 0);
 			audio_data_ptr += max_l;
 		}
+		audio_data_ptr = audio_data;
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
 
 //		vga_draw_rect(&vga_buffer, x, y, 20, 20, 0);
 
 		int speed = 5;
+
+		unsigned int sum = 0;
+		unsigned int counted = 0;
+		for (int i = 0; i < AUDIO_BUFFER_SIZE; i++) {
+			int data = audio_data[i];
+			if (data < 0xffff / 2) {
+				sum += data;
+				counted++;
+			}
+
+		}
+		sum /= counted;
+
+		speed = 5 + sum * 25 / (0xffff / 2);
 
 		x += ((input & 0x1) >> 0) * speed;
 		x -= ((input & 0x2) >> 1) * speed;
@@ -125,16 +147,17 @@ int main() {
 
 		vga_draw_rect(&vga_buffer, x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
 
-		unsigned int buffer_data[128] = {0};
+		for (int x = 0; x < 300; x++) {
+			int RAW = audio_data[x];
 
+			if (RAW >= 0xffff / 2) {
+				RAW = 0xffff - RAW;
+			}
 
-//		printf("AV(%d) HEAD(%d)\n", available_l, alt_up_audio_read_fifo_head(audio_device, 0));
-//		for (int x = 0; x < available_l; x++) {
-//			int max_y = buffer_data[x] * 200 / 65535;
-//			for (int y = 0; y < max_y; y++) {
-//				vga_draw_rect(&vga_buffer, x, y, 0, 0, RGB(BIT10_MAX, 0, 0));
-//			}
-//		}
+			int max_y = RAW * 200 / 0xffff * 2;
+
+			vga_draw_vertical_line(&vga_buffer, x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
+		}
 
 		vga_swap_buffers(&vga_buffer);
 	}
