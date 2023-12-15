@@ -74,36 +74,27 @@ int main() {
 		return 1;
 	}
 
-	printf("Is Ready? %d\n", alt_up_av_config_read_ready(config_device));
-	printf("Is Ack? %d\n", alt_up_av_config_read_acknowledge(config_device));
-	printf("###\n");
-
 	alt_up_av_config_reset(config_device);
-	printf("Is Ready? %d\n", alt_up_av_config_read_ready(config_device));
-	printf("Is Ack? %d\n", alt_up_av_config_read_acknowledge(config_device));
 
-	printf("Configured audio\n");
-
-	printf("Is Ready? %d\n", alt_up_av_config_read_ready(config_device));
-	printf("Is Ack? %d\n", alt_up_av_config_read_acknowledge(config_device));
-	printf("---\n");
-
-	alt_up_av_config_reset(config_device);
-//	alt_up_av_config_write_audio_cfg_register(config_device, 0b00001111, 0b00000000);
-//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ANALOG_AUDIO_PATH_CTRL, 0b00000110);
-//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ANALOG_AUDIO_PATH_CTRL, 0b00100110);
-//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_DIGITAL_AUDIO_PATH_CTRL, 0b00001001);
-//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_POWER_DOWN_CTRL, 0b00001001);
-//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_AUDIO_DIGITAL_INTERFACE, 0b01000001);
-//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_SAMPLING_CTRL, 0b00001100);
-//	alt_up_av_config_write_audio_cfg_register(config_device, AUDIO_REG_ACTIVE_CTRL, 0b00000001);
-
-	printf("Is Ready? %d\n", alt_up_av_config_read_ready(config_device));
-	printf("Is Ack? %d\n", alt_up_av_config_read_acknowledge(config_device));
+	unsigned int audio_data[8000] = {0};
+	unsigned int* audio_data_ptr = audio_data;
 
 	int x = 0;
 	int y = 0;
 	while (1) {
+
+		int break_out = 0;
+		while (!break_out) {
+			unsigned int available_l = alt_up_audio_read_fifo_avail(audio_device, 0);
+			unsigned int max_l = available_l;
+
+			if (audio_data_ptr + max_l >= audio_data + 8000) {
+				max_l = 0;
+				break_out = 1;
+			}
+			alt_up_audio_record_l(audio_device, audio_data_ptr, max_l);
+			audio_data_ptr += max_l;
+		}
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
 
@@ -135,16 +126,15 @@ int main() {
 		vga_draw_rect(&vga_buffer, x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
 
 		unsigned int buffer_data[128] = {0};
-		unsigned int available_l = alt_up_audio_read_fifo_avail(audio_device, 0);
-		alt_up_audio_record_l(audio_device, buffer_data, available_l);
 
-		printf("AV(%d) HEAD(%d)\n", available_l, alt_up_audio_read_fifo_head(audio_device, 0));
-		for (int x = 0; x < available_l; x++) {
-			int max_y = buffer_data[x] * 200 / 65535;
-			for (int y = 0; y < max_y; y++) {
-				vga_draw_rect(&vga_buffer, x, y, 0, 0, RGB(BIT10_MAX, 0, 0));
-			}
-		}
+
+//		printf("AV(%d) HEAD(%d)\n", available_l, alt_up_audio_read_fifo_head(audio_device, 0));
+//		for (int x = 0; x < available_l; x++) {
+//			int max_y = buffer_data[x] * 200 / 65535;
+//			for (int y = 0; y < max_y; y++) {
+//				vga_draw_rect(&vga_buffer, x, y, 0, 0, RGB(BIT10_MAX, 0, 0));
+//			}
+//		}
 
 		vga_swap_buffers(&vga_buffer);
 	}
