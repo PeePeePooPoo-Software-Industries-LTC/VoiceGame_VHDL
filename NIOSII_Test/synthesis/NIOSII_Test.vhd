@@ -14,7 +14,6 @@ entity NIOSII_Test is
 		audio_interface_ADCDAT  : in    std_logic                     := '0';             -- audio_interface.ADCDAT
 		audio_interface_ADCLRCK : in    std_logic                     := '0';             --                .ADCLRCK
 		audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
-		audio_rst_reset         : out   std_logic;                                        --       audio_rst.reset
 		buttons_export          : in    std_logic_vector(31 downto 0) := (others => '0'); --         buttons.export
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
 		reset_reset_n           : in    std_logic                     := '0';             --           reset.reset_n
@@ -750,7 +749,7 @@ begin
 			ref_clk_clk        => clk_clk,                            --      ref_clk.clk
 			ref_reset_reset    => rst_controller_001_reset_out_reset, --    ref_reset.reset
 			audio_clk_clk      => audio_clk_clk,                      --    audio_clk.clk
-			reset_source_reset => audio_rst_reset                     -- reset_source.reset
+			reset_source_reset => open                                -- reset_source.reset
 		);
 
 	button_passthrough : component NIOSII_Test_button_passthrough

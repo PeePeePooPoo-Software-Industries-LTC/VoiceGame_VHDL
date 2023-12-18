@@ -4,9 +4,7 @@
 #include "system.h"
 #include "sys/alt_irq.h"
 #include "altera_up_avalon_video_pixel_buffer_dma.h"
-#include "altera_up_avalon_audio_and_video_config_regs.h"
-#include "altera_up_avalon_audio_and_video_config.h"
-#include "altera_up_avalon_audio.h"
+#include "audio.h"
 #include "io.h"
 
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
@@ -67,42 +65,12 @@ int main() {
 		vga_buffer.device->back_buffer_start_address
 	);
 
-	alt_up_av_config_dev* config_device = alt_up_av_config_open_dev(AUDIO_AND_VIDEO_CONFIG_0_NAME);
-	if (config_device == NULL) {
-		printf("Failed to open config device\n");
-		return 1;
-	}
-
-	alt_up_audio_dev* audio_device = alt_up_audio_open_dev(AUDIO_0_NAME);
-	if (config_device == NULL) {
-		printf("Failed to open config device\n");
-		return 1;
-	}
-
-	alt_up_av_config_reset(config_device);
-
-#define AUDIO_BUFFER_SIZE 300
-
-	unsigned int audio_data[AUDIO_BUFFER_SIZE] = {69};
-	unsigned int* audio_data_ptr = audio_data;
+	audio_init();
 
 	int x = 0;
 	int y = 0;
 	while (1) {
-
-		int break_out = 0;
-		while (!break_out) {
-			unsigned int available_l = alt_up_audio_read_fifo_avail(audio_device, 0);
-			unsigned int max_l = available_l;
-
-			if (audio_data_ptr + max_l >= audio_data + AUDIO_BUFFER_SIZE) {
-				max_l = audio_data_ptr + max_l - (audio_data + AUDIO_BUFFER_SIZE);
-				break_out = 1;
-			}
-			alt_up_audio_read_fifo(audio_device, audio_data_ptr, max_l, 0);
-			audio_data_ptr += max_l;
-		}
-		audio_data_ptr = audio_data;
+		audio_fill_buffer();
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
 
@@ -114,7 +82,7 @@ int main() {
 		unsigned int counted = 0;
 		for (int i = 0; i < AUDIO_BUFFER_SIZE; i++) {
 			int data = audio_data[i];
-			if (data < 0xffff / 2) {
+			if (data < 0xffff / 6) {
 				sum += data;
 				counted++;
 			}
@@ -122,7 +90,7 @@ int main() {
 		}
 		sum /= counted;
 
-		speed = 5 + sum * 25 / (0xffff / 2);
+		speed = 5 + sum * 25 / (0xffff / 6);
 
 		x += ((input & 0x1) >> 0) * speed;
 		x -= ((input & 0x2) >> 1) * speed;

@@ -9,8 +9,7 @@
    <name preferredWidth="229" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/Interface Protocols/Audio &amp; Video,Library/University Program,Library/Interface Protocols,Library/University Program/Audio &amp; Video/Video,Library/University Program/Audio &amp; Video,Library/University Program/Clock,Library" />
+ <library expandedCategories="Project,Library" />
  <window width="1908" height="1040" x="3846" y="1114" />
  <generation synthesis="VHDL" />
 </preferences>
