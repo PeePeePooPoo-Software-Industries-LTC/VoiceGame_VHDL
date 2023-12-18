@@ -1,5 +1,8 @@
 	component NIOSII_Test is
 		port (
+			audio_clk_clk           : out   std_logic;                                        -- clk
+			audio_config_SDAT       : inout std_logic                     := 'X';             -- SDAT
+			audio_config_SCLK       : out   std_logic;                                        -- SCLK
 			audio_interface_ADCDAT  : in    std_logic                     := 'X';             -- ADCDAT
 			audio_interface_ADCLRCK : in    std_logic                     := 'X';             -- ADCLRCK
 			audio_interface_BCLK    : in    std_logic                     := 'X';             -- BCLK
