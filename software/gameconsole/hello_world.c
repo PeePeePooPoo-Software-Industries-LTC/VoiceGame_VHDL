@@ -44,7 +44,7 @@ int main() {
 	int x = 0;
 	int y = 0;
 	while (1) {
-		audio_fill_buffer();
+//		audio_fill_buffer();
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
 
@@ -87,9 +87,9 @@ int main() {
 		int normalized_x = x * BIT10_MAX / 300;
 		int normalized_y = y * BIT10_MAX / 220;
 
-		vga_draw_image(40, 40, 20, 20, image_frogge_palette, image_frogge, 108);
+		vga_draw_image(x, y, 20, 20, image_frogge_palette, image_frogge, 108);
 
-		vga_draw_rect(x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
+//		vga_draw_rect(x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
 
 		for (int x = 0; x < 300; x++) {
 			int RAW = audio_data[x];
