@@ -141,4 +141,12 @@ extern unsigned char image_snake_body_east_width;
 extern unsigned char image_snake_body_east_height;
 extern unsigned int image_snake_body_east_palette[8];
 extern unsigned char image_snake_body_east[IMAGE_snake_body_east_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: apple.png
+#define IMAGE_apple_MAX_BYTES 42
+extern unsigned char image_apple_width;
+extern unsigned char image_apple_height;
+extern unsigned int image_apple_palette[8];
+extern unsigned char image_apple[IMAGE_apple_MAX_BYTES];
+
 #endif
