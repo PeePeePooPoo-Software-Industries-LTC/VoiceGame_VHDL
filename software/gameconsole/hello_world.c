@@ -65,12 +65,13 @@ int main() {
 		int normalized_x = x * BIT10_MAX / 300;
 		int normalized_y = y * BIT10_MAX / 220;
 
-		vga_draw_image(
+		vga_draw_transparent_image(
 			x, y,
-			image_snake_headed_west_width, image_snake_headed_west_height,
+			image_snake_headed_west_width,
 			image_snake_headed_west_palette,
 			image_snake_headed_west,
-			IMAGE_snake_headed_west_MAX_BYTES
+			IMAGE_snake_headed_west_MAX_BYTES,
+			0x3fffffff
 		);
 
 		for (int x = 0; x < 300; x++) {

@@ -17,5 +17,8 @@ void vga_draw_pixel(unsigned int x, unsigned int y, Color);
 void vga_draw_rect(int x, int y, int w, int h, Color);
 void vga_draw_vertical_line(int x, int y, int height, Color color);
 void vga_draw_image(int x, int y, unsigned char w, unsigned int* palette, unsigned char* image, unsigned int max_bytes);
+unsigned char vga_contains_transparent_pixels(unsigned int* palette, unsigned char* image, unsigned int max_bytes, Color mask);
+void vga_draw_transparent_pixel(unsigned int x, unsigned int y, Color color, Color mask);
+void vga_draw_transparent_image(int x, int y, unsigned char w, unsigned int* palette, unsigned char* image, unsigned int max_bytes, Color mask);
 
 #endif
