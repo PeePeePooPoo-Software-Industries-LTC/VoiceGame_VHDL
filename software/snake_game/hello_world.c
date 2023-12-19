@@ -9,7 +9,9 @@
 #define BIT10_MAX (1023)
 
 #define SCALE(n, input_max, output_max) (n * input_max / output_max)
-
+#define GRID_SIZE_Y 30
+#define GRID_SIZE_X 40
+#define PIXEL_SIZE 8
 
 typedef int Color;
 typedef struct VgaBuffer_t {
@@ -45,6 +47,58 @@ void draw() {
 }
 
 
+struct Snake{
+	int length_in_rect;
+	int length;
+	int width;
+	int headX, headY;
+};
+
+void SpawnApple(VgaBuffer vga_buffer)
+{
+    int randX = rand() % GRID_SIZE_X;
+    int randY = rand() % GRID_SIZE_Y;
+    vga_draw_rect(&vga_buffer, randX*PIXEL_SIZE, randY*PIXEL_SIZE, 6, 6, RGB(1023, 0, 0));
+    vga_draw_rect(&vga_buffer, (randX + 3)*PIXEL_SIZE, (randY - 3)*PIXEL_SIZE, 0, 2, RGB(600, 300, 0));
+}
+
+void draw_snake(int snek[GRID_SIZE_X][GRID_SIZE_Y], VgaBuffer vga_buffer){
+		for(int i = 0; i < GRID_SIZE_X;i++){
+			for(int j = 0; j < GRID_SIZE_Y;j++){
+				int waarde = snek[i][j];
+				if(waarde > 1000){
+					vga_draw_rect(&vga_buffer, i*PIXEL_SIZE, j*PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, waarde, 0));
+				}
+				else
+				{
+					vga_draw_rect(&vga_buffer, i*PIXEL_SIZE, j*PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(255, 0, 0));
+				}
+			}
+		}
+	}
+
+void move_snake(unsigned int input, int* x, int* y, int grid[GRID_SIZE_X][GRID_SIZE_Y])
+	{
+		grid[(int)*x][(int)*y] = 0;
+		*x += ((input & 0x1) >> 0);
+		*x -= ((input & 0x2) >> 1);
+		*y += ((input & 0x4) >> 2);
+		*y -= ((input & 0x8) >> 3);
+		if (*x > GRID_SIZE_X) {
+			*x = 0;
+		}
+		if (*x < 0) {
+			*x = GRID_SIZE_X;
+		}
+		if (*y > GRID_SIZE_Y) {
+			*y = 0;
+		}
+		if (*y < 0) {
+			*y = GRID_SIZE_Y;
+		}
+		grid[(int)*x][(int)*y] = 1023;
+	}
+
 int main() {
 	VgaBuffer vga_buffer = {
 		alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_0_NAME),
@@ -54,61 +108,9 @@ int main() {
 		printf("Failed to open device\n");
 		return 1;
 	}
-	void SpawnApple()
-	{
-	    int randX = rand() % 314;
-	    int randY = rand() % 231 +3;
-	    vga_draw_rect(&vga_buffer, randX, randY, 6, 6, RGB(1023, 0, 0));
-	    vga_draw_rect(&vga_buffer, randX +3, randY - 3, 0, 2, RGB(600, 300, 0));
-	}
 
 	int x = 0;
 	int y = 0;
-	int stepSize = 8;
-
-
-	void move_snake(unsigned int input)
-	{
-
-		x += ((input & 0x1) >> 0) * stepSize;
-		x -= ((input & 0x2) >> 1) * stepSize;
-		y += ((input & 0x4) >> 2) * stepSize;
-		y -= ((input & 0x8) >> 3) * stepSize;
-		if (x > 312) {
-			x = 0;
-		}
-		if (x < 0) {
-			x = 312;
-		}
-		if (y > 232) {
-			y = 0;
-		}
-		if (y < 0) {
-			y = 232;
-		}
-
-		vga_draw_rect(&vga_buffer, x, y, 8, 8, RGB(0, 1023, 0));
-
-		if(input & 0x1 && !(input & 0x2 || input & 0x4 || input & 0x8)){
-			vga_draw_rect(&vga_buffer, x+6, y+2, 0, 0, RGB(1023, 0, 0));
-			vga_draw_rect(&vga_buffer, x+6, y+6, 0, 0, RGB(1023, 0, 0));
-		}
-		if(input & 0x2 && !(input & 0x1 || input & 0x4 || input & 0x8)){
-			vga_draw_rect(&vga_buffer, x+2, y+2, 0, 0, RGB(1023, 0, 0));
-			vga_draw_rect(&vga_buffer, x+2, y+6, 0, 0, RGB(1023, 0, 0));
-		}
-		if(input & 0x4 && !(input & 0x2 || input & 0x1 || input & 0x8)){
-			vga_draw_rect(&vga_buffer, x+6, y+6, 0, 0, RGB(1023, 0, 0));
-			vga_draw_rect(&vga_buffer, x+2, y+6, 0, 0, RGB(1023, 0, 0));
-		}
-		if(input & 0x8 && !(input & 0x2 || input & 0x4 || input & 0x1)){
-			vga_draw_rect(&vga_buffer, x+6, y+2, 0, 0, RGB(1023, 0, 0));
-			vga_draw_rect(&vga_buffer, x+2, y+2, 0, 0, RGB(1023, 0, 0));
-		}
-	}
-
-//	alt_up_pixel_buffer_dma_clear_screen(vga_buffer.device, 0);
-//	alt_up_pixel_buffer_dma_clear_screen(vga_buffer.device, 1);
 
 	printf(
 		"Addresses (FRONT: %p) (BACK: %p)",
@@ -116,33 +118,27 @@ int main() {
 		vga_buffer.device->back_buffer_start_address
 	);
 
+//	struct Snake grid[GRID_SIZE][GRID_SIZE];
+	int grid[GRID_SIZE_X][GRID_SIZE_Y];
+	for(int i = 0; i < GRID_SIZE_X;i++){
+		for(int j = 0; j < GRID_SIZE_Y;j++){
+			grid[i][j] = 0;
+		}
+	}
 
 	while (1) {
-
-//		dingen
-//		vga_draw_rect(&vga_buffer, x, y, 20, 20, 0);
-//		int normalized_x = x * BIT10_MAX / 300;
-//		int normalized_y = y * BIT10_MAX / 220;
-//
-//		vga_draw_rect(&vga_buffer, x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
-//		vga_draw_rect(&vga_buffer, 10, 60, 300, 0, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 10, 120, 300, 0, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 10, 180, 300, 0, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 10, 0, 0, 240, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 70, 0, 0, 240, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 130, 0, 0, 240, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 190, 0, 0, 240, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 250, 0, 0, 240, RGB(1023,1023,1023));
-//		vga_draw_rect(&vga_buffer, 310, 0, 0, 240, RGB(1023,1023,1023));
-
-		for(int i =0; i<699999; i++){
-
-		}
+		for(int i =0; i<699999; i++){}
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
-
-		move_snake(input);
-//		SpawnApple();
+		move_snake(input, &x, &y, grid);
+//		grid[0][0] = 1023;
+		draw_snake(grid, vga_buffer);
+//		snake_hit_apple();
+//		if(snake_hit == true){
+//			grow_snake();
+//			SpawnApple();
+//		}
+//		snake_hit_wall();
 
 		vga_swap_buffers(&vga_buffer);
 	}

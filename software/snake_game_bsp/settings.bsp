@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>18-dec-2023 10:05:14</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1702890314505</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>19-dec-2023 9:33:30</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1702974810678</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\Windows\OneDrive\Documents\KBS_CE\VoiceGame_VHDL\software\snake_game_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\NIOSII_Test.sopcinfo</SopcDesignFile>
