@@ -6,7 +6,7 @@
 unsigned char image_snake_tail_west_width = 16;
 unsigned char image_snake_tail_west_height = 16;
 unsigned int image_snake_tail_west_palette[8] = {
-	0x0280f008, 0x0fc3f0ff, 0x03413002, 0x0c01200a, 0x0741901d, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x3fffffff, 0x03453008, 0x2c212028, 0x37619074, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_tail_west[IMAGE_snake_tail_west_MAX_BYTES] = {
 	0xb0, 0xd1, 0x02, 0xb0, 0xc1, 0x28, 0x20, 0xa0, 0xb1, 0x92, 0x0a,
@@ -23,7 +23,7 @@ unsigned char image_snake_tail_west[IMAGE_snake_tail_west_MAX_BYTES] = {
 unsigned char image_snake_tail_south_width = 16;
 unsigned char image_snake_tail_south_height = 16;
 unsigned int image_snake_tail_south_palette[8] = {
-	0x0fc3f0ff, 0x0c01200a, 0x0741901d, 0x0280f008, 0x03413002, 0x00000000, 0x00000000, 0x00000000,
+	0x3fffffff, 0x2c212028, 0x37619074, 0x0288f420, 0x03453008, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_tail_south[IMAGE_snake_tail_south_MAX_BYTES] = {
 	0xb8, 0x91, 0xe8, 0x12, 0x21, 0xe0, 0x12, 0x21, 0xe0, 0x31, 0x13,
@@ -40,7 +40,7 @@ unsigned char image_snake_tail_south[IMAGE_snake_tail_south_MAX_BYTES] = {
 unsigned char image_snake_tail_north_width = 16;
 unsigned char image_snake_tail_north_height = 16;
 unsigned int image_snake_tail_north_palette[8] = {
-	0x0280f008, 0x03413002, 0x0fc3f0ff, 0x0c01200a, 0x0741901d, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x03453008, 0x3fffffff, 0x2c212028, 0x37619074, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_tail_north[IMAGE_snake_tail_north_MAX_BYTES] = {
 	0x90, 0xe1, 0x98, 0x10, 0xd1, 0x01, 0x98, 0x10, 0xc1, 0x01, 0xa8,
@@ -57,7 +57,7 @@ unsigned char image_snake_tail_north[IMAGE_snake_tail_north_MAX_BYTES] = {
 unsigned char image_snake_tail_east_width = 16;
 unsigned char image_snake_tail_east_height = 16;
 unsigned int image_snake_tail_east_palette[8] = {
-	0x0fc3f0ff, 0x0280f008, 0x03413002, 0x0c01200a, 0x0741901d, 0x00000000, 0x00000000, 0x00000000,
+	0x3fffffff, 0x0288f420, 0x03453008, 0x2c212028, 0x37619074, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_tail_east[IMAGE_snake_tail_east_MAX_BYTES] = {
 	0xd0, 0xb1, 0xc0, 0xb1, 0x21, 0xb0, 0xa9, 0x29, 0x20, 0xa8, 0x91,
@@ -74,7 +74,7 @@ unsigned char image_snake_tail_east[IMAGE_snake_tail_east_MAX_BYTES] = {
 unsigned char image_snake_headed_west_width = 16;
 unsigned char image_snake_headed_west_height = 16;
 unsigned int image_snake_headed_west_palette[8] = {
-	0x0fc3f0ff, 0x0280f008, 0x03413002, 0x0741901d, 0x0c01200a, 0x00000000, 0x00000000, 0x00000000,
+	0x3fffffff, 0x0288f420, 0x03453008, 0x37619074, 0x2c212028, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_headed_west[IMAGE_snake_headed_west_MAX_BYTES] = {
 	0xb0, 0xd1, 0xa0, 0xb1, 0x29, 0x21, 0x90, 0xa9, 0x29, 0x21, 0x9a,
@@ -91,7 +91,7 @@ unsigned char image_snake_headed_west[IMAGE_snake_headed_west_MAX_BYTES] = {
 unsigned char image_snake_headed_south_width = 16;
 unsigned char image_snake_headed_south_height = 16;
 unsigned int image_snake_headed_south_palette[8] = {
-	0x0280f008, 0x03413002, 0x0c01200a, 0x0fc3f0ff, 0x0741901d, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x03453008, 0x2c212028, 0x3fffffff, 0x37619074, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_headed_south[IMAGE_snake_headed_south_MAX_BYTES] = {
 	0x90, 0xe1, 0x98, 0xf1, 0x98, 0xe1, 0x98, 0x10, 0xd1, 0x01, 0x98,
@@ -108,7 +108,7 @@ unsigned char image_snake_headed_south[IMAGE_snake_headed_south_MAX_BYTES] = {
 unsigned char image_snake_headed_north_width = 16;
 unsigned char image_snake_headed_north_height = 16;
 unsigned int image_snake_headed_north_palette[8] = {
-	0x0fc3f0ff, 0x0c01200a, 0x0280f008, 0x03413002, 0x0741901d, 0x00000000, 0x00000000, 0x00000000,
+	0x3fffffff, 0x2c212028, 0x0288f420, 0x03453008, 0x37619074, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_headed_north[IMAGE_snake_headed_north_MAX_BYTES] = {
 	0xb0, 0x10, 0x01, 0xd0, 0x9a, 0x91, 0x9a, 0xb0, 0x9a, 0x32, 0x91,
@@ -125,7 +125,7 @@ unsigned char image_snake_headed_north[IMAGE_snake_headed_north_MAX_BYTES] = {
 unsigned char image_snake_headed_east_width = 16;
 unsigned char image_snake_headed_east_height = 16;
 unsigned int image_snake_headed_east_palette[8] = {
-	0x0280f008, 0x0fc3f0ff, 0x03413002, 0x0c01200a, 0x0741901d, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x3fffffff, 0x03453008, 0x2c212028, 0x37619074, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_headed_east[IMAGE_snake_headed_east_MAX_BYTES] = {
 	0xd0, 0xb1, 0x0a, 0x02, 0xb0, 0xa1, 0x9a, 0x0a, 0x02, 0xa8, 0x91,
@@ -142,7 +142,7 @@ unsigned char image_snake_headed_east[IMAGE_snake_headed_east_MAX_BYTES] = {
 unsigned char image_snake_corner_ws_width = 16;
 unsigned char image_snake_corner_ws_height = 16;
 unsigned int image_snake_corner_ws_palette[8] = {
-	0x0280f008, 0x0fc3f0ff, 0x03413002, 0x0142f000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x3fffffff, 0x03453008, 0x0146f400, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_ws[IMAGE_snake_corner_ws_MAX_BYTES] = {
 	0xd0, 0xb1, 0x23, 0x02, 0x03, 0x0a, 0x90, 0xa1, 0x92, 0x32, 0x92,
@@ -162,7 +162,7 @@ unsigned char image_snake_corner_ws[IMAGE_snake_corner_ws_MAX_BYTES] = {
 unsigned char image_snake_corner_wn_width = 16;
 unsigned char image_snake_corner_wn_height = 16;
 unsigned int image_snake_corner_wn_palette[8] = {
-	0x0280f008, 0x03413002, 0x0142f000, 0x0fc3f0ff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x03453008, 0x0146f400, 0x3fffffff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_wn[IMAGE_snake_corner_wn_MAX_BYTES] = {
 	0x01, 0x92, 0xc1, 0x92, 0x90, 0x12, 0xe1, 0x20, 0x91, 0x9a, 0xc9,
@@ -182,7 +182,7 @@ unsigned char image_snake_corner_wn[IMAGE_snake_corner_wn_MAX_BYTES] = {
 unsigned char image_snake_corner_sw_width = 16;
 unsigned char image_snake_corner_sw_height = 16;
 unsigned int image_snake_corner_sw_palette[8] = {
-	0x0280f008, 0x0fc3f0ff, 0x0142f000, 0x03413002, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x3fffffff, 0x0146f400, 0x03453008, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_sw[IMAGE_snake_corner_sw_MAX_BYTES] = {
 	0xd0, 0xb1, 0x02, 0x03, 0x02, 0x03, 0x02, 0x90, 0xa1, 0x23, 0x93,
@@ -202,7 +202,7 @@ unsigned char image_snake_corner_sw[IMAGE_snake_corner_sw_MAX_BYTES] = {
 unsigned char image_snake_corner_se_width = 16;
 unsigned char image_snake_corner_se_height = 16;
 unsigned int image_snake_corner_se_palette[8] = {
-	0x0fc3f0ff, 0x0280f008, 0x0142f000, 0x03413002, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x3fffffff, 0x0288f420, 0x0146f400, 0x03453008, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_se[IMAGE_snake_corner_se_MAX_BYTES] = {
 	0xb0, 0xd1, 0xa0, 0x91, 0x21, 0x31, 0x21, 0x31, 0x21, 0x90, 0x91,
@@ -221,7 +221,7 @@ unsigned char image_snake_corner_se[IMAGE_snake_corner_se_MAX_BYTES] = {
 unsigned char image_snake_corner_nw_width = 16;
 unsigned char image_snake_corner_nw_height = 16;
 unsigned int image_snake_corner_nw_palette[8] = {
-	0x0280f008, 0x03413002, 0x0142f000, 0x0fc3f0ff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x03453008, 0x0146f400, 0x3fffffff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_nw[IMAGE_snake_corner_nw_MAX_BYTES] = {
 	0x01, 0x91, 0xc2, 0x99, 0x01, 0x21, 0xd9, 0x20, 0x21, 0xa2, 0xb1,
@@ -240,7 +240,7 @@ unsigned char image_snake_corner_nw[IMAGE_snake_corner_nw_MAX_BYTES] = {
 unsigned char image_snake_corner_ne_width = 16;
 unsigned char image_snake_corner_ne_height = 16;
 unsigned int image_snake_corner_ne_palette[8] = {
-	0x0280f008, 0x03413002, 0x0142f000, 0x0fc3f0ff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x03453008, 0x0146f400, 0x3fffffff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_ne[IMAGE_snake_corner_ne_MAX_BYTES] = {
 	0x01, 0x91, 0xc2, 0x99, 0x90, 0x21, 0xd9, 0x21, 0x90, 0x92, 0xb1,
@@ -260,7 +260,7 @@ unsigned char image_snake_corner_ne[IMAGE_snake_corner_ne_MAX_BYTES] = {
 unsigned char image_snake_corner_es_width = 16;
 unsigned char image_snake_corner_es_height = 16;
 unsigned int image_snake_corner_es_palette[8] = {
-	0x0fc3f0ff, 0x0280f008, 0x03413002, 0x0142f000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x3fffffff, 0x0288f420, 0x03453008, 0x0146f400, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_es[IMAGE_snake_corner_es_MAX_BYTES] = {
 	0xb0, 0xd1, 0xa0, 0x91, 0x29, 0x31, 0x21, 0x32, 0x90, 0x91, 0x21,
@@ -280,7 +280,7 @@ unsigned char image_snake_corner_es[IMAGE_snake_corner_es_MAX_BYTES] = {
 unsigned char image_snake_corner_en_width = 16;
 unsigned char image_snake_corner_en_height = 16;
 unsigned int image_snake_corner_en_palette[8] = {
-	0x0280f008, 0x0142f000, 0x03413002, 0x0fc3f0ff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x0146f400, 0x03453008, 0x3fffffff, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_corner_en[IMAGE_snake_corner_en_MAX_BYTES] = {
 	0x90, 0x91, 0xc2, 0x91, 0x20, 0x01, 0xe2, 0x12, 0x90, 0xca, 0x99,
@@ -300,7 +300,7 @@ unsigned char image_snake_corner_en[IMAGE_snake_corner_en_MAX_BYTES] = {
 unsigned char image_snake_body_west_width = 16;
 unsigned char image_snake_body_west_height = 16;
 unsigned int image_snake_body_west_palette[8] = {
-	0x0280f008, 0x03413002, 0x0142f000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x03453008, 0x0146f400, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_body_west[IMAGE_snake_body_west_MAX_BYTES] = {
 	0xf8, 0x01, 0x02, 0x01, 0x02, 0x01, 0x02, 0x01, 0x02, 0x01, 0x91,
@@ -322,7 +322,7 @@ unsigned char image_snake_body_west[IMAGE_snake_body_west_MAX_BYTES] = {
 unsigned char image_snake_body_south_width = 16;
 unsigned char image_snake_body_south_height = 16;
 unsigned int image_snake_body_south_palette[8] = {
-	0x0280f008, 0x0142f000, 0x03413002, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x0146f400, 0x03453008, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_body_south[IMAGE_snake_body_south_MAX_BYTES] = {
 	0x90, 0x91, 0xc2, 0x91, 0x98, 0x12, 0xda, 0x10, 0x90, 0xe2, 0x98,
@@ -338,7 +338,7 @@ unsigned char image_snake_body_south[IMAGE_snake_body_south_MAX_BYTES] = {
 unsigned char image_snake_body_north_width = 16;
 unsigned char image_snake_body_north_height = 16;
 unsigned int image_snake_body_north_palette[8] = {
-	0x0280f008, 0x03413002, 0x0142f000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x03453008, 0x0146f400, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_body_north[IMAGE_snake_body_north_MAX_BYTES] = {
 	0x01, 0x91, 0xc2, 0x99, 0x98, 0xe1, 0x98, 0x21, 0xd9, 0x20, 0x90,
@@ -354,7 +354,7 @@ unsigned char image_snake_body_north[IMAGE_snake_body_north_MAX_BYTES] = {
 unsigned char image_snake_body_east_width = 16;
 unsigned char image_snake_body_east_height = 16;
 unsigned int image_snake_body_east_palette[8] = {
-	0x0280f008, 0x0142f000, 0x03413002, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x0288f420, 0x0146f400, 0x03453008, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
 };
 unsigned char image_snake_body_east[IMAGE_snake_body_east_MAX_BYTES] = {
 	0xf8, 0x90, 0x10, 0x20, 0x10, 0x20, 0x10, 0x20, 0x10, 0x21, 0x9a,
