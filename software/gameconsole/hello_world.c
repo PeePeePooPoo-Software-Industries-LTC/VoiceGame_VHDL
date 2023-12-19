@@ -1,16 +1,23 @@
-
 #include <stdio.h>
 
 #include "system.h"
 #include "sys/alt_irq.h"
 #include "altera_up_avalon_video_pixel_buffer_dma.h"
-#include "audio.h"
 #include "io.h"
 
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
 #define BIT10_MAX (1023)
 
+#define START_X 5
+#define START_Y 5
+
 #define SCALE(n, input_max, output_max) (n * input_max / output_max)
+#define GRID_SIZE_Y 30
+#define GRID_SIZE_X 40
+#define PIXEL_SIZE 8
+
+#define APPLE -1
+#define IGNORE 0
 
 typedef int Color;
 typedef struct VgaBuffer_t {
@@ -18,15 +25,16 @@ typedef struct VgaBuffer_t {
 	unsigned int current_buffer;
 } VgaBuffer;
 
+typedef struct {
+	int length;
+	int head_x, head_y;
+	int delta_x, delta_y;
+} Snake;
+
 void vga_swap_buffers(VgaBuffer* buff);
 void vga_clear(VgaBuffer* buff);
 void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color);
 void vga_draw_rect(VgaBuffer* buff, int x, int y, int w, int h, Color);
-void vga_draw_vertical_line(VgaBuffer* buff, int x, int y, int height, Color color);
-
-inline void vga_draw_vertical_line(VgaBuffer* buff, int x, int y, int height, Color color) {
-	alt_up_pixel_buffer_dma_draw_vline(buff->device, x, y, y + height, color, buff->current_buffer);
-}
 
 inline void vga_swap_buffers(VgaBuffer* buff) {
 	alt_up_pixel_buffer_dma_swap_buffers(buff->device);
@@ -50,87 +58,136 @@ void draw() {
 
 }
 
+void SpawnApple(VgaBuffer vga_buffer)
+{
+    int randX = rand() % GRID_SIZE_X;
+    int randY = rand() % GRID_SIZE_Y;
+    vga_draw_rect(&vga_buffer, randX*PIXEL_SIZE, randY*PIXEL_SIZE, 6, 6, RGB(1023, 0, 0));
+    vga_draw_rect(&vga_buffer, (randX + 3)*PIXEL_SIZE, (randY - 3)*PIXEL_SIZE, 0, 2, RGB(600, 300, 0));
+}
+
+void draw_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y], VgaBuffer vga_buffer){
+	// Check squares for value.
+		for(int i = 0; i < GRID_SIZE_X;i++){
+			for(int j = 0; j < GRID_SIZE_Y;j++){
+				int waarde = grid[i][j];
+				if(waarde > 0){
+					vga_draw_rect(&vga_buffer, i*PIXEL_SIZE, j*PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(BIT10_MAX, BIT10_MAX, 0));
+				}
+				else
+				{
+					vga_draw_rect(&vga_buffer, i*PIXEL_SIZE, j*PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(50, 0, 0));
+				}
+			}
+		}
+	}
+
+void update_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y], Snake snake) {
+	for(int i=0; i < GRID_SIZE_X; i++) {
+		for(int j = 0; j < GRID_SIZE_Y; j++) {
+			int value = grid[i][j];
+			if(value != APPLE && value != IGNORE) {
+				// Do increments.
+				if (value < snake.length) {
+					grid[i][j] = value + 1;
+				} else {
+					grid[i][j] = 0;
+				}
+			}
+			// No apples?
+		}
+	}
+}
+
+Snake move_snake(unsigned int input, Snake snake, int grid[GRID_SIZE_X][GRID_SIZE_Y])
+	{
+		// Input from the switches. (Currently LEVEL checked.)
+
+		if (!(input & 0x4)) {
+			// Turn left.
+			// new x = -y, new y = x
+			int old_x = snake.delta_x;
+			int old_y = snake.delta_y;
+
+			printf("Turn left\n");
+
+			snake.delta_x = old_y * -1;
+			snake.delta_y = old_x;
+		}
+		if (!(input & 0x8)) {
+			// Turn right.
+			// new x = y, new y = -x
+			int old_x = snake.delta_x;
+			int old_y = snake.delta_y;
+
+			printf("Turn right\n");
+
+			snake.delta_x = old_y;
+			snake.delta_y = old_x * -1;
+		}
+
+		// Killzones
+		if (snake.head_x > GRID_SIZE_X) {
+			snake.head_x = 0;
+		}
+		if (snake.head_x < 0) {
+			snake.head_x = GRID_SIZE_X;
+		}
+		if (snake.head_y  > GRID_SIZE_Y) {
+			snake.head_y = 0;
+		}
+		if (snake.head_y < 0) {
+			snake.head_y = GRID_SIZE_Y;
+		}
+
+		// Move snake.
+
+		snake.head_x = snake.head_x + snake.delta_x;
+		snake.head_y = snake.head_y + snake.delta_y;
+
+		grid[snake.head_x][snake.head_y] = 1;
+
+		return snake;
+	}
+
 int main() {
 	VgaBuffer vga_buffer = {
 		alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_0_NAME),
 		1
 	};
 	if (vga_buffer.device == NULL) {
-		printf("Failed to open device\n");
 		return 1;
 	}
+
+	int x = 0;
+	int y = 0;
+
 	printf(
-		"VGA Setup (FRONT: %p) (BACK: %p)\n",
+		"Addresses (FRONT: %p) (BACK: %p)",
 		vga_buffer.device->buffer_start_address,
 		vga_buffer.device->back_buffer_start_address
 	);
 
-	audio_init();
+	// Making snake struct
+	Snake snake = {3,START_X,START_Y,0,1};
 
-	int x = 0;
-	int y = 0;
+//	struct Snake grid[GRID_SIZE][GRID_SIZE];
+	int grid[GRID_SIZE_X][GRID_SIZE_Y];
+	for(int i = 0; i < GRID_SIZE_X;i++){
+		for(int j = 0; j < GRID_SIZE_Y;j++){
+			grid[i][j] = 0;
+		}
+	}
+
 	while (1) {
-		audio_fill_buffer();
+		for(int i =0; i<99999; i++){}
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
+		update_grid(grid,snake);
+		snake = move_snake(input, snake, grid);
+		draw_grid(grid, vga_buffer);
 
-//		vga_draw_rect(&vga_buffer, x, y, 20, 20, 0);
-
-		int speed = 5;
-
-		unsigned int sum = 0;
-		unsigned int counted = 0;
-		for (int i = 0; i < AUDIO_BUFFER_SIZE; i++) {
-			int data = audio_data[i];
-			if (data < 0xffff / 6) {
-				sum += data;
-				counted++;
-			}
-
-		}
-		sum /= counted;
-
-		speed = 5 + sum * 25 / (0xffff / 6);
-
-		x += ((input & 0x1) >> 0) * speed;
-		x -= ((input & 0x2) >> 1) * speed;
-		y += ((input & 0x4) >> 2) * speed;
-		y -= ((input & 0x8) >> 3) * speed;
-
-		if (x > 300) {
-			x = 0;
-		}
-		if (x < 0) {
-			x = 300;
-		}
-		if (y > 220) {
-			y = 0;
-		}
-		if (y < 0) {
-			y = 220;
-		}
-
-		int normalized_x = x * BIT10_MAX / 300;
-		int normalized_y = y * BIT10_MAX / 220;
-
-		vga_draw_rect(&vga_buffer, x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
-
-		for (int x = 0; x < 300; x++) {
-			int RAW = audio_data[x];
-
-			if (RAW >= 0xffff / 2) {
-				RAW = 0xffff - RAW;
-			}
-
-			int max_y = RAW * 200 / 0xffff * 2;
-
-//			for (int y = 0; y < max_y; y++) {
-//				int val = y * 5;
-//				vga_draw_pixel(&vga_buffer, x + 10, y + 10, RGB(BIT10_MAX - val, 0, val));
-//			}
-
-			vga_draw_vertical_line(&vga_buffer, x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
-		}
+		// Apple
 
 		vga_swap_buffers(&vga_buffer);
 	}

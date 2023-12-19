@@ -38,7 +38,7 @@ entity Main is
 
         -- FPGA board utility pins
         GPIO        : out   std_logic_vector(35 downto 0);
-        SW          : in    std_logic_vector(17 downto 0);
+		  KEY			  : in	 std_logic_vector(3 downto 0);
         LEDR        : out   std_logic_vector(17 downto 0);
         LEDG        : out   std_logic_vector(7  downto 0)
     );
@@ -65,7 +65,7 @@ architecture rtl of Main is
             sram_OE_N               : out   std_logic;
             sram_WE_N               : out   std_logic;
 
-            buttons_export          : in    std_logic_vector(31 downto 0);
+            buttons_export          : in    std_logic_vector(3 downto 0);
 
             vga_CLK                 : out   std_logic;
             vga_HS                  : out   std_logic;
@@ -85,9 +85,9 @@ architecture rtl of Main is
         );
     end component video_pll;
     
-    signal button_passthrough : std_logic_vector(31 downto 0);
+    signal button_passthrough : std_logic_vector(3 downto 0);
 begin
-    button_passthrough(SW'range) <= SW;
+    button_passthrough(KEY'range) <= KEY;
     
     nios2_core : NIOSII_Test port map(
         clk_clk                 => clk_clk,

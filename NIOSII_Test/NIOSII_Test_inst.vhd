@@ -6,7 +6,7 @@
 			audio_interface_ADCDAT  : in    std_logic                     := 'X';             -- ADCDAT
 			audio_interface_ADCLRCK : in    std_logic                     := 'X';             -- ADCLRCK
 			audio_interface_BCLK    : in    std_logic                     := 'X';             -- BCLK
-			buttons_export          : in    std_logic_vector(31 downto 0) := (others => 'X'); -- export
+			buttons_export          : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                 : in    std_logic                     := 'X';             -- clk
 			reset_reset_n           : in    std_logic                     := 'X';             -- reset_n
 			sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => 'X'); -- DQ

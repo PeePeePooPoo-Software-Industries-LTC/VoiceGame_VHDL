@@ -47,8 +47,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 200)
 		(input)
-		(text "buttons_export[31..0]" (rect 0 0 82 12)(font "Arial" (font_size 8)))
-		(text "buttons_export[31..0]" (rect 4 189 130 200)(font "Arial" (font_size 8)))
+		(text "buttons_export[3..0]" (rect 0 0 79 12)(font "Arial" (font_size 8)))
+		(text "buttons_export[3..0]" (rect 4 189 124 200)(font "Arial" (font_size 8)))
 		(line (pt 0 200)(pt 144 200)(line_width 3))
 	)
 	(port
