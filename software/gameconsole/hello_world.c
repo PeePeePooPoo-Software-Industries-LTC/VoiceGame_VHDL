@@ -3,8 +3,8 @@
 
 #include "system.h"
 #include "sys/alt_irq.h"
-#include "altera_up_avalon_video_pixel_buffer_dma.h"
 #include "audio.h"
+#include "graphics.h"
 #include "io.h"
 
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
@@ -12,60 +12,34 @@
 
 #define SCALE(n, input_max, output_max) (n * input_max / output_max)
 
-typedef int Color;
-typedef struct VgaBuffer_t {
-	alt_up_pixel_buffer_dma_dev* device;
-	unsigned int current_buffer;
-} VgaBuffer;
-
-void vga_swap_buffers(VgaBuffer* buff);
-void vga_clear(VgaBuffer* buff);
-void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color);
-void vga_draw_rect(VgaBuffer* buff, int x, int y, int w, int h, Color);
-void vga_draw_vertical_line(VgaBuffer* buff, int x, int y, int height, Color color);
-
-inline void vga_draw_vertical_line(VgaBuffer* buff, int x, int y, int height, Color color) {
-	alt_up_pixel_buffer_dma_draw_vline(buff->device, x, y, y + height, color, buff->current_buffer);
-}
-
-inline void vga_swap_buffers(VgaBuffer* buff) {
-	alt_up_pixel_buffer_dma_swap_buffers(buff->device);
-	while (alt_up_pixel_buffer_dma_check_swap_buffers_status(buff->device)) {};
-	vga_clear(buff);
-}
-
-inline void vga_draw_pixel(VgaBuffer* buff, int x, int y, Color color) {
-	alt_up_pixel_buffer_dma_draw(buff->device, color, x, y);
-}
-
-inline void vga_clear(VgaBuffer* buff) {
-	alt_up_pixel_buffer_dma_clear_screen(buff->device, buff->current_buffer);
-}
-
-inline void vga_draw_rect(VgaBuffer* buff, int x, int y, int w, int h, Color color) {
-	alt_up_pixel_buffer_dma_draw_box(buff->device, x, y, x + w, y + h, color, buff->current_buffer);
-}
-
 void draw() {
 
 }
 
 int main() {
-	VgaBuffer vga_buffer = {
-		alt_up_pixel_buffer_dma_open_dev(VIDEO_PIXEL_BUFFER_DMA_0_NAME),
-		1
-	};
-	if (vga_buffer.device == NULL) {
-		printf("Failed to open device\n");
-		return 1;
-	}
-	printf(
-		"VGA Setup (FRONT: %p) (BACK: %p)\n",
-		vga_buffer.device->buffer_start_address,
-		vga_buffer.device->back_buffer_start_address
-	);
-
+	vga_init();
 	audio_init();
+
+	// AUTO-GENERATED IMAGE CONVERTED FROM: frogge.png
+	unsigned char image_frogge_width = 20;
+	unsigned char image_frogge_height = 20;
+	unsigned int image_frogge_palette[8] = {
+		0x0fc3f0ff, 0x0741904f, 0x0003503c, 0x0c0320a9, 0x00000000, 0x0640a092, 0x03026024, 0x00000000,
+	};
+	unsigned char image_frogge[108] = {
+		0xf8, 0xf8, 0xf8, 0xf8, 0xf8, 0xc8, 0xa1, 0xa0, 0xa1, 0xb8, 0x12,
+		0x9a, 0x10, 0x01, 0xa2, 0x10, 0xa8, 0x13, 0x32, 0x92, 0x91,
+		0x9a, 0x93, 0x10, 0xa0, 0x12, 0x34, 0xc2, 0x43, 0x21, 0x98,
+		0x12, 0x23, 0x42, 0xba, 0x43, 0x92, 0x10, 0x01, 0x25, 0x52,
+		0xca, 0x95, 0x21, 0x98, 0x15, 0x52, 0xca, 0x95, 0x10, 0xa0,
+		0x12, 0x62, 0xba, 0x62, 0x10, 0xa8, 0x12, 0x26, 0xbe, 0x92,
+		0x10, 0xa0, 0x12, 0x9a, 0xb3, 0xa2, 0x10, 0x98, 0x12, 0xa2,
+		0xa3, 0xaa, 0x10, 0x90, 0x12, 0x26, 0xd2, 0x62, 0x21, 0x90,
+		0x12, 0x92, 0x62, 0xba, 0x62, 0x92, 0x10, 0x90, 0x12, 0x92,
+		0x62, 0xaa, 0x62, 0x92, 0x10, 0x98, 0x12, 0x92, 0x62, 0xaa,
+		0x62, 0x92, 0x10, 0x90, 0xf9, 0x99, 0x88,
+	};
+
 
 	int x = 0;
 	int y = 0;
@@ -73,8 +47,6 @@ int main() {
 		audio_fill_buffer();
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
-
-//		vga_draw_rect(&vga_buffer, x, y, 20, 20, 0);
 
 		int speed = 5;
 
@@ -113,7 +85,7 @@ int main() {
 		int normalized_x = x * BIT10_MAX / 300;
 		int normalized_y = y * BIT10_MAX / 220;
 
-		vga_draw_rect(&vga_buffer, x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
+		vga_draw_image(x, y, 20, 20, image_frogge_palette, image_frogge, 108);
 
 		for (int x = 0; x < 300; x++) {
 			int RAW = audio_data[x];
@@ -124,15 +96,11 @@ int main() {
 
 			int max_y = RAW * 200 / 0xffff * 2;
 
-//			for (int y = 0; y < max_y; y++) {
-//				int val = y * 5;
-//				vga_draw_pixel(&vga_buffer, x + 10, y + 10, RGB(BIT10_MAX - val, 0, val));
-//			}
-
-			vga_draw_vertical_line(&vga_buffer, x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
+			vga_draw_vertical_line(x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
 		}
 
-		vga_swap_buffers(&vga_buffer);
+		vga_swap_buffers();
+		vga_clear();
 	}
 	return 0;
 }
