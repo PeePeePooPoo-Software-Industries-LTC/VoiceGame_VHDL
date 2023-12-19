@@ -90,7 +90,7 @@ void vga_draw_rect(register int x, register int y, int w, register int h, Color 
 	}
 }
 
-void vga_draw_image(register int x, register int y, register unsigned char w, unsigned char h, register unsigned int* palette, register unsigned char* image, register unsigned int max_bytes) {
+void vga_draw_image(register int x, register int y, register unsigned char w, register unsigned int* palette, register unsigned char* image, unsigned int max_bytes) {
 	register unsigned char offset_x = 0;
 	for (register int idx = 0; idx < max_bytes; idx++) {
 		register int byte = image[idx];
