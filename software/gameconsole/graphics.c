@@ -90,7 +90,7 @@ void vga_draw_rect(register int x, register int y, int w, register int h, Color 
 	}
 }
 
-void vga_draw_image(register int x, register int y, register unsigned char w, unsigned char h, register unsigned int* palette, register unsigned char* image, register unsigned int max_bytes) {
+void vga_draw_image(register int x, register int y, register unsigned char w, register unsigned int* palette, register unsigned char* image, unsigned int max_bytes) {
 	register unsigned char offset_x = 0;
 	for (register int idx = 0; idx < max_bytes; idx++) {
 		register int byte = image[idx];
@@ -128,5 +128,77 @@ void vga_draw_image(register int x, register int y, register unsigned char w, un
 			}
 		}
 	}
+}
+
+inline void vga_draw_transparent_pixel(unsigned int x, unsigned int y, Color color, Color mask) {
+	if (color == mask) { return; };
+	IOWR_32DIRECT(
+		back_buffer_addr,
+		(x << x_coord_offset) | (y << y_coord_offset),
+		color
+	);
+}
+
+void vga_draw_transparent_image(register int x, register int y, register unsigned char w, register unsigned int* palette, register unsigned char* image, unsigned int max_bytes, Color mask) {
+	register unsigned char offset_x = 0;
+	for (register int idx = 0; idx < max_bytes; idx++) {
+		register int byte = image[idx];
+		// Case 1: RANGE_BYTE
+		if (byte & (1 << BYTE_TYPE_OFFSET)) {
+			unsigned char range = (byte & (0b1111 << RANGE_RANGE_OFFSET)) >> RANGE_RANGE_OFFSET;
+			unsigned char col_idx = (byte & (0b111 << RANGE_COL_OFFSET)) >> RANGE_COL_OFFSET;
+			// Save on creating an extra variable by reusing the range var
+			for (; range > 0; range--)
+			{
+				vga_draw_transparent_pixel(x + offset_x, y, palette[col_idx], mask);
+				offset_x++;
+				if (offset_x == w) { offset_x = 0; y++; };
+			}
+		} else { // Case 2: COLOR_BYTE
+			// Retrieve the colors & write to screen
+			unsigned char col_idx_1 = (byte & (0b111 << COLOR_FIRST_COL_OFFSET)) >> COLOR_FIRST_COL_OFFSET;
+			unsigned char col_idx_2 = (byte & (0b111 << COLOR_SECOND_COL_OFFSET)) >> COLOR_SECOND_COL_OFFSET;
+
+			vga_draw_transparent_pixel(x + offset_x, y, palette[col_idx_1], mask);
+			offset_x++;
+			if (offset_x == w) { offset_x = 0; y++; };
+			vga_draw_transparent_pixel(x + offset_x, y, palette[col_idx_2], mask);
+			offset_x++;
+			if (offset_x == w) { offset_x = 0; y++; };
+
+			// If the copy bit is set, write again
+			if (byte & (1 << COLOR_COPY_OFFSET)) {
+				vga_draw_transparent_pixel(x + offset_x, y, palette[col_idx_1], mask);
+				offset_x++;
+				if (offset_x == w) { offset_x = 0; y++; };
+				vga_draw_transparent_pixel(x + offset_x, y, palette[col_idx_2], mask);
+				offset_x++;
+				if (offset_x == w) { offset_x = 0; y++; };
+			}
+		}
+	}
+}
+
+unsigned char vga_contains_transparent_pixels(unsigned int* palette, unsigned char* image, unsigned int max_bytes, Color mask) {
+	register unsigned char offset_x = 0;
+	for (register int idx = 0; idx < max_bytes; idx++) {
+		register int byte = image[idx];
+		// Case 1: RANGE_BYTE
+		if (byte & (1 << BYTE_TYPE_OFFSET)) {
+			unsigned char col_idx = (byte & (0b111 << RANGE_COL_OFFSET)) >> RANGE_COL_OFFSET;
+			if (palette[col_idx] == mask) {
+				return 1;
+			}
+		} else { // Case 2: COLOR_BYTE
+			// Retrieve the colors & write to screen
+			unsigned char col_idx_1 = (byte & (0b111 << COLOR_FIRST_COL_OFFSET)) >> COLOR_FIRST_COL_OFFSET;
+			unsigned char col_idx_2 = (byte & (0b111 << COLOR_SECOND_COL_OFFSET)) >> COLOR_SECOND_COL_OFFSET;
+
+			if (palette[col_idx_1] == mask || palette[col_idx_2] == mask ) {
+				return 1;
+			}
+		}
+	}
+	return 0;
 }
 

@@ -145,6 +145,7 @@ ELF := gameconsole.elf
 C_SRCS += hello_world.c
 C_SRCS += audio.c
 C_SRCS += graphics.c
+C_SRCS += images.c
 CXX_SRCS :=
 ASM_SRCS :=
 
