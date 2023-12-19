@@ -44,7 +44,7 @@ int main() {
 	int x = 0;
 	int y = 0;
 	while (1) {
-//		audio_fill_buffer();
+		audio_fill_buffer();
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
 
@@ -109,6 +109,7 @@ int main() {
 		}
 
 		vga_swap_buffers();
+		vga_clear();
 	}
 	return 0;
 }
