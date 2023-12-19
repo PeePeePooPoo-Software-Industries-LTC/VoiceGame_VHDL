@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Tue Dec 19 11:21:45 CET 2023
+ * Generated: Tue Dec 19 14:27:15 CET 2023
  */
 
 /*
@@ -207,7 +207,7 @@
  */
 
 #define ALT_MODULE_CLASS_audio_and_video_config_0 altera_up_avalon_audio_and_video_config
-#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x301000
+#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x301020
 #define AUDIO_AND_VIDEO_CONFIG_0_IRQ -1
 #define AUDIO_AND_VIDEO_CONFIG_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define AUDIO_AND_VIDEO_CONFIG_0_NAME "/dev/audio_and_video_config_0"
@@ -221,14 +221,14 @@
  */
 
 #define ALT_MODULE_CLASS_button_passthrough altera_avalon_pio
-#define BUTTON_PASSTHROUGH_BASE 0x301010
+#define BUTTON_PASSTHROUGH_BASE 0x301000
 #define BUTTON_PASSTHROUGH_BIT_CLEARING_EDGE_REGISTER 0
 #define BUTTON_PASSTHROUGH_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define BUTTON_PASSTHROUGH_CAPTURE 1
 #define BUTTON_PASSTHROUGH_DATA_WIDTH 4
 #define BUTTON_PASSTHROUGH_DO_TEST_BENCH_WIRING 0
 #define BUTTON_PASSTHROUGH_DRIVEN_SIM_VALUE 0
-#define BUTTON_PASSTHROUGH_EDGE_TYPE "RISING"
+#define BUTTON_PASSTHROUGH_EDGE_TYPE "FALLING"
 #define BUTTON_PASSTHROUGH_FREQ 25000000
 #define BUTTON_PASSTHROUGH_HAS_IN 1
 #define BUTTON_PASSTHROUGH_HAS_OUT 0
@@ -320,7 +320,7 @@
  */
 
 #define ALT_MODULE_CLASS_video_pixel_buffer_dma_0 altera_up_avalon_video_pixel_buffer_dma
-#define VIDEO_PIXEL_BUFFER_DMA_0_BASE 0x301020
+#define VIDEO_PIXEL_BUFFER_DMA_0_BASE 0x301010
 #define VIDEO_PIXEL_BUFFER_DMA_0_IRQ -1
 #define VIDEO_PIXEL_BUFFER_DMA_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define VIDEO_PIXEL_BUFFER_DMA_0_NAME "/dev/video_pixel_buffer_dma_0"

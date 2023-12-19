@@ -103,28 +103,39 @@ Snake move_snake(unsigned int input, Snake snake, int grid[GRID_SIZE_X][GRID_SIZ
 	{
 		// Input from the switches. (Currently LEVEL checked.)
 
-		if (!(input & 0x4)) {
-			// Turn left.
-			// new x = -y, new y = x
-			int old_x = snake.delta_x;
-			int old_y = snake.delta_y;
-
-			printf("Turn left\n");
-
-			snake.delta_x = old_y * -1;
-			snake.delta_y = old_x;
-		}
-		if (!(input & 0x8)) {
+		if ((input & 0x4)) {
 			// Turn right.
-			// new x = y, new y = -x
+			// new x = -y, new y = x
 			int old_x = snake.delta_x;
 			int old_y = snake.delta_y;
 
 			printf("Turn right\n");
 
+			snake.delta_x = old_y * -1;
+			snake.delta_y = old_x;
+
+			// Reset edge_capture register.
+			IOWR(BUTTON_PASSTHROUGH_BASE,3,1);
+		}
+		if ((input & 0x8)) {
+			// Turn left.
+			// new x = y, new y = -x
+			int old_x = snake.delta_x;
+			int old_y = snake.delta_y;
+
+			printf("Turn left\n");
+
 			snake.delta_x = old_y;
 			snake.delta_y = old_x * -1;
+
+			// Reset edge_capture register.
+			IOWR(BUTTON_PASSTHROUGH_BASE,3,1);
 		}
+
+		// Move snake.
+
+		snake.head_x = snake.head_x + snake.delta_x;
+		snake.head_y = snake.head_y + snake.delta_y;
 
 		// Killzones
 		if (snake.head_x > GRID_SIZE_X) {
@@ -140,11 +151,6 @@ Snake move_snake(unsigned int input, Snake snake, int grid[GRID_SIZE_X][GRID_SIZ
 			snake.head_y = GRID_SIZE_Y;
 		}
 
-		// Move snake.
-
-		snake.head_x = snake.head_x + snake.delta_x;
-		snake.head_y = snake.head_y + snake.delta_y;
-
 		grid[snake.head_x][snake.head_y] = 1;
 
 		return snake;
@@ -158,9 +164,6 @@ int main() {
 	if (vga_buffer.device == NULL) {
 		return 1;
 	}
-
-	int x = 0;
-	int y = 0;
 
 	printf(
 		"Addresses (FRONT: %p) (BACK: %p)",
@@ -182,7 +185,8 @@ int main() {
 	while (1) {
 		for(int i =0; i<99999; i++){}
 
-		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
+		int input = IORD(BUTTON_PASSTHROUGH_BASE,3);
+
 		update_grid(grid,snake);
 		snake = move_snake(input, snake, grid);
 		draw_grid(grid, vga_buffer);

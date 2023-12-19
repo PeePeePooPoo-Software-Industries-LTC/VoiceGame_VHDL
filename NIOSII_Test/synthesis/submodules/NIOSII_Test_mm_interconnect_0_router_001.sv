@@ -215,20 +215,20 @@ module NIOSII_Test_mm_interconnect_0_router_001
 
     // ( 0x301000 .. 0x301010 )
     if ( {address[RG:PAD3],{PAD3{1'b0}}} == 22'h301000   ) begin
-            src_channel = 8'b00000100;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
-    end
-
-    // ( 0x301010 .. 0x301020 )
-    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 22'h301010   ) begin
             src_channel = 8'b10000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 
-    // ( 0x301020 .. 0x301030 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 22'h301020   ) begin
+    // ( 0x301010 .. 0x301020 )
+    if ( {address[RG:PAD4],{PAD4{1'b0}}} == 22'h301010   ) begin
             src_channel = 8'b00001000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 7;
+    end
+
+    // ( 0x301020 .. 0x301030 )
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 22'h301020   ) begin
+            src_channel = 8'b00000100;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x301030 .. 0x301040 )

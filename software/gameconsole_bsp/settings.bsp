@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>19-Dec-2023 11:21:45</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1702981305333</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>19-Dec-2023 14:27:15</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1702992435191</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\niels\Documents\VoiceGame_VHDL\software\gameconsole_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\NIOSII_Test.sopcinfo</SopcDesignFile>
@@ -911,19 +911,19 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
+                <slaveDescriptor>button_passthrough</slaveDescriptor>
                 <addressRange>0x00301000 - 0x0030100F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>button_passthrough</slaveDescriptor>
+                <slaveDescriptor>video_pixel_buffer_dma_0</slaveDescriptor>
                 <addressRange>0x00301010 - 0x0030101F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>video_pixel_buffer_dma_0</slaveDescriptor>
+                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
                 <addressRange>0x00301020 - 0x0030102F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
