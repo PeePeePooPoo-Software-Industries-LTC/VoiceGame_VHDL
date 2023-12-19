@@ -48,8 +48,6 @@ int main() {
 
 		unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 0);
 
-//		vga_draw_rect(&vga_buffer, x, y, 20, 20, 0);
-
 		int speed = 5;
 
 		unsigned int sum = 0;
@@ -89,8 +87,6 @@ int main() {
 
 		vga_draw_image(x, y, 20, 20, image_frogge_palette, image_frogge, 108);
 
-//		vga_draw_rect(x, y, 20, 20, RGB(BIT10_MAX - (normalized_x + normalized_y) / 2, normalized_x, normalized_y));
-
 		for (int x = 0; x < 300; x++) {
 			int RAW = audio_data[x];
 
@@ -99,11 +95,6 @@ int main() {
 			}
 
 			int max_y = RAW * 200 / 0xffff * 2;
-
-//			for (int y = 0; y < max_y; y++) {
-//				int val = y * 5;
-//				vga_draw_pixel(&vga_buffer, x + 10, y + 10, RGB(BIT10_MAX - val, 0, val));
-//			}
 
 			vga_draw_vertical_line(x + 10, 10, max_y, RGB(BIT10_MAX, 0, 0));
 		}
