@@ -144,6 +144,7 @@ ELF := gameconsole.elf
 # Paths to C, C++, and assembly source files.
 C_SRCS += hello_world.c
 C_SRCS += audio.c
+C_SRCS += graphics.c
 CXX_SRCS :=
 ASM_SRCS :=
 
