@@ -18,6 +18,8 @@
 #define GRID_SIZE_X 20
 #define PIXEL_SIZE 16
 
+#define GRID_ARG int grid[GRID_SIZE_Y][GRID_SIZE_X]
+
 #define GAME_OVER -2
 #define APPLE -1
 #define IGNORE 0
@@ -32,25 +34,25 @@ void spawn_apple(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
 	int posible_apple_spawn = 1;
 
 	while (posible_apple_spawn) {
-		int randX = rand() % GRID_SIZE_X;
-		int randY = rand() % GRID_SIZE_Y;
-		int suggested_apple_spawn = grid[randX][randY];
+		int rand_x = rand() % GRID_SIZE_X;
+		int rand_y = rand() % GRID_SIZE_Y;
+		int suggested_apple_spawn = grid[rand_x][rand_y];
 		if (suggested_apple_spawn == IGNORE) {
 			posible_apple_spawn = 0;
-			grid[randX][randY] = -1;
+			grid[rand_x][rand_y] = -1;
 		}
 	}
 }
 
-void draw_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
+void draw_grid(GRID_ARG) {
 	for (int i = 0; i < GRID_SIZE_X; i++) {
 		for (int j = 0; j < GRID_SIZE_Y; j++) {
-			int waarde = grid[i][j];
-			if (waarde != APPLE && waarde != IGNORE && waarde != GAME_OVER) {
+			int value = grid[i][j];
+			if (value != APPLE && value != IGNORE && value != GAME_OVER) {
 				vga_draw_rect(i * PIXEL_SIZE, j * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 1023, 0));
-			} else if(waarde == IGNORE) {
+			} else if(value == IGNORE) {
 				vga_draw_rect(i * PIXEL_SIZE, j * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 0));
-			} else if(waarde == APPLE) {
+			} else if(value == APPLE) {
 				vga_draw_rect(i * PIXEL_SIZE, (j * PIXEL_SIZE) + 2, 8, 6, RGB(1023, 0, 0));
 				vga_draw_rect((i * PIXEL_SIZE) + 3, j * PIXEL_SIZE, 0, 2, RGB(600, 300, 0));
 			} else {
@@ -60,7 +62,7 @@ void draw_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
 	}
 }
 
-void update_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y], Snake* snake) {
+void update_grid(GRID_ARG, Snake* snake) {
 	for (int i=0; i < GRID_SIZE_X; i++) {
 		for (int j = 0; j < GRID_SIZE_Y; j++) {
 			int value = grid[i][j];
@@ -77,7 +79,7 @@ void update_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y], Snake* snake) {
 	}
 }
 
-void game_over(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
+void game_over(GRID_ARG) {
 	for (int i = 0; i < GRID_SIZE_X; i++){
 		for (int j = 0; j < GRID_SIZE_Y; j++){
 			grid[i][j] = -2;
@@ -85,15 +87,13 @@ void game_over(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
 	}
 }
 
-void move_snake(unsigned int input, Snake* snake, int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
+void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 	// Input from the switches. (Currently LEVEL checked.)
 	if ((input & 0x4)) {
 		// Turn right.
 		// new x = -y, new y = x
 		int old_x = snake->delta_x;
 		int old_y = snake->delta_y;
-
-		printf("Turn right\n");
 
 		snake->delta_x = old_y * -1;
 		snake->delta_y = old_x;
@@ -106,8 +106,6 @@ void move_snake(unsigned int input, Snake* snake, int grid[GRID_SIZE_X][GRID_SIZ
 		// new x = y, new y = -x
 		int old_x = snake->delta_x;
 		int old_y = snake->delta_y;
-
-		printf("Turn left\n");
 
 		snake->delta_x = old_y;
 		snake->delta_y = old_x * -1;
@@ -146,7 +144,7 @@ void move_snake(unsigned int input, Snake* snake, int grid[GRID_SIZE_X][GRID_SIZ
 	}
 }
 
-void restart_game(Snake* snake, int grid[GRID_SIZE_X][GRID_SIZE_Y]){
+void restart_game(GRID_ARG, Snake* snake){
 	snake->length = 3;
 	snake->head_x = START_X;
 	snake->head_y = START_Y;
@@ -186,11 +184,11 @@ int main() {
 		int input = IORD(BUTTON_PASSTHROUGH_BASE,3);
 
 		if (grid[0][0] == GAME_OVER && (input & 0x2)) {
-			restart_game(&snake, grid);
+			restart_game(grid, &snake);
 			IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
 		} else {
 			update_grid(grid, &snake);
-			move_snake(input, &snake, grid);
+			move_snake(grid, &snake, input);
 		}
 
 		draw_grid(grid);
