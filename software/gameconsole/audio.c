@@ -1,6 +1,8 @@
 
 #include "audio.h"
 
+#include <stdio.h>
+
 #include "altera_up_avalon_audio_and_video_config_regs.h"
 #include "altera_up_avalon_audio_and_video_config.h"
 #include "altera_up_avalon_audio.h"
