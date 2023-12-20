@@ -7,6 +7,9 @@
 #include "images.h"
 #include "io.h"
 
+#define IS_SET(n, bit) (n & (1 << bit))
+#define GET_BIT(n, bit) ((n & (1 << bit)) >> bit)
+
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
 #define BIT10_MAX (1023)
 
@@ -18,16 +21,22 @@
 #define GRID_SIZE_X 20
 #define PIXEL_SIZE 16
 
-#define GRID_ARG int grid[GRID_SIZE_Y][GRID_SIZE_X]
+#define GRID_ARG int grid[GRID_SIZE_X][GRID_SIZE_Y]
 
 #define GAME_OVER -2
 #define APPLE -1
 #define IGNORE 0
 
+typedef enum {
+	Playing,
+	Paused
+} GameState;
+
 typedef struct {
 	int length;
 	int head_x, head_y;
 	int delta_x, delta_y;
+	GameState state;
 } Snake;
 
 void spawn_apple(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
@@ -62,7 +71,7 @@ void draw_grid(GRID_ARG) {
 	}
 }
 
-void update_grid(GRID_ARG, Snake* snake) {
+void grow_snake(GRID_ARG, Snake* snake) {
 	for (int i=0; i < GRID_SIZE_X; i++) {
 		for (int j = 0; j < GRID_SIZE_Y; j++) {
 			int value = grid[i][j];
@@ -79,7 +88,9 @@ void update_grid(GRID_ARG, Snake* snake) {
 	}
 }
 
-void game_over(GRID_ARG) {
+void game_over(Snake* snake, GRID_ARG) {
+	snake->state = Paused;
+
 	for (int i = 0; i < GRID_SIZE_X; i++){
 		for (int j = 0; j < GRID_SIZE_Y; j++){
 			grid[i][j] = -2;
@@ -88,8 +99,10 @@ void game_over(GRID_ARG) {
 }
 
 void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
+	grow_snake(grid, snake);
+
 	// Input from the switches. (Currently LEVEL checked.)
-	if ((input & 0x4)) {
+	if (IS_SET(input, 2)) {
 		// Turn right.
 		// new x = -y, new y = x
 		int old_x = snake->delta_x;
@@ -99,9 +112,9 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 		snake->delta_y = old_x;
 
 		// Reset edge_capture register.
-		IOWR(BUTTON_PASSTHROUGH_BASE,3,1);
+		IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
 	}
-	if ((input & 0x8)) {
+	if (IS_SET(input, 3)) {
 		// Turn left.
 		// new x = y, new y = -x
 		int old_x = snake->delta_x;
@@ -120,16 +133,16 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 
 	// Killzones
 	if (snake->head_x > GRID_SIZE_X) {
-		game_over(grid);
+		return game_over(snake, grid);
 	}
 	if (snake->head_x < 0) {
-		game_over(grid);
+		return game_over(snake, grid);
 	}
 	if (snake->head_y  > GRID_SIZE_Y) {
-		game_over(grid);
+		return game_over(snake, grid);
 	}
 	if (snake->head_y < 0) {
-		game_over(grid);
+		return game_over(snake, grid);
 	}
 
 	if (grid[snake->head_x][snake->head_y] == APPLE) {
@@ -137,8 +150,8 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 		spawn_apple(grid);
 	}
 	if (grid[snake->head_x][snake->head_y] != APPLE && grid[snake->head_x][snake->head_y] != IGNORE) {
-		//game over, tegen snake aan gekomen
-		game_over(grid);
+		// Hit snake, game over
+		return game_over(snake, grid);
 	} else {
 		grid[snake->head_x][snake->head_y] = 1;
 	}
@@ -150,6 +163,7 @@ void restart_game(GRID_ARG, Snake* snake){
 	snake->head_y = START_Y;
 	snake->delta_x = 0;
 	snake->delta_y = 1;
+	snake->state = Playing;
 
 	for (int i = 0; i < GRID_SIZE_X; i++){
 		for (int j = 0; j < GRID_SIZE_Y; j++){
@@ -165,34 +179,36 @@ void restart_game(GRID_ARG, Snake* snake){
 int main() {
 	vga_init();
 
-	// Making snake struct
-	Snake snake = { 3, START_X, START_Y, 0, 1 };
-
 	int grid[GRID_SIZE_X][GRID_SIZE_Y];
 
-	for (int i = 0; i < GRID_SIZE_X; i++){
-		for (int j = 0; j < GRID_SIZE_Y; j++){
-			grid[i][j] = 0;
-		}
-	}
-
-	spawn_apple(grid);
+	// Making snake struct
+	Snake snake;
+	snake.state = Paused;
 
 	while (1) {
-		usleep(10000);
+		int input = IORD(BUTTON_PASSTHROUGH_BASE, 3);
 
-		int input = IORD(BUTTON_PASSTHROUGH_BASE,3);
+		switch (snake.state) {
+		case Paused:
+			if (IS_SET(input, 1)) {
+				printf("Reset?");
+				restart_game(grid, &snake);
+				IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
+			}
+			break;
 
-		if (grid[0][0] == GAME_OVER && (input & 0x2)) {
-			restart_game(grid, &snake);
-			IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
-		} else {
-			update_grid(grid, &snake);
+		case Playing:
 			move_snake(grid, &snake, input);
+			break;
 		}
 
 		draw_grid(grid);
 		vga_swap_buffers();
+
+		// If we're playing, delay the move
+		if (snake.state == Playing) {
+			usleep(10000);
+		}
 	}
 	return 0;
 }
