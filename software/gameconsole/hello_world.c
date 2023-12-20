@@ -60,13 +60,13 @@ void draw_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
 	}
 }
 
-void update_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y], Snake snake) {
+void update_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y], Snake* snake) {
 	for (int i=0; i < GRID_SIZE_X; i++) {
 		for (int j = 0; j < GRID_SIZE_Y; j++) {
 			int value = grid[i][j];
 			if (value != APPLE && value != IGNORE && value != GAME_OVER) {
 				// Do increments.
-				if (value < snake.length) {
+				if (value < snake->length) {
 					grid[i][j] = value + 1;
 				} else {
 					grid[i][j] = 0;
@@ -77,70 +77,7 @@ void update_grid(int grid[GRID_SIZE_X][GRID_SIZE_Y], Snake snake) {
 	}
 }
 
-Snake move_snake(unsigned int input, Snake snake, int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
-	// Input from the switches. (Currently LEVEL checked.)
-	if ((input & 0x4)) {
-		// Turn right.
-		// new x = -y, new y = x
-		int old_x = snake.delta_x;
-		int old_y = snake.delta_y;
-
-		printf("Turn right\n");
-
-		snake.delta_x = old_y * -1;
-		snake.delta_y = old_x;
-
-		// Reset edge_capture register.
-		IOWR(BUTTON_PASSTHROUGH_BASE,3,1);
-	}
-	if ((input & 0x8)) {
-		// Turn left.
-		// new x = y, new y = -x
-		int old_x = snake.delta_x;
-		int old_y = snake.delta_y;
-
-		printf("Turn left\n");
-
-		snake.delta_x = old_y;
-		snake.delta_y = old_x * -1;
-
-		// Reset edge_capture register.
-		IOWR(BUTTON_PASSTHROUGH_BASE,3,1);
-	}
-
-	// Move snake.
-	snake.head_x = snake.head_x + snake.delta_x;
-	snake.head_y = snake.head_y + snake.delta_y;
-
-	// Killzones
-	if (snake.head_x > GRID_SIZE_X) {
-		game_over(grid);
-	}
-	if (snake.head_x < 0) {
-		game_over(grid);
-	}
-	if (snake.head_y  > GRID_SIZE_Y) {
-		game_over(grid);
-	}
-	if (snake.head_y < 0) {
-		game_over(grid);
-	}
-
-	if (grid[snake.head_x][snake.head_y] == APPLE) {
-		snake.length = snake.length + 1;
-		spawn_apple(grid);
-	}
-	if (grid[snake.head_x][snake.head_y] != APPLE && grid[snake.head_x][snake.head_y] != IGNORE) {
-		//game over, tegen snake aan gekomen
-		game_over(grid);
-	} else {
-		grid[snake.head_x][snake.head_y] = 1;
-	}
-	return snake;
-}
-
-void game_over(int grid[GRID_SIZE_X][GRID_SIZE_Y])
-{
+void game_over(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
 	for (int i = 0; i < GRID_SIZE_X; i++){
 		for (int j = 0; j < GRID_SIZE_Y; j++){
 			grid[i][j] = -2;
@@ -148,13 +85,73 @@ void game_over(int grid[GRID_SIZE_X][GRID_SIZE_Y])
 	}
 }
 
+void move_snake(unsigned int input, Snake* snake, int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
+	// Input from the switches. (Currently LEVEL checked.)
+	if ((input & 0x4)) {
+		// Turn right.
+		// new x = -y, new y = x
+		int old_x = snake->delta_x;
+		int old_y = snake->delta_y;
 
-Snake restart_game(Snake snake, int grid[GRID_SIZE_X][GRID_SIZE_Y]){
-	snake.length = 3;
-	snake.head_x = START_X;
-	snake.head_y = START_Y;
-	snake.delta_x = 0;
-	snake.delta_y = 1;
+		printf("Turn right\n");
+
+		snake->delta_x = old_y * -1;
+		snake->delta_y = old_x;
+
+		// Reset edge_capture register.
+		IOWR(BUTTON_PASSTHROUGH_BASE,3,1);
+	}
+	if ((input & 0x8)) {
+		// Turn left.
+		// new x = y, new y = -x
+		int old_x = snake->delta_x;
+		int old_y = snake->delta_y;
+
+		printf("Turn left\n");
+
+		snake->delta_x = old_y;
+		snake->delta_y = old_x * -1;
+
+		// Reset edge_capture register.
+		IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
+	}
+
+	// Move snake.
+	snake->head_x = snake->head_x + snake->delta_x;
+	snake->head_y = snake->head_y + snake->delta_y;
+
+	// Killzones
+	if (snake->head_x > GRID_SIZE_X) {
+		game_over(grid);
+	}
+	if (snake->head_x < 0) {
+		game_over(grid);
+	}
+	if (snake->head_y  > GRID_SIZE_Y) {
+		game_over(grid);
+	}
+	if (snake->head_y < 0) {
+		game_over(grid);
+	}
+
+	if (grid[snake->head_x][snake->head_y] == APPLE) {
+		snake->length++;
+		spawn_apple(grid);
+	}
+	if (grid[snake->head_x][snake->head_y] != APPLE && grid[snake->head_x][snake->head_y] != IGNORE) {
+		//game over, tegen snake aan gekomen
+		game_over(grid);
+	} else {
+		grid[snake->head_x][snake->head_y] = 1;
+	}
+}
+
+void restart_game(Snake* snake, int grid[GRID_SIZE_X][GRID_SIZE_Y]){
+	snake->length = 3;
+	snake->head_x = START_X;
+	snake->head_y = START_Y;
+	snake->delta_x = 0;
+	snake->delta_y = 1;
 
 	for (int i = 0; i < GRID_SIZE_X; i++){
 		for (int j = 0; j < GRID_SIZE_Y; j++){
@@ -163,8 +160,6 @@ Snake restart_game(Snake snake, int grid[GRID_SIZE_X][GRID_SIZE_Y]){
 	}
 
 	spawn_apple(grid);
-
-	return snake;
 }
 
 
@@ -191,11 +186,11 @@ int main() {
 		int input = IORD(BUTTON_PASSTHROUGH_BASE,3);
 
 		if (grid[0][0] == GAME_OVER && (input & 0x2)) {
-			snake = restart_game(snake, grid);
-			IOWR(BUTTON_PASSTHROUGH_BASE,3,1);
+			restart_game(&snake, grid);
+			IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
 		} else {
-			update_grid(grid,snake);
-			snake = move_snake(input, snake, grid);
+			update_grid(grid, &snake);
+			move_snake(input, &snake, grid);
 		}
 
 		draw_grid(grid);
