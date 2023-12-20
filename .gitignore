@@ -4,4 +4,5 @@ incremental_db
 output_files
 Eclipse_C_Dev/.metadata
 .qsys_edit
-software
+software/gameconsole/obj
+software/gameconsole_bsp/obj
