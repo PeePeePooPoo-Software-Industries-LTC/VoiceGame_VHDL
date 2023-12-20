@@ -54,33 +54,33 @@ void spawn_apple(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
 }
 
 void draw_grid(GRID_ARG) {
-	for (int i = 0; i < GRID_SIZE_X; i++) {
-		for (int j = 0; j < GRID_SIZE_Y; j++) {
-			int value = grid[i][j];
+	for (int x = 0; x < GRID_SIZE_X; x++) {
+		for (int y = 0; y < GRID_SIZE_Y; y++) {
+			int value = grid[x][y];
 			if (value != APPLE && value != IGNORE && value != GAME_OVER) {
-				vga_draw_rect(i * PIXEL_SIZE, j * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 1023, 0));
+				vga_draw_rect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 1023, 0));
 			} else if(value == IGNORE) {
-				vga_draw_rect(i * PIXEL_SIZE, j * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 0));
+				vga_draw_rect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 0));
 			} else if(value == APPLE) {
-				vga_draw_rect(i * PIXEL_SIZE, (j * PIXEL_SIZE) + 2, 8, 6, RGB(1023, 0, 0));
-				vga_draw_rect((i * PIXEL_SIZE) + 3, j * PIXEL_SIZE, 0, 2, RGB(600, 300, 0));
+				vga_draw_rect(x * PIXEL_SIZE, (y * PIXEL_SIZE) + 2, 8, 6, RGB(1023, 0, 0));
+				vga_draw_rect((x * PIXEL_SIZE) + 3, y * PIXEL_SIZE, 0, 2, RGB(600, 300, 0));
 			} else {
-				vga_draw_rect(i * PIXEL_SIZE, j * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 1023));
+				vga_draw_rect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 1023));
 			}
 		}
 	}
 }
 
 void grow_snake(GRID_ARG, Snake* snake) {
-	for (int i=0; i < GRID_SIZE_X; i++) {
-		for (int j = 0; j < GRID_SIZE_Y; j++) {
-			int value = grid[i][j];
+	for (int x = 0; x < GRID_SIZE_X; x++) {
+		for (int y = 0; y < GRID_SIZE_Y; y++) {
+			int value = grid[x][y];
 			if (value != APPLE && value != IGNORE && value != GAME_OVER) {
 				// Do increments.
 				if (value < snake->length) {
-					grid[i][j] = value + 1;
+					grid[x][y] = value + 1;
 				} else {
-					grid[i][j] = 0;
+					grid[x][y] = 0;
 				}
 			}
 			// No apples?
@@ -91,9 +91,9 @@ void grow_snake(GRID_ARG, Snake* snake) {
 void game_over(Snake* snake, GRID_ARG) {
 	snake->state = Paused;
 
-	for (int i = 0; i < GRID_SIZE_X; i++){
-		for (int j = 0; j < GRID_SIZE_Y; j++){
-			grid[i][j] = -2;
+	for (int x = 0; x < GRID_SIZE_X; x++){
+		for (int y = 0; y < GRID_SIZE_Y; y++){
+			grid[x][y] = -2;
 		}
 	}
 }
@@ -165,9 +165,9 @@ void restart_game(GRID_ARG, Snake* snake){
 	snake->delta_y = 1;
 	snake->state = Playing;
 
-	for (int i = 0; i < GRID_SIZE_X; i++){
-		for (int j = 0; j < GRID_SIZE_Y; j++){
-			grid[i][j] = 0;
+	for (int x = 0; x < GRID_SIZE_X; x++){
+		for (int y = 0; y < GRID_SIZE_Y; y++){
+			grid[x][y] = 0;
 		}
 	}
 
