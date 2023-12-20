@@ -6,3 +6,6 @@ Eclipse_C_Dev/.metadata
 .qsys_edit
 software/gameconsole/obj
 software/gameconsole_bsp/obj
+software/gameconsole/gameconsole.elf
+software/gameconsole/gameconsole.map
+software/gameconsole/gameconsole.objdump
