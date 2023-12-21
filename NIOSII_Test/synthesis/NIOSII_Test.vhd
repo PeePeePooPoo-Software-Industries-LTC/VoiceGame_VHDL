@@ -177,6 +177,19 @@ architecture rtl of NIOSII_Test is
 		);
 	end component NIOSII_Test_sram_0;
 
+	component NIOSII_Test_timer_0 is
+		port (
+			clk        : in  std_logic                     := 'X';             -- clk
+			reset_n    : in  std_logic                     := 'X';             -- reset_n
+			address    : in  std_logic_vector(2 downto 0)  := (others => 'X'); -- address
+			writedata  : in  std_logic_vector(15 downto 0) := (others => 'X'); -- writedata
+			readdata   : out std_logic_vector(15 downto 0);                    -- readdata
+			chipselect : in  std_logic                     := 'X';             -- chipselect
+			write_n    : in  std_logic                     := 'X';             -- write_n
+			irq        : out std_logic                                         -- irq
+		);
+	end component NIOSII_Test_timer_0;
+
 	component NIOSII_Test_video_dual_clock_buffer_0 is
 		port (
 			clk_stream_in            : in  std_logic                     := 'X';             -- clk
@@ -341,6 +354,11 @@ architecture rtl of NIOSII_Test is
 			sram_0_avalon_sram_slave_writedata                             : out std_logic_vector(15 downto 0);                    -- writedata
 			sram_0_avalon_sram_slave_byteenable                            : out std_logic_vector(1 downto 0);                     -- byteenable
 			sram_0_avalon_sram_slave_readdatavalid                         : in  std_logic                     := 'X';             -- readdatavalid
+			timer_0_s1_address                                             : out std_logic_vector(2 downto 0);                     -- address
+			timer_0_s1_write                                               : out std_logic;                                        -- write
+			timer_0_s1_readdata                                            : in  std_logic_vector(15 downto 0) := (others => 'X'); -- readdata
+			timer_0_s1_writedata                                           : out std_logic_vector(15 downto 0);                    -- writedata
+			timer_0_s1_chipselect                                          : out std_logic;                                        -- chipselect
 			video_pixel_buffer_dma_0_avalon_control_slave_address          : out std_logic_vector(1 downto 0);                     -- address
 			video_pixel_buffer_dma_0_avalon_control_slave_write            : out std_logic;                                        -- write
 			video_pixel_buffer_dma_0_avalon_control_slave_read             : out std_logic;                                        -- read
@@ -357,6 +375,7 @@ architecture rtl of NIOSII_Test is
 			receiver0_irq : in  std_logic                     := 'X'; -- irq
 			receiver1_irq : in  std_logic                     := 'X'; -- irq
 			receiver2_irq : in  std_logic                     := 'X'; -- irq
+			receiver3_irq : in  std_logic                     := 'X'; -- irq
 			sender_irq    : out std_logic_vector(31 downto 0)         -- irq
 		);
 	end component NIOSII_Test_irq_mapper;
@@ -619,7 +638,7 @@ architecture rtl of NIOSII_Test is
 	signal video_pixel_buffer_dma_0_avalon_pixel_source_ready                            : std_logic;                     -- video_scaler_0:stream_in_ready -> video_pixel_buffer_dma_0:stream_ready
 	signal video_pixel_buffer_dma_0_avalon_pixel_source_startofpacket                    : std_logic;                     -- video_pixel_buffer_dma_0:stream_startofpacket -> video_scaler_0:stream_in_startofpacket
 	signal video_pixel_buffer_dma_0_avalon_pixel_source_endofpacket                      : std_logic;                     -- video_pixel_buffer_dma_0:stream_endofpacket -> video_scaler_0:stream_in_endofpacket
-	signal video_pll_0_vga_clk_clk                                                       : std_logic;                     -- video_pll_0:vga_clk_clk -> [audio_0:clk, audio_and_video_config_0:clk, button_passthrough:clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, mm_interconnect_0:video_pll_0_vga_clk_clk, rst_controller:clk, video_dual_clock_buffer_0:clk_stream_out, video_vga_controller_0:clk]
+	signal video_pll_0_vga_clk_clk                                                       : std_logic;                     -- video_pll_0:vga_clk_clk -> [audio_0:clk, audio_and_video_config_0:clk, button_passthrough:clk, irq_synchronizer:receiver_clk, irq_synchronizer_001:receiver_clk, irq_synchronizer_002:receiver_clk, mm_interconnect_0:video_pll_0_vga_clk_clk, rst_controller:clk, timer_0:clk, video_dual_clock_buffer_0:clk_stream_out, video_vga_controller_0:clk]
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest                  : std_logic;                     -- mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest -> video_pixel_buffer_dma_0:master_waitrequest
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata                     : std_logic_vector(31 downto 0); -- mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata -> video_pixel_buffer_dma_0:master_readdata
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_address                      : std_logic_vector(31 downto 0); -- video_pixel_buffer_dma_0:master_address -> mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_address
@@ -693,12 +712,19 @@ architecture rtl of NIOSII_Test is
 	signal mm_interconnect_0_button_passthrough_s1_address                               : std_logic_vector(1 downto 0);  -- mm_interconnect_0:button_passthrough_s1_address -> button_passthrough:address
 	signal mm_interconnect_0_button_passthrough_s1_write                                 : std_logic;                     -- mm_interconnect_0:button_passthrough_s1_write -> mm_interconnect_0_button_passthrough_s1_write:in
 	signal mm_interconnect_0_button_passthrough_s1_writedata                             : std_logic_vector(31 downto 0); -- mm_interconnect_0:button_passthrough_s1_writedata -> button_passthrough:writedata
+	signal mm_interconnect_0_timer_0_s1_chipselect                                       : std_logic;                     -- mm_interconnect_0:timer_0_s1_chipselect -> timer_0:chipselect
+	signal mm_interconnect_0_timer_0_s1_readdata                                         : std_logic_vector(15 downto 0); -- timer_0:readdata -> mm_interconnect_0:timer_0_s1_readdata
+	signal mm_interconnect_0_timer_0_s1_address                                          : std_logic_vector(2 downto 0);  -- mm_interconnect_0:timer_0_s1_address -> timer_0:address
+	signal mm_interconnect_0_timer_0_s1_write                                            : std_logic;                     -- mm_interconnect_0:timer_0_s1_write -> mm_interconnect_0_timer_0_s1_write:in
+	signal mm_interconnect_0_timer_0_s1_writedata                                        : std_logic_vector(15 downto 0); -- mm_interconnect_0:timer_0_s1_writedata -> timer_0:writedata
 	signal irq_mapper_receiver1_irq                                                      : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver1_irq
 	signal nios2_gen2_0_irq_irq                                                          : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> nios2_gen2_0:irq
 	signal irq_mapper_receiver0_irq                                                      : std_logic;                     -- irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
 	signal irq_synchronizer_receiver_irq                                                 : std_logic_vector(0 downto 0);  -- audio_0:irq -> irq_synchronizer:receiver_irq
 	signal irq_mapper_receiver2_irq                                                      : std_logic;                     -- irq_synchronizer_001:sender_irq -> irq_mapper:receiver2_irq
 	signal irq_synchronizer_001_receiver_irq                                             : std_logic_vector(0 downto 0);  -- button_passthrough:irq -> irq_synchronizer_001:receiver_irq
+	signal irq_mapper_receiver3_irq                                                      : std_logic;                     -- irq_synchronizer_002:sender_irq -> irq_mapper:receiver3_irq
+	signal irq_synchronizer_002_receiver_irq                                             : std_logic_vector(0 downto 0);  -- timer_0:irq -> irq_synchronizer_002:receiver_irq
 	signal video_scaler_0_avalon_scaler_source_valid                                     : std_logic;                     -- video_scaler_0:stream_out_valid -> avalon_st_adapter:in_0_valid
 	signal video_scaler_0_avalon_scaler_source_data                                      : std_logic_vector(29 downto 0); -- video_scaler_0:stream_out_data -> avalon_st_adapter:in_0_data
 	signal video_scaler_0_avalon_scaler_source_ready                                     : std_logic;                     -- avalon_st_adapter:in_0_ready -> video_scaler_0:stream_out_ready
@@ -710,18 +736,19 @@ architecture rtl of NIOSII_Test is
 	signal avalon_st_adapter_out_0_ready                                                 : std_logic;                     -- video_dual_clock_buffer_0:stream_in_ready -> avalon_st_adapter:out_0_ready
 	signal avalon_st_adapter_out_0_startofpacket                                         : std_logic;                     -- avalon_st_adapter:out_0_startofpacket -> video_dual_clock_buffer_0:stream_in_startofpacket
 	signal avalon_st_adapter_out_0_endofpacket                                           : std_logic;                     -- avalon_st_adapter:out_0_endofpacket -> video_dual_clock_buffer_0:stream_in_endofpacket
-	signal rst_controller_reset_out_reset                                                : std_logic;                     -- rst_controller:reset_out -> [audio_0:reset, audio_and_video_config_0:reset, irq_synchronizer:receiver_reset, irq_synchronizer_001:receiver_reset, mm_interconnect_0:audio_0_reset_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in, video_dual_clock_buffer_0:reset_stream_out, video_vga_controller_0:reset]
+	signal rst_controller_reset_out_reset                                                : std_logic;                     -- rst_controller:reset_out -> [audio_0:reset, audio_and_video_config_0:reset, irq_synchronizer:receiver_reset, irq_synchronizer_001:receiver_reset, irq_synchronizer_002:receiver_reset, mm_interconnect_0:audio_0_reset_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in, video_dual_clock_buffer_0:reset_stream_out, video_vga_controller_0:reset]
 	signal video_pll_0_reset_source_reset                                                : std_logic;                     -- video_pll_0:reset_source_reset -> rst_controller:reset_in0
 	signal rst_controller_001_reset_out_reset                                            : std_logic;                     -- rst_controller_001:reset_out -> [audio_pll_0:ref_reset_reset, avalon_st_adapter:in_rst_0_reset, mm_interconnect_0:video_pixel_buffer_dma_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, rst_controller_001_reset_out_reset:in, rst_translator:in_reset, sram_0:reset, video_dual_clock_buffer_0:reset_stream_in, video_pixel_buffer_dma_0:reset, video_pll_0:ref_reset_reset, video_scaler_0:reset]
 	signal rst_controller_001_reset_out_reset_req                                        : std_logic;                     -- rst_controller_001:reset_req -> [onchip_memory2_0:reset_req, rst_translator:reset_req_in]
-	signal rst_controller_002_reset_out_reset                                            : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator_001:in_reset]
+	signal rst_controller_002_reset_out_reset                                            : std_logic;                     -- rst_controller_002:reset_out -> [irq_mapper:reset, irq_synchronizer:sender_reset, irq_synchronizer_001:sender_reset, irq_synchronizer_002:sender_reset, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, rst_controller_002_reset_out_reset:in, rst_translator_001:in_reset]
 	signal rst_controller_002_reset_out_reset_req                                        : std_logic;                     -- rst_controller_002:reset_req -> [nios2_gen2_0:reset_req, rst_translator_001:reset_req_in]
 	signal nios2_gen2_0_debug_reset_request_reset                                        : std_logic;                     -- nios2_gen2_0:debug_reset_request -> rst_controller_002:reset_in1
 	signal reset_reset_n_ports_inv                                                       : std_logic;                     -- reset_reset_n:inv -> [rst_controller_001:reset_in0, rst_controller_002:reset_in0]
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv                : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv               : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
 	signal mm_interconnect_0_button_passthrough_s1_write_ports_inv                       : std_logic;                     -- mm_interconnect_0_button_passthrough_s1_write:inv -> button_passthrough:write_n
-	signal rst_controller_reset_out_reset_ports_inv                                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> button_passthrough:reset_n
+	signal mm_interconnect_0_timer_0_s1_write_ports_inv                                  : std_logic;                     -- mm_interconnect_0_timer_0_s1_write:inv -> timer_0:write_n
+	signal rst_controller_reset_out_reset_ports_inv                                      : std_logic;                     -- rst_controller_reset_out_reset:inv -> [button_passthrough:reset_n, timer_0:reset_n]
 	signal rst_controller_001_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> jtag_uart_0:rst_n
 	signal rst_controller_002_reset_out_reset_ports_inv                                  : std_logic;                     -- rst_controller_002_reset_out_reset:inv -> nios2_gen2_0:reset_n
 
@@ -858,6 +885,18 @@ begin
 			writedata     => mm_interconnect_0_sram_0_avalon_sram_slave_writedata,     --                   .writedata
 			readdata      => mm_interconnect_0_sram_0_avalon_sram_slave_readdata,      --                   .readdata
 			readdatavalid => mm_interconnect_0_sram_0_avalon_sram_slave_readdatavalid  --                   .readdatavalid
+		);
+
+	timer_0 : component NIOSII_Test_timer_0
+		port map (
+			clk        => video_pll_0_vga_clk_clk,                      --   clk.clk
+			reset_n    => rst_controller_reset_out_reset_ports_inv,     -- reset.reset_n
+			address    => mm_interconnect_0_timer_0_s1_address,         --    s1.address
+			writedata  => mm_interconnect_0_timer_0_s1_writedata,       --      .writedata
+			readdata   => mm_interconnect_0_timer_0_s1_readdata,        --      .readdata
+			chipselect => mm_interconnect_0_timer_0_s1_chipselect,      --      .chipselect
+			write_n    => mm_interconnect_0_timer_0_s1_write_ports_inv, --      .write_n
+			irq        => irq_synchronizer_002_receiver_irq(0)          --   irq.irq
 		);
 
 	video_dual_clock_buffer_0 : component NIOSII_Test_video_dual_clock_buffer_0
@@ -1019,6 +1058,11 @@ begin
 			sram_0_avalon_sram_slave_writedata                             => mm_interconnect_0_sram_0_avalon_sram_slave_writedata,                          --                                                     .writedata
 			sram_0_avalon_sram_slave_byteenable                            => mm_interconnect_0_sram_0_avalon_sram_slave_byteenable,                         --                                                     .byteenable
 			sram_0_avalon_sram_slave_readdatavalid                         => mm_interconnect_0_sram_0_avalon_sram_slave_readdatavalid,                      --                                                     .readdatavalid
+			timer_0_s1_address                                             => mm_interconnect_0_timer_0_s1_address,                                          --                                           timer_0_s1.address
+			timer_0_s1_write                                               => mm_interconnect_0_timer_0_s1_write,                                            --                                                     .write
+			timer_0_s1_readdata                                            => mm_interconnect_0_timer_0_s1_readdata,                                         --                                                     .readdata
+			timer_0_s1_writedata                                           => mm_interconnect_0_timer_0_s1_writedata,                                        --                                                     .writedata
+			timer_0_s1_chipselect                                          => mm_interconnect_0_timer_0_s1_chipselect,                                       --                                                     .chipselect
 			video_pixel_buffer_dma_0_avalon_control_slave_address          => mm_interconnect_0_video_pixel_buffer_dma_0_avalon_control_slave_address,       --        video_pixel_buffer_dma_0_avalon_control_slave.address
 			video_pixel_buffer_dma_0_avalon_control_slave_write            => mm_interconnect_0_video_pixel_buffer_dma_0_avalon_control_slave_write,         --                                                     .write
 			video_pixel_buffer_dma_0_avalon_control_slave_read             => mm_interconnect_0_video_pixel_buffer_dma_0_avalon_control_slave_read,          --                                                     .read
@@ -1034,6 +1078,7 @@ begin
 			receiver0_irq => irq_mapper_receiver0_irq,           -- receiver0.irq
 			receiver1_irq => irq_mapper_receiver1_irq,           -- receiver1.irq
 			receiver2_irq => irq_mapper_receiver2_irq,           -- receiver2.irq
+			receiver3_irq => irq_mapper_receiver3_irq,           -- receiver3.irq
 			sender_irq    => nios2_gen2_0_irq_irq                --    sender.irq
 		);
 
@@ -1061,6 +1106,19 @@ begin
 			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
 			receiver_irq   => irq_synchronizer_001_receiver_irq,  --           receiver.irq
 			sender_irq(0)  => irq_mapper_receiver2_irq            --             sender.irq
+		);
+
+	irq_synchronizer_002 : component altera_irq_clock_crosser
+		generic map (
+			IRQ_WIDTH => 1
+		)
+		port map (
+			receiver_clk   => video_pll_0_vga_clk_clk,            --       receiver_clk.clk
+			sender_clk     => clk_clk,                            --         sender_clk.clk
+			receiver_reset => rst_controller_reset_out_reset,     -- receiver_clk_reset.reset
+			sender_reset   => rst_controller_002_reset_out_reset, --   sender_clk_reset.reset
+			receiver_irq   => irq_synchronizer_002_receiver_irq,  --           receiver.irq
+			sender_irq(0)  => irq_mapper_receiver3_irq            --             sender.irq
 		);
 
 	avalon_st_adapter : component NIOSII_Test_avalon_st_adapter
@@ -1300,6 +1358,8 @@ begin
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;
 
 	mm_interconnect_0_button_passthrough_s1_write_ports_inv <= not mm_interconnect_0_button_passthrough_s1_write;
+
+	mm_interconnect_0_timer_0_s1_write_ports_inv <= not mm_interconnect_0_timer_0_s1_write;
 
 	rst_controller_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;
 

@@ -8,8 +8,7 @@
 #include "altera_up_avalon_audio.h"
 #include "system.h"
 
-unsigned int audio_data[AUDIO_BUFFER_SIZE];
-extern unsigned int* audio_data_ptr = audio_data;
+#define NULL 0
 
 alt_up_audio_dev* audio_device = NULL;
 
@@ -30,18 +29,18 @@ int audio_init() {
 	return 0;
 }
 
-void audio_fill_buffer() {
-	int break_out = 0;
-	while (!break_out) {
-		unsigned int available = alt_up_audio_read_fifo_avail(audio_device, 0);
-		unsigned int max = available;
+int audio_get_average() {
+	unsigned int buffer[128];
+	register unsigned int available = alt_up_audio_read_fifo_avail(audio_device, 0);
+	alt_up_audio_read_fifo(audio_device, buffer, available, 0);
 
-		if (audio_data_ptr + max >= audio_data + AUDIO_BUFFER_SIZE) {
-			max = audio_data_ptr + max - (audio_data + AUDIO_BUFFER_SIZE);
-			break_out = 1;
-		}
-		alt_up_audio_read_fifo(audio_device, audio_data_ptr, max, 0);
-		audio_data_ptr += max;
+	if (available < 50) {
+		return -1;
 	}
-	audio_data_ptr = audio_data;
+	register unsigned int sum = 0;
+	for (register unsigned short i = 0; i < available; i++) {
+		register unsigned short should_subtract = buffer[i] >= (1<<15);
+		sum += (should_subtract * (1<<16)) + (-2 * should_subtract + 1) * buffer[i];
+	}
+	return sum / available;
 }

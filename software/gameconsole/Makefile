@@ -146,6 +146,7 @@ C_SRCS += hello_world.c
 C_SRCS += audio.c
 C_SRCS += graphics.c
 C_SRCS += images.c
+C_SRCS += input.c
 CXX_SRCS :=
 ASM_SRCS :=
 
