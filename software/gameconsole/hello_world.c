@@ -201,7 +201,7 @@ int main() {
 
 		case Playing:
             if (now >= game_tick) {
-                game_tick = now + GAME_TICK_DURATION_MS;
+                game_tick = now + (1000 / input.speed);
 			    move_snake(grid, &snake, &input);
                 input_postframe(&input);
             }
