@@ -62,8 +62,10 @@ void draw_grid(GRID_ARG) {
 			} else if(value == IGNORE) {
 				vga_draw_rect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 0));
 			} else if(value == APPLE) {
-				vga_draw_rect(x * PIXEL_SIZE, (y * PIXEL_SIZE) + 2, 8, 6, RGB(1023, 0, 0));
-				vga_draw_rect((x * PIXEL_SIZE) + 3, y * PIXEL_SIZE, 0, 2, RGB(600, 300, 0));
+				vga_draw_transparent_image(x * PIXEL_SIZE, y * PIXEL_SIZE, image_apple_width, image_apple_palette, image_apple, IMAGE_apple_MAX_BYTES, 0x3fffffff);
+//				vga_draw_rect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 0));
+//				vga_draw_rect(x * PIXEL_SIZE, (y * PIXEL_SIZE) + 2, 8, 6, RGB(1023, 0, 0));
+//				vga_draw_rect((x * PIXEL_SIZE) + 3, y * PIXEL_SIZE, 0, 2, RGB(600, 300, 0));
 			} else {
 				vga_draw_rect(x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE, RGB(0, 0, 1023));
 			}
@@ -132,13 +134,13 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 	snake->head_y = snake->head_y + snake->delta_y;
 
 	// Killzones
-	if (snake->head_x > GRID_SIZE_X) {
+	if (snake->head_x >= GRID_SIZE_X) {
 		return game_over(snake, grid);
 	}
 	if (snake->head_x < 0) {
 		return game_over(snake, grid);
 	}
-	if (snake->head_y  > GRID_SIZE_Y) {
+	if (snake->head_y  >= GRID_SIZE_Y) {
 		return game_over(snake, grid);
 	}
 	if (snake->head_y < 0) {

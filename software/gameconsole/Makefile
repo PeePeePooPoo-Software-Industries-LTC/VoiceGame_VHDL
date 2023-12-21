@@ -1070,7 +1070,7 @@ ifneq ($(DISABLE_ELFPATCH),1)
 	$(ELFPATCH) $@ $(ELF_PATCH_FLAG)
 endif
 ifneq ($(DISABLE_STACKREPORT),1)
-	@bash -c "$(STACKREPORT) $@"
+#	@bash -c "$(STACKREPORT) $@"
 endif
 
 $(OBJDUMP_NAME) : $(ELF)
