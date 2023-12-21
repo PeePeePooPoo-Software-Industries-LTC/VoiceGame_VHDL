@@ -326,6 +326,7 @@ int main() {
 
 		    draw_grid(grid, &snake);
             vga_swap_buffers();
+            vga_clear();
         }
 	}
 	return 0;
