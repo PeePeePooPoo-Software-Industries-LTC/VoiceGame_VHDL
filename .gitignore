@@ -9,3 +9,5 @@ software/gameconsole_bsp/obj
 software/gameconsole/gameconsole.elf
 software/gameconsole/gameconsole.map
 software/gameconsole/gameconsole.objdump
+software/gameconsole/.cache
+software/gameconsole/compile_commands.json

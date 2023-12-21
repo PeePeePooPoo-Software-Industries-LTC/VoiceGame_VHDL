@@ -4,10 +4,7 @@
 
 #define AUDIO_BUFFER_SIZE 300
 
-extern unsigned int audio_data[AUDIO_BUFFER_SIZE];
-extern unsigned int* audio_data_ptr;
-
 int audio_init();
-void audio_fill_buffer();
+int audio_get_average();
 
 #endif

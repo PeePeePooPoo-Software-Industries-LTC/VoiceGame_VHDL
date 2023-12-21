@@ -1,14 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "system.h"
-#include "sys/alt_irq.h"
-#include "altera_up_avalon_video_pixel_buffer_dma.h"
 #include "graphics.h"
 #include "images.h"
-#include "io.h"
-
-#define IS_SET(n, bit) (n & (1 << bit))
-#define GET_BIT(n, bit) ((n & (1 << bit)) >> bit)
+#include "sys/alt_alarm.h"
+#include "altera_avalon_timer.h"
+#include "audio.h"
+#include "input.h"
 
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
 #define BIT10_MAX (1023)
@@ -23,6 +22,9 @@
 #define PIXEL_SIZE 16
 
 #define GRID_ARG int grid[GRID_SIZE_X][GRID_SIZE_Y]
+
+#define GAME_TICK_DURATION_MS 300
+#define RENDER_TICK_DURATION_MS 100
 
 #define GAME_OVER -2
 #define APPLE -1
@@ -208,11 +210,11 @@ void game_over(Snake* snake, GRID_ARG) {
 	}
 }
 
-void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
+void move_snake(GRID_ARG, Snake* snake, Input* buttons) {
 	grow_snake(grid, snake);
 
 	// Input from the switches. (Currently LEVEL checked.)
-	if (IS_SET(input, 2)) {
+	if (buttons->right) {
 		// Turn right.
 		// new x = -y, new y = x
 		int old_x = snake->delta_x;
@@ -220,11 +222,8 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 
 		snake->delta_x = old_y * -1;
 		snake->delta_y = old_x;
-
-		// Reset edge_capture register.
-		IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
 	}
-	if (IS_SET(input, 3)) {
+	if (buttons->left) {
 		// Turn left.
 		// new x = y, new y = -x
 		int old_x = snake->delta_x;
@@ -232,9 +231,6 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 
 		snake->delta_x = old_y;
 		snake->delta_y = old_x * -1;
-
-		// Reset edge_capture register.
-		IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
 	}
 
 	// Move snake.
@@ -248,7 +244,7 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 	if (snake->head_x < 0) {
 		return game_over(snake, grid);
 	}
-	if (snake->head_y  >= GRID_SIZE_Y) {
+	if (snake->head_y >= GRID_SIZE_Y) {
 		return game_over(snake, grid);
 	}
 	if (snake->head_y < 0) {
@@ -284,41 +280,53 @@ void restart_game(GRID_ARG, Snake* snake){
 	spawn_apple(grid);
 }
 
-
-
 int main() {
+	audio_init();
 	vga_init();
 
+    // Init the timer
+    alt_avalon_timer_sc_init((void*)TIMER_0_BASE, TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, TIMER_0_FREQ);
+    alt_32 now = alt_nticks();
+    alt_32 game_tick = now + GAME_TICK_DURATION_MS;
+    alt_32 render_tick = now + RENDER_TICK_DURATION_MS;
+
+    // Create the grid
 	int grid[GRID_SIZE_X][GRID_SIZE_Y];
+
+    Input input = input_init();
 
 	// Making snake struct
 	Snake snake;
-	snake.state = Paused;
+    restart_game(grid, &snake);
 
 	while (1) {
-		int input = IORD(BUTTON_PASSTHROUGH_BASE, 3);
+        now = alt_nticks();
+
+        input_preframe(&input);
 
 		switch (snake.state) {
 		case Paused:
-			if (IS_SET(input, 1)) {
-				printf("Reset?");
+			if (input.reset) {
 				restart_game(grid, &snake);
-				IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
+                input_postframe(&input);
 			}
 			break;
 
 		case Playing:
-			move_snake(grid, &snake, input);
+            if (now >= game_tick) {
+                game_tick = now + (1000 / input.speed);
+			    move_snake(grid, &snake, &input);
+                input_postframe(&input);
+            }
 			break;
 		}
 
-		draw_grid(grid, &snake);
-		vga_swap_buffers();
-		vga_clear();
-		// If we're playing, delay the move
-		if (snake.state == Playing) {
-			usleep(10000);
-		}
+        if (now >= render_tick) {
+            render_tick = now + RENDER_TICK_DURATION_MS;
+
+		    draw_grid(grid, &snake);
+            vga_swap_buffers();
+        }
 	}
 	return 0;
 }
