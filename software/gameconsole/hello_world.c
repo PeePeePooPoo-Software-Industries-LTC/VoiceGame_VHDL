@@ -192,8 +192,6 @@ int main() {
 	while (1) {
         now = alt_nticks();
 
-        audio_fill_async();
-
         input_preframe(&input);
 
 		switch (snake.state) {
@@ -215,6 +213,7 @@ int main() {
 
         if (now >= render_tick) {
             render_tick = now + RENDER_TICK_DURATION_MS;
+
             draw_grid(grid);
             vga_swap_buffers();
         }
