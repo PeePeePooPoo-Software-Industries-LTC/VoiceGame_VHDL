@@ -6,6 +6,7 @@
 #include "images.h"
 #include "sys/alt_alarm.h"
 #include "altera_avalon_timer.h"
+#include "audio.h"
 #include "input.h"
 
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
@@ -170,6 +171,7 @@ void restart_game(GRID_ARG, Snake* snake){
 }
 
 int main() {
+	audio_init();
 	vga_init();
 
     // Init the timer
@@ -189,6 +191,9 @@ int main() {
 
 	while (1) {
         now = alt_nticks();
+
+        audio_fill_async();
+
         input_preframe(&input);
 
 		switch (snake.state) {
