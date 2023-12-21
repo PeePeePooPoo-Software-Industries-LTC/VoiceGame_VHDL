@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>21-dec-2023 10:29:17</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1703150957784</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\Windows\OneDrive\Documents\KBS_CE\VoiceGame_VHDL\software\gameconsole_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>21-dec-2023 11:30:20</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1703154620876</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\raivo\OneDrive\Bureaublad\KBS_CE_Git_Repo\VoiceGame_VHDL\software\gameconsole_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\NIOSII_Test.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
