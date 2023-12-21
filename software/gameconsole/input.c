@@ -15,11 +15,14 @@ inline Input input_init() {
     return input;
 }
 
+#define CLAMP_MAX_RANGE 20000
+
 inline void input_preframe(Input* buttons) {
 	int audio_average = audio_get_average();
 	if (audio_average > 0) {
-		printf("avg(%d)\n", audio_average);
-		buttons->speed = 3 + audio_average * 6 / (1<<15);
+        unsigned int above_max = audio_average > CLAMP_MAX_RANGE;
+		audio_average = (above_max * CLAMP_MAX_RANGE) | ((1 - above_max) * audio_average);
+		buttons->speed = 20 - audio_average * 13 / CLAMP_MAX_RANGE;
 	}
 
     unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 3);
