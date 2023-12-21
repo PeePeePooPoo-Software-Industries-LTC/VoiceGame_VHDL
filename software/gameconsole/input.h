@@ -12,8 +12,9 @@ typedef struct {
     unsigned int speed;
 } Input;
 
-void buttons_preframe(Input* buttons);
-void buttons_postframe(Input* buttons);
+Input input_init();
+void input_preframe(Input* buttons);
+void input_postframe(Input* buttons);
 
 #endif
 

@@ -6,7 +6,7 @@
 #include "images.h"
 #include "sys/alt_alarm.h"
 #include "altera_avalon_timer.h"
-#include "buttons.h"
+#include "input.h"
 
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
 #define BIT10_MAX (1023)
@@ -99,7 +99,7 @@ void game_over(Snake* snake, GRID_ARG) {
 	}
 }
 
-void move_snake(GRID_ARG, Snake* snake, InputButtons* buttons) {
+void move_snake(GRID_ARG, Snake* snake, Input* buttons) {
 	grow_snake(grid, snake);
 
 	// Input from the switches. (Currently LEVEL checked.)
@@ -181,7 +181,7 @@ int main() {
     // Create the grid
 	int grid[GRID_SIZE_X][GRID_SIZE_Y];
 
-    InputButtons buttons;
+    Input input = input_init();
 
 	// Making snake struct
 	Snake snake;
@@ -189,21 +189,21 @@ int main() {
 
 	while (1) {
         now = alt_nticks();
-        buttons_preframe(&buttons);
+        input_preframe(&input);
 
 		switch (snake.state) {
 		case Paused:
-			if (buttons.reset) {
+			if (input.reset) {
 				restart_game(grid, &snake);
-                buttons_postframe(&buttons);
+                input_postframe(&input);
 			}
 			break;
 
 		case Playing:
             if (now >= game_tick) {
                 game_tick = now + GAME_TICK_DURATION_MS;
-			    move_snake(grid, &snake, &buttons);
-                buttons_postframe(&buttons);
+			    move_snake(grid, &snake, &input);
+                input_postframe(&input);
             }
 			break;
 		}

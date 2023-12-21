@@ -1,13 +1,20 @@
 
+#include "input.h"
+
 #include "system.h"
-#include "buttons.h"
 #include "io.h"
 
 #define BUTTON_LEFT 4
 #define BUTTON_RIGHT 2
 #define BUTTON_RESET 1
 
-inline void buttons_preframe(InputButtons* buttons) {
+inline Input input_init() {
+    Input input = {0};
+    input.speed = 3;
+    return input;
+}
+
+inline void input_preframe(Input* buttons) {
     unsigned int input = IORD(BUTTON_PASSTHROUGH_BASE, 3);
 	IOWR(BUTTON_PASSTHROUGH_BASE, 3, BUTTON_RESET);
 
@@ -16,7 +23,7 @@ inline void buttons_preframe(InputButtons* buttons) {
     buttons->reset |= GET_BIT(input, BUTTON_RESET);
 }
 
-inline void buttons_postframe(InputButtons* buttons) {
+inline void input_postframe(Input* buttons) {
     buttons->left = 0;
     buttons->right = 0;
     buttons->reset = 0;
