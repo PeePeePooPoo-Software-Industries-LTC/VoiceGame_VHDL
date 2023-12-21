@@ -6,10 +6,7 @@
 #include "images.h"
 #include "sys/alt_alarm.h"
 #include "altera_avalon_timer.h"
-#include "io.h"
-
-#define IS_SET(n, bit) (n & (1 << bit))
-#define GET_BIT(n, bit) ((n & (1 << bit)) >> bit)
+#include "buttons.h"
 
 #define RGB(r, g, b) (((r) << 20) | ((g) << 10) | (b))
 #define BIT10_MAX (1023)
@@ -102,11 +99,11 @@ void game_over(Snake* snake, GRID_ARG) {
 	}
 }
 
-void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
+void move_snake(GRID_ARG, Snake* snake, InputButtons* buttons) {
 	grow_snake(grid, snake);
 
 	// Input from the switches. (Currently LEVEL checked.)
-	if (IS_SET(input, 2)) {
+	if (buttons->right) {
 		// Turn right.
 		// new x = -y, new y = x
 		int old_x = snake->delta_x;
@@ -114,11 +111,8 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 
 		snake->delta_x = old_y * -1;
 		snake->delta_y = old_x;
-
-		// Reset edge_capture register.
-		IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
 	}
-	if (IS_SET(input, 3)) {
+	if (buttons->left) {
 		// Turn left.
 		// new x = y, new y = -x
 		int old_x = snake->delta_x;
@@ -126,9 +120,6 @@ void move_snake(GRID_ARG, Snake* snake, unsigned int input) {
 
 		snake->delta_x = old_y;
 		snake->delta_y = old_x * -1;
-
-		// Reset edge_capture register.
-		IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
 	}
 
 	// Move snake.
@@ -190,28 +181,29 @@ int main() {
     // Create the grid
 	int grid[GRID_SIZE_X][GRID_SIZE_Y];
 
+    InputButtons buttons;
+
 	// Making snake struct
 	Snake snake;
     restart_game(grid, &snake);
 
 	while (1) {
         now = alt_nticks();
-
-		int input = IORD(BUTTON_PASSTHROUGH_BASE, 3);
+        buttons_preframe(&buttons);
 
 		switch (snake.state) {
 		case Paused:
-			if (IS_SET(input, 1)) {
-				IOWR(BUTTON_PASSTHROUGH_BASE, 3, 1);
-
+			if (buttons.reset) {
 				restart_game(grid, &snake);
+                buttons_postframe(&buttons);
 			}
 			break;
 
 		case Playing:
             if (now >= game_tick) {
                 game_tick = now + GAME_TICK_DURATION_MS;
-			    move_snake(grid, &snake, input);
+			    move_snake(grid, &snake, &buttons);
+                buttons_postframe(&buttons);
             }
 			break;
 		}
