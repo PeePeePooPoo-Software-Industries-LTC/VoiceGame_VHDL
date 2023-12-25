@@ -1,3 +1,11 @@
+/**
+ * @file
+ * @brief The graphics driver for the VGA screen configured for the VoiceGame project.
+ *
+ * Do **NOT** use the internal device drivers and this module at the same time.
+ * In general, you should use this module over the internal device drivers, as
+ * this module exposes some higher level functions with better performance.
+ */
 
 #ifndef __GRAPHIC_H__
 #define __GRAPHIC_H__
@@ -6,11 +14,20 @@
 
 typedef int Color;
 typedef struct {
-	alt_up_pixel_buffer_dma_dev* device;
-	unsigned int current_buffer;
+	alt_up_pixel_buffer_dma_dev* device; /** The VGA device driver, set automatically by vga_init() */
+	unsigned int current_buffer; /** The backbuffer number to render too. Mostly ignored. Set automatically by vga_init() */
 } VgaBuffer;
 
+/**
+ * Initializes the VGA driver.
+ *
+ * Using any other function in this module will be undefined and most likely result into crashes.
+ *
+ * @return 0 - For success
+ * @return 1 - Failed to open VGA device
+ */
 int vga_init();
+
 void vga_swap_buffers();
 void vga_clear();
 void vga_draw_pixel(unsigned int x, unsigned int y, Color);
