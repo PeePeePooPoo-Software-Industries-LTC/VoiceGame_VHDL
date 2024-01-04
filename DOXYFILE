@@ -181,7 +181,8 @@ RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       = */software/gameconsole_bsp/* \
-                         */NIOSII_Test/*
+                         */NIOSII_Test/* \
+                         */db/*
 EXCLUDE_SYMBOLS        =
 EXAMPLE_PATH           =
 EXAMPLE_PATTERNS       = *
