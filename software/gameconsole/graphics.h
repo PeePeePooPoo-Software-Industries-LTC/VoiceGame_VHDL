@@ -22,14 +22,18 @@
 typedef int Color;
 
 /**
+ * @struct VgaBuffer
  * The main handle to drive the screen. This should not be created manually and
  * not modified. This handle is created automatically by vga_init()
+ *
+ * @var VgaBuffer::device
+ * The VGA device driver, set automatically by vga_init() 
+ * @var VgaBuffer::current_buffer
+ * The backbuffer number to render too. Mostly ignored. Set automatically by vga_init()
  */
 typedef struct {
-  alt_up_pixel_buffer_dma_dev
-      *device; /** The VGA device driver, set automatically by vga_init() */
-  unsigned int current_buffer; /** The backbuffer number to render too. Mostly
-                                  ignored. Set automatically by vga_init() */
+  alt_up_pixel_buffer_dma_dev *device;
+  unsigned int current_buffer;
 } VgaBuffer;
 
 /**

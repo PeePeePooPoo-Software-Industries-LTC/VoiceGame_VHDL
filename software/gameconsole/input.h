@@ -22,22 +22,28 @@
 #define GET_BIT(n, bit) ((n & (1 << bit)) >> bit)
 
 /**
+ * @struct Input
  * The main input struct
  *
  * This struct contains all the information related to user input
  *
  * Most of the fields are read-only flags, however, there is one speed property
  * used throughout the game to determine the snakes movement speed
+ *
+ * @var Input::left
+ * Read-only, if set to 1, the left button was pressed this frame
+ * @var Input::right
+ * Read-only, if set to 1, the right button was pressed this frame
+ * @var Input::reset
+ * Read-only, if set to 1, the reset button was pressed this frame
+ * @var Input::speed
+ * The speed of the snake, the higher the number, the faster the snake moves
  */
 typedef struct {
-  unsigned int
-      left; /* Read-only, if set to 1, the left button was pressed this frame */
-  unsigned int right; /* Read-only, if set to 1, the right button was pressed
-                         this frame */
-  unsigned int reset; /* Read-only, if set to 1, the reset button was pressed
-                         this frame */
-  unsigned int speed; /* The speed of the snake, the higher the number, the
-                         faster the snake moves */
+  unsigned int left;
+  unsigned int right;
+  unsigned int reset;
+  unsigned int speed;
 } Input;
 
 /**
