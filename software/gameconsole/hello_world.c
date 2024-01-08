@@ -290,6 +290,15 @@ int main() {
     alt_32 game_tick = now + GAME_TICK_DURATION_MS;
     alt_32 render_tick = now + RENDER_TICK_DURATION_MS;
 
+//    int a = 2;
+//    int b = 3;
+//
+//    int c;
+//    c = (a, b);
+//    printf("<%d>", c);
+
+//    printf("hmm? (%d)\n", ALT_CI_CUSTOMINSTR_PREPARE_PIXEL_BYTE(0, 1, 2));
+
     // Create the grid
 	int grid[GRID_SIZE_X][GRID_SIZE_Y];
 
