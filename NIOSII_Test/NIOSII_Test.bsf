@@ -224,7 +224,7 @@ refer to the applicable agreement for further details.
 		(text "R" (rect 149 531 304 1072)(font "Arial" (color 0 0 0)))
 		(text "G" (rect 149 547 304 1104)(font "Arial" (color 0 0 0)))
 		(text "B" (rect 149 563 304 1136)(font "Arial" (color 0 0 0)))
-		(text " NIOSII_Test " (rect 311 584 700 1178)(font "Arial" ))
+		(text " system " (rect 333 584 714 1178)(font "Arial" ))
 		(line (pt 144 32)(pt 224 32)(line_width 1))
 		(line (pt 224 32)(pt 224 584)(line_width 1))
 		(line (pt 144 584)(pt 224 584)(line_width 1))
