@@ -38,7 +38,7 @@ entity Main is
 
         -- FPGA board utility pins
         GPIO        : out   std_logic_vector(35 downto 0);
-		  KEY			  : in	 std_logic_vector(3 downto 0);
+		KEY			: in	std_logic_vector(3 downto 0);
         LEDR        : out   std_logic_vector(17 downto 0);
         LEDG        : out   std_logic_vector(7  downto 0)
     );
