@@ -59,6 +59,29 @@ void spawn_apple(int grid[GRID_SIZE_X][GRID_SIZE_Y]) {
 	}
 }
 
+void draw_background(register int x, register int y);
+inline void draw_background(register int x, register int y) {
+	if (x == 0 && y == 0) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_topleft_width, image_sand_topleft_palette, image_sand_topleft, IMAGE_sand_topleft_MAX_BYTES);
+	} else if (x == 0 && y == GRID_SIZE_Y - 1) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_leftbottom_width, image_sand_leftbottom_palette, image_sand_leftbottom, IMAGE_sand_leftbottom_MAX_BYTES);
+	} else if (x == GRID_SIZE_X - 1 && y == GRID_SIZE_Y - 1) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_bottomright_width, image_sand_bottomright_palette, image_sand_bottomright, IMAGE_sand_bottomright_MAX_BYTES);
+	} else if (x == GRID_SIZE_X - 1 && y == 0) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_topright_width, image_sand_topright_palette, image_sand_topright, IMAGE_sand_topright_MAX_BYTES);
+	} else if (x == 0) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_left_width, image_sand_left_palette, image_sand_left, IMAGE_sand_left_MAX_BYTES);
+	} else if (x == GRID_SIZE_X - 1) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_right_width, image_sand_right_palette, image_sand_right, IMAGE_sand_right_MAX_BYTES);
+	} else if (y == 0) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_top_width, image_sand_top_palette, image_sand_top, IMAGE_sand_top_MAX_BYTES);
+	} else if (y == GRID_SIZE_Y - 1) {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_bottom_width, image_sand_bottom_palette, image_sand_bottom, IMAGE_sand_bottom_MAX_BYTES);
+	} else {
+		vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_width, image_sand_palette, image_sand, IMAGE_sand_MAX_BYTES);
+	}
+}
+
 void draw_grid(GRID_ARG, Snake* snake) {
 	for (int x = 0; x < GRID_SIZE_X; x++) {
 		for (int y = 0; y < GRID_SIZE_Y; y++) {
@@ -69,7 +92,7 @@ void draw_grid(GRID_ARG, Snake* snake) {
 			int valueSouth = grid[x][y + 1];
 			int TAIL = snake->length;
 			if (value == DRAWBACKGROUND) {
-				vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_width, image_sand_palette, image_sand, IMAGE_sand_MAX_BYTES);
+				draw_background(x, y);
 				grid[x][y] = IGNORE;
 			}
 			if (value != APPLE && value != IGNORE && value != GAME_OVER && value != DRAWBACKGROUND) {
@@ -92,7 +115,7 @@ void draw_grid(GRID_ARG, Snake* snake) {
 					}
 				}
 				else if(value == TAIL){
-					vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_width, image_sand_palette, image_sand, IMAGE_sand_MAX_BYTES);
+					draw_background(x, y);
 					if(valueEast == value - 1){
 						/* tail going east */
 						vga_draw_transparent_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_snake_tail_east_width, image_snake_tail_east_palette, image_snake_tail_east, IMAGE_snake_tail_east_MAX_BYTES, TRANSPARENT_COLOR);
@@ -176,7 +199,6 @@ void draw_grid(GRID_ARG, Snake* snake) {
 			}
 			else if(value == APPLE) {
 				vga_draw_transparent_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_apple_width, image_apple_palette, image_apple, IMAGE_apple_MAX_BYTES, TRANSPARENT_COLOR);
-
 			}
 		}
 	}
@@ -273,9 +295,7 @@ void restart_game(GRID_ARG, Snake* snake){
 	for (int x = 0; x < GRID_SIZE_X; x++){
 		for (int y = 0; y < GRID_SIZE_Y; y++){
 			grid[x][y] = 0;
-//			if (value == DRAWBACKGROUND) {
-			vga_draw_image(x * PIXEL_SIZE + SCREEN_OFFSET, y * PIXEL_SIZE, image_sand_width, image_sand_palette, image_sand, IMAGE_sand_MAX_BYTES);
-//						}
+			draw_background(x, y);
 		}
 	}
 
@@ -328,9 +348,6 @@ int main() {
             render_tick = now + RENDER_TICK_DURATION_MS;
 
 		    draw_grid(grid, &snake);
-//		    vga_swap_buffers();
-//		    vga_swap_buffers();
-//            vga_clear();
         }
 	}
 	return 0;
