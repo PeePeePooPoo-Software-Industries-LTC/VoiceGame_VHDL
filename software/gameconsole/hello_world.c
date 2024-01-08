@@ -292,6 +292,8 @@ void restart_game(GRID_ARG, Snake* snake){
 	snake->delta_y = 1;
 	snake->state = Playing;
 
+	vga_draw_rect(0, 0, 48, GRID_SIZE_Y * 16, RGB(264, 264, 264));
+	vga_draw_rect(48 + (GRID_SIZE_X - 1) * 16, 0, 48, GRID_SIZE_Y * 16, RGB(264, 264, 264));
 	for (int x = 0; x < GRID_SIZE_X; x++){
 		for (int y = 0; y < GRID_SIZE_Y; y++){
 			grid[x][y] = 0;
