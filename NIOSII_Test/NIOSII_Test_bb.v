@@ -8,6 +8,9 @@ module NIOSII_Test (
 	audio_interface_BCLK,
 	buttons_export,
 	clk_clk,
+	inc_max_shorts_dataa,
+	inc_max_shorts_datab,
+	inc_max_shorts_result,
 	prepare_pixel_dataa,
 	prepare_pixel_datab,
 	prepare_pixel_result,
@@ -26,10 +29,7 @@ module NIOSII_Test (
 	vga_SYNC,
 	vga_R,
 	vga_G,
-	vga_B,
-	inc_max_shorts_dataa,
-	inc_max_shorts_datab,
-	inc_max_shorts_result);	
+	vga_B);	
 
 	output		audio_clk_clk;
 	inout		audio_config_SDAT;
@@ -39,6 +39,9 @@ module NIOSII_Test (
 	input		audio_interface_BCLK;
 	input	[3:0]	buttons_export;
 	input		clk_clk;
+	output	[31:0]	inc_max_shorts_dataa;
+	output	[31:0]	inc_max_shorts_datab;
+	input	[31:0]	inc_max_shorts_result;
 	output	[31:0]	prepare_pixel_dataa;
 	output	[31:0]	prepare_pixel_datab;
 	input	[31:0]	prepare_pixel_result;
@@ -58,7 +61,4 @@ module NIOSII_Test (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
-	output	[31:0]	inc_max_shorts_dataa;
-	output	[31:0]	inc_max_shorts_datab;
-	input	[31:0]	inc_max_shorts_result;
 endmodule

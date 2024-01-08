@@ -149,4 +149,11 @@ extern unsigned char image_apple_height;
 extern unsigned int image_apple_palette[8];
 extern unsigned char image_apple[IMAGE_apple_MAX_BYTES];
 
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand.png
+#define IMAGE_sand_MAX_BYTES 108
+extern unsigned char image_sand_width;
+extern unsigned char image_sand_height;
+extern unsigned int image_sand_palette[8];
+extern unsigned char image_sand[IMAGE_sand_MAX_BYTES];
+
 #endif

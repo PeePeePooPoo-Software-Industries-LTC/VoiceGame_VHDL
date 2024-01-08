@@ -66,7 +66,7 @@ module NIOSII_Test_video_pixel_buffer_dma_0 (
 
 // Parameters
 parameter DEFAULT_BUFFER_ADDRESS		= 32'd0;
-parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd1048576;
+parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd0;
 
 parameter WW						= 8;  // Image width's address width
 parameter HW						= 7;  // Image height's address width
