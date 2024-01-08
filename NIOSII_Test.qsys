@@ -70,6 +70,14 @@
          type = "String";
       }
    }
+   element ci_inc_max_shorts
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+   }
    element ci_prepare_pixel
    {
       datum _sortIndex
@@ -296,6 +304,11 @@
    type="conduit"
    dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface
+   name="inc_max_shorts"
+   internal="ci_inc_max_shorts.comb_ci_master"
+   type="nios_custom_instruction"
+   dir="start" />
  <interface name="onchip_memory_access" internal="onchip_memory2_0.s2" />
  <interface
    name="prepare_pixel"
@@ -377,6 +390,31 @@
   <parameter name="width" value="4" />
  </module>
  <module
+   name="ci_inc_max_shorts"
+   kind="altera_customins_master_translator"
+   version="18.1"
+   enabled="1">
+  <parameter name="ENABLE_MULTICYCLE" value="0" />
+  <parameter name="SHARED_COMB_AND_MULTI" value="0" />
+  <parameter name="USE_DATAA" value="1" />
+  <parameter name="USE_DATAB" value="1" />
+  <parameter name="USE_DONE" value="0" />
+  <parameter name="USE_ESTATUS" value="0" />
+  <parameter name="USE_IPENDING" value="0" />
+  <parameter name="USE_MULTI_DATAA" value="0" />
+  <parameter name="USE_MULTI_DATAB" value="0" />
+  <parameter name="USE_MULTI_N" value="0" />
+  <parameter name="USE_MULTI_READRA" value="0" />
+  <parameter name="USE_MULTI_READRB" value="0" />
+  <parameter name="USE_MULTI_RESULT" value="0" />
+  <parameter name="USE_MULTI_WRITERC" value="0" />
+  <parameter name="USE_N" value="0" />
+  <parameter name="USE_READRA" value="0" />
+  <parameter name="USE_READRB" value="0" />
+  <parameter name="USE_START" value="0" />
+  <parameter name="USE_WRITERC" value="0" />
+ </module>
+ <module
    name="ci_prepare_pixel"
    kind="altera_customins_master_translator"
    version="18.1"
@@ -443,7 +481,7 @@
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="0" />
   <parameter name="cpuReset" value="false" />
-  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="ci_prepare_pixel" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></parameter>
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="ci_prepare_pixel" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /><slave name="ci_inc_max_shorts" baseAddress="1" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></parameter>
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
@@ -948,6 +986,15 @@
   <parameter name="CIName" value="ci_prepare_pixel" />
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0" />
+ </connection>
+ <connection
+   kind="nios_custom_instruction"
+   version="18.1"
+   start="nios2_gen2_0.custom_instruction_master"
+   end="ci_inc_max_shorts.ci_slave">
+  <parameter name="CIName" value="ci_inc_max_shorts" />
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="1" />
  </connection>
  <connection
    kind="reset"

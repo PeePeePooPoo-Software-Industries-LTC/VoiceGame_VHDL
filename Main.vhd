@@ -57,6 +57,10 @@ architecture rtl of Main is
             clk_clk                 : in    std_logic                       := '0';
             reset_reset_n           : in    std_logic                       := '0';
 
+				inc_max_shorts_dataa    : out   std_logic_vector(31 downto 0);                    --  inc_max_shorts.dataa
+				inc_max_shorts_datab    : out   std_logic_vector(31 downto 0);                    --                .datab
+				inc_max_shorts_result   : in    std_logic_vector(31 downto 0) := (others => '0'); --                .resul
+				
 				prepare_pixel_dataa    : out   std_logic_vector(31 downto 0);
 				prepare_pixel_datab    : out   std_logic_vector(31 downto 0);
 				prepare_pixel_result   : in    std_logic_vector(31 downto 0) := (others => '0');
@@ -90,6 +94,14 @@ architecture rtl of Main is
 		 );
  	 end component;
 	 
+	 component IncMaxShorts is
+		port(
+			 data_a : in std_logic_vector(31 downto 0);
+			 data_b : in std_logic_vector(31 downto 0);
+			 result : out std_logic_vector(31 downto 0)
+		 );
+ 	 end component;
+	 
     component video_pll is
         port(
             inclk0 : IN STD_LOGIC  := '0';
@@ -102,6 +114,10 @@ architecture rtl of Main is
 	 signal ci_prep_pixel_a : std_logic_vector(31 downto 0);
 	 signal ci_prep_pixel_b : std_logic_vector(31 downto 0);
 	 signal ci_prep_pixel_result : std_logic_vector(31 downto 0);
+	 
+	 signal ci_inc_shorts_a : std_logic_vector(31 downto 0);
+	 signal ci_inc_shorts_b : std_logic_vector(31 downto 0);
+	 signal ci_inc_shorts_result : std_logic_vector(31 downto 0);
 begin
     button_passthrough(KEY'range) <= KEY;
     
@@ -109,6 +125,12 @@ begin
 		data_a => ci_prep_pixel_a,
 		data_b => ci_prep_pixel_b,
 		result => ci_prep_pixel_result
+	 );
+	 
+	 inc_max_shorts_ci : IncMaxShorts port map(
+		data_a => ci_inc_shorts_a,
+		data_b => ci_inc_shorts_b,
+		result => ci_inc_shorts_result
 	 );
 	 
     nios2_core : NIOSII_Test port map(
@@ -121,6 +143,10 @@ begin
         audio_interface_ADCLRCK => AUD_ADCLRCK,
         audio_interface_BCLK    => AUD_BCLK,
         audio_clk_clk           => AUD_XCK,
+		  
+		  inc_max_shorts_dataa    => ci_inc_shorts_a,
+		  inc_max_shorts_datab    => ci_inc_shorts_b,
+		  inc_max_shorts_result   => ci_inc_shorts_result,
 		  
 		  prepare_pixel_dataa    => ci_prep_pixel_a,
 		  prepare_pixel_datab    => ci_prep_pixel_b,

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'NIOSII_Test'
  * SOPC Builder design path: ../../NIOSII_Test.sopcinfo
  *
- * Generated: Mon Jan 08 10:12:46 CET 2024
+ * Generated: Mon Jan 08 11:40:29 CET 2024
  */
 
 /*
@@ -143,6 +143,8 @@
  *
  */
 
+#define ALT_CI_CI_INC_MAX_SHORTS(A,B) __builtin_custom_inii(ALT_CI_CI_INC_MAX_SHORTS_N,(A),(B))
+#define ALT_CI_CI_INC_MAX_SHORTS_N 0x1
 #define ALT_CI_CI_PREPARE_PIXEL(A,B) __builtin_custom_inii(ALT_CI_CI_PREPARE_PIXEL_N,(A),(B))
 #define ALT_CI_CI_PREPARE_PIXEL_N 0x0
 

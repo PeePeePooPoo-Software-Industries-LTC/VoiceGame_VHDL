@@ -16,6 +16,9 @@ entity NIOSII_Test is
 		audio_interface_BCLK    : in    std_logic                     := '0';             --                .BCLK
 		buttons_export          : in    std_logic_vector(3 downto 0)  := (others => '0'); --         buttons.export
 		clk_clk                 : in    std_logic                     := '0';             --             clk.clk
+		inc_max_shorts_dataa    : out   std_logic_vector(31 downto 0);                    --  inc_max_shorts.dataa
+		inc_max_shorts_datab    : out   std_logic_vector(31 downto 0);                    --                .datab
+		inc_max_shorts_result   : in    std_logic_vector(31 downto 0) := (others => '0'); --                .result
 		prepare_pixel_dataa     : out   std_logic_vector(31 downto 0);                    --   prepare_pixel.dataa
 		prepare_pixel_datab     : out   std_logic_vector(31 downto 0);                    --                .datab
 		prepare_pixel_result    : in    std_logic_vector(31 downto 0) := (others => '0'); --                .result
@@ -319,7 +322,19 @@ architecture rtl of NIOSII_Test is
 			ci_master0_b        : out std_logic_vector(4 downto 0);                     -- b
 			ci_master0_c        : out std_logic_vector(4 downto 0);                     -- c
 			ci_master0_ipending : out std_logic_vector(31 downto 0);                    -- ipending
-			ci_master0_estatus  : out std_logic                                         -- estatus
+			ci_master0_estatus  : out std_logic;                                        -- estatus
+			ci_master1_dataa    : out std_logic_vector(31 downto 0);                    -- dataa
+			ci_master1_datab    : out std_logic_vector(31 downto 0);                    -- datab
+			ci_master1_result   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- result
+			ci_master1_n        : out std_logic_vector(7 downto 0);                     -- n
+			ci_master1_readra   : out std_logic;                                        -- readra
+			ci_master1_readrb   : out std_logic;                                        -- readrb
+			ci_master1_writerc  : out std_logic;                                        -- writerc
+			ci_master1_a        : out std_logic_vector(4 downto 0);                     -- a
+			ci_master1_b        : out std_logic_vector(4 downto 0);                     -- b
+			ci_master1_c        : out std_logic_vector(4 downto 0);                     -- c
+			ci_master1_ipending : out std_logic_vector(31 downto 0);                    -- ipending
+			ci_master1_estatus  : out std_logic                                         -- estatus
 		);
 	end component NIOSII_Test_nios2_gen2_0_custom_instruction_master_comb_xconnect;
 
@@ -717,7 +732,7 @@ architecture rtl of NIOSII_Test is
 		);
 	end component niosii_test_rst_controller_002;
 
-	component niosii_test_ci_prepare_pixel is
+	component niosii_test_ci_inc_max_shorts is
 		generic (
 			SHARED_COMB_AND_MULTI : integer := 0
 		);
@@ -779,7 +794,7 @@ architecture rtl of NIOSII_Test is
 			multi_ci_master_start     : out std_logic;
 			multi_ci_master_writerc   : out std_logic
 		);
-	end component niosii_test_ci_prepare_pixel;
+	end component niosii_test_ci_inc_max_shorts;
 
 	component niosii_test_nios2_gen2_0_custom_instruction_master_translator is
 		generic (
@@ -892,9 +907,24 @@ architecture rtl of NIOSII_Test is
 	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_dataa          : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_dataa -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_dataa
 	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_writerc        : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_writerc -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_writerc
 	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_n              : std_logic_vector(7 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master0_n -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_slave_n
-	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_result : std_logic_vector(31 downto 0); -- ci_prepare_pixel:ci_slave_result -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_result
-	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_datab  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_datab -> ci_prepare_pixel:ci_slave_datab
-	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_dataa  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_dataa -> ci_prepare_pixel:ci_slave_dataa
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_result : std_logic_vector(31 downto 0); -- ci_inc_max_shorts:ci_slave_result -> nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_result
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_datab  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_datab -> ci_inc_max_shorts:ci_slave_datab
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_dataa  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator0:ci_master_dataa -> ci_inc_max_shorts:ci_slave_dataa
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_result         : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_result -> nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_result
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_readra         : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_readra -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_readra
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_a              : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_a -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_a
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_b              : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_b -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_b
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_readrb         : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_readrb -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_readrb
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_c              : std_logic_vector(4 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_c -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_c
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_estatus        : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_estatus -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_estatus
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_ipending       : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_ipending -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_ipending
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_datab          : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_datab -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_datab
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_dataa          : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_dataa -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_dataa
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_writerc        : std_logic;                     -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_writerc -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_writerc
+	signal nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_n              : std_logic_vector(7 downto 0);  -- nios2_gen2_0_custom_instruction_master_comb_xconnect:ci_master1_n -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_slave_n
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_result : std_logic_vector(31 downto 0); -- ci_prepare_pixel:ci_slave_result -> nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_master_result
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_datab  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_master_datab -> ci_prepare_pixel:ci_slave_datab
+	signal nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_dataa  : std_logic_vector(31 downto 0); -- nios2_gen2_0_custom_instruction_master_comb_slave_translator1:ci_master_dataa -> ci_prepare_pixel:ci_slave_dataa
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest                   : std_logic;                     -- mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest -> video_pixel_buffer_dma_0:master_waitrequest
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata                      : std_logic_vector(31 downto 0); -- mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata -> video_pixel_buffer_dma_0:master_readdata
 	signal video_pixel_buffer_dma_0_avalon_pixel_dma_master_address                       : std_logic_vector(31 downto 0); -- video_pixel_buffer_dma_0:master_address -> mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_address
@@ -1062,7 +1092,7 @@ begin
 			irq        => irq_synchronizer_001_receiver_irq(0)                     --                 irq.irq
 		);
 
-	ci_prepare_pixel : component niosii_test_ci_prepare_pixel
+	ci_inc_max_shorts : component niosii_test_ci_inc_max_shorts
 		generic map (
 			SHARED_COMB_AND_MULTI => 0
 		)
@@ -1070,6 +1100,69 @@ begin
 			ci_slave_dataa            => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_dataa,  --       ci_slave.dataa
 			ci_slave_datab            => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_datab,  --               .datab
 			ci_slave_result           => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_result, --               .result
+			comb_ci_master_dataa      => inc_max_shorts_dataa,                                                           -- comb_ci_master.dataa
+			comb_ci_master_datab      => inc_max_shorts_datab,                                                           --               .datab
+			comb_ci_master_result     => inc_max_shorts_result,                                                          --               .result
+			ci_slave_n                => "00000000",                                                                     --    (terminated)
+			ci_slave_readra           => '0',                                                                            --    (terminated)
+			ci_slave_readrb           => '0',                                                                            --    (terminated)
+			ci_slave_writerc          => '0',                                                                            --    (terminated)
+			ci_slave_a                => "00000",                                                                        --    (terminated)
+			ci_slave_b                => "00000",                                                                        --    (terminated)
+			ci_slave_c                => "00000",                                                                        --    (terminated)
+			ci_slave_ipending         => "00000000000000000000000000000000",                                             --    (terminated)
+			ci_slave_estatus          => '0',                                                                            --    (terminated)
+			ci_slave_multi_clk        => '0',                                                                            --    (terminated)
+			ci_slave_multi_reset      => '0',                                                                            --    (terminated)
+			ci_slave_multi_clken      => '0',                                                                            --    (terminated)
+			ci_slave_multi_reset_req  => '0',                                                                            --    (terminated)
+			ci_slave_multi_start      => '0',                                                                            --    (terminated)
+			ci_slave_multi_done       => open,                                                                           --    (terminated)
+			ci_slave_multi_dataa      => "00000000000000000000000000000000",                                             --    (terminated)
+			ci_slave_multi_datab      => "00000000000000000000000000000000",                                             --    (terminated)
+			ci_slave_multi_result     => open,                                                                           --    (terminated)
+			ci_slave_multi_n          => "00000000",                                                                     --    (terminated)
+			ci_slave_multi_readra     => '0',                                                                            --    (terminated)
+			ci_slave_multi_readrb     => '0',                                                                            --    (terminated)
+			ci_slave_multi_writerc    => '0',                                                                            --    (terminated)
+			ci_slave_multi_a          => "00000",                                                                        --    (terminated)
+			ci_slave_multi_b          => "00000",                                                                        --    (terminated)
+			ci_slave_multi_c          => "00000",                                                                        --    (terminated)
+			comb_ci_master_n          => open,                                                                           --    (terminated)
+			comb_ci_master_readra     => open,                                                                           --    (terminated)
+			comb_ci_master_readrb     => open,                                                                           --    (terminated)
+			comb_ci_master_writerc    => open,                                                                           --    (terminated)
+			comb_ci_master_a          => open,                                                                           --    (terminated)
+			comb_ci_master_b          => open,                                                                           --    (terminated)
+			comb_ci_master_c          => open,                                                                           --    (terminated)
+			comb_ci_master_ipending   => open,                                                                           --    (terminated)
+			comb_ci_master_estatus    => open,                                                                           --    (terminated)
+			multi_ci_master_clk       => open,                                                                           --    (terminated)
+			multi_ci_master_reset     => open,                                                                           --    (terminated)
+			multi_ci_master_clken     => open,                                                                           --    (terminated)
+			multi_ci_master_reset_req => open,                                                                           --    (terminated)
+			multi_ci_master_start     => open,                                                                           --    (terminated)
+			multi_ci_master_done      => '0',                                                                            --    (terminated)
+			multi_ci_master_dataa     => open,                                                                           --    (terminated)
+			multi_ci_master_datab     => open,                                                                           --    (terminated)
+			multi_ci_master_result    => "00000000000000000000000000000000",                                             --    (terminated)
+			multi_ci_master_n         => open,                                                                           --    (terminated)
+			multi_ci_master_readra    => open,                                                                           --    (terminated)
+			multi_ci_master_readrb    => open,                                                                           --    (terminated)
+			multi_ci_master_writerc   => open,                                                                           --    (terminated)
+			multi_ci_master_a         => open,                                                                           --    (terminated)
+			multi_ci_master_b         => open,                                                                           --    (terminated)
+			multi_ci_master_c         => open                                                                            --    (terminated)
+		);
+
+	ci_prepare_pixel : component niosii_test_ci_inc_max_shorts
+		generic map (
+			SHARED_COMB_AND_MULTI => 0
+		)
+		port map (
+			ci_slave_dataa            => nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_dataa,  --       ci_slave.dataa
+			ci_slave_datab            => nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_datab,  --               .datab
+			ci_slave_result           => nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_result, --               .result
 			comb_ci_master_dataa      => prepare_pixel_dataa,                                                            -- comb_ci_master.dataa
 			comb_ci_master_datab      => prepare_pixel_datab,                                                            --               .datab
 			comb_ci_master_result     => prepare_pixel_result,                                                           --               .result
@@ -1402,7 +1495,19 @@ begin
 			ci_master0_b        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_b,         --           .b
 			ci_master0_c        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_c,         --           .c
 			ci_master0_ipending => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_ipending,  --           .ipending
-			ci_master0_estatus  => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_estatus    --           .estatus
+			ci_master0_estatus  => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master0_estatus,   --           .estatus
+			ci_master1_dataa    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_dataa,     -- ci_master1.dataa
+			ci_master1_datab    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_datab,     --           .datab
+			ci_master1_result   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_result,    --           .result
+			ci_master1_n        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_n,         --           .n
+			ci_master1_readra   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_readra,    --           .readra
+			ci_master1_readrb   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_readrb,    --           .readrb
+			ci_master1_writerc  => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_writerc,   --           .writerc
+			ci_master1_a        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_a,         --           .a
+			ci_master1_b        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_b,         --           .b
+			ci_master1_c        => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_c,         --           .c
+			ci_master1_ipending => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_ipending,  --           .ipending
+			ci_master1_estatus  => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_estatus    --           .estatus
 		);
 
 	nios2_gen2_0_custom_instruction_master_comb_slave_translator0 : component altera_customins_slave_translator
@@ -1427,6 +1532,51 @@ begin
 			ci_master_dataa     => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_dataa,  -- ci_master.dataa
 			ci_master_datab     => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_datab,  --          .datab
 			ci_master_result    => nios2_gen2_0_custom_instruction_master_comb_slave_translator0_ci_master_result, --          .result
+			ci_master_n         => open,                                                                           -- (terminated)
+			ci_master_readra    => open,                                                                           -- (terminated)
+			ci_master_readrb    => open,                                                                           -- (terminated)
+			ci_master_writerc   => open,                                                                           -- (terminated)
+			ci_master_a         => open,                                                                           -- (terminated)
+			ci_master_b         => open,                                                                           -- (terminated)
+			ci_master_c         => open,                                                                           -- (terminated)
+			ci_master_ipending  => open,                                                                           -- (terminated)
+			ci_master_estatus   => open,                                                                           -- (terminated)
+			ci_master_clk       => open,                                                                           -- (terminated)
+			ci_master_clken     => open,                                                                           -- (terminated)
+			ci_master_reset_req => open,                                                                           -- (terminated)
+			ci_master_reset     => open,                                                                           -- (terminated)
+			ci_master_start     => open,                                                                           -- (terminated)
+			ci_master_done      => '0',                                                                            -- (terminated)
+			ci_slave_clk        => '0',                                                                            -- (terminated)
+			ci_slave_clken      => '0',                                                                            -- (terminated)
+			ci_slave_reset_req  => '0',                                                                            -- (terminated)
+			ci_slave_reset      => '0',                                                                            -- (terminated)
+			ci_slave_start      => '0',                                                                            -- (terminated)
+			ci_slave_done       => open                                                                            -- (terminated)
+		);
+
+	nios2_gen2_0_custom_instruction_master_comb_slave_translator1 : component altera_customins_slave_translator
+		generic map (
+			N_WIDTH          => 8,
+			USE_DONE         => 0,
+			NUM_FIXED_CYCLES => 0
+		)
+		port map (
+			ci_slave_dataa      => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_dataa,          --  ci_slave.dataa
+			ci_slave_datab      => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_datab,          --          .datab
+			ci_slave_result     => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_result,         --          .result
+			ci_slave_n          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_n,              --          .n
+			ci_slave_readra     => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_readra,         --          .readra
+			ci_slave_readrb     => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_readrb,         --          .readrb
+			ci_slave_writerc    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_writerc,        --          .writerc
+			ci_slave_a          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_a,              --          .a
+			ci_slave_b          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_b,              --          .b
+			ci_slave_c          => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_c,              --          .c
+			ci_slave_ipending   => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_ipending,       --          .ipending
+			ci_slave_estatus    => nios2_gen2_0_custom_instruction_master_comb_xconnect_ci_master1_estatus,        --          .estatus
+			ci_master_dataa     => nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_dataa,  -- ci_master.dataa
+			ci_master_datab     => nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_datab,  --          .datab
+			ci_master_result    => nios2_gen2_0_custom_instruction_master_comb_slave_translator1_ci_master_result, --          .result
 			ci_master_n         => open,                                                                           -- (terminated)
 			ci_master_readra    => open,                                                                           -- (terminated)
 			ci_master_readrb    => open,                                                                           -- (terminated)
