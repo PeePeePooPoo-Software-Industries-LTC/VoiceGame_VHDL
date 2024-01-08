@@ -35,4 +35,4 @@ jobs:
         if: github.ref == 'refs/heads/game_logic_with_audio'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./doxygen-output
+          publish_dir: ./doxygen-output/html
