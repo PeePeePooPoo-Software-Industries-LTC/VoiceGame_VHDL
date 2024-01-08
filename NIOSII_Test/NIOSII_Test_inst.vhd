@@ -23,7 +23,10 @@
 			vga_SYNC                : out   std_logic;                                        -- SYNC
 			vga_R                   : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                   : out   std_logic_vector(7 downto 0);                     -- G
-			vga_B                   : out   std_logic_vector(7 downto 0)                      -- B
+			vga_B                   : out   std_logic_vector(7 downto 0);                     -- B
+			prepare_pixel_dataa     : out   std_logic_vector(31 downto 0);                    -- dataa
+			prepare_pixel_datab     : out   std_logic_vector(31 downto 0);                    -- datab
+			prepare_pixel_result    : in    std_logic_vector(31 downto 0) := (others => 'X')  -- result
 		);
 	end component NIOSII_Test;
 
@@ -52,6 +55,9 @@
 			vga_SYNC                => CONNECTED_TO_vga_SYNC,                --                .SYNC
 			vga_R                   => CONNECTED_TO_vga_R,                   --                .R
 			vga_G                   => CONNECTED_TO_vga_G,                   --                .G
-			vga_B                   => CONNECTED_TO_vga_B                    --                .B
+			vga_B                   => CONNECTED_TO_vga_B,                   --                .B
+			prepare_pixel_dataa     => CONNECTED_TO_prepare_pixel_dataa,     --   prepare_pixel.dataa
+			prepare_pixel_datab     => CONNECTED_TO_prepare_pixel_datab,     --                .datab
+			prepare_pixel_result    => CONNECTED_TO_prepare_pixel_result     --                .result
 		);
 

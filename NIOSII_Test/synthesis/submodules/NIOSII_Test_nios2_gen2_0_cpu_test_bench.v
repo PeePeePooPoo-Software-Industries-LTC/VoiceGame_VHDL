@@ -1,4 +1,4 @@
-//Legal Notice: (C)2023 Altera Corporation. All rights reserved.  Your
+//Legal Notice: (C)2024 Altera Corporation. All rights reserved.  Your
 //use of Altera Corporation's design tools, logic functions and other
 //software and tools, and its AMPP partner logic functions, and any
 //output files any of the foregoing (including device programming or
@@ -113,7 +113,7 @@ module NIOSII_Test_nios2_gen2_0_cpu_test_bench (
   input   [ 21: 0] W_pcb;
   input   [ 31: 0] W_status_reg;
   input            W_valid;
-  input   [ 71: 0] W_vinst;
+  input   [127: 0] W_vinst;
   input            W_wr_dst_reg;
   input            clk;
   input   [ 21: 0] d_address;
@@ -200,6 +200,7 @@ wire             W_op_break;
 wire             W_op_bret;
 wire             W_op_call;
 wire             W_op_callr;
+wire             W_op_ci_prepare_pixel;
 wire             W_op_cmpeq;
 wire             W_op_cmpeqi;
 wire             W_op_cmpge;
@@ -445,6 +446,7 @@ wire             test_has_ended;
   assign W_op_intr = (W_iw_opx == 61) & W_is_opx_inst;
   assign W_op_crst = (W_iw_opx == 62) & W_is_opx_inst;
   assign W_op_opx_rsv63 = (W_iw_opx == 63) & W_is_opx_inst;
+  assign W_op_ci_prepare_pixel = W_op_custom & 1'b1;
   assign W_is_opx_inst = W_iw_op == 58;
   always @(posedge clk or negedge reset_n)
     begin

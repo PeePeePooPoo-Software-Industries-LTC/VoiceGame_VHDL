@@ -22,6 +22,9 @@
 		.vga_SYNC                (<connected-to-vga_SYNC>),                //                .SYNC
 		.vga_R                   (<connected-to-vga_R>),                   //                .R
 		.vga_G                   (<connected-to-vga_G>),                   //                .G
-		.vga_B                   (<connected-to-vga_B>)                    //                .B
+		.vga_B                   (<connected-to-vga_B>),                   //                .B
+		.prepare_pixel_dataa     (<connected-to-prepare_pixel_dataa>),     //   prepare_pixel.dataa
+		.prepare_pixel_datab     (<connected-to-prepare_pixel_datab>),     //                .datab
+		.prepare_pixel_result    (<connected-to-prepare_pixel_result>)     //                .result
 	);
 

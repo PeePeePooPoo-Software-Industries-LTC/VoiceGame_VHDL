@@ -23,7 +23,10 @@ module NIOSII_Test (
 	vga_SYNC,
 	vga_R,
 	vga_G,
-	vga_B);	
+	vga_B,
+	prepare_pixel_dataa,
+	prepare_pixel_datab,
+	prepare_pixel_result);	
 
 	output		audio_clk_clk;
 	inout		audio_config_SDAT;
@@ -49,4 +52,7 @@ module NIOSII_Test (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
+	output	[31:0]	prepare_pixel_dataa;
+	output	[31:0]	prepare_pixel_datab;
+	input	[31:0]	prepare_pixel_result;
 endmodule

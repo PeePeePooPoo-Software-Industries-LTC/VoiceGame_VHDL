@@ -61,7 +61,7 @@ inline void vga_swap_buffers() {
 inline void vga_draw_pixel(unsigned int x, unsigned int y, Color color) {
 	IOWR_32DIRECT(
 		back_buffer_addr,
-		(x << x_coord_offset) | (y << y_coord_offset),
+		ALT_CI_CI_PREPARE_PIXEL(x, y),
 		color
 	);
 }
@@ -134,7 +134,7 @@ inline void vga_draw_transparent_pixel(unsigned int x, unsigned int y, Color col
 	if (color == mask) { return; };
 	IOWR_32DIRECT(
 		back_buffer_addr,
-		(x << x_coord_offset) | (y << y_coord_offset),
+		ALT_CI_CI_PREPARE_PIXEL(x, y),
 		color
 	);
 }

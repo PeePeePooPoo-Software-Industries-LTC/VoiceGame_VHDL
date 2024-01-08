@@ -8,6 +8,9 @@
 			audio_interface_BCLK    : in    std_logic                     := 'X';             -- BCLK
 			buttons_export          : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                 : in    std_logic                     := 'X';             -- clk
+			prepare_pixel_dataa     : out   std_logic_vector(31 downto 0);                    -- dataa
+			prepare_pixel_datab     : out   std_logic_vector(31 downto 0);                    -- datab
+			prepare_pixel_result    : in    std_logic_vector(31 downto 0) := (others => 'X'); -- result
 			reset_reset_n           : in    std_logic                     := 'X';             -- reset_n
 			sram_DQ                 : inout std_logic_vector(15 downto 0) := (others => 'X'); -- DQ
 			sram_ADDR               : out   std_logic_vector(19 downto 0);                    -- ADDR

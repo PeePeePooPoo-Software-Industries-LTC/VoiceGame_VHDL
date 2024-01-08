@@ -118,16 +118,16 @@ CPU_NAME = nios2_gen2_0
 ELF_PATCH_FLAG  += --cpu_name $(CPU_NAME)
 
 # Hardware Divider present. 
-# setting HARDWARE_DIVIDE is false
-ALT_CFLAGS += -mno-hw-div
+# setting HARDWARE_DIVIDE is true
+ALT_CFLAGS += -mhw-div
 
 # Hardware Multiplier present. 
 # setting HARDWARE_MULTIPLY is true
 ALT_CFLAGS += -mhw-mul
 
 # Hardware Mulx present. 
-# setting HARDWARE_MULX is false
-ALT_CFLAGS += -mno-hw-mulx
+# setting HARDWARE_MULX is true
+ALT_CFLAGS += -mhw-mulx
 
 # Debug Core present. 
 # setting HAS_DEBUG_CORE is true
