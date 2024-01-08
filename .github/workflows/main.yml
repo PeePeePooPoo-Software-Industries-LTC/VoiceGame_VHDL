@@ -24,7 +24,7 @@ jobs:
         # uses: mattnotmitt/doxygen-action@411df0c62acb5b96b8a93d93a7bf4b753c47ea05
         uses: mattnotmitt/doxygen-action@1.9.5
         with:
-          doxyfile-path: ./Doxyfile
+          doxyfile-path: ./DOXYFILE
           working-directory: .
 
       - name: Deploy
@@ -35,4 +35,4 @@ jobs:
         if: github.ref == 'refs/heads/game_logic_with_audio'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./doxygen-output
