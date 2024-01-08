@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="NIOSII_Test" kind="NIOSII_Test" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2023.12.21.14:40:29 -->
+ <!-- 2024.01.08.11:38:13 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1703166029</value>
+  <value>1704710293</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -2658,6 +2658,768 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
+ <module
+   name="ci_inc_max_shorts"
+   kind="altera_customins_master_translator"
+   version="18.1"
+   path="ci_inc_max_shorts">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="USE_DATAA">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_DATAB">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_N">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_READRA">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_READRB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_WRITERC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_IPENDING">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_ESTATUS">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="ENABLE_MULTICYCLE">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_START">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_DONE">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_DATAA">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_DATAB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_RESULT">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_N">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_READRA">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_READRB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_WRITERC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="SHARED_COMB_AND_MULTI">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="ci_slave" kind="nios_custom_instruction_slave" version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="CIName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="NPort">
+    <type>int</type>
+    <value>0</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockCycle">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>false</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockCycleType">
+    <type>com.altera.sopcmodel.custominstruction.CustomInstruction$ClockCycleType</type>
+    <value>COMBINATORIAL</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtension">
+    <type>int</type>
+    <value>0</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtensionLocked">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtensionLockedValue">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="operands">
+    <type>int</type>
+    <value>2</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>nios_custom_instruction</type>
+   <isStart>false</isStart>
+   <port>
+    <name>ci_slave_dataa</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>dataa</role>
+   </port>
+   <port>
+    <name>ci_slave_datab</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>datab</role>
+   </port>
+   <port>
+    <name>ci_slave_result</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>result</role>
+   </port>
+  </interface>
+  <interface
+     name="comb_ci_master"
+     kind="nios_custom_instruction_master"
+     version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="CIName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="addressWidth">
+    <type>int</type>
+    <value>8</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockCycle">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>false</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="enabled">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="maxAddressWidth">
+    <type>int</type>
+    <value>8</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtension">
+    <type>int</type>
+    <value>0</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="sharedCombinationalAndMulticycle">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>nios_custom_instruction</type>
+   <isStart>true</isStart>
+   <port>
+    <name>comb_ci_master_dataa</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>dataa</role>
+   </port>
+   <port>
+    <name>comb_ci_master_datab</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>datab</role>
+   </port>
+   <port>
+    <name>comb_ci_master_result</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>result</role>
+   </port>
+  </interface>
+ </module>
+ <module
+   name="ci_prepare_pixel"
+   kind="altera_customins_master_translator"
+   version="18.1"
+   path="ci_prepare_pixel">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="USE_DATAA">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_DATAB">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_N">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_READRA">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_READRB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_WRITERC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_IPENDING">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_ESTATUS">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="ENABLE_MULTICYCLE">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_START">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_DONE">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_DATAA">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_DATAB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_RESULT">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_N">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_READRA">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_READRB">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_MULTI_WRITERC">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="SHARED_COMB_AND_MULTI">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="ci_slave" kind="nios_custom_instruction_slave" version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="CIName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="NPort">
+    <type>int</type>
+    <value>0</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockCycle">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>false</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockCycleType">
+    <type>com.altera.sopcmodel.custominstruction.CustomInstruction$ClockCycleType</type>
+    <value>COMBINATORIAL</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtension">
+    <type>int</type>
+    <value>0</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtensionLocked">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtensionLockedValue">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="operands">
+    <type>int</type>
+    <value>2</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>nios_custom_instruction</type>
+   <isStart>false</isStart>
+   <port>
+    <name>ci_slave_dataa</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>dataa</role>
+   </port>
+   <port>
+    <name>ci_slave_datab</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>datab</role>
+   </port>
+   <port>
+    <name>ci_slave_result</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>result</role>
+   </port>
+  </interface>
+  <interface
+     name="comb_ci_master"
+     kind="nios_custom_instruction_master"
+     version="18.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="CIName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="addressWidth">
+    <type>int</type>
+    <value>8</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="clockCycle">
+    <type>int</type>
+    <value>0</value>
+    <derived>false</derived>
+    <enabled>false</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="enabled">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="maxAddressWidth">
+    <type>int</type>
+    <value>8</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="opcodeExtension">
+    <type>int</type>
+    <value>0</value>
+    <derived>true</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="sharedCombinationalAndMulticycle">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>nios_custom_instruction</type>
+   <isStart>true</isStart>
+   <port>
+    <name>comb_ci_master_dataa</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>dataa</role>
+   </port>
+   <port>
+    <name>comb_ci_master_datab</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>datab</role>
+   </port>
+   <port>
+    <name>comb_ci_master_result</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>result</role>
+   </port>
+  </interface>
+ </module>
  <module name="clk_0" kind="clock_source" version="18.1" path="clk_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -3834,7 +4596,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_DIVIDE_PRESENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_MULTIPLY_PRESENT</name>
@@ -3842,7 +4604,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HARDWARE_MULX_PRESENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HAS_DEBUG_CORE</name>
@@ -3850,6 +4612,10 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.HAS_DEBUG_STUB</name>
+   <value></value>
+  </assignment>
+  <assignment>
+   <name>embeddedsw.CMacro.HAS_DIVISION_ERROR_EXCEPTION</name>
    <value></value>
   </assignment>
   <assignment>
@@ -3949,11 +4715,19 @@ the requested settings for a module instance. -->
    <value>0x00280020</value>
   </assignment>
   <assignment>
+   <name>embeddedsw.dts.params.altr,has-div</name>
+   <value>1</value>
+  </assignment>
+  <assignment>
    <name>embeddedsw.dts.params.altr,has-initda</name>
    <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,has-mul</name>
+   <value>1</value>
+  </assignment>
+  <assignment>
+   <name>embeddedsw.dts.params.altr,has-mulx</name>
    <value>1</value>
   </assignment>
   <assignment>
@@ -4478,7 +5252,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="multiplierType">
    <type>java.lang.String</type>
-   <value>mul_fast32</value>
+   <value>mul_fast64</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4486,7 +5260,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="mul_shift_choice">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4496,15 +5270,15 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>2</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="mul_64_impl">
    <type>int</type>
-   <value>0</value>
+   <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4512,13 +5286,13 @@ the requested settings for a module instance. -->
    <type>int</type>
    <value>1</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
   <parameter name="dividerType">
    <type>java.lang.String</type>
-   <value>no_div</value>
+   <value>srt2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -5535,7 +6309,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="customInstSlavesSystemInfo">
    <type>java.lang.String</type>
-   <value><![CDATA[<info/>]]></value>
+   <value><![CDATA[<info><slave name="ci_prepare_pixel" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /><slave name="ci_inc_max_shorts" baseAddress="1" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -7065,11 +7839,93 @@ parameters are a RESULT of the module parameters. -->
    <type>nios_custom_instruction</type>
    <isStart>true</isStart>
    <port>
-    <name>dummy_ci_port</name>
+    <name>E_ci_combo_result</name>
+    <direction>Input</direction>
+    <width>32</width>
+    <role>result</role>
+   </port>
+   <port>
+    <name>E_ci_combo_a</name>
+    <direction>Output</direction>
+    <width>5</width>
+    <role>a</role>
+   </port>
+   <port>
+    <name>E_ci_combo_b</name>
+    <direction>Output</direction>
+    <width>5</width>
+    <role>b</role>
+   </port>
+   <port>
+    <name>E_ci_combo_c</name>
+    <direction>Output</direction>
+    <width>5</width>
+    <role>c</role>
+   </port>
+   <port>
+    <name>E_ci_combo_dataa</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>dataa</role>
+   </port>
+   <port>
+    <name>E_ci_combo_datab</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>datab</role>
+   </port>
+   <port>
+    <name>E_ci_combo_estatus</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>estatus</role>
+   </port>
+   <port>
+    <name>E_ci_combo_ipending</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>ipending</role>
+   </port>
+   <port>
+    <name>E_ci_combo_n</name>
+    <direction>Output</direction>
+    <width>8</width>
+    <role>n</role>
+   </port>
+   <port>
+    <name>E_ci_combo_readra</name>
     <direction>Output</direction>
     <width>1</width>
     <role>readra</role>
    </port>
+   <port>
+    <name>E_ci_combo_readrb</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>readrb</role>
+   </port>
+   <port>
+    <name>E_ci_combo_writerc</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>writerc</role>
+   </port>
+   <customInstruction>
+    <isBridge>false</isBridge>
+    <moduleName>ci_prepare_pixel</moduleName>
+    <slaveName>ci_slave</slaveName>
+    <name>ci_prepare_pixel.ci_slave</name>
+    <opcodeNumber>0</opcodeNumber>
+    <opcodeMnemonic>ci_prepare_pixel</opcodeMnemonic>
+   </customInstruction>
+   <customInstruction>
+    <isBridge>false</isBridge>
+    <moduleName>ci_inc_max_shorts</moduleName>
+    <slaveName>ci_slave</slaveName>
+    <name>ci_inc_max_shorts.ci_slave</name>
+    <opcodeNumber>1</opcodeNumber>
+    <opcodeMnemonic>ci_inc_max_shorts</opcodeMnemonic>
+   </customInstruction>
   </interface>
  </module>
  <module
@@ -13517,6 +14373,140 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
+   name="nios2_gen2_0.custom_instruction_master/ci_prepare_pixel.ci_slave"
+   kind="nios_custom_instruction"
+   version="18.1"
+   start="nios2_gen2_0.custom_instruction_master"
+   end="ci_prepare_pixel.ci_slave">
+  <parameter name="CIName">
+   <type>java.lang.String</type>
+   <value>ci_prepare_pixel</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="CINameUpgrade">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>long</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="opcodeExtensionUpgrade">
+   <type>int</type>
+   <value>-1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>nios2_gen2_0</startModule>
+  <startConnectionPoint>custom_instruction_master</startConnectionPoint>
+  <endModule>ci_prepare_pixel</endModule>
+  <endConnectionPoint>ci_slave</endConnectionPoint>
+ </connection>
+ <connection
+   name="nios2_gen2_0.custom_instruction_master/ci_inc_max_shorts.ci_slave"
+   kind="nios_custom_instruction"
+   version="18.1"
+   start="nios2_gen2_0.custom_instruction_master"
+   end="ci_inc_max_shorts.ci_slave">
+  <parameter name="CIName">
+   <type>java.lang.String</type>
+   <value>ci_inc_max_shorts</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="CINameUpgrade">
+   <type>java.lang.String</type>
+   <value></value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>long</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="opcodeExtensionUpgrade">
+   <type>int</type>
+   <value>-1</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>nios2_gen2_0</startModule>
+  <startConnectionPoint>custom_instruction_master</startConnectionPoint>
+  <endModule>ci_inc_max_shorts</endModule>
+  <endConnectionPoint>ci_slave</endConnectionPoint>
+ </connection>
+ <connection
    name="clk_0.clk_reset/video_pll_0.ref_reset"
    kind="reset"
    version="18.1"
@@ -14037,6 +15027,30 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <plugin>
+  <instanceCount>2</instanceCount>
+  <name>altera_customins_master_translator</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IModule</subtype>
+  <displayName>Custom Instruction Master Translator</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>2</instanceCount>
+  <name>nios_custom_instruction_slave</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Custom Instruction Slave</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>3</instanceCount>
+  <name>nios_custom_instruction_master</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
+  <displayName>Custom Instruction Master</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
   <instanceCount>1</instanceCount>
   <name>clock_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
@@ -14106,14 +15120,6 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
   <displayName>Interrupt Receiver</displayName>
-  <version>18.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>nios_custom_instruction_master</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
-  <displayName>Custom Instruction Master</displayName>
   <version>18.1</version>
  </plugin>
  <plugin>
@@ -14226,6 +15232,14 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
   <displayName>Interrupt Connection</displayName>
+  <version>18.1</version>
+ </plugin>
+ <plugin>
+  <instanceCount>2</instanceCount>
+  <name>nios_custom_instruction</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IConnection</subtype>
+  <displayName>Nios II Custom Instruction Connection</displayName>
   <version>18.1</version>
  </plugin>
  <plugin>
