@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Dec 19, 2023 11:40:30 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1702982430316</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jan 8, 2024 11:40:29 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1704710429348</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/jaschutte/Documents/School/VHDL/VoiceGame_VHDL/software/gameconsole_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../NIOSII_Test.sopcinfo</SopcDesignFile>
@@ -911,32 +911,38 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
-                <addressRange>0x00301000 - 0x0030100F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
+                <slaveDescriptor>timer_0</slaveDescriptor>
+                <addressRange>0x00301000 - 0x0030101F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>button_passthrough</slaveDescriptor>
-                <addressRange>0x00301010 - 0x0030101F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>video_pixel_buffer_dma_0</slaveDescriptor>
                 <addressRange>0x00301020 - 0x0030102F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_0</slaveDescriptor>
+                <slaveDescriptor>video_pixel_buffer_dma_0</slaveDescriptor>
                 <addressRange>0x00301030 - 0x0030103F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
+                <addressRange>0x00301040 - 0x0030104F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>audio_0</slaveDescriptor>
+                <addressRange>0x00301050 - 0x0030105F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00301040 - 0x00301047</addressRange>
+                <addressRange>0x00301060 - 0x00301067</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

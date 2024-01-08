@@ -8,6 +8,9 @@ module NIOSII_Test (
 	audio_interface_BCLK,
 	buttons_export,
 	clk_clk,
+	prepare_pixel_dataa,
+	prepare_pixel_datab,
+	prepare_pixel_result,
 	reset_reset_n,
 	sram_DQ,
 	sram_ADDR,
@@ -23,7 +26,10 @@ module NIOSII_Test (
 	vga_SYNC,
 	vga_R,
 	vga_G,
-	vga_B);	
+	vga_B,
+	inc_max_shorts_dataa,
+	inc_max_shorts_datab,
+	inc_max_shorts_result);	
 
 	output		audio_clk_clk;
 	inout		audio_config_SDAT;
@@ -31,8 +37,11 @@ module NIOSII_Test (
 	input		audio_interface_ADCDAT;
 	input		audio_interface_ADCLRCK;
 	input		audio_interface_BCLK;
-	input	[31:0]	buttons_export;
+	input	[3:0]	buttons_export;
 	input		clk_clk;
+	output	[31:0]	prepare_pixel_dataa;
+	output	[31:0]	prepare_pixel_datab;
+	input	[31:0]	prepare_pixel_result;
 	input		reset_reset_n;
 	inout	[15:0]	sram_DQ;
 	output	[19:0]	sram_ADDR;
@@ -49,4 +58,7 @@ module NIOSII_Test (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
+	output	[31:0]	inc_max_shorts_dataa;
+	output	[31:0]	inc_max_shorts_datab;
+	input	[31:0]	inc_max_shorts_result;
 endmodule

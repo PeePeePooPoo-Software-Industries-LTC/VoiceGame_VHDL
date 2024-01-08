@@ -3,3 +3,12 @@ db
 incremental_db
 output_files
 Eclipse_C_Dev/.metadata
+.qsys_edit
+doxygen-output
+software/gameconsole/obj
+software/gameconsole_bsp/obj
+software/gameconsole/gameconsole.elf
+software/gameconsole/gameconsole.map
+software/gameconsole/gameconsole.objdump
+software/gameconsole/.cache
+software/gameconsole/compile_commands.json

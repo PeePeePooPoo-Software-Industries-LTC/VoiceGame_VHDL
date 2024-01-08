@@ -146,6 +146,7 @@ C_SRCS += hello_world.c
 C_SRCS += audio.c
 C_SRCS += graphics.c
 C_SRCS += images.c
+C_SRCS += input.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -1070,7 +1071,7 @@ ifneq ($(DISABLE_ELFPATCH),1)
 	$(ELFPATCH) $@ $(ELF_PATCH_FLAG)
 endif
 ifneq ($(DISABLE_STACKREPORT),1)
-	@bash -c "$(STACKREPORT) $@"
+#	@bash -c "$(STACKREPORT) $@"
 endif
 
 $(OBJDUMP_NAME) : $(ELF)
