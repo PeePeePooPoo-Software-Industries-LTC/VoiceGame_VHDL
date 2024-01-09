@@ -5,7 +5,7 @@
 #include "audio.h"
 #include "io.h"
 
-#define BUTTON_LEFT 4
+#define BUTTON_LEFT 3
 #define BUTTON_RIGHT 2
 #define BUTTON_RESET 1
 
