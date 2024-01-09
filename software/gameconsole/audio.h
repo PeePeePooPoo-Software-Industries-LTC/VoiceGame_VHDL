@@ -18,9 +18,9 @@ int audio_init();
  * Calculates the average audio sample of the samples in the current FIFO buffer
  *
  * It is not possible to know over how many samples this average was calculated,
- * however it is gauranteed to be within 50 and 128 samples
+ * however it is gauranteed to be within 1 and 128 samples
  *
- * @note If the sample size within the FIFO is below 50, a negative integer will
+ * @note If the sample size within the FIFO is below 1, a negative integer will
  * be returned
  *
  * @return The average audio sample

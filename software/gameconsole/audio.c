@@ -34,7 +34,7 @@ int audio_get_average() {
 	register unsigned int available = alt_up_audio_read_fifo_avail(audio_device, 0);
 	alt_up_audio_read_fifo(audio_device, buffer, available, 0);
 
-	if (available < 50) {
+	if (available < 1) {
 		return -1;
 	}
 	register unsigned int sum = 0;

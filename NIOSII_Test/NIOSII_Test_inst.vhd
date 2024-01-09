@@ -8,6 +8,9 @@
 			audio_interface_BCLK    : in    std_logic                     := 'X';             -- BCLK
 			buttons_export          : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                 : in    std_logic                     := 'X';             -- clk
+			inc_max_shorts_dataa    : out   std_logic_vector(31 downto 0);                    -- dataa
+			inc_max_shorts_datab    : out   std_logic_vector(31 downto 0);                    -- datab
+			inc_max_shorts_result   : in    std_logic_vector(31 downto 0) := (others => 'X'); -- result
 			prepare_pixel_dataa     : out   std_logic_vector(31 downto 0);                    -- dataa
 			prepare_pixel_datab     : out   std_logic_vector(31 downto 0);                    -- datab
 			prepare_pixel_result    : in    std_logic_vector(31 downto 0) := (others => 'X'); -- result
@@ -26,10 +29,7 @@
 			vga_SYNC                : out   std_logic;                                        -- SYNC
 			vga_R                   : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                   : out   std_logic_vector(7 downto 0);                     -- G
-			vga_B                   : out   std_logic_vector(7 downto 0);                     -- B
-			inc_max_shorts_dataa    : out   std_logic_vector(31 downto 0);                    -- dataa
-			inc_max_shorts_datab    : out   std_logic_vector(31 downto 0);                    -- datab
-			inc_max_shorts_result   : in    std_logic_vector(31 downto 0) := (others => 'X')  -- result
+			vga_B                   : out   std_logic_vector(7 downto 0)                      -- B
 		);
 	end component NIOSII_Test;
 
@@ -43,6 +43,9 @@
 			audio_interface_BCLK    => CONNECTED_TO_audio_interface_BCLK,    --                .BCLK
 			buttons_export          => CONNECTED_TO_buttons_export,          --         buttons.export
 			clk_clk                 => CONNECTED_TO_clk_clk,                 --             clk.clk
+			inc_max_shorts_dataa    => CONNECTED_TO_inc_max_shorts_dataa,    --  inc_max_shorts.dataa
+			inc_max_shorts_datab    => CONNECTED_TO_inc_max_shorts_datab,    --                .datab
+			inc_max_shorts_result   => CONNECTED_TO_inc_max_shorts_result,   --                .result
 			prepare_pixel_dataa     => CONNECTED_TO_prepare_pixel_dataa,     --   prepare_pixel.dataa
 			prepare_pixel_datab     => CONNECTED_TO_prepare_pixel_datab,     --                .datab
 			prepare_pixel_result    => CONNECTED_TO_prepare_pixel_result,    --                .result
@@ -61,9 +64,6 @@
 			vga_SYNC                => CONNECTED_TO_vga_SYNC,                --                .SYNC
 			vga_R                   => CONNECTED_TO_vga_R,                   --                .R
 			vga_G                   => CONNECTED_TO_vga_G,                   --                .G
-			vga_B                   => CONNECTED_TO_vga_B,                   --                .B
-			inc_max_shorts_dataa    => CONNECTED_TO_inc_max_shorts_dataa,    --  inc_max_shorts.dataa
-			inc_max_shorts_datab    => CONNECTED_TO_inc_max_shorts_datab,    --                .datab
-			inc_max_shorts_result   => CONNECTED_TO_inc_max_shorts_result    --                .result
+			vga_B                   => CONNECTED_TO_vga_B                    --                .B
 		);
 

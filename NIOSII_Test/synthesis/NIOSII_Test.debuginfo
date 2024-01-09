@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="NIOSII_Test" kind="system" version="18.1" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2024.01.08.11:38:22 -->
+ <!-- 2024.01.08.16:00:21 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1704710293</value>
+  <value>1704725989</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -10808,7 +10808,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="back_start_address">
    <type>int</type>
-   <value>1048576</value>
+   <value>0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -12760,7 +12760,7 @@ parameters are a RESULT of the module parameters. -->
  <module
    name="video_vga_controller_0"
    kind="altera_up_avalon_video_vga_controller"
-   version="18.0"
+   version="18.1"
    path="video_vga_controller_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
@@ -26917,8 +26917,8 @@ parameters are a RESULT of the module parameters. -->
   <name>altera_up_avalon_video_vga_controller</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>VGA Controller</displayName>
-  <version>18.0</version>
+  <displayName>VGA Controller Intel FPGA IP</displayName>
+  <version>18.1</version>
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -27049,5 +27049,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <reportVersion>18.1 625</reportVersion>
- <uniqueIdentifier>3C58C25599E30000018CE8A6CBD3</uniqueIdentifier>
+ <uniqueIdentifier>005056C000080000018CE9965C4F</uniqueIdentifier>
 </EnsembleReport>
