@@ -28,7 +28,6 @@
 #define RENDER_TICK_DURATION_MS 100
 
 #define DRAWBACKGROUND -3
-#define GAME_OVER -2
 #define APPLE -1
 #define IGNORE 0
 #define HEAD 1
@@ -95,7 +94,7 @@ void draw_grid(GRID_ARG, Snake* snake) {
 				draw_background(x, y);
 				grid[x][y] = IGNORE;
 			}
-			if (value != APPLE && value != IGNORE && value != GAME_OVER && value != DRAWBACKGROUND) {
+			if (value != APPLE && value != IGNORE && value != DRAWBACKGROUND) {
 				if(value == HEAD){
 					if(valueEast == value + 1){
 						/* head going west */
@@ -208,7 +207,7 @@ void grow_snake(GRID_ARG, Snake* snake) {
 	for (int x = 0; x < GRID_SIZE_X; x++) {
 		for (int y = 0; y < GRID_SIZE_Y; y++) {
 			int value = grid[x][y];
-			if (value != APPLE && value != IGNORE && value != GAME_OVER && value != DRAWBACKGROUND) {
+			if (value != APPLE && value != IGNORE && value != DRAWBACKGROUND) {
 				// Do increments.
 				if (value < snake->length) {
 					grid[x][y] = value + 1;
@@ -223,12 +222,6 @@ void grow_snake(GRID_ARG, Snake* snake) {
 
 void game_over(Snake* snake, GRID_ARG) {
 	snake->state = Paused;
-
-	for (int x = 0; x < GRID_SIZE_X; x++){
-		for (int y = 0; y < GRID_SIZE_Y; y++){
-			grid[x][y] = -2;
-		}
-	}
 }
 
 void move_snake(GRID_ARG, Snake* snake, Input* buttons) {
