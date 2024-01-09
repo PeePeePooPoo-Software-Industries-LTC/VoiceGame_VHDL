@@ -715,7 +715,7 @@
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />
   <parameter name="addr_mode" value="X-Y" />
-  <parameter name="back_start_address" value="1048576" />
+  <parameter name="back_start_address" value="0" />
   <parameter name="color_space" value="30-bit RGB" />
   <parameter name="image_height" value="240" />
   <parameter name="image_width" value="320" />
@@ -755,7 +755,7 @@
  <module
    name="video_vga_controller_0"
    kind="altera_up_avalon_video_vga_controller"
-   version="18.0"
+   version="18.1"
    enabled="1">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="25000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone IV E" />

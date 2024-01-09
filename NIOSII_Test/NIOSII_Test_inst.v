@@ -7,6 +7,9 @@
 		.audio_interface_BCLK    (<connected-to-audio_interface_BCLK>),    //                .BCLK
 		.buttons_export          (<connected-to-buttons_export>),          //         buttons.export
 		.clk_clk                 (<connected-to-clk_clk>),                 //             clk.clk
+		.inc_max_shorts_dataa    (<connected-to-inc_max_shorts_dataa>),    //  inc_max_shorts.dataa
+		.inc_max_shorts_datab    (<connected-to-inc_max_shorts_datab>),    //                .datab
+		.inc_max_shorts_result   (<connected-to-inc_max_shorts_result>),   //                .result
 		.prepare_pixel_dataa     (<connected-to-prepare_pixel_dataa>),     //   prepare_pixel.dataa
 		.prepare_pixel_datab     (<connected-to-prepare_pixel_datab>),     //                .datab
 		.prepare_pixel_result    (<connected-to-prepare_pixel_result>),    //                .result
@@ -25,9 +28,6 @@
 		.vga_SYNC                (<connected-to-vga_SYNC>),                //                .SYNC
 		.vga_R                   (<connected-to-vga_R>),                   //                .R
 		.vga_G                   (<connected-to-vga_G>),                   //                .G
-		.vga_B                   (<connected-to-vga_B>),                   //                .B
-		.inc_max_shorts_dataa    (<connected-to-inc_max_shorts_dataa>),    //  inc_max_shorts.dataa
-		.inc_max_shorts_datab    (<connected-to-inc_max_shorts_datab>),    //                .datab
-		.inc_max_shorts_result   (<connected-to-inc_max_shorts_result>)    //                .result
+		.vga_B                   (<connected-to-vga_B>)                    //                .B
 	);
 

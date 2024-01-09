@@ -149,4 +149,67 @@ extern unsigned char image_apple_height;
 extern unsigned int image_apple_palette[8];
 extern unsigned char image_apple[IMAGE_apple_MAX_BYTES];
 
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand.png
+#define IMAGE_sand_MAX_BYTES 108
+extern unsigned char image_sand_width;
+extern unsigned char image_sand_height;
+extern unsigned int image_sand_palette[8];
+extern unsigned char image_sand[IMAGE_sand_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_topright.png
+#define IMAGE_sand_topright_MAX_BYTES 109
+extern unsigned char image_sand_topright_width;
+extern unsigned char image_sand_topright_height;
+extern unsigned int image_sand_topright_palette[8];
+extern unsigned char image_sand_topright[IMAGE_sand_topright_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_topleft.png
+#define IMAGE_sand_topleft_MAX_BYTES 108
+extern unsigned char image_sand_topleft_width;
+extern unsigned char image_sand_topleft_height;
+extern unsigned int image_sand_topleft_palette[8];
+extern unsigned char image_sand_topleft[IMAGE_sand_topleft_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_top.png
+#define IMAGE_sand_top_MAX_BYTES 101
+extern unsigned char image_sand_top_width;
+extern unsigned char image_sand_top_height;
+extern unsigned int image_sand_top_palette[8];
+extern unsigned char image_sand_top[IMAGE_sand_top_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_right.png
+#define IMAGE_sand_right_MAX_BYTES 116
+extern unsigned char image_sand_right_width;
+extern unsigned char image_sand_right_height;
+extern unsigned int image_sand_right_palette[8];
+extern unsigned char image_sand_right[IMAGE_sand_right_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_leftbottom.png
+#define IMAGE_sand_leftbottom_MAX_BYTES 110
+extern unsigned char image_sand_leftbottom_width;
+extern unsigned char image_sand_leftbottom_height;
+extern unsigned int image_sand_leftbottom_palette[8];
+extern unsigned char image_sand_leftbottom[IMAGE_sand_leftbottom_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_left.png
+#define IMAGE_sand_left_MAX_BYTES 118
+extern unsigned char image_sand_left_width;
+extern unsigned char image_sand_left_height;
+extern unsigned int image_sand_left_palette[8];
+extern unsigned char image_sand_left[IMAGE_sand_left_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_bottomright.png
+#define IMAGE_sand_bottomright_MAX_BYTES 105
+extern unsigned char image_sand_bottomright_width;
+extern unsigned char image_sand_bottomright_height;
+extern unsigned int image_sand_bottomright_palette[8];
+extern unsigned char image_sand_bottomright[IMAGE_sand_bottomright_MAX_BYTES];
+
+// AUTO-GENERATED IMAGE CONVERTED FROM: sand_bottom.png
+#define IMAGE_sand_bottom_MAX_BYTES 100
+extern unsigned char image_sand_bottom_width;
+extern unsigned char image_sand_bottom_height;
+extern unsigned int image_sand_bottom_palette[8];
+extern unsigned char image_sand_bottom[IMAGE_sand_bottom_MAX_BYTES];
+
 #endif
